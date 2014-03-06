@@ -1,0 +1,23 @@
+<header class="navbar navbar-fixed-top " id="top" role="banner">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to @propertyinformation.name, "/", class: "navbar-brand" %>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav navbar-right">
+        <% @pages.each do |page| %>
+					<li><%= link_to page.title, pages_id_path(page) %></li>
+				<% end %>
+        <% if user_signed_in? %>
+        <li><%= link_to "Admin", admin_path, target: "_blank" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

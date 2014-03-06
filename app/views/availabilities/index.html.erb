@@ -1,0 +1,49 @@
+<% if @availabilities.empty? %>
+<div class="center">
+  <h1>You don't have any availabilities listed!</h1>
+  <p>Create listings to include in the Availabilites section of your website.</p>
+  <%= link_to 'List Availability', new_availability_path, class: "btn btn-success" %>
+</div>
+<% else %>
+
+<h1>Listing availabilities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Suite or floor</th>
+      <th>Availability</th>
+      <th>Sf</th>
+      <th>Rental rate</th>
+      <th>Content</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @availabilities.each do |availability| %>
+      <tr>
+        <td><%= availability.title %></td>
+        <td><%= availability.suite_or_floor %></td>
+        <td><%= availability.availability %></td>
+        <td><%= availability.sf %></td>
+        <td><%= availability.rental_rate %></td>
+        <td><%= availability.content %></td>
+        <td></td>
+        <td><%= link_to 'Show', availability %></td>
+        <td><%= link_to 'Edit', edit_availability_path(availability) %></td>
+        <td><%= link_to 'Destroy', availability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Availability', new_availability_path %>
+
+<% end %>

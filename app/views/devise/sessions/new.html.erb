@@ -1,0 +1,20 @@
+<div id="center-login">
+<div class="signup-box">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	  <div class="form-group">
+	    <%= f.email_field :email, :autofocus => true, 
+		  												class: "form-control", placeholder: "Email" %>
+	  </div>
+	  <div class="form-group">
+	    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+	  </div>
+
+	  <div>
+	    <%= f.submit "Sign in", class: "btn btn-success btn-block" %>
+	  </div>
+	  <p><%= link_to 'Forgot password?', "#" %></p>
+		<p>Need an account? <%= link_to 'Register', register_path %></p>
+	<% end %>
+
+</div>
+</div>

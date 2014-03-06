@@ -1,0 +1,22 @@
+<%= form_for(@theme_name) do |f| %>
+  <% if @theme_name.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@theme_name.errors.count, "error") %> prohibited this theme_name from being saved:</h2>
+
+      <ul>
+      <% @theme_name.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing theme_names</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @theme_names.each do |theme_name| %>
+      <tr>
+        <td><%= theme_name.name %></td>
+        <td></td>
+        <td><%= link_to 'Show', theme_name %></td>
+        <td><%= link_to 'Edit', edit_theme_name_path(theme_name) %></td>
+        <td><%= link_to 'Destroy', theme_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Theme name', new_theme_name_path %>

@@ -1,0 +1,42 @@
+<%= render 'layouts/sunnysidehead' %>
+	<body class="sunnyside">
+		<%= render 'layouts/sunnysideheader' %>
+			<div class="main-homepage" style="background: url('<%= @page.page_image %>');
+				-webkit-background-size: cover; -moz-background-size: cover; 
+				-o-background-size: cover; background-size: cover;">
+				<div class="container">
+					<div class="center content">
+							<h1><%= @page.title %></h1>
+							<p><%= @page.subtitle %></p>
+					</div>
+				</div><!-- end container -->
+			</div><!-- end main homepage -->
+			<div class="container-fluid">
+				<div class="page-content">
+					<div class="row centers">
+						<div class="col-md-2 col-md-offset-2">
+							<ul class="list-style-none">
+								<li class="first-list">Links</li>
+								<% @pages.each do |page| %>
+									<li><%= link_to page.title, pages_id_path(page) %></li>
+								<% end %>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<%= markdown(@page.content) %>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+	
+
+		<%= render 'layouts/sunnysidefooter' %>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('header').removeClass('navbar').addClass('navbar-inverse');
+			});
+		</script>
+	</body>
+</html>

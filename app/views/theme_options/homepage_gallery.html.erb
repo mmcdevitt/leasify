@@ -1,0 +1,46 @@
+<%= render 'layouts/themeoptionsheader' %>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Homepage Gallery</h3>
+	</div>
+</div>
+<div class="add-page">
+<div class="row">
+	<div class="col-md-8">
+		<%= form_for(@themeoptions) do |f| %> 
+			<div class="upload-dashed">
+			
+				 <div class="row-fluid">
+			      <%= f.file_field :homepage_image, as: :file, id: 'lefile', style: "display:none;" %>
+			      <div class="input-append">
+			        <a class="btn btn-white btn-block" onclick="$('input[id=lefile]').click();">Upload</a>
+			        <p style="font-size:12px; padding-top:25px; margin:0" class="muted">JPEG file, 2mb max</p>
+			      </div>
+			      <script type="text/javascript">
+			        $('input[id=lefile]').change(function() {
+			          $('#photoCover').val($(this).val());
+			        });
+			      </script>
+			    </div>
+			</div>
+				<% if f.object.theme_image? %>
+			      <div class="upload-preview">
+			        <%= image_tag(@themeoptions.homepage_image.url(:small), id: "uploadimage", class: "img-thumbnail") %>
+			      </div>
+			    <% else %>
+			      <div class="upload-preview">
+			        <%= image_tag("upload-image.png", id: "uploadimage") %>
+			      </div>
+			    <% end %>
+			   
+	    <div class="admin-bar" id="quick-access" style="bottom: 0px;">
+	      <div class="admin-bar-inner">
+	        <%= f.submit "Save Settings", class: "btn btn-success" %>
+	      </div>
+	    </div>
+	  
+	 <% end %>
+			 
+		</div>
+	</div>
+</div>

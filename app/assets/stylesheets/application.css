@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+.header a {
+	color: #333;
+}
+.center {
+	text-align: center;
+}
+* {
+	outline: none !important;
+	letter-spacing: normal;
+}
+.dropdown-select > li > a input {
+position: absolute;
+left: -9999em;
+}
+@font-face{
+    font-family:'AvenirLT-Medium';
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.eot");
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.eot?#iefix") format("embedded-opentype"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.woff") format("woff"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Roman';
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.eot");
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.eot?#iefix") format("embedded-opentype"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.woff") format("woff"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Heavy';
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.eot");
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.eot?#iefix") format("embedded-opentype"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.woff") format("woff"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Oblique';
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.eot");
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.eot?#iefix") format("embedded-opentype"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.woff") format("woff"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.ttf") format("truetype")
+}
+@font-face{
+    font-family:'AvenirLT-Black';
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.eot");
+    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.eot?#iefix") format("embedded-opentype"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.woff") format("woff"),
+        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.ttf") format("truetype")
+}
+body {
+	font-family:'AvenirLT-Roman' !important;
+	color: #55606e;
+}
+body.devise {
+    background: #4c5566;
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;        
+}
+.upload-dashed {
+background-color: #f2f2f2;
+border: 2px dashed #d9d9d9;
+text-align: center;
+padding: 40px 30px;
+width: 150px;
+height: 150px;
+float: left;
+margin-right: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

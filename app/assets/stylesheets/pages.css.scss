@@ -1,0 +1,36 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.add-page {
+	margin-bottom:100px;
+	.form-group p {
+		color: #999;
+		margin:5px 0 10px;
+	}
+	textarea {
+		height: 300px;
+		resize:none;
+	}
+}
+.list-page {
+	margin-top: 30px;
+	
+}
+.list-page-border  {
+		padding: 15px;
+		border-top: 1px solid #d7d7d7;
+		p {
+			font-size: 12px;
+			margin: 4px 0 0 0;
+		}
+		.btn-white {
+			margin-right: 10px;
+		}
+	}
+	.add-page-image {
+		
+		img {
+			margin-bottom: 30px;
+		}
+		
+	}

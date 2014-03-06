@@ -1,0 +1,12 @@
+<%= image_tag(@themeoptions.theme_image.url(:thumb), class: "img-thumbnail") %>
+<%= @themeoptions.homepage_heading %><br>
+<%= @themeoptions.homepage_subheading %><br>
+<%= @themeoptions.content %><br>
+Pages: <br> 
+<% @pages.each do |page| %>
+	<%= page.title %><br>
+<% end %>
+Listings: <br> 
+<% @availabilities.each do |listing| %>
+	<%= listing.suite_or_floor %> #<%= listing.title %><br>
+<% end %>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subdomain</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+	<body>
+		<%= render 'layouts/header' %>
+			<!-- BEGIN CONTAINER -->
+			<div class="page-container row-fluid">
+	  		<!-- BEGIN SIDEBAR -->
+	  		<%= render 'layouts/sidebar' %>
+	  		<!-- BEGIN PAGE CONTAINER-->
+			  <div class="page-content"> 
+			    <div class="content">  
+						<div class="page-title">	
+							<%= yield %>
+						</div>
+			    </div>
+			    
+				</div>
+			</div>
+			<!-- END CONTAINER --> 
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @availability.title %>
+</p>
+
+<p>
+  <strong>Suite or floor:</strong>
+  <%= @availability.suite_or_floor %>
+</p>
+
+<p>
+  <strong>Availability:</strong>
+  <%= @availability.availability %>
+</p>
+
+<p>
+  <strong>Sf:</strong>
+  <%= @availability.sf %>
+</p>
+
+<p>
+  <strong>Rental rate:</strong>
+  <%= @availability.rental_rate %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @availability.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @availability.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_availability_path(@availability) %> |
+<%= link_to 'Back', availabilities_path %>

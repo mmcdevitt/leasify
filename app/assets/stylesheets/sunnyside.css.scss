@@ -1,0 +1,170 @@
+// Place all the styles related to the Sunnyside controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/.
+@font-face {
+    font-family: 'nexa_lightregular';
+    src: url('http://www.leasify.co/fonts/nexa_light-webfont.eot');
+    src: url('http://www.leasify.co/fonts/nexa_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.leasify.co/fonts/nexa_light-webfont.woff') format('woff'),
+         url('http://www.leasify.co/fonts/nexa_light-webfont.ttf') format('truetype'),
+         url('http://www.leasify.co/fonts/nexa_light-webfont.svg#nexa_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+html, body {
+	height: 100%;
+	font-family: 'nexa_lightregular';
+}
+* {
+	outline: none !important;
+}
+ul {
+	&.list-style-none {
+		list-style: none;
+	}
+	li {
+		&.first-list {
+			font-size: 20px;
+			color: #999;
+		}
+		padding-bottom: 14px;
+		a {
+			
+		}
+	}
+}
+hr {
+	margin: 80px 0;
+}
+.center {
+	text-align: center;
+}
+.btn-no-bg {
+	background: transparent;
+	color: #fff;
+	border: 2px solid white;
+}
+.btn-no-bg:hover {
+	background: rgba(0,0,0,0.2);
+	color: #fff;
+}
+.sunnyside {
+	#wrapper {
+		height: 100%;
+	}
+	h1, h2, h3 {
+		margin: 0;
+		padding: 0;
+		font-family: 'nexa_lightregular';
+	}
+	header {
+		padding: 0 50px;
+		ul li a{
+			color: #fff;
+			text-transform: uppercase;
+			font-size: 12px;
+			&:hover {
+				color:#d7d7d7;
+				background: transparent;
+			}
+		}
+		.navbar-brand {
+			color: #fff;
+		}
+	}
+	.main-homepage {
+			
+			width: 100%;
+			height: 100%;
+			background: #fff;
+			color: #fff;
+			background-color: #f5f5f5;
+			h1 {
+				font-size: 40px;
+				font-family: 'nexa_lightregular';
+				text-transform: uppercase;
+			}
+			.welcome-box {
+				bottom: 0;
+				height: 74px;
+				left: 0;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 500px;
+				text-align: center;
+			}
+			p {
+				text-transform: uppercase;
+			}
+			.listings-btn {
+				position: absolute;
+				bottom: 50px;
+				margin: auto;
+				left: 0;
+				right: 0;
+			}
+		}
+	.content {
+		padding:50px;
+		margin-top:150px;
+		h1 {
+			margin-bottom: 17px;
+		}
+
+	}
+	.page-content {
+		padding: 100px;
+		h1 {
+			margin-bottom: 60px;
+		}
+		h2, h3 {
+			margin-bottom: 20px;
+		}
+		p {
+			font-size: 14px;
+			line-height: 28px;
+			color: #999;
+		}
+	}
+	footer {
+		padding: 100px 0;
+		p {
+			font-size: 12px;
+			margin: 0;
+			color: #999;
+		}
+	}
+}/*end sunnyside*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

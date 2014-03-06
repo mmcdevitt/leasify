@@ -1,0 +1,33 @@
+<%= render 'layouts/sunnysidehead' %>
+	<body class="sunnyside">
+		<div id="wrapper">
+			<%= render 'layouts/sunnysideheader' %>
+			<div class="main-homepage" style="background: url('<%= @themeoptions.homepage_image %>');
+				-webkit-background-size: cover; -moz-background-size: cover; 
+				-o-background-size: cover; background-size: cover;">
+				<div class="container">
+					<div class="welcome-box">
+							<h1><%= @themeoptions.homepage_heading %></h1>
+							<p><%= @themeoptions.homepage_subheading %></p>
+					</div>
+					<section class="listings-btn center">
+          	<a href="availabilities.php"><button class="btn btn-no-bg">View Listings</button></a>
+          </section>
+				</div><!-- end container -->
+			</div><!-- end main homepage -->
+			<div class="container-fluid">
+				<div class="page-content">
+					<div class="row center">
+						<div class="col-md-6 col-md-offset-3">
+							<%= markdown(@themeoptions.content) %>
+						</div>
+					</div>
+				</div>
+			</div>			
+			
+			<%= render 'layouts/sunnysidefooter' %>
+		</div><!-- end wrapper -->
+	</body>
+</html>
+
+

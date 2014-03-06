@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @theme_name.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @theme_name.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_theme_name_path(@theme_name) %> |
+<%= link_to 'Back', theme_names_path %>

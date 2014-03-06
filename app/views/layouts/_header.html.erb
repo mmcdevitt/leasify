@@ -1,0 +1,46 @@
+<!-- BEGIN HEADER -->
+<div class="header navbar navbar-inverse "> 
+ 	<div class="navbar-inner">
+		<div class="header-seperation"> 
+			
+    </div>
+   	<div class="header-quick-nav" > 
+   		<div class="pull-left">
+        <ul class="nav quick-section">
+          <li class="quicklinks"> 
+          	<% if user_signed_in? %>
+          	<%= link_to current_user.username + ".leasify.co", "#" %> 
+          	<% end %>
+          </li>
+        </ul>
+       
+      </div>
+   		<div class="pull-right">
+				<ul class="nav quick-section ">
+					<li class="quicklinks">
+   					<% if user_signed_in? %>
+			   			<%= link_to current_user.username, "#" %>
+			   		<% end %>
+   				</li>
+   				<li class="quicklinks"><%= link_to "Logout", logout_path %></li>
+					<li class="quicklinks"> 
+						<a data-toggle="dropdown" class="dropdown-toggle  pull-right" href="#">						
+							<div class="iconset top-down-arrow" style="float:right; margin-top:7px; margin-left:8px;">
+							</div>
+							<div class="iconset top-settings-dark pull-right">
+							</div> 	
+						</a>
+						<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">
+							<li><a href="user-profile.html"> My Account</a></li>
+							<li><a href="calender.html">My Calendar</a></li>
+							<li><a href="email.html"> My Inbox&nbsp;&nbsp;<span class="badge badge-important animated bounceIn">2</span></a></li>
+							<li class="divider"></li>                
+							<li><a href="login.html"><i class="icon-off"></i>&nbsp;&nbsp;Log Out</a></li>
+						</ul>
+					</li> 
+				</ul>
+   		</div>
+   	</div> 
+  </div>
+</div>
+<!-- END HEADER -->
