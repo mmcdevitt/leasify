@@ -1,3 +1,10 @@
+<% if @contacts.empty? %>
+<div class="center">
+  <h1>You don't have any contacts created!</h1>
+  <p>Create contacts to include in the Availabilites section of your website.</p>
+  <%= link_to 'Create Contact', new_contact_path, class: "btn btn-success" %>
+</div>
+<% else %>
 <h1>Listing contacts</h1>
 
 <table>
@@ -37,3 +44,4 @@
 <br>
 
 <%= link_to 'New Contact', new_contact_path %>
+<% end %>

@@ -1,16 +1,17 @@
 class PropertyInformationsController < ApplicationController
+  before_action :set_subdomain
 	before_action :authenticate_user!
 
 	def index
-		@propertyinformations = PropertyInformations.where(user_id: current_user.id).first
+		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site).first
 	end
 
 	def address
-		@propertyinformations = PropertyInformations.where(user_id: current_user.id).first
+		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site).first
 	end
 
 	def update
-    @propertyinformations = PropertyInformations.where(user_id: current_user.id).first
+    @propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site).first
     # if params[:propertyinformations] && params[:propertyinformations].has_key?(:user_id)
     #   params[:propertyinformations].delete(:user_id) 
     # end
@@ -26,8 +27,12 @@ class PropertyInformationsController < ApplicationController
   end
 
   private	
+    def set_subdomain
+      @subdomain = request.subdomain
+      @site      = Site.where(subdomain: request.subdomain).first.id
+    end
   	def propertyinformations_params
-      params.require(:property_informations).permit(:user_id, :name, 
+      params.require(:property_information).permit(:user_id, :name, 
       																							:owner_name, :property_class, :floors, :sf, :year_built,
       																							:state, :address, :city, :zipcode)
     end

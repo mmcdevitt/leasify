@@ -1,10 +1,5 @@
-class Subdomain
-  def self.matches?(request)
-    case request.subdomain
-    when 'www', '', nil
-      false
-    else
-      true
-    end
-  end
+class Subdomains
+	def self.matches?(request)
+		request.subdomain.present? && request.subdomain != "www"
+	end
 end

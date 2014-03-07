@@ -19,21 +19,7 @@ html, body {
 * {
 	outline: none !important;
 }
-ul {
-	&.list-style-none {
-		list-style: none;
-	}
-	li {
-		&.first-list {
-			font-size: 20px;
-			color: #999;
-		}
-		padding-bottom: 14px;
-		a {
-			
-		}
-	}
-}
+
 hr {
 	margin: 80px 0;
 }
@@ -50,6 +36,21 @@ hr {
 	color: #fff;
 }
 .sunnyside {
+	ul {
+	&.list-style-none {
+		list-style: none;
+	}
+	li {
+		&.first-list {
+			font-size: 20px;
+			color: #999;
+		}
+		padding-bottom: 14px;
+		a {
+			
+		}
+	}
+}
 	#wrapper {
 		height: 100%;
 	}

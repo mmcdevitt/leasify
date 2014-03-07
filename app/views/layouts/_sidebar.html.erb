@@ -1,4 +1,5 @@
 <div class="page-sidebar" id="main-menu"> 
+  <% if request.subdomain.present? && request.subdomain != "www" %>
   <div class="page-sidebar-wrapper" id="main-menu-wrapper"> 
     <p class="menu-title">BROWSE 
       <span class="pull-right">
@@ -26,10 +27,12 @@
       <li class=""> 
         <%= link_to "Theme Options", logo_path %>
       </li>
-    </ul>
+     </ul>
   <div class="clearfix"></div>
   <!-- END SIDEBAR MENU --> 
   </div>
+  <% else %>
+  <% end %>
 </div>
 <a href="#" class="scrollup">Scroll</a>
 <div class="footer-widget">   

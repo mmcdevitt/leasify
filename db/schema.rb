@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305204240) do
+ActiveRecord::Schema.define(version: 20140307000507) do
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140305204240) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "site_id"
   end
 
   create_table "contacts", force: true do |t|
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140305204240) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "site_id"
   end
 
   create_table "pages", force: true do |t|
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140305204240) do
     t.string   "page_image_content_type"
     t.integer  "page_image_file_size"
     t.datetime "page_image_updated_at"
+    t.integer  "site_id"
   end
 
   create_table "posts", force: true do |t|
@@ -71,6 +74,15 @@ ActiveRecord::Schema.define(version: 20140305204240) do
     t.string   "state"
     t.string   "city"
     t.integer  "zipcode"
+    t.integer  "site_id"
+  end
+
+  create_table "sites", force: true do |t|
+    t.string   "name"
+    t.string   "subdomain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "theme_names", force: true do |t|
@@ -96,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140305204240) do
     t.string   "homepage_image_content_type"
     t.integer  "homepage_image_file_size"
     t.datetime "homepage_image_updated_at"
+    t.integer  "site_id"
   end
 
   create_table "users", force: true do |t|

@@ -1,10 +1,13 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    
+    @subdomain           = request.subdomain
+    @site                = Site.where(subdomain: request.subdomain).first.id
+    @contacts            = Contact.where(user_id: current_user.id) && Contact.where(site_id: @site)
   end
 
   # GET /contacts/1
@@ -24,7 +27,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+    @contact = current_user.contacts.new(contact_params)
 
     respond_to do |format|
       if @contact.save
@@ -69,6 +72,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:first_name, :last_name, :company, :job_title, :phone, :email, :user_id)
+      params.require(:contact).permit(:site_id, :first_name, :last_name, :company, :job_title, :phone, :email, :user_id)
     end
 end

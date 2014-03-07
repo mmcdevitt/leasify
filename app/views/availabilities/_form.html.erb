@@ -12,7 +12,9 @@
     </div>
   <% end %>
   <div class="col-md-8">
-
+    <% @subdomain = request.subdomain %>
+    <% @site = Site.where(subdomain: request.subdomain).first.id %>
+    <%= f.hidden_field :site_id, value: @site %>
     <div class="form-group">
       <%= f.label :suite_or_floor, "Is this an individual suite or entire floor?" %>
      <div class="btn-group m-r">

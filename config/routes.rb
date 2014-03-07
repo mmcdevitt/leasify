@@ -1,14 +1,11 @@
 Subdomain::Application.routes.draw do
-  resources :static_pages
-  root :to => "static_pages#home"
+  get "dashboards/index"
+  require 'subdomain'
  
-  get "sunnyside/index"
-  get "avaya/index"
-  resources :theme_names
 
-  scope :admin do
-    resources :pages, :availabilities, :contacts, :property_informations, :theme_options
-    get '/', to: 'admin#index', as: :admin
+  scope :dashboard do
+    resources :pages, :availabilities, :contacts, :property_informations, :theme_options, :sites
+    get '/', to: 'dashboards#index', as: :dashboard
     get '/property',         to:'property_informations#index', as: :property
     get '/property/address', to:'property_informations#address', as: :address
     get '/theme-options/logo', to:'theme_options#index', as: :logo
@@ -17,20 +14,29 @@ Subdomain::Application.routes.draw do
     get '/templates', to:'theme_options#template', as: :template
   end
  
+  constraints(Subdomains) do
+    get '/' => 'static_pages#home'
+  end
+
+  resources :static_pages
+  root :to => "static_pages#home"
+ 
+  get "sunnyside/index"
+  get "avaya/index"
+  resources :theme_names
+
+  
   devise_for :users, :controllers => { :registrations => "registrations" }  
     
   
   resources :posts
 
-  # require 'subdomain'
+
   
 
   resources :users, :only => :show
 
-  constraints(Subdomain) do
-    get '/' => 'profiles#show'
-  end
-
+  
   
 
   devise_scope :user do
@@ -45,9 +51,6 @@ Subdomain::Application.routes.draw do
   # get '/:id', to: 'profiles#show', as: 'profile'
 
 
-  def theme_name
-    @theme_name = ThemeOption.where(user_id: current_user.id).first.template
-    return @theme_name + "#index"
-  end
+ 
 
 end

@@ -1,0 +1,7 @@
+Welcome to Leasify!<br>
+<% if user_signed_in? %>
+	<%= link_to "Your Dashboard", dashboard_path %>
+<% else %>
+<%= link_to "Sign Up", register_path %><br>
+<%= link_to "Login", login_path %>
+<% end %>

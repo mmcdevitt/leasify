@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
 	has_many :property_informations
 	has_many :theme_options
 	has_many :theme_names
+	has_many :sites
 end

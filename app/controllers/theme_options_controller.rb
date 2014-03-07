@@ -1,24 +1,25 @@
 class ThemeOptionsController < ApplicationController
+  before_action :set_subdomain
 	before_action :authenticate_user!
   def index
-  	@themeoptions = ThemeOption.where(user_id: current_user.id).first
+  	@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site).first
   end
 
   def homepage_content
-  	@themeoptions = ThemeOption.where(user_id: current_user.id).first
+  	@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site).first
   end
 
   def template
-  	@themeoptions = ThemeOption.where(user_id: current_user.id).first
+  	@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site).first
   	@templates = ThemeName.all
   end
 
   def homepage_gallery
-    @themeoptions = ThemeOption.where(user_id: current_user.id).first
+    @themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site).first
   end
 
 	def update
-		@themeoptions = ThemeOption.where(user_id: current_user.id).first
+		@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site).first
 		# if params[:propertyinformations] && params[:propertyinformations].has_key?(:user_id)
 		#   params[:propertyinformations].delete(:user_id) 
 		# end
@@ -35,6 +36,11 @@ class ThemeOptionsController < ApplicationController
 	end
 
   private	
+    def set_subdomain
+      @subdomain = request.subdomain
+      @site      = Site.where(subdomain: request.subdomain).first.id
+    end
+
   	def users_params
       params.require(:theme_option).permit(:theme_image, 
       																		 :user_id, 

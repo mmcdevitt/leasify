@@ -4,7 +4,10 @@ class AvailabilitiesController < ApplicationController
   # GET /availabilities
   # GET /availabilities.json
   def index
-    @availabilities = Availability.where(user_id: current_user.id)
+    @subdomain           = request.subdomain
+    @site                = Site.where(subdomain: request.subdomain).first.id
+    
+    @availabilities      = Availability.where(user_id: current_user.id) && Availability.where(site_id: @site)
   end
 
   # GET /availabilities/1
@@ -69,6 +72,6 @@ class AvailabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params
-      params.require(:availability).permit(:title, :suite_or_floor, :availability, :sf, :rental_rate, :content, :user_id)
+      params.require(:availability).permit(:title, :site_id, :suite_or_floor, :availability, :sf, :rental_rate, :content, :user_id)
     end
 end

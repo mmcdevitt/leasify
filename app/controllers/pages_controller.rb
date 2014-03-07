@@ -5,18 +5,25 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = Page.where(user_id: current_user.id)
+    @subdomain           = request.subdomain
+    @site                = Site.where(subdomain: request.subdomain).first.id
+    @pages               = Page.where(user_id: current_user.id) && Page.where(site_id: @site)
   end
 
   # GET /pages/1
   # GET /pages/1.json
   def show
     @subdomain           = request.subdomain
-    @user                = User.where(username: @subdomain).first.id
-    @themeoptions        = ThemeOption.where(user_id: @user).first
-    @pages               = Page.where(user_id: @user).all
-    @availabilities      = Availability.where(user_id: @user).all
-    @propertyinformation = PropertyInformations.where(user_id: @user).first
+    @site                = Site.where(subdomain: request.subdomain).first
+    @user                = User.where(id: @site.user_id).first
+    @themeoptions        = ThemeOption.where(site_id: @site.id).first
+    @pages               = Page.where(site_id: @site.id).all
+    @availabilities      = Availability.where(site_id: @site.id).all
+    @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+
+    if @site.id != @page.site_id
+      redirect_to root_url
+    end
   end
 
   # GET /pages/new
@@ -77,13 +84,14 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:user_id, :title, :subtitle, :content, :page_image)
+      params.require(:page).permit(:user_id, :title, :subtitle, :content, :page_image, :site_id)
     end
 
     def theme_name
       @subdomain = request.subdomain
-      @user = User.where(username: @subdomain).first.id
-      @theme_name = ThemeOption.where(user_id: @user).first.template.downcase
+      @site = Site.where(subdomain: request.subdomain).first
+      @user = User.where(id: @site.user_id).first
+      @theme_name = ThemeOption.where(site_id: @site.id).first.template.downcase
       if params[:action] == "show"
         return @theme_name + "page"
       else

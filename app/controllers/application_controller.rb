@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  include UrlHelper
   protect_from_forgery with: :exception
   
   before_action :correct_user
   # layout :theme_name
+
   #Allow Devise to add custom fields in database
 
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
@@ -34,11 +36,15 @@ class ApplicationController < ActionController::Base
   # End Devise #############
 
   def correct_user
-    @user = User.where(:username => request.subdomain).first
-    if user_signed_in?
-       if @user.id != current_user.id
-        redirect_to root_url(:subdomain => current_user.username)
-        sign_out(@user) 
+    if request.subdomain.present? && request.subdomain != "www"
+      if user_signed_in?
+        @subdomain = request.subdomain
+        @site = Site.where(subdomain: request.subdomain).first.user_id
+        @user = User.where(id: @site).first
+        if @user.id != current_user.id
+          redirect_to root_url(:subdomain => false)
+          sign_out(@user) 
+        end
       end
     end
   end

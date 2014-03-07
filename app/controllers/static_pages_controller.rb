@@ -2,12 +2,15 @@ class StaticPagesController < ApplicationController
   layout :theme_name
   
   def home
-    @subdomain           = request.subdomain
-    @user                = User.where(username: @subdomain).first.id
-    @themeoptions        = ThemeOption.where(user_id: @user).first
-    @pages               = Page.where(user_id: @user).all
-    @availabilities      = Availability.where(user_id: @user).all
-    @propertyinformation = PropertyInformations.where(user_id: @user).first
+    if request.subdomain != "www" && request.subdomain.present?
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @user                = User.where(id: @site.user_id).first
+      @themeoptions        = ThemeOption.where(site_id: @site.id).first
+      @pages               = Page.where(site_id: @site.id).all
+      @availabilities      = Availability.where(site_id: @site.id).all
+      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+    end
   end
 
   def show
@@ -16,11 +19,15 @@ class StaticPagesController < ApplicationController
 
   #signup method to change layout of user registration and login pages
     def theme_name
-      @user = User.where(username: @subdomain).first.id
-      if params[:action] == "home"
-        @theme_name = ThemeOption.where(user_id: @user).first.template.downcase
-      else
-        "application"
+      if params[:action] == "home" 
+        if request.subdomain != "www" && request.subdomain.present?
+          @subdomain = request.subdomain
+          @site = Site.where(subdomain: request.subdomain).first
+          @user = User.where(id: @site.user_id).first
+          @theme_name = ThemeOption.where(site_id: @site.id).first.template.downcase
+        else
+          "test"
+        end
       end
     end
 

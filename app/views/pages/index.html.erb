@@ -1,5 +1,13 @@
+<% if @pages.empty? %>
+<div class="center">
+  <h1>You don't have any pages created!</h1>
+  <p>Create pages to include in your website.</p>
+  <%= link_to 'New Page', new_page_path, class: "btn btn-success" %>
+</div>
+<% else %>
 <h2>Pages</h2>
 <%= link_to 'New Page', new_page_path, class: "btn btn-success" %>
+
 <div class="list-page">
   <% @pages.each do |page| %>
     <div class="list-page-border">
@@ -34,3 +42,4 @@
 
 </div> 
 
+<% end %>

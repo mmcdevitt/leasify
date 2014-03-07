@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   def show
-    @user = User.where(:username => request.subdomain).first || not_found
+    # @user = User.where(:username => request.subdomain).first || not_found
   end
 
   def not_found

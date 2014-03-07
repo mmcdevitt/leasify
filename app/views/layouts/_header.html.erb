@@ -8,21 +8,22 @@
    		<div class="pull-left">
         <ul class="nav quick-section">
           <li class="quicklinks"> 
-          	<% if user_signed_in? %>
-          	<%= link_to current_user.username + ".leasify.co", "#" %> 
+          	<% if request.subdomain.present? && request.subdomain != "www" %>
+	          	<% if user_signed_in? %>
+	          		<%= link_to request.subdomain + ".leasify.co", "/", target: "_blank" %> 
+	          	<% end %>
           	<% end %>
           </li>
         </ul>
-       
       </div>
    		<div class="pull-right">
 				<ul class="nav quick-section ">
 					<li class="quicklinks">
    					<% if user_signed_in? %>
-			   			<%= link_to current_user.username, "#" %>
+			   			<%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %>
 			   		<% end %>
    				</li>
-   				<li class="quicklinks"><%= link_to "Logout", logout_path %></li>
+   				<% if user_signed_in? %>
 					<li class="quicklinks"> 
 						<a data-toggle="dropdown" class="dropdown-toggle  pull-right" href="#">						
 							<div class="iconset top-down-arrow" style="float:right; margin-top:7px; margin-left:8px;">
@@ -31,13 +32,14 @@
 							</div> 	
 						</a>
 						<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">
-							<li><a href="user-profile.html"> My Account</a></li>
-							<li><a href="calender.html">My Calendar</a></li>
-							<li><a href="email.html"> My Inbox&nbsp;&nbsp;<span class="badge badge-important animated bounceIn">2</span></a></li>
+							<li><%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %></li>
+							<li><%= link_to "Settings", "#" %></li>
+							
 							<li class="divider"></li>                
-							<li><a href="login.html"><i class="icon-off"></i>&nbsp;&nbsp;Log Out</a></li>
+							<li><%= link_to "Logout", logout_path %></li>
 						</ul>
 					</li> 
+					<% end %>
 				</ul>
    		</div>
    	</div> 

@@ -1,0 +1,37 @@
+<%= form_for(@site) do |f| %>
+  <% if @site.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site.errors.count, "error") %> prohibited this site from being saved:</h2>
+      <ul>
+      <% @site.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, "Property Name" %>
+    <%= f.text_field :name, class: "form-control" %>
+    <p>Your property's name.</p>
+  </div>
+  <div class="form-group">
+    <%= f.label :subdomain, "URL" %>
+    <div class="input-group">
+      <%= f.text_field :subdomain, class: "form-control" %>
+      <span class="input-group-addon">.leasify.co</span>
+    </div>
+    <p>You can change this at anytime. But, it must be unique.</p>
+  </div>
+  <%= f.fields_for :theme_options do |builder| %>
+    <%= builder.hidden_field :user_id, value: current_user.id %>
+    <%= builder.hidden_field :content, value: "This is the coolest place on Earth." %>
+    <%= builder.hidden_field :template, value: "Sunnyside" %>
+  <% end %>
+    <%= f.fields_for :property_informations do |x| %>
+    <%= x.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "Create my Site", class: "btn btn-success" %>
+  </div>
+<% end %>

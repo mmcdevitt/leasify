@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :site
 	validates :title, :subtitle, :content, presence: true
 
 	has_attached_file :page_image, :default_url => "/assets/image.jpg", styles: {
