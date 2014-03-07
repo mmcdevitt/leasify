@@ -1,6 +1,6 @@
 class ThemeNamesController < ApplicationController
   before_action :set_theme_name, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /theme_names
   # GET /theme_names.json
   def index

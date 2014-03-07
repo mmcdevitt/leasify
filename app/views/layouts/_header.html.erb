@@ -20,15 +20,15 @@
 				<ul class="nav quick-section ">
 					<li class="quicklinks">
    					<% if user_signed_in? %>
-			   			<%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %>
+			   			<%= link_to "Dashboard", dashboard_path %>
 			   		<% end %>
    				</li>
    				<% if user_signed_in? %>
 					<li class="quicklinks"> 
 						<a data-toggle="dropdown" class="dropdown-toggle  pull-right" href="#">						
-							<div class="iconset top-down-arrow" style="float:right; margin-top:7px; margin-left:8px;">
+							<div class="iconset top-down-arrow" style="float:right; margin-top:7px; margin-left:5px;">
 							</div>
-							<div class="iconset top-settings-dark pull-right">
+							<div class="iconset top-settings-dark pull-right" style="margin-left:20px;">
 							</div> 	
 						</a>
 						<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">

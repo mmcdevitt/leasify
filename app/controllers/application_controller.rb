@@ -42,8 +42,8 @@ class ApplicationController < ActionController::Base
         @site = Site.where(subdomain: request.subdomain).first.user_id
         @user = User.where(id: @site).first
         if @user.id != current_user.id
-          redirect_to root_url(:subdomain => false)
-          sign_out(@user) 
+          redirect_to (root_url(:subdomain => false) + "dashboard")
+          # sign_out(@user) 
         end
       end
     end

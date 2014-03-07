@@ -15,7 +15,7 @@
 					<li><%= link_to page.title, pages_id_path(page) %></li>
 				<% end %>
         <% if user_signed_in? %>
-        <li><%= link_to "Admin", admin_path, target: "_blank" %></li>
+        <li><%= link_to "Admin", dashboard_path, target: "_blank" %></li>
         <% end %>
       </ul>
     </nav>

@@ -29,8 +29,8 @@
     <%= builder.hidden_field :template, value: "Sunnyside" %>
   <% end %>
     <%= f.fields_for :property_informations do |x| %>
-    <%= x.hidden_field :user_id, value: current_user.id %>
-  <% end %>
+      <%= x.hidden_field :user_id, value: current_user.id %>
+    <% end %>
   <div class="actions">
     <%= f.submit "Create my Site", class: "btn btn-success" %>
   </div>
