@@ -18,10 +18,12 @@ class AvailabilitiesController < ApplicationController
   # GET /availabilities/new
   def new
     @availability = Availability.new
+    @avail_title = "Add Listing"
   end
 
   # GET /availabilities/1/edit
   def edit
+    @avail_title = @availability.title
   end
 
   # POST /availabilities
@@ -31,7 +33,7 @@ class AvailabilitiesController < ApplicationController
 
     respond_to do |format|
       if @availability.save
-        format.html { redirect_to @availability, notice: 'Availability was successfully created.' }
+        format.html { redirect_to edit_availability_path(@availability), notice: 'Availability was successfully created.' }
         format.json { render action: 'show', status: :created, location: @availability }
       else
         format.html { render action: 'new' }
@@ -44,8 +46,9 @@ class AvailabilitiesController < ApplicationController
   # PATCH/PUT /availabilities/1.json
   def update
     respond_to do |format|
+      session[:return_to] ||= request.referer
       if @availability.update(availability_params)
-        format.html { redirect_to @availability, notice: 'Availability was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Availability was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

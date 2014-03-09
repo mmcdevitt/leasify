@@ -4,7 +4,6 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    
     @subdomain           = request.subdomain
     @site                = Site.where(subdomain: request.subdomain).first.id
     @contacts            = Contact.where(user_id: current_user.id) && Contact.where(site_id: @site)
@@ -18,10 +17,12 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @edit_name = "Add"
   end
 
   # GET /contacts/1/edit
   def edit
+    @edit_name = "Edit"
   end
 
   # POST /contacts
@@ -31,7 +32,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to edit_contact_path(@contact), notice: 'Contact was successfully created.' }
         format.json { render action: 'show', status: :created, location: @contact }
       else
         format.html { render action: 'new' }
@@ -44,8 +45,9 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1.json
   def update
     respond_to do |format|
+      session[:return_to] ||= request.referer
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Contact was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

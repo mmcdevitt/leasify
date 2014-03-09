@@ -13,16 +13,39 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap
+//= require app
+//= require jquery.slimscroll.min
+
 
 $(document).ready(function() {
 
-	
+	// Fade out alerts
 	setTimeout(function () {
-		$('.alert').fadeOut('slow');
+		$('#alert-fadeout').fadeOut('slow');
 	}, 2000);
+
+
+	// Image preview before upload
+	var preview = $(".upload-preview img");
+	$("#lefile").change(function(event){
+     var input = $(event.currentTarget);
+     var file = input[0].files[0];
+     var reader = new FileReader();
+     reader.onload = function(e){
+         image_base64 = e.target.result;
+         preview.attr("src", image_base64);
+     };
+     reader.readAsDataURL(file);
+     $('#uploadimage').css('width', '90px').css('height', '90px');     
+    });
+
+    $('.table-edit').hover(function() {
+        $(this).toggleClass('hover');
+    });
 
 
 	
 
 });
+

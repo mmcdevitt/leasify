@@ -1,49 +1,145 @@
-<% if @availabilities.empty? %>
-<div class="center">
-  <h1>You don't have any availabilities listed!</h1>
-  <p>Create listings to include in the Availabilites section of your website.</p>
-  <%= link_to 'List Availability', new_availability_path, class: "btn btn-success" %>
-</div>
-<% else %>
-
-<h1>Listing availabilities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Suite or floor</th>
-      <th>Availability</th>
-      <th>Sf</th>
-      <th>Rental rate</th>
-      <th>Content</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @availabilities.each do |availability| %>
-      <tr>
-        <td><%= availability.title %></td>
-        <td><%= availability.suite_or_floor %></td>
-        <td><%= availability.availability %></td>
-        <td><%= availability.sf %></td>
-        <td><%= availability.rental_rate %></td>
-        <td><%= availability.content %></td>
-        <td></td>
-        <td><%= link_to 'Show', availability %></td>
-        <td><%= link_to 'Edit', edit_availability_path(availability) %></td>
-        <td><%= link_to 'Destroy', availability, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Availability', new_availability_path %>
-
+<% unless @availabilities.empty? %>
+<header class="header bg-white b-b clearfix">
+  <div class="row m-t-sm">
+    <div class="col-sm-8 m-b-xs">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-default" title="Refresh"><i class="fa fa-refresh"></i></button>
+        <button type="button" class="btn btn-sm btn-default" title="Remove"><i class="fa fa-trash-o"></i></button>
+        <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+      <%= link_to new_availability_path, class: "btn btn-sm btn-default" do %>
+        <i class="fa fa-plus"></i> New Listing
+      <% end %>
+    </div>
+    <div class="col-sm-4 m-b-xs">
+      <div class="input-group">
+        <input type="text" class="input-sm form-control input-header" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-sm btn-default" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
 <% end %>
+<section class="scrollable wrapper w-f">
+  <% if @availabilities.empty? %>
+    <div class="center">
+      <h1>You don't have any availabilities listed!</h1>
+      <p>Create listings to include in the Availabilites section of your website.</p>
+      <%= link_to 'List Availability', new_availability_path, class: "btn btn-success" %>
+    </div>
+  <% else %>
+  
+  <section class="panel panel-default">
+    <div class="table-responsive">
+      <table class="table table-striped m-b-none">
+        <thead>
+          <tr>
+            <th width="20"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
+            <th class="th-sortable" data-toggle="class">Listing</th>
+            <th class="author">Author</th>
+            <th class="status">Status</th>
+            <th class="date">Date</th>
+            <th width="30"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @availabilities.each do |availability| %>
+          <tr class="table-edit">
+            <td><label class="checkbox m-n i-checks"><input type="checkbox" name="ids[]"><i></i></label></td>
+            <td>
+              <%= link_to availability.suite_or_floor + " #" + availability.title, edit_availability_path(availability), class: "pull-left m-r-sm" %> 
+              <ul class="edit-links">
+                <li><%= link_to "Edit", edit_availability_path(availability) %> | </li> 
+                <li><%= link_to "View", availability %></li>
+              </ul>
+            </td>
+            <td><%= availability.user.username %></td>
+            <td>Published</td>
+            <td><%= availability.updated_at.strftime("%B %e, %Y") %></td>
+            <td>
+              <a href="" data-toggle="modal" data-target="#availability<%= availability.id %>">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+           <!-- Modal -->
+          <div class="modal fade" id="availability<%= availability.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                </div>
+                <div class="modal-body">
+                  Once the listing is deleted, it's gone forever!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                  <%= link_to "Delete", availability, method: :delete, class: "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <% end %>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,6 +6,7 @@ class SitesController < ApplicationController
   # GET /sites.json
   def index
     @sites = Site.where(user_id: current_user.id).all
+    redirect_to dashboard_path
   end
 
   # GET /sites/1
@@ -19,6 +20,7 @@ class SitesController < ApplicationController
     @site = Site.new
     @site.theme_options.build
     @site.property_informations.build
+    @sites = Site.where(user_id: current_user.id).all
   end
 
   # GET /sites/1/edit

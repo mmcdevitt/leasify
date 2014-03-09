@@ -1,48 +1,153 @@
-<!-- BEGIN HEADER -->
-<div class="header navbar navbar-inverse "> 
- 	<div class="navbar-inner">
-		<div class="header-seperation"> 
-			
-    </div>
-   	<div class="header-quick-nav" > 
-   		<div class="pull-left">
-        <ul class="nav quick-section">
-          <li class="quicklinks"> 
-          	<% if request.subdomain.present? && request.subdomain != "www" %>
-	          	<% if user_signed_in? %>
-	          		<%= link_to request.subdomain + ".leasify.co", "/", target: "_blank" %> 
-	          	<% end %>
-          	<% end %>
-          </li>
-        </ul>
-      </div>
-   		<div class="pull-right">
-				<ul class="nav quick-section ">
-					<li class="quicklinks">
-   					<% if user_signed_in? %>
-			   			<%= link_to "Dashboard", dashboard_path %>
-			   		<% end %>
-   				</li>
-   				<% if user_signed_in? %>
-					<li class="quicklinks"> 
-						<a data-toggle="dropdown" class="dropdown-toggle  pull-right" href="#">						
-							<div class="iconset top-down-arrow" style="float:right; margin-top:7px; margin-left:5px;">
-							</div>
-							<div class="iconset top-settings-dark pull-right" style="margin-left:20px;">
-							</div> 	
-						</a>
-						<ul class="dropdown-menu  pull-right" role="menu" aria-labelledby="dropdownMenu">
-							<li><%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %></li>
-							<li><%= link_to "Settings", "#" %></li>
-							
-							<li class="divider"></li>                
-							<li><%= link_to "Logout", logout_path %></li>
-						</ul>
-					</li> 
-					<% end %>
-				</ul>
-   		</div>
-   	</div> 
-  </div>
-</div>
-<!-- END HEADER -->
+<header class="bg-white header header-md navbar navbar-fixed-top-xs box-shadow">
+  <div class="navbar-header aside-md dk">
+    <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="index.html" class="navbar-brand">
+      <%= image_tag("/assets/logo.png", class: "m-r-sm") %>Leasify
+    </a>
+    <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+      <i class="fa fa-cog"></i>
+    </a>
+  </div>      
+  <ul class="nav navbar-nav hidden-xs">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="i i-grid"></i>
+      </a>
+      <section class="dropdown-menu aside-lg bg-white on animated fadeInLeft">
+        <div class="row m-l-none m-r-none m-t m-b text-center">
+          <div class="col-xs-4">
+            <div class="padder-v">
+              <a href="#">
+                <span class="m-b-xs block">
+                  <i class="i i-mail i-2x text-primary-lt"></i>
+                </span>
+                <small class="text-muted">Mailbox</small>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="padder-v">
+              <a href="#">
+                <span class="m-b-xs block">
+                  <i class="i i-calendar i-2x text-danger-lt"></i>
+                </span>
+                <small class="text-muted">Calendar</small>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="padder-v">
+              <a href="#">
+                <span class="m-b-xs block">
+                  <i class="i i-map i-2x text-success-lt"></i>
+                </span>
+                <small class="text-muted">Map</small>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="padder-v">
+              <a href="#">
+                <span class="m-b-xs block">
+                  <i class="i i-paperplane i-2x text-info-lt"></i>
+                </span>
+                <small class="text-muted">Trainning</small>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="padder-v">
+              <a href="#">
+                <span class="m-b-xs block">
+                  <i class="i i-images i-2x text-muted"></i>
+                </span>
+                <small class="text-muted">Photos</small>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="padder-v">
+              <a href="#">
+                <span class="m-b-xs block">
+                  <i class="i i-clock i-2x text-warning-lter"></i>
+                </span>
+                <small class="text-muted">Timeline</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </li>
+    <% if request.subdomain.present? && request.subdomain != "www" %>
+      <% if user_signed_in? %>
+        <li> 
+          <%= link_to request.subdomain + ".leasify.co", "/", target: "_blank" %> 
+        </li>
+        <li>
+          <%= link_to "My Sites", root_url(:subdomain => false) + "dashboard" %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+    <li>
+      <% if user_signed_in? %>
+        <%= link_to "Dashboard", dashboard_path %>
+      <% end %>
+    </li>
+    <% if user_signed_in? %>
+    <li><%= link_to current_user.username, "#" %></li>
+    <li class="dropdown">
+
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="i i-cog2"></i><b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu animated fadeInRight">
+        <li><%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %></li>
+        <li><%= link_to "Settings", "#" %></li>
+        <li class="divider"></li>                
+        <li><%= link_to logout_path do %><i class="i i-logout"></i> Logout<% end %></li>
+      </ul>
+    </li>
+
+    <% end %>
+  </ul>      
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,8 +14,12 @@
         <% @pages.each do |page| %>
 					<li><%= link_to page.title, pages_id_path(page) %></li>
 				<% end %>
-        <% if user_signed_in? %>
-        <li><%= link_to "Admin", dashboard_path, target: "_blank" %></li>
+        <% @subdomain = request.subdomain %>
+        <% @site = Site.where(subdomain: request.subdomain).first.user_id %>
+        <% @user = User.where(id: @site).first %>
+        <% if user_signed_in? && @user.id == current_user.id %>
+          <li><%= link_to "Admin", dashboard_path, target: "_blank" %></li>
+        <% else %>
         <% end %>
       </ul>
     </nav>

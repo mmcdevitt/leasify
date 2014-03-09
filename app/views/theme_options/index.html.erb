@@ -1,59 +1,48 @@
-<%= render 'layouts/themeoptionsheader' %>
-<div class="row">
-	<div class="col-md-12">
-		<h3>Website Logo</h3>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12">
-		<div class="logo-outline">
-			<%= form_for(@themeoptions) do |f| %> 
-			  <div class="add-page-image center">
-			    <% if f.object.theme_image? %>
-			      <div class="upload-preview">
-			        <%= image_tag(@themeoptions.theme_image.url(:thumb), id: "uploadimage", class: "img-thumbnail") %>
-			      </div>
-			    <% else %>
-			      <div class="upload-preview">
-			        <%= image_tag("upload-image.png", id: "uploadimage") %>
-			      </div>
-			    <% end %>
-			    <div class="row-fluid">
-			      <%= f.file_field :theme_image, as: :file, id: 'lefile', style: "display:none;" %>
-			      <div class="input-append">
-			        <a class="btn btn-white btn-block" onclick="$('input[id=lefile]').click();">Upload Image</a>
-			        <p style="font-size:12px; padding-top:25px; margin:0" class="muted">JPEG file, 2mb max</p>
-			      </div>
-			      <script type="text/javascript">
-			        $('input[id=lefile]').change(function() {
-			          $('#photoCover').val($(this).val());
-			        });
-			      </script>
-			    </div>
-			    <div class="admin-bar" id="quick-access" style="bottom: 0px;">
-			      <div class="admin-bar-inner">
-			        <%= f.submit "Save Settings", class: "btn btn-success" %>
-			      </div>
-			    </div>
-			  </div>
-			 <% end %>
-			 <script type="text/javascript">
-					var preview = $(".upload-preview img");
-			    
-			    $("#lefile").change(function(event){
-			       var input = $(event.currentTarget);
-			       var file = input[0].files[0];
-			       var reader = new FileReader();
-			       reader.onload = function(e){
-			           image_base64 = e.target.result;
-			           preview.attr("src", image_base64);
-			       };
-			       reader.readAsDataURL(file);
-			       $('#uploadimage').css('width', '90px').css('height', '90px');
-			       
-			    });
-			    
-			</script>
+<%= form_for(@themeoptions) do |f| %> 
+	<section class="scrollable wrapper w-f">
+	  <div class="panel-body">
+			<%= render 'layouts/themeoptionsheader' %>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Website Logo</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="logo-outline">
+						<div class="add-page-image center">
+					    <% if f.object.theme_image? %>
+					      <div class="upload-preview">
+					        <%= image_tag(@themeoptions.theme_image.url(:thumb), id: "uploadimage", class: "img-thumbnail") %>
+					      </div>
+					    <% else %>
+					      <div class="upload-preview">
+					        <%= image_tag("upload-image.png", id: "uploadimage") %>
+					      </div>
+					    <% end %>
+					    <div class="row-fluid">
+					      <%= f.file_field :theme_image, as: :file, id: 'lefile', style: "display:none;" %>
+					      <div class="input-append">
+					        <a class="btn btn-default" onclick="$('input[id=lefile]').click();">Upload Image</a>
+					        <p style="font-size:12px; padding-top:25px; margin:0" class="muted">JPEG file, 2mb max</p>
+					      </div>
+					      <script type="text/javascript">
+					        $('input[id=lefile]').change(function() {
+					          $('#photoCover').val($(this).val());
+					        });
+					      </script>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
+	</section>
+	<footer class="footer bg-white b-t">
+	  <div class="row text-center-xs">
+	    <div class="col-md-12 text-right text-center-xs">                
+	      <%= f.submit "Save Settings", class: "btn btn-success" %>
+	    </div>
+	  </div>
+	</footer>
+ <% end %>

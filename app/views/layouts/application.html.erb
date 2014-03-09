@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Subdomain</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
+<html class="app">
+	<%= render 'layouts/head' %>
 	<body>
-		<%= render 'layouts/header' %>
-			<!-- BEGIN CONTAINER -->
-			<div class="page-container row-fluid">
-	  		<!-- BEGIN SIDEBAR -->
-	  		<%= render 'layouts/sidebar' %>
-	  		<!-- BEGIN PAGE CONTAINER-->
-			  <div class="page-content"> 
-			    <div class="content">  
-						<div class="page-title">	
-							<%= yield %>
-						</div>
-			    </div>
-			    
-				</div>
-			</div>
-			<!-- END CONTAINER --> 
+		<section class="vbox">
+			<%= render 'layouts/header' %>
+			<section>
+		    <section class="hbox stretch">
+		    	<%= render 'layouts/aside' %>
+		      <section id="content">
+		        <section class="vbox">
+		        	<% flash.each do |type, message| %>
+								<div class="alert <%= flash_class type %>" id="alert-fadeout">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<%= message %>
+								</div>
+							<% end %>		 
+		          <%= yield %>
+		        </section>
+		        <a href="#" class="hide nav-off-screen-block" 
+		        	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
+		      </section>
+		    </section>
+		  </section>
+		</section>
+		
 	</body>
 </html>
+

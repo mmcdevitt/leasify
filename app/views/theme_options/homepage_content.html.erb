@@ -1,37 +1,42 @@
-<%= render 'layouts/themeoptionsheader' %>
-<div class="row">
-	<div class="col-md-12">
-		<h3>Homepage Content</h3>
-	</div>
-</div>
-<div class="add-page">
-<div class="row">
-	<div class="col-md-8">
-		<%= form_for(@themeoptions) do |f| %> 
-			<div class="form-group">
-        <%= f.label :homepage_heading, "Homepage Main Heading" %>
-        <%= f.text_field :homepage_heading, class: "form-control" %>
-        <p>This will be your site's main heading.</p>
-      </div>
-      <div class="form-group">
-        <%= f.label :homepage_subheading, "Homepage Subheading" %>
-        <%= f.text_field :homepage_subheading, class: "form-control" %>
-        <p>This will be the sub heading under the main heading.</p>
-      </div>
-      <div class="form-group">
-        <%= f.label :content, "Page Content" %>
-        <%= f.text_area :content, class: "form-control" %>
-      </div>
-			   
-			   
-			    <div class="admin-bar" id="quick-access" style="bottom: 0px;">
-			      <div class="admin-bar-inner">
-			        <%= f.submit "Save Settings", class: "btn btn-success" %>
+<%= form_for(@themeoptions) do |f| %> 
+	<section class="scrollable wrapper w-f">
+	  <div class="panel-body">
+			<%= render 'layouts/themeoptionsheader' %>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Homepage Content</h3>
+				</div>
+			</div>
+			<div class="add-page">
+				<div class="row">
+					<div class="col-md-8">
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+						<div class="form-group">
+			        <%= f.label :homepage_heading, "Homepage Main Heading" %>
+			        <%= f.text_field :homepage_heading, class: "form-control" %>
+			        <p>This will be your site's main heading.</p>
 			      </div>
-			    </div>
-			  
-			 <% end %>
-			 
+			      <div class="line line-dashed b-b line-lg pull-in"></div>
+			      <div class="form-group">
+			        <%= f.label :homepage_subheading, "Homepage Subheading" %>
+			        <%= f.text_field :homepage_subheading, class: "form-control" %>
+			        <p>This will be the sub heading under the main heading.</p>
+			      </div>
+			      <div class="line line-dashed b-b line-lg pull-in"></div>
+			      <div class="form-group">
+			        <%= f.label :content, "Page Content" %>
+			        <%= f.text_area :content, class: "form-control" %>
+			      </div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
+	</section>
+	<footer class="footer bg-white b-t">
+	  <div class="row text-center-xs">
+	    <div class="col-md-12 text-right text-center-xs">                
+	      <%= f.submit "Save Settings", class: "btn btn-success" %>
+	    </div>
+	  </div>
+	</footer>
+<% end %>

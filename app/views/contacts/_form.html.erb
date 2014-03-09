@@ -1,47 +1,63 @@
 <%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-      <ul>
-      <% @contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <section class="scrollable wrapper w-f">
+    <div class="panel-body">
+      <div class="add-page">
+        <div class="row">
+          <div class="col-md-8">
+            <h3><%= @edit_name %> Contact</h3>
+            <% if @contact.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+                <ul>
+                <% @contact.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <% @subdomain = request.subdomain %>
+            <% @site = Site.where(subdomain: request.subdomain).first.id %>
+            <%= f.hidden_field :site_id, value: @site %>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, class: "form-control" %>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, class: "form-control" %>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <%= f.label :company %>
+              <%= f.text_field :company, class: "form-control" %>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <%= f.label :job_title %>
+              <%= f.text_field :job_title, class: "form-control" %>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <%= f.label :phone %>
+              <%= f.text_field :phone, class: "form-control" %>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.text_field :email, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-    <% @subdomain = request.subdomain %>
-    <% @site = Site.where(subdomain: request.subdomain).first.id %>
-    <%= f.hidden_field :site_id, value: @site %>
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.label :job_title %><br>
-    <%= f.text_field :job_title %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </section>
+  <footer class="footer bg-white b-t">
+    <div class="row text-center-xs">
+      <div class="col-md-12 text-right text-center-xs">                
+        <%= f.submit "Save Settings", class: "btn btn-success" %>
+      </div>
+    </div>
+  </footer>
 <% end %>

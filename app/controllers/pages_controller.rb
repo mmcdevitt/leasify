@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
   layout :theme_name
+  include PagesHelper
   # GET /pages
   # GET /pages.json
   def index
@@ -29,10 +30,12 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    @title = "Add Page"
   end
 
   # GET /pages/1/edit
   def edit
+    @title = @page.title
   end
 
   # POST /pages

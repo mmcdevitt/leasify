@@ -1,0 +1,153 @@
+ <!-- .aside -->
+<aside class="bg-light lt b-r b-light aside-md hidden-print" id="nav">          
+  <section class="vbox">
+     <section class="w-f scrollable">
+      <div class=slim-scroll data-height=auto data-disable-fade-out=true data-distance=0 data-size=10px data-railOpacity=0.2>
+        <!-- nav -->                 
+        <nav class="nav-primary hidden-xs">
+          <% if request.subdomain.present? && request.subdomain != "www" %>
+          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Browse</div>
+          <ul class="nav nav-main" data-ride="collapse">
+            <li >
+              <%= link_to dashboard_path, class: "auto" do %>
+                <i class="i i-statistics icon">
+                </i>
+                <span class="font-bold">Site Overview</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to availabilities_path, class: "auto" do %>
+              <span class="pull-right text-muted">
+                <i class="i i-circle-sm-o text"></i>
+                <i class="i i-circle-sm text-active"></i>
+              </span>
+              <i class="i i-stack icon">
+              </i>
+              <span class="font-bold">Availabilities</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to pages_path, class: "auto" do %>
+              <span class="pull-right text-muted">
+                <i class="i i-circle-sm-o text"></i>
+                <i class="i i-circle-sm text-active"></i>
+              </span>
+              <i class="i i-docs icon">
+              </i>
+              <span class="font-bold">Pages</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to contacts_path, class: "auto" do %>
+              <span class="pull-right text-muted">
+                <i class="i i-circle-sm-o text"></i>
+                <i class="i i-circle-sm text-active"></i>
+              </span>
+              <i class="i i-users2 icon">
+              </i>
+              <span class="font-bold">Contacts</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to template_path, class: "auto" do %>
+              <span class="pull-right text-muted">
+                <i class="i i-circle-sm-o text"></i>
+                <i class="i i-circle-sm text-active"></i>
+              </span>
+              <i class="i i-browser icon">
+              </i>
+              <span class="font-bold">Templates</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to property_path, class: "auto" do %>
+              <span class="pull-right text-muted">
+                <i class="i i-circle-sm-o text"></i>
+                <i class="i i-circle-sm text-active"></i>
+              </span>
+              <i class="i i-pin icon">
+              </i>
+              <span class="font-bold">Property Information</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to logo_path, class: "auto" do %>
+              <span class="pull-right text-muted">
+                <i class="i i-circle-sm-o text"></i>
+                <i class="i i-circle-sm text-active"></i>
+              </span>
+              <i class="i i-phone-portrait icon">
+              </i>
+              <span class="font-bold">Theme Options</span>
+              <% end %>
+            </li>
+       
+          </ul>
+          <div class="line dk hidden-nav-xs"></div>
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Lables</div>
+          <ul class="nav">
+            <li>
+              <a href="mail.html#work">
+                <i class="i i-circle-sm text-info-dk"></i>
+                <span>Work space</span>
+              </a>
+            </li>
+            <li>
+              <a href="mail.html#social">
+                <i class="i i-circle-sm text-success-dk"></i>
+                <span>Connection</span>
+              </a>
+            </li>
+            <li>
+              <a href="mail.html#projects">
+                <i class="i i-circle-sm text-danger-dk"></i>
+                <span>Projects</span>
+              </a>
+            </li>
+          </ul>
+          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Circles</div>
+          <ul class="nav">
+            <li>
+              <a href="#">
+                <i class="i i-circle-sm-o text-success-lt"></i>
+                <span>College</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="i i-circle-sm-o text-warning"></i>
+                <span>Social</span>
+              </a>
+            </li>
+          </ul>
+          <% else %>
+          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">My Sites</div>
+          <ul class="nav nav-main" data-ride="collapse">
+            <% @sites.each do |site| %>
+              <li>
+                <%= link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard", class: "auto", target: "_blank" do %>
+                <i class="i i-stack icon">
+                </i>
+                <span class="font-bold"><%= site.name %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <% end %>
+        </nav>
+        <!-- / nav -->
+      </div>
+    </section>
+    
+    <footer class="footer hidden-xs no-padder text-center-nav-xs">
+      <a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
+        <i class="i i-logout"></i>
+      </a>
+      <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
+        <i class="i i-circleleft text"></i>
+        <i class="i i-circleright text-active"></i>
+      </a>
+    </footer>
+  </section>
+</aside>
+<!-- /.aside -->

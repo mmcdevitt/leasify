@@ -14,7 +14,7 @@
 }
 html, body {
 	height: 100%;
-	font-family: 'nexa_lightregular';
+
 }
 * {
 	outline: none !important;
@@ -36,6 +36,8 @@ hr {
 	color: #fff;
 }
 .sunnyside {
+	font-family: 'nexa_lightregular';
+
 	ul {
 	&.list-style-none {
 		list-style: none;

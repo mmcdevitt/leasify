@@ -38,12 +38,15 @@ class ApplicationController < ActionController::Base
   def correct_user
     if request.subdomain.present? && request.subdomain != "www"
       if user_signed_in?
-        @subdomain = request.subdomain
-        @site = Site.where(subdomain: request.subdomain).first.user_id
-        @user = User.where(id: @site).first
-        if @user.id != current_user.id
-          redirect_to (root_url(:subdomain => false) + "dashboard")
-          # sign_out(@user) 
+        if params[:controller] == 'static_pages' && params[:action] == 'home'
+          else
+          @subdomain = request.subdomain
+          @site = Site.where(subdomain: request.subdomain).first.user_id
+          @user = User.where(id: @site).first
+          if @user.id != current_user.id
+            redirect_to (root_url(:subdomain => false) + "dashboard")
+            # sign_out(@user) 
+          end
         end
       end
     end
