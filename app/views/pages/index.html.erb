@@ -43,7 +43,7 @@
       <%= link_to 'New Page', new_page_path, class: "btn btn-success" %>
     </div>
   <% else %>
-  
+  <h3 class="m-t-none m-b-md">Pages</h3>
   <section class="panel panel-default">
     <div class="table-responsive">
       <table class="table table-striped m-b-none">
@@ -65,7 +65,7 @@
               <%= link_to page.title, edit_page_path(page), class: "pull-left m-r-sm" %> 
               <ul class="edit-links">
                 <li><%= link_to "Edit", edit_page_path(page) %> | </li> 
-                <li><%= link_to "View", page %></li>
+                <li><%= link_to "View", pages_id_path(page) %></li>
               </ul>
             </td>
             <td><%= page.user.username %></td>
@@ -101,6 +101,9 @@
     </div>
   </section>
   <% end %>
+
+
+
 </section>
 
 

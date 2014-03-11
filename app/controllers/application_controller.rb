@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_action :correct_user
+ 
   # layout :theme_name
 
   #Allow Devise to add custom fields in database
@@ -66,5 +67,7 @@ class ApplicationController < ActionController::Base
         "application"
       end
   end
+
+
 
 end

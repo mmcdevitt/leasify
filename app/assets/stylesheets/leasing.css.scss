@@ -1,0 +1,91 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.availability-page {
+    h1 {
+        font-size: 40px;
+
+    }
+    img {
+        width: 100%;
+        margin: 0px 0 20px;
+    }
+    .event-btn {
+       margin-top: 70px;
+    }
+}
+.panel {
+    h3 {
+        line-height: normal;
+    }
+}
+.btn {
+    border-radius: 2px;
+}
+.availability-stats {
+    background: #fff;
+    padding: 20px;
+    border-radius: 3px;
+    border-bottom: 2px solid #e7e7e7;
+    margin-bottom: 20px;
+    span {
+        float: right
+    }
+    p {
+        &:last-child {
+            margin-bottom: 0;
+            color: #999;
+        }
+    }
+    button {
+        margin: 20px 0 0px;
+    }
+    .center {
+        text-align: center;
+    }
+}
+
+.modal {
+    span {
+        color: #000;
+        font-style: italic;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

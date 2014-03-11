@@ -1,18 +1,23 @@
 class AvailabilitiesController < ApplicationController
   before_action :set_availability, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_subdomain
   # GET /availabilities
   # GET /availabilities.json
+  layout :theme_name
   def index
-    @subdomain           = request.subdomain
-    @site                = Site.where(subdomain: request.subdomain).first.id
+    # @subdomain           = request.subdomain
+    # @site                = Site.where(subdomain: request.subdomain).first.id
     
-    @availabilities      = Availability.where(user_id: current_user.id) && Availability.where(site_id: @site)
+    # @availabilities      = Availability.where(user_id: current_user.id) && Availability.where(site_id: @site)
   end
 
   # GET /availabilities/1
   # GET /availabilities/1.json
   def show
+    if @site.id != @availability.site_id
+      redirect_to root_url
+    end
   end
 
   # GET /availabilities/new
@@ -23,7 +28,7 @@ class AvailabilitiesController < ApplicationController
 
   # GET /availabilities/1/edit
   def edit
-    @avail_title = @availability.title
+    @avail_title = @availability.suite_or_floor + " #" + @availability.title
   end
 
   # POST /availabilities
@@ -33,7 +38,7 @@ class AvailabilitiesController < ApplicationController
 
     respond_to do |format|
       if @availability.save
-        format.html { redirect_to edit_availability_path(@availability), notice: 'Availability was successfully created.' }
+        format.html { redirect_to edit_availability_path(@availability), notice: 'Saved' }
         format.json { render action: 'show', status: :created, location: @availability }
       else
         format.html { render action: 'new' }
@@ -48,7 +53,7 @@ class AvailabilitiesController < ApplicationController
     respond_to do |format|
       session[:return_to] ||= request.referer
       if @availability.update(availability_params)
-        format.html { redirect_to session.delete(:return_to), notice: 'Availability was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Saved' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,8 +78,72 @@ class AvailabilitiesController < ApplicationController
       @availability = Availability.find(params[:id])
     end
 
+    def set_subdomain
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @user                = User.where(id: @site.user_id).first
+      @themeoptions        = ThemeOption.where(site_id: @site.id).first
+      @pages               = Page.where(site_id: @site.id).all
+      @availabilities      = Availability.where(site_id: @site.id).all
+      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+      @contacts            = Contact.where(site_id: @site.id).all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params
-      params.require(:availability).permit(:title, :site_id, :suite_or_floor, :availability, :sf, :rental_rate, :content, :user_id)
+      params.require(:availability).permit(:title, 
+                                           :site_id, 
+                                           :suite_or_floor, 
+                                           :availability, 
+                                           :sf, 
+                                           :rental_rate, 
+                                           :content, 
+                                           :user_id, 
+                                           :floor_location, 
+                                           :type_of_space)
+    end
+
+    def theme_name
+      @subdomain = request.subdomain
+      @site = Site.where(subdomain: request.subdomain).first
+      @user = User.where(id: @site.user_id).first
+      @theme_name = ThemeOption.where(site_id: @site.id).first.template
+      @theme = ThemeName.where(id: @theme_name).first.name.downcase
+      if params[:action] == "show"
+        "leasing"
+      else
+        "application"
+      end
     end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

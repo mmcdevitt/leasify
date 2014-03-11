@@ -3,9 +3,7 @@
     <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="index.html" class="navbar-brand">
-      <%= image_tag("/assets/logo.png", class: "m-r-sm") %>Leasify
-    </a>
+   
     <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
       <i class="fa fa-cog"></i>
     </a>
@@ -107,7 +105,7 @@
       </a>
       <ul class="dropdown-menu animated fadeInRight">
         <li><%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %></li>
-        <li><%= link_to "Settings", "#" %></li>
+        <li><%= link_to "Settings", settings_path %></li>
         <li class="divider"></li>                
         <li><%= link_to logout_path do %><i class="i i-logout"></i> Logout<% end %></li>
       </ul>

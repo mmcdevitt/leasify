@@ -2,6 +2,12 @@ class Page < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :site
 	validates :title, :subtitle, :content, presence: true
+	validate :validate_leasing
+	def validate_leasing
+		if self.title.downcase == "leasing" || self.title.downcase == "leasings"
+			errors.add(:title, "can not be called 'Leasing' because a Leasing page has automatically been generated when you created this site.")
+		end
+	end
 
 	has_attached_file :page_image, :default_url => "/assets/image.jpg", styles: {
 

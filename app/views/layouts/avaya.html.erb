@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Avaya</title>
-  <%= stylesheet_link_tag "bootstrap.min.css" %>
+  <title><%= @propertyinformation.name %></title>
+  <%= stylesheet_link_tag "bootstrap.css", "avaya.css" %>
   <%= csrf_meta_tags %>
 </head>
-	<body>
-		<div class="container-fluid">
-			This is Avaya Template<br>
-			<%= yield %>
-		</div>
+	<body class="avaya">
+		<div id="wrapper">
+			<%= render 'layouts/avayaheader' %>
+
+			<div class="main-homepage" style="background: url('<%= @themeoptions.homepage_image %>');
+				-webkit-background-size: cover; -moz-background-size: cover; 
+				-o-background-size: cover; background-size: cover;">
+				<div id="page">
+					<div id="content_container">
+						<div id="content">
+							<div class="welcome-box">
+								<div class="m-b-lg">
+									<h1><%= @themeoptions.homepage_heading %></h1>
+									<p><%= @themeoptions.homepage_subheading %></p>
+								</div>
+								<p class="uppercase"><%= full_address %></p>
+								<div class="line"></div>
+								<p><%= markdown(@themeoptions.content) %></p>
+							</div>
+						</div>
+					</div>
+				</div><!-- end container -->
+			</div><!-- end main homepage -->
+			<footer>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<p>Copyright &copy; 2014 <%= @propertyinformation.name %>, 
+								<%= full_address %>, <%= @propertyinformation.zipcode %></p>
+						</div>
+						<div class="col-md-6">
+							<div class="pull-right">
+								<p>
+									<%= @propertyinformation.owner_name %> | Powered by 
+									<a href="http://demo.leasify.co" target="_target">
+										Leasify
+									</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div><!-- end wrapper -->
 	</body>
 </html>

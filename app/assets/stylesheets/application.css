@@ -62,8 +62,15 @@
         url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.woff") format("woff"),
         url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.ttf") format("truetype")
 }
+@font-face{
+    font-family:'proxima_nova_ltregular';
+    src:url('http://cms.leasify.co/admin/font/proximanova-light-webfont.eot');
+    src:url('http://cms.leasify.co/admin/font/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
+        url('http://cms.leasify.co/admin/font/proximanova-light-webfont.woff') format('woff'),
+        url('http://cms.leasify.co/admin/font/proximanova-light-webfont.ttf') format('truetype'),
+        url('http://cms.leasify.co/admin/font/proximanova-light-webfont.svg#proxima_nova_ltregular') format('svg');font-weight:normal;font-style:normal;}
 body {
-	/*font-family:'AvenirLT-Roman' !important;*/
+	font-family:'proxima_nova_ltregular' !important;
 	color: #55606e;
 }
 body.devise {
@@ -90,6 +97,18 @@ text-align: center;
     background: #f2f2f2;
     border: 1px dashed #d9d9d9;
     padding: 30px;
+}
+.template-widget {
+padding: 5px;
+border: 1px solid #e0e4e8;
+
+border-radius: 2px;
+
+margin-bottom: 20px;
+}
+.template-widget-content {
+text-align: center;
+padding: 20px;
 }
 
 

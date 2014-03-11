@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  
+  before_action :set_subdomain
   def update
     @user = User.find(current_user.id)
 
@@ -25,6 +25,10 @@ class RegistrationsController < Devise::RegistrationsController
     render 'edit'
   end
 
+  def edit
+    @sites = Site.where(user_id: current_user.id).all
+  end
+
   private
 
   # check if we need password to update user data
@@ -33,6 +37,17 @@ class RegistrationsController < Devise::RegistrationsController
   def needs_password?(user, params)
     user.email != params[:user][:email] ||
       params[:user][:password].present?
+  end
+
+  def set_subdomain
+    @subdomain           = request.subdomain
+    @site                = Site.where(subdomain: request.subdomain).first
+    @user                = User.where(id: @site.user_id).first
+    @themeoptions        = ThemeOption.where(site_id: @site.id).first
+    @pages               = Page.where(site_id: @site.id).all
+    @availabilities      = Availability.where(site_id: @site.id).all
+    @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+    @contacts            = Contact.where(site_id: @site.id).all
   end
 
 

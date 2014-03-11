@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307000507) do
+ActiveRecord::Schema.define(version: 20140309231740) do
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140307000507) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "site_id"
+    t.integer  "floor_location"
+    t.string   "type_of_space"
   end
 
   create_table "contacts", force: true do |t|
@@ -90,6 +92,11 @@ ActiveRecord::Schema.define(version: 20140307000507) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "description"
+    t.string   "theme_name_image_file_name"
+    t.string   "theme_name_image_content_type"
+    t.integer  "theme_name_image_file_size"
+    t.datetime "theme_name_image_updated_at"
   end
 
   create_table "theme_options", force: true do |t|
@@ -103,7 +110,7 @@ ActiveRecord::Schema.define(version: 20140307000507) do
     t.integer  "theme_image_file_size"
     t.datetime "theme_image_updated_at"
     t.integer  "user_id"
-    t.string   "template"
+    t.integer  "template",                    limit: 255
     t.string   "homepage_image_file_name"
     t.string   "homepage_image_content_type"
     t.integer  "homepage_image_file_size"

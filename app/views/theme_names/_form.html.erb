@@ -15,6 +15,18 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="row-fluid">
+    <%= f.file_field :theme_name_image, as: :file, class: "filestyle", id: "filestyle-0", style: "position: fixed; left: -500px;" %>
+    <div class="bootstrap-filestyle" style="display: inline;">
+      <label for="filestyle-0" class="btn btn-default">
+        <span>Upload Image</span>
+      </label>
+    </div>
+  </div>
   
   <div class="actions">
     <%= f.submit %>

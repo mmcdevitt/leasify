@@ -2,13 +2,13 @@
 <html class="app">
 	<%= render 'layouts/head' %>
 	<body>
-		<section class="vbox">
-			<%= render 'layouts/header' %>
-			<section>
-		    <section class="hbox stretch">
-		    	<%= render 'layouts/aside' %>
-		      <section id="content">
-		        <section class="vbox">
+		<section class="hbox stretch">
+    	<%= render 'layouts/aside' %>
+      <section id="content">
+        <section class="hbox stretch">
+        	<section>
+	        	<section class="vbox">
+		        	<%= render 'layouts/header' %>
 		        	<% flash.each do |type, message| %>
 								<div class="alert <%= flash_class type %>" id="alert-fadeout">
 									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -16,14 +16,13 @@
 								</div>
 							<% end %>		 
 		          <%= yield %>
-		        </section>
-		        <a href="#" class="hide nav-off-screen-block" 
-		        	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
-		      </section>
+		        </section> 
+		      </section> 
 		    </section>
-		  </section>
-		</section>
-		
+        <a href="#" class="hide nav-off-screen-block" 
+        	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
+      </section>
+    </section>
 	</body>
 </html>
 

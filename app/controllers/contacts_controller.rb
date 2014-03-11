@@ -1,12 +1,11 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_subdomain
   # GET /contacts
   # GET /contacts.json
   def index
-    @subdomain           = request.subdomain
-    @site                = Site.where(subdomain: request.subdomain).first.id
-    @contacts            = Contact.where(user_id: current_user.id) && Contact.where(site_id: @site)
+   
   end
 
   # GET /contacts/1
@@ -32,7 +31,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to edit_contact_path(@contact), notice: 'Contact was successfully created.' }
+        format.html { redirect_to edit_contact_path(@contact), notice: 'Saved' }
         format.json { render action: 'show', status: :created, location: @contact }
       else
         format.html { render action: 'new' }
@@ -47,7 +46,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       session[:return_to] ||= request.referer
       if @contact.update(contact_params)
-        format.html { redirect_to session.delete(:return_to), notice: 'Contact was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Saved' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -76,4 +75,15 @@ class ContactsController < ApplicationController
     def contact_params
       params.require(:contact).permit(:site_id, :first_name, :last_name, :company, :job_title, :phone, :email, :user_id)
     end
+    def set_subdomain
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @user                = User.where(id: @site.user_id).first
+      @themeoptions        = ThemeOption.where(site_id: @site.id).first
+      @pages               = Page.where(site_id: @site.id).all
+      @availabilities      = Availability.where(site_id: @site.id).all
+      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+      @contacts            = Contact.where(site_id: @site.id).all
+    end
+
 end

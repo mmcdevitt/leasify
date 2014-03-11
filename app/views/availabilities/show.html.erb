@@ -1,39 +1,111 @@
-<p id="notice"><%= notice %></p>
+<div class="stats">
+  <div class="container center">
+    <ul>
+      <li><span>Vacancies</span><br><%= @availabilities.count %></li>
+      <li><span>Owner</span><br><%= @propertyinformation.owner_name %></li>
+      <li><span>Class</span><br><%= @propertyinformation.property_class %></li>
+      <li><span>Floors</span><br><%= @propertyinformation.floors %></li>
+      <li><span>SF</span><br><%= number_with_delimiter(@propertyinformation.sf, delimiter: ',') %></li>
+      <li><span>Year Built</span><br><%= @propertyinformation.year_built %></li>
+    </ul>
+  </div>
+</div>  
+<div class="container">
+<div class="availability-page">
+  <div class="row">
+    <div class="col-md-8">
+      <h1><%= @availability.suite_or_floor + " #" + @availability.title %></h1>
+      <div class="row-fluid">
+        <div class="pull-left">
+          <p><%= 51.ordinalize + " Floor" %>, <%= full_address %></p>
+        </div>
+      </div> 
+    </div><!-- end col 8 -->
+    <div class="col-md-4">
+       
+    </div>
+  </div><!-- end row -->
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag("ltc-template.jpg", class: "img-responsive img-thumbnail") %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Description</h3>
+        </div>
+        <div class="panel-body">
+          <p><%= @availability.content %></p>
+        </div>
+      </div>
+    </div><!-- end col 8 -->
+    <div class="col-md-4">
+      <div class="availability-stats">
+        <p>Asking Rate: <span>$<%= @availability.rental_rate %> psf</span></p>
+        <p>Total Area: <span><%= number_with_delimiter(@availability.sf, delimiter: ',') %> SF</span></p>
+        <p>Availability: <span><%= @availability.availability %></span></p>
+        <button class="btn btn-info btn-block btn-lg" data-toggle="modal" data-target="#modal-message">Send Message</button>
+      </div>  
+      <div class="availability-stats">
+        <h3>Contacts</h3>
+        <% @contacts.each do |contact| %>
+          <%= contact.first_name + " " + contact.last_name %><br>
+          <%= contact.job_title %><br>
+          <%= contact.company %><br>
+          <%= number_to_phone(contact.phone, area_code: true) %><br>
+          <%= contact.email %>
+        <% end %>
+      </div>
+          
+    </div><!-- end col 4 -->
+  </div><!-- end row -->
+</div><!-- end availability page -->
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal-message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @availability.title %>
-</p>
 
-<p>
-  <strong>Suite or floor:</strong>
-  <%= @availability.suite_or_floor %>
-</p>
+<!-- RSVP Modal -->
 
-<p>
-  <strong>Availability:</strong>
-  <%= @availability.availability %>
-</p>
 
-<p>
-  <strong>Sf:</strong>
-  <%= @availability.sf %>
-</p>
 
-<p>
-  <strong>Rental rate:</strong>
-  <%= @availability.rental_rate %>
-</p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @availability.content %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @availability.user_id %>
-</p>
 
-<%= link_to 'Edit', edit_availability_path(@availability) %> |
-<%= link_to 'Back', availabilities_path %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

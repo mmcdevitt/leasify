@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+		<% @availabilities.each do |availabilities| %>
+		<%= link_to leasing_show_path(availabilities) do %>
+			<div class="col-lg-3 col-md-4 col-sm-6">
+				<div class="leasing-widget">
+					<%= image_tag("ltc-template.jpg", class: "img-responsive") %>
+					<div class="leasing-title">
+						<p><%= link_to (availabilities.suite_or_floor + " #" + availabilities.title), leasing_show_path(availabilities) %></p>
+						<p><%= 51.ordinalize + " Floor" %> | Office</p>
+					</div>
+					<div class="leasing-content">
+						<p><%= truncate(availabilities.content, length: 90) %></p>
+						<div class="row">
+							<div class="col-md-6">
+								Asking Rate
+							</div>
+							<div class="col-md-6">
+								<div class="pull-right">
+									$<%= availabilities.rental_rate %>/SF
+								</div>
+							</div>
+						</div>
+						<div class="row m-b-lg">
+							<div class="col-md-6">
+								Area
+							</div>
+							<div class="col-md-6">
+								<div class="pull-right">
+									<%= number_with_delimiter(availabilities.sf, delimiter: ',') %> SF
+								</div>
+							</div>
+						</div>
+						<%= link_to "Read More", leasing_show_path(availabilities) %>
+					</div>
+				</div>
+			</div>
+		<% end %><% end %>
+	</div>
+</div>

@@ -31,7 +31,7 @@
               <%= f.fields_for :theme_options do |builder| %>
                 <%= builder.hidden_field :user_id, value: current_user.id %>
                 <%= builder.hidden_field :content, value: "This is the coolest place on Earth." %>
-                <%= builder.hidden_field :template, value: "Sunnyside" %>
+                <%= builder.hidden_field :template, value: 2 %>
               <% end %>
                 <%= f.fields_for :property_informations do |x| %>
                   <%= x.hidden_field :user_id, value: current_user.id %>

@@ -129,10 +129,12 @@ a:hover .caret-white {
 .alert {
   font-size: 12px;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+#alert-fadeout {
   position: absolute;
   right: 20px;
   top:20px;
-  width: 700px;
+  width: 150px;
   z-index: 1000;
 }
 .alert .close i {
@@ -622,6 +624,9 @@ body.container {
     position: absolute;
     padding: 20px;
   }
+  .app .vbox form .scrollable {
+    top:60px;
+  }
   .app .vbox.flex > section > section {
     overflow: auto;
   }
@@ -664,6 +669,9 @@ body.container {
   }
   .vbox > header.header-md ~ section {
     top: 60px;
+  }
+  .vbox > header.header-md ~ header.header ~ section {
+    top: 110px;
   }
   .vbox > section.w-f {
     bottom: 50px;
@@ -1350,8 +1358,8 @@ fieldset[disabled] .btn-success:hover,
 fieldset[disabled] .btn-success:focus,
 fieldset[disabled] .btn-success:active,
 fieldset[disabled] .btn-success.active {
-  background-color: #1aae88;
-  border-color: #1aae88;
+  background-color: #a0d468;
+  border-color: #8cc152;
 }
 .btn-info {
   color: #fff !important;
@@ -3526,7 +3534,7 @@ fieldset[disabled] .i-checks input + i:before {
   margin: 0 0 20px;
 }
 .panel-body h3 {
-  margin:  0 0 20px;
+  margin:  0 0 5px;
 }
 
 
@@ -3559,10 +3567,25 @@ ul.edit-links li a {
   display:inline;
 }
 
+.field_with_errors .form-control {
+  border: 1px solid red;
+}
 
-
-
-
+#error_explanation {
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  border-radius: 2px;
+  padding:20px;
+}
+#error_explanation h2 { 
+  margin: 0 0 30px;
+}
+#error_explanation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 
 

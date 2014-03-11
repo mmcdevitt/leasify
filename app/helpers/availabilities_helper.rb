@@ -26,5 +26,13 @@ def available_select
   end
 end
 
+def space_select
+  if (params[:action] == "edit" && params[:controller] == "availabilities") 
+    @availability = Availability.find(params[:id])
+    return @availability.type_of_space
+  else
+    return "Type of Space?"
+  end
+end
 
 end

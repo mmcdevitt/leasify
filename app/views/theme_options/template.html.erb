@@ -1,26 +1,53 @@
-<%= form_for(@themeoptions) do |f| %> 
+
   <section class="scrollable wrapper w-f">
     <div class="panel-body">
       <div class="row">
-      	<div class="col-md-12">
-      		<h3>Templates</h3>
-      		<div class="form-group">
-            <%= f.label :template, "Choose Template" %><br>
-            <div class="btn-group m-r">
-              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-                <span class="dropdown-label" data-placeholder="Please select">Select Template</span> 
-                <span class="caret" style="margin-left:30px;"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-select">
-                <% @templates.each do |template| %>
-                	<li><a href=""><%= f.radio_button :template, template.name %><%= template.name %></a></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-      		<%= f.submit "Submit", class: "btn btn-success" %>
+        <div class="col-sm-12">
+          <h3>Templates</h3>
         </div>
+        <% @templates.each do |template| %>
+          <%= form_for(@themeoptions) do |f| %>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="template-widget">
+                <%= image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive") %>
+                <div class="template-widget-content">
+                  <h3><%= template.name %></h3>
+                  <p><%= template.description %></p>
+                  <div class="row-fluid">
+                    <a href="#modal-form" class="btn btn-s-md btn-<%= active_template(template) %>" data-toggle="modal" data-target="#template<%= template.id %>">
+                      <%= is_active_template(template) %> Template
+                    </a>
+                  </div>
+                  <%= f.hidden_field :template, value: template.id %>
+                  
+                  <div class="row" style="margin-top:15px;">
+                    <a href="" class="link text-muted"><em>Live Example</em></a>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal -->
+              <div class="modal fade" id="template<%= template.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to change your website's template to <%= template.name %>?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                      <%= f.submit "Yes, Change Template", class: "btn btn-success" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </section>
- <% end %>
+ 
+ 

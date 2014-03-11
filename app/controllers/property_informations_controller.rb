@@ -3,21 +3,22 @@ class PropertyInformationsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site).first
+		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
 	end
 
 	def address
-		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site).first
+		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
 	end
 
 	def update
-    @propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site).first
+    @propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
     # if params[:propertyinformations] && params[:propertyinformations].has_key?(:user_id)
     #   params[:propertyinformations].delete(:user_id) 
     # end
     respond_to do |format|
+       session[:return_to] ||= request.referer
       if @propertyinformations.update(propertyinformations_params)
-        format.html { redirect_to property_path, notice: 'Event was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Saved' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -28,14 +29,22 @@ class PropertyInformationsController < ApplicationController
 
   private	
     def set_subdomain
-      @subdomain = request.subdomain
-      @site      = Site.where(subdomain: request.subdomain).first.id
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @user                = User.where(id: @site.user_id).first
+      @themeoptions        = ThemeOption.where(site_id: @site.id).first
+      @pages               = Page.where(site_id: @site.id).all
+      @availabilities      = Availability.where(site_id: @site.id).all
+      
+      @contacts            = Contact.where(site_id: @site.id).all
     end
   	def propertyinformations_params
       params.require(:property_information).permit(:user_id, :name, 
       																							:owner_name, :property_class, :floors, :sf, :year_built,
       																							:state, :address, :city, :zipcode)
     end
+
+
 
 
 end

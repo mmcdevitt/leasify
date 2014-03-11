@@ -28,7 +28,7 @@ class ThemeNamesController < ApplicationController
 
     respond_to do |format|
       if @theme_name.save
-        format.html { redirect_to @theme_name, notice: 'Theme name was successfully created.' }
+        format.html { redirect_to @theme_name, notice: 'Saved' }
         format.json { render action: 'show', status: :created, location: @theme_name }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ThemeNamesController < ApplicationController
   def update
     respond_to do |format|
       if @theme_name.update(theme_name_params)
-        format.html { redirect_to @theme_name, notice: 'Theme name was successfully updated.' }
+        format.html { redirect_to @theme_name, notice: 'Saved' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +69,6 @@ class ThemeNamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_name_params
-      params.require(:theme_name).permit(:name, :user_id)
+      params.require(:theme_name).permit(:name, :user_id, :description, :theme_name_image)
     end
 end

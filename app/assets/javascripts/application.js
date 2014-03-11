@@ -23,7 +23,7 @@ $(document).ready(function() {
 	// Fade out alerts
 	setTimeout(function () {
 		$('#alert-fadeout').fadeOut('slow');
-	}, 2000);
+	}, 1000);
 
 
 	// Image preview before upload

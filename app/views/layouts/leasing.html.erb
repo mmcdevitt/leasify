@@ -1,0 +1,11 @@
+<%= render 'layouts/sunnysidehead' %>
+	<body class="sunnyside leasing">
+		<%= render 'layouts/sunnysideheader' %>
+			<%= yield %>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('header').removeClass('navbar').addClass('navbar-inverse');
+				});
+			</script>		
+	</body>
+</html>
