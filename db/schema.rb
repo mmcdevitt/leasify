@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309231740) do
+ActiveRecord::Schema.define(version: 20140311024940) do
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140309231740) do
     t.integer  "site_id"
     t.integer  "floor_location"
     t.string   "type_of_space"
+  end
+
+  create_table "availability_galleries", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "site_id"
+    t.integer  "availability_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "availability_image_file_name"
+    t.string   "availability_image_content_type"
+    t.integer  "availability_image_file_size"
+    t.datetime "availability_image_updated_at"
   end
 
   create_table "contacts", force: true do |t|

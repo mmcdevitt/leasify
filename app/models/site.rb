@@ -7,7 +7,11 @@ class Site < ActiveRecord::Base
 	has_many :property_informations, :dependent => :destroy
 	validates :name, :subdomain, presence: true
 	validates :subdomain, uniqueness: true
-
+	validates :subdomain, format: { with: /\A[a-zA-Z\-\d]+\z/i, 
+						message: "Leasify URL's can only contain alphanumeric 
+						characters and hyphens. No periods, underscores, or special characters." }
 	accepts_nested_attributes_for :theme_options
 	accepts_nested_attributes_for :property_informations
 end
+
+

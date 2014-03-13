@@ -1,7 +1,7 @@
 class AvailabilitiesController < ApplicationController
   before_action :set_availability, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
-  before_action :set_subdomain
+  before_action :set_subdomain_avail
   # GET /availabilities
   # GET /availabilities.json
   layout :theme_name
@@ -24,11 +24,19 @@ class AvailabilitiesController < ApplicationController
   def new
     @availability = Availability.new
     @avail_title = "Add Listing"
+    @availability.availability_galleries.build  
   end
 
   # GET /availabilities/1/edit
   def edit
     @avail_title = @availability.suite_or_floor + " #" + @availability.title
+    @galleries = AvailabilityGallery.where(site_id: @site.id, availability_id: @availability).all 
+   
+
+    # Protect availabilities per subdomain
+    if @site.id != @availability.site_id
+      redirect_to dashboard_path
+    end
   end
 
   # POST /availabilities
@@ -78,15 +86,16 @@ class AvailabilitiesController < ApplicationController
       @availability = Availability.find(params[:id])
     end
 
-    def set_subdomain
-      @subdomain           = request.subdomain
-      @site                = Site.where(subdomain: request.subdomain).first
-      @user                = User.where(id: @site.user_id).first
-      @themeoptions        = ThemeOption.where(site_id: @site.id).first
-      @pages               = Page.where(site_id: @site.id).all
-      @availabilities      = Availability.where(site_id: @site.id).all
-      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
-      @contacts            = Contact.where(site_id: @site.id).all
+    def set_subdomain_avail
+      @subdomain            = request.subdomain
+      @site                 = Site.where(subdomain: request.subdomain).first
+      @user                 = User.where(id: @site.user_id).first
+      @themeoptions         = ThemeOption.where(site_id: @site.id).first
+      @pages                = Page.where(site_id: @site.id).all
+      @availabilities       = Availability.where(site_id: @site.id).all
+      @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
+      @contacts             = Contact.where(site_id: @site.id).all
+     @availabilities_image = AvailabilityGallery.where(site_id: @site.id, user_id: current_user.id, availability_id: @availability.id).all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -100,7 +109,8 @@ class AvailabilitiesController < ApplicationController
                                            :content, 
                                            :user_id, 
                                            :floor_location, 
-                                           :type_of_space)
+                                           :type_of_space,
+                                           availability_galleries_attributes: [:user_id, :id, :availability_image, :site_id, :_destroy])
     end
 
     def theme_name

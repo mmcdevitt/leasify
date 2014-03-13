@@ -29,6 +29,11 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @title = @page.title
+
+    # Protect pages per subdomain
+    if @site.id != @page.site_id
+      redirect_to dashboard_path
+    end
   end
 
   # POST /pages

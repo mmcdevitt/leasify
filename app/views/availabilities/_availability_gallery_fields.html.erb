@@ -1,0 +1,19 @@
+<div class="preview-col">
+  <div class="fields">
+    <%= f.hidden_field :site_id, value: @site.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.file_field :availability_image, as: :file, style: "position: fixed; left: -500px;" %>
+    <div class="upload-preview" >
+      <%= image_tag("/assets/blank.gif", width: "0", height: "0", class: "img-responsive") %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="btn-group waky" data-toggle="buttons">
+          <label class="btn btn-default btn-sm m-b-lg">
+            <%= f.check_box :_destroy %><i class="fa fa-trash-o"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

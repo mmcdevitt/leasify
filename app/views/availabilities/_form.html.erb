@@ -1,8 +1,63 @@
-<%= form_for(@availability) do |f| %>
+<%= form_for(@availability, html: {multipart:true}) do |f| %>
 <section class="scrollable wrapper w-f">
   <div class="panel-body">
     <div class="add-page">
       <h3 style="margin: 0 0 30px 0;"><%= @avail_title %></h3>
+      <div class="row">
+        <div class="col-md-12" >
+          <div class="parent" id="display-none-preview">
+            <%= link_to_add_fields "Add Image", f, :availability_galleries %>
+            <script type="text/javascript">
+              $(".parent > a").addClass('btn btn-default btn-square').html('<i class="i i-images"></i><br> Add Images<br> JPG, PNG');
+            </script>
+
+            <%= f.fields_for :availability_galleries do |builder| %>
+              <% if builder.object.new_record? %>
+                <%= render 'availability_gallery_fields', :f => builder %>
+              <% end %>
+            <% end %>
+
+            <%= f.fields_for :availability_galleries do |builder| %>
+              <% unless builder.object.new_record? %>
+                <div class="preview-col">
+                  <div class="fields">
+                    <%= image_tag(builder.object.availability_image.url(:thumb), id: "uploadimage", class: "img-thumbnail gallery") %>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="btn-group waky" data-toggle="buttons">
+                          <label class="btn btn-default btn-sm m-b-lg">
+                            <%= builder.check_box :_destroy %><i class="fa fa-trash-o"></i>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+         
+          </div><!-- end parent -->
+        </div><!-- end col 12 -->
+      </div><!-- end row -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div class="row">
         <% if @availability.errors.any? %>
           <div id="error_explanation">
@@ -15,9 +70,8 @@
           </div>
         <% end %>
         <div class="col-md-8">
-          <% @subdomain = request.subdomain %>
-          <% @site = Site.where(subdomain: request.subdomain).first.id %>
-          <%= f.hidden_field :site_id, value: @site %>
+         
+          <%= f.hidden_field :site_id, value: @site.id %>
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
             <%= f.label :suite_or_floor, "Is this an individual suite or entire floor?" %>
@@ -97,6 +151,7 @@
             <%= f.text_area :content, class: "form-control" %>
           </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -104,7 +159,7 @@
 <footer class="footer bg-white b-t">
   <div class="row text-center-xs">
     <div class="col-md-12 text-right text-center-xs">                
-      <%= f.submit "Save Page", class: "btn btn-success" %>
+      <%= f.submit "Save", class: "btn btn-success btn-more-padding" %>
     </div>
   </div>
 </footer>

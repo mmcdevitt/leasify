@@ -1,7 +1,7 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
-
+  # before_action :set_subdomain
   # GET /sites
   # GET /sites.json
   def index
@@ -25,11 +25,13 @@ class SitesController < ApplicationController
 
   # GET /sites/1/edit
   def edit
+    @sites = Site.where(user_id: current_user.id).all
   end
 
   # POST /sites
   # POST /sites.json
   def create
+    @sites = Site.where(user_id: current_user.id).all
     @site = current_user.sites.new(site_params)
 
     respond_to do |format|
@@ -78,6 +80,17 @@ class SitesController < ApplicationController
       params.require(:site).permit(:name, :subdomain, :user_id, 
                                    theme_options_attributes: [:user_id, :id, :content, :template],
                                    property_informations_attributes: [:user_id, :id])
+    end
+
+    def set_subdomain
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @user                = User.where(id: @site.user_id).first
+      @themeoptions        = ThemeOption.where(site_id: @site.id).first
+      @pages               = Page.where(site_id: @site.id).all
+      @availabilities      = Availability.where(site_id: @site.id).all
+      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+      @contacts            = Contact.where(site_id: @site.id).all
     end
 end
 

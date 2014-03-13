@@ -332,11 +332,7 @@
           <tr>
             <th width="20"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
             <th class="th-sortable" data-toggle="class">Property Name
-              <span class="th-sort">
-                <i class="fa fa-sort-down text"></i>
-                <i class="fa fa-sort-up text-active"></i>
-                <i class="fa fa-sort"></i>
-              </span>
+              
             </th>
             <th>URL</th>
             <th>Date Created</th>
@@ -349,7 +345,7 @@
             <td><label class="checkbox m-n i-checks"><input type="checkbox" name="ids[]"><i></i></label></td>
             <td><%= site.name %></td>
             <td><%= link_to site.subdomain + ".leasify.co", root_url(:host => with_subdomain(site.subdomain)) + "dashboard", target: "_blank" %></td>
-            <td>Jul 25, 2013</td>
+            <td><%= site.created_at.strftime("%B %e, %Y") %></td>
             <td>
               <a href="" data-toggle="modal" data-target="#modal<%= site.id %>">
                 <i class="fa fa-trash-o"></i>

@@ -3586,14 +3586,49 @@ ul.edit-links li a {
   margin: 0;
   padding: 0;
 }
+.btn-more-padding {
+  padding: 8px 50px;
+}
+.gallery {
+  margin-right: 16px;
+margin-bottom:16px;
+}
+.btn-square {
+  width: 150px;
+  height: 148px; 
+  margin-right:16px;
+  margin-bottom:16px; 
+  float: left;
+  padding-top:44px;
+}
 
+.upload-preview {
+  float: left;
+}
 
+.parent {
+  display: inline;
+  width: auto;
+  float: left;
+}
 
+.preview-img-border {
+border-radius:3px;
+border:1px solid #ddd;
+padding:4px;
+margin-right:16px;
+height: 150px;
+width: 150px;
+margin-bottom:16px;
+}
+.waky {
+  display: inline;
 
-
-
-
-
+}
+.preview-col {
+  width: 166px;
+  float:left;
+}
 
 
 

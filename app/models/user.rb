@@ -15,4 +15,5 @@ class User < ActiveRecord::Base
 	has_many :theme_options
 	has_many :theme_names
 	has_many :sites
+	has_many :availability_galleries
 end

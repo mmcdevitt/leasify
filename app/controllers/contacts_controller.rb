@@ -22,6 +22,10 @@ class ContactsController < ApplicationController
   # GET /contacts/1/edit
   def edit
     @edit_name = "Edit"
+     # Protect contacts per subdomain
+    if @site.id != @contact.site_id
+      redirect_to dashboard_path
+    end
   end
 
   # POST /contacts
