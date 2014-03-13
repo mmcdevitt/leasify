@@ -2,7 +2,6 @@ class ThemeOption < ActiveRecord::Base
 	belongs_to :user
     belongs_to :site
     
-    
 
 	has_attached_file :theme_image, :default_url => "/assets/image.jpg", styles: {
 

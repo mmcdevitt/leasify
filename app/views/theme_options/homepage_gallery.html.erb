@@ -10,20 +10,12 @@
 			<div class="add-page">
 				<div class="row">
 					<div class="col-md-8">
-						<div class="upload-dashed">
-							<div class="row-fluid">
-							  <%= f.file_field :homepage_image, as: :file, id: 'lefile', style: "display:none;" %>
-						    <div class="input-append">
-					        <a class="btn btn-default" onclick="$('input[id=lefile]').click();">Upload</a>
-					        <p style="font-size:12px; padding-top:25px; margin:0" class="muted">JPEG file, 2mb max</p>
-					      </div>
-					      <script type="text/javascript">
-					        $('input[id=lefile]').change(function() {
-					          $('#photoCover').val($(this).val());
-					        });
-					      </script>
-					    </div>
-						</div>
+					
+								
+							  	<%= builder.file_field :homepage_image, as: :file, style: "position: fixed; left: -500px;" %>
+							  	<%= builder.hidden_field :site_id, value: @site.id %>
+    							<%= builder.hidden_field :user_id, value: current_user.id %>
+							 
 						<% if f.object.homepage_image? %>
 				      <div class="upload-preview">
 				        <%= image_tag(@themeoptions.homepage_image.url(:small), id: "uploadimage", class: "img-thumbnail") %>

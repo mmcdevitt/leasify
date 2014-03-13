@@ -15,6 +15,7 @@ class AvailabilitiesController < ApplicationController
   # GET /availabilities/1
   # GET /availabilities/1.json
   def show
+    @availabilities_image = AvailabilityGallery.where(site_id: @site.id, user_id: current_user.id, availability_id: @availability.id).all
     if @site.id != @availability.site_id
       redirect_to root_url
     end
@@ -95,7 +96,7 @@ class AvailabilitiesController < ApplicationController
       @availabilities       = Availability.where(site_id: @site.id).all
       @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
       @contacts             = Contact.where(site_id: @site.id).all
-     @availabilities_image = AvailabilityGallery.where(site_id: @site.id, user_id: current_user.id, availability_id: @availability.id).all
+     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

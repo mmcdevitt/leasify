@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311024940) do
+ActiveRecord::Schema.define(version: 20140313222858) do
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -51,6 +51,18 @@ ActiveRecord::Schema.define(version: 20140311024940) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "site_id"
+  end
+
+  create_table "homepage_galleries", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "homepage_gallery_image_file_name"
+    t.string   "homepage_gallery_image_content_type"
+    t.integer  "homepage_gallery_image_file_size"
+    t.datetime "homepage_gallery_image_updated_at"
+    t.integer  "theme_option_id"
   end
 
   create_table "pages", force: true do |t|

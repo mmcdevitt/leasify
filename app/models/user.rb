@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
 	has_many :theme_names
 	has_many :sites
 	has_many :availability_galleries
+	has_many :homepage_galleries
 end
