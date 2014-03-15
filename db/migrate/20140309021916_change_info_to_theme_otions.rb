@@ -1,5 +1,7 @@
 class ChangeInfoToThemeOtions < ActiveRecord::Migration
   def change
+  	#change_column :theme_options, :template, :integer
+
   	rename_column :theme_options, :template, :template_old
   	add_column :theme_options, :template, :integer
 
