@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140314210234) do
+ActiveRecord::Schema.define(version: 20140315205156) do
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 20140314210234) do
     t.integer  "homepage_image_file_size"
     t.datetime "homepage_image_updated_at"
     t.integer  "site_id"
+    t.string   "body_font",                               default: "arial"
+    t.string   "heading_font",                            default: "arialblack"
   end
 
   create_table "users", force: true do |t|

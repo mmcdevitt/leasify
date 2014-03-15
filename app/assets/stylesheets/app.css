@@ -3630,7 +3630,10 @@ margin-bottom:16px;
   float:left;
 }
 
-
+.max-height-400 {
+  max-height: 400px;
+  overflow-y:scroll;
+}
 
 
 

@@ -14,6 +14,7 @@ Subdomain::Application.routes.draw do
     get '/theme-options/homepage/content', to:'theme_options#homepage_content', as: :homepage_content
     get '/theme-options/homepage/gallery', to:'theme_options#homepage_gallery', as: :homepage_image_gallery
     get '/templates', to:'theme_options#template', as: :template
+    get '/theme-options/settings', to:'theme_options#theme_settings', as: :theme_settings
   end
 
   scope :admin do

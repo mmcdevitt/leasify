@@ -19,6 +19,10 @@ class ThemeOptionsController < ApplicationController
     @themeoptions.homepage_galleries.build
   end
 
+  def theme_settings
+    @themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
+  end
+
 	def update
 		@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
 		# if params[:propertyinformations] && params[:propertyinformations].has_key?(:user_id)
@@ -56,6 +60,8 @@ class ThemeOptionsController < ApplicationController
       																		 :content,
       																		 :template,
                                            :homepage_image,
+                                           :body_font,
+                                           :heading_font,
                                            homepage_galleries_attributes: [:user_id, :id, :homepage_gallery_image, :site_id, :_destroy])
     end
 end

@@ -5799,3 +5799,143 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+
+/*Serif fonts */
+
+.georgia, 
+.georgia-h h1,
+.georgia-h h2,
+.georgia-h h3,
+.georgia-h h4,
+.georgia-h h5,
+.georgia-h h6 {
+  font-family: Georgia, serif;
+}
+.palantino,
+.palantino-h h1,
+.palantino-h h2,
+.palantino-h h3,
+.palantino-h h4,
+.palantino-h h5,
+.palantino-h h6 {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+.times,
+.times-h h1,
+.times-h h2,
+.times-h h3,
+.times-h h4,
+.times-h h5,
+.times-h h6 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+/*San serif fonts*/
+.impact,
+.impact-h h1,
+.impact-h h2,
+.impact-h h3,
+.impact-h h4,
+.impact-h h5,
+.impact-h h6 {
+  font-family: Impact, Charcoal, sans-serif;
+}
+.arial,
+.arial-h h1,
+.arial-h h2,
+.arial-h h3,
+.arial-h h4,
+.arial-h h5,
+.arial-h h6 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.arialblack,
+.arialblack-h h1,
+.arialblack-h h2,
+.arialblack-h h3,
+.arialblack-h h4,
+.arialblack-h h5,
+.arialblack-h h6 {
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+.lucidasans,
+.lucidasans-h h1,
+.lucidasans-h h2,
+.lucidasans-h h3,
+.lucidasans-h h4,
+.lucidasans-h h5,
+.lucidasans-h h6 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.tahoma,
+.tahoma-h h1,
+.tahoma-h h2,
+.tahoma-h h3,
+.tahoma-h h4,
+.tahoma-h h5,
+.tahoma-h h6 {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+.trebuchet,
+.trebuchet-h h1,
+.trebuchet-h h2,
+.trebuchet-h h3,
+.trebuchet-h h4,
+.trebuchet-h h5,
+.trebuchet-h h6 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+.verdana,
+.verdana-h h1,
+.verdana-h h2,
+.verdana-h h3,
+.verdana-h h4,
+.verdana-h h5,
+.verdana-h h6 {
+  font-family: Verdana, Geneva, sans-serif;
+}
+/* Monospace fonts */
+.lucida, 
+.lucida-h h1,
+.lucida-h h2,
+.lucida-h h3,
+.lucida-h h4,
+.lucida-h h5,
+.lucida-h h6 {
+  font-family: "Lucida Console", Monaco, monospace;
+}
+.courier, 
+.courier-h h1,
+.courier-h h2,
+.courier-h h3,
+.courier-h h4,
+.courier-h h5,
+.courier-h h6 {
+  font-family: "Courier New", Courier, monospace;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
