@@ -1,7 +1,7 @@
 <%= render 'layouts/sunnysidehead' %>
  <% font = "times"
     heading = "courier-h" %>
-	<body class="sunnyside tk-proxima-nova">
+	<body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
 			<%= render 'layouts/sunnysideheader' %>
 			<% if @homepage_galleries.empty? %>

@@ -5916,6 +5916,16 @@ button.close {
   font-family: "Courier New", Courier, monospace;
 }
 
+/*Adobe Typekit*/
+.proximanova, 
+.proximanova-h h1,
+.proximanova-h h2,
+.proximanova-h h3,
+.proximanova-h h4,
+.proximanova-h h5,
+.proximanova-h h6 {
+  font-family: "proxima-nova",sans-serif;
+}
 
 
 
