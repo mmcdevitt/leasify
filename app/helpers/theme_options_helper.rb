@@ -48,6 +48,8 @@ module ThemeOptionsHelper
 			"Lucida Console"
 		when 'courier-h'
 			"Courier New"
+		when 'proximanova-h'
+			"Proxima Nova"
 		else
 			""
 		end
@@ -79,6 +81,8 @@ module ThemeOptionsHelper
 			"Lucida Console"
 		when 'courier'
 			"Courier New"
+		when 'proximanova'
+			"Proxima Nova"
 		else
 			""
 		end

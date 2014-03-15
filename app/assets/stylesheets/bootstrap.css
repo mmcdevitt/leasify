@@ -5917,7 +5917,9 @@ button.close {
 }
 
 /*Adobe Typekit*/
-.proximanova, 
+.proximanova { 
+  font-family: "proxima-nova",sans-serif; 
+}
 .proximanova-h h1,
 .proximanova-h h2,
 .proximanova-h h3,
