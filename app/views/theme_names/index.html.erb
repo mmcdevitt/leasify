@@ -16,8 +16,8 @@
       <tr>
         <td><%= theme_name.name %></td>
         <td></td>
-        <td><%= link_to 'Show', theme_name %></td>
-        <td><%= link_to 'Edit', edit_theme_name_path(theme_name) %></td>
+        <td><%= link_to 'Show', admin_theme_show_path(theme_name) %></td>
+        <td><%= link_to 'Edit', admin_theme_edit_path(theme_name) %></td>
         <td><%= link_to 'Destroy', theme_name, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Theme name', new_theme_name_path %>
+<%= link_to 'New Theme name', admin_theme_new_path %>

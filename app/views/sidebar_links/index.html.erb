@@ -1,0 +1,31 @@
+<h1>Listing sidebar_links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Link to</th>
+      <th>Icon</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sidebar_links.each do |sidebar_link| %>
+      <tr>
+        <td><%= sidebar_link.name %></td>
+        <td><%= sidebar_link.link_to %></td>
+        <td><%= sidebar_link.icon %></td>
+        <td><%= link_to 'Show', admin_sidebar_show_path(sidebar_link) %></td>
+        <td><%= link_to 'Edit', admin_sidebar_edit_path(sidebar_link) %></td>
+        <td><%= link_to 'Destroy', sidebar_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sidebar link', admin_sidebar_new_path %>

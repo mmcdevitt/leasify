@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-wysihtml5
 //= require app
 //= require jquery.slimscroll.min
 
@@ -27,27 +28,48 @@ $(document).ready(function() {
 
 
 	// Image preview before upload
-	// var preview = $(".upload-preview img");
-	// $("#lefile").change(function(event){
- //     var input = $(event.currentTarget);
- //     var file = input[0].files[0];
- //     var reader = new FileReader();
- //     reader.onload = function(e){
- //         image_base64 = e.target.result;
- //         preview.attr("src", image_base64);
- //     };
- //     reader.readAsDataURL(file);
- //     $('#uploadimage').css('width', '90px').css('height', '90px');     
- //    });
+	var preview = $(".upload-preview-options img");
+    
+	$("#lefile").change(function(event){
+         var input = $(event.currentTarget);
+         var file = input[0].files[0];
+         var reader = new FileReader();
+         reader.onload = function(e){
+             image_base64 = e.target.result;
+             preview.attr("src", image_base64);
+         };
+         reader.readAsDataURL(file);
+         preview.addClass('preview-img-border');
 
+        $('#uploadimage').css('width', '115px').css('height', '115px');  
+        $('#pageimage').css('width', '150px').css('height', '150px');  
+    });
+
+    // Hover edit links in table
     $('.table-edit').hover(function() {
         $(this).toggleClass('hover');
     });
 
+    // Disable submit btn on click
     $('input[type="submit"').click(function() {
         $(this).addClass("disabled");
     });
-	
+
+    // Bootstrap wysihtml5 editor     
+    $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5({
+        "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+        "emphasis": true, //Italics, bold, etc. Default true
+        "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+        "html": false, //Button which allows you to edit the generated HTML. Default false
+        "link": false, //Button to insert a link. Default true
+        "image": false, //Button to insert an image. Default true,
+        "color": false //Button to change color of font  
+      });
+    });
+
+    $(".wysihtml5-toolbar .btn").addClass('btn-default btn-sm');
+   
 
 });
 
@@ -58,15 +80,39 @@ $(document).ready(function() {
         var regexp = new RegExp("new_" + association, "g");
         $(link).parent().append(content.replace(regexp, new_id));
         var id = "availability_availability_galleries_attributes_" + new_id + "_availability_image";
+        var homepage_id = "theme_option_homepage_galleries_attributes_" + new_id + "_homepage_gallery_image";
 
-        // File submit gets clicked automatically after Add Image btn is clicked
+        // File submit gets clicked automatically after Add Image btn is clicked on Availability page
         $("#" + id).click();
+        // File submit gets clicked automatically after Add image btn is clicked on Homepage Gallery page
+        $("#" + homepage_id).click();
         $(".parent > .preview-col:last").hide();
         $(".parent > .preview-col > .fields > .upload-preview:last img").addClass(id);
    
-        var preview = $(".upload-preview img." + id);
 
+        // Preview image on Availability page before submit
+        var preview = $(".upload-preview img." + id);
+        // File input change on Availability page
         $("#" + id).change(function(event){
+            var input = $(event.currentTarget);
+            var file = input[0].files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e){
+                image_base64 = e.target.result;
+                preview.attr("src", image_base64);
+            };
+
+            reader.readAsDataURL(file);  
+
+            preview.addClass('preview-img-border');
+           $(".parent > .preview-col:last").show();
+        });     
+
+        // Preview image on Availability page before submit
+        var preview_homepage = $(".upload-preview img." + homepage_id);
+        // File input change on Availability page
+        $("#" + homepage_id).change(function(event){
             var input = $(event.currentTarget);
             var file = input[0].files[0];
             var reader = new FileReader();

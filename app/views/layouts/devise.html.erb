@@ -7,6 +7,12 @@
 </head>
 <body class="devise">
 	<div class="container">
+		<% flash.each do |type, message| %>
+			<div class="alert <%= flash_class type %>" id="alert-fadeout">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<%= message %>
+			</div>
+		<% end %>		 
 		<%= yield %>
 	</div><!-- /.container -->
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>

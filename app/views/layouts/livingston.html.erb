@@ -1,0 +1,25 @@
+<%= render 'layouts/livingston/head' %>
+	<body class="livingston">
+		<div id="wrapper">
+			<%= render 'layouts/sunnysideheader' %>
+			<div class="container">
+				<% unless @homepage_galleries.empty? %>
+				<div class="main-gallery">
+					<%= image_tag(@homepage_gallery.homepage_gallery_image.url(:large), class: "img-responsive") %>
+				</div>
+				<% end %>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 center">
+							<h3><%= @themeoptions.homepage_heading %></h3>
+							<p class="text-muted"><%= @themeoptions.homepage_subheading %></p>
+							<p><%= markdown(@themeoptions.content) %></p>
+					</div>
+				</div>
+			</div>
+			
+			<%= render 'layouts/livingston/footer' %>
+		</div><!-- end wrapper -->
+	</body>
+</html>
+
+

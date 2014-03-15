@@ -2,20 +2,20 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   include UrlHelper
-  protect_from_forgery with: :exception
-  
-  before_action :correct_user
  
+  protect_from_forgery with: :exception
+  before_action :set_subdomain
+  before_action :correct_user
+  before_action :sidebar_nav
   # layout :theme_name
 
   #Allow Devise to add custom fields in database
-
   before_action :configure_devise_permitted_parameters, if: :devise_controller?
-
   protected
-
   def configure_devise_permitted_parameters
-    registration_params = [:username, 
+    registration_params = [:first_name,
+                           :last_name,
+                           :username, 
                            :email, 
                            :password, 
                            :password_confirmation]
@@ -24,9 +24,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:account_update) { 
         |u| u.permit(registration_params << :password, 
                                             :password_confirmation, 
-                                            :current_password,
-                                            :logo_image,
-                                            :template_name)
+                                            :current_password)
       }
     elsif params[:action] == 'create'
       devise_parameter_sanitizer.for(:sign_up) { 
@@ -36,11 +34,17 @@ class ApplicationController < ActionController::Base
   end
   # End Devise #############
 
+  # Define the correct user for each subdomain. Redirects unauthorized users to their 
+  # respective dashboards.
   def correct_user
     if request.subdomain.present? && request.subdomain != "www"
       if user_signed_in?
         if params[:controller] == 'static_pages' && params[:action] == 'home'
-          else
+        elsif params[:controller] == 'pages' && params[:action] == 'show'
+        elsif params[:controller] == 'static_pages' && params[:action] == 'leasing'
+        elsif params[:controller] == 'availabilities' && params[:action] == 'show'
+        else
+          
           @subdomain = request.subdomain
           @site = Site.where(subdomain: request.subdomain).first.user_id
           @user = User.where(id: @site).first
@@ -53,21 +57,78 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def after_sign_in_path_for(resource)
-  #   root_url(:subdomain => current_user.username)
-  #   sign_in(current_user)
-    
-  # end
 
+  # User is redirected to users dashboard after sign in
+  def after_sign_in_path_for(resource)
+     dashboard_path
+  end
+
+  # Defines the front end template name for home action 
   def theme_name
-    
-     if params[:action] == "home"
-        @theme_name = ThemeOption.where(user_id: current_user.id).first.template.downcase
-      else
-        "application"
+    if params[:action] == "home"
+      @theme_name = ThemeOption.where(user_id: current_user.id).first.template.downcase
+    else
+      "application"
+    end
+  end
+
+  # Find user information through unique subdomain
+  def set_subdomain
+    if request.subdomain != "www" && request.subdomain.present?
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @user                = User.where(id: @site.user_id).first
+      @themeoptions        = ThemeOption.where(site_id: @site.id).first
+      @pages               = Page.where(site_id: @site.id).all
+      @availabilities      = Availability.where(site_id: @site.id).all
+      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+      @contacts            = Contact.where(site_id: @site.id).all
+    else
+      if user_signed_in?
+        @sites = Site.where(user_id: current_user.id).all
       end
+    end
+  end
+
+  # Sidebar Nav
+  def sidebar_nav
+    @sidebar_nav = SidebarLink.all
   end
 
 
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

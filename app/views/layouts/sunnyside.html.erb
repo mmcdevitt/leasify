@@ -2,9 +2,13 @@
 	<body class="sunnyside">
 		<div id="wrapper">
 			<%= render 'layouts/sunnysideheader' %>
-			<div class="main-homepage" style="background: url('<%= @themeoptions.homepage_image %>');
-				-webkit-background-size: cover; -moz-background-size: cover; 
-				-o-background-size: cover; background-size: cover;">
+			<% if @homepage_galleries.empty? %>
+				<div class="main-homepage">
+			<% else %>
+				<div class="main-homepage" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;">
+			<% end %>
 				<div class="container">
 					<div class="welcome-box">
 						<h1><%= @themeoptions.homepage_heading %></h1>

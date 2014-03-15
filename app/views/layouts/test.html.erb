@@ -2,6 +2,6 @@ Welcome to Leasify!<br>
 <% if user_signed_in? %>
 	<%= link_to "Your Dashboard", dashboard_path %>
 <% else %>
-<%= link_to "Sign Up", register_path %><br>
-<%= link_to "Login", login_path %>
+<%= link_to "Sign Up", new_user_registration_path %><br>
+<%= link_to "Login", new_user_session_path %>
 <% end %>

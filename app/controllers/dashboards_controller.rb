@@ -11,6 +11,7 @@ class DashboardsController < ApplicationController
 	    @availabilities      = Availability.where(site_id: @site.id).all
 	    @propertyinformation = PropertyInformation.where(site_id: @site.id).first
 	  	@contacts            = Contact.where(site_id: @site.id).all
+	  	@homepage_gallery    = HomepageGallery.where(site_id: @site.id).first
 	  end
   end
 end

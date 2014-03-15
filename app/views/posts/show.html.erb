@@ -2,7 +2,7 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @post.title %>
+  <%= markdown(@post.title) %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

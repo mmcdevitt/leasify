@@ -1,0 +1,3 @@
+<%= f.file_field :homepage_gallery_image, as: :file %>
+<%= f.hidden_field :site_id, value: @site.id %>
+<%= f.hidden_field :user_id, value: current_user.id %>

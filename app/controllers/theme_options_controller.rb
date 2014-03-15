@@ -16,6 +16,7 @@ class ThemeOptionsController < ApplicationController
 
   def homepage_gallery
     @themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
+    @themeoptions.homepage_galleries.build
   end
 
 	def update
@@ -54,6 +55,49 @@ class ThemeOptionsController < ApplicationController
       																		 :homepage_subheading, 
       																		 :content,
       																		 :template,
-                                           :homepage_image)
+                                           :homepage_image,
+                                           homepage_galleries_attributes: [:user_id, :id, :homepage_gallery_image, :site_id, :_destroy])
     end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

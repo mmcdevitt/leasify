@@ -88,7 +88,7 @@
         </div>
       <% end %>
 
-      <% if @themeoptions.homepage_image_file_name.nil? %>
+      <% if @homepage_gallery.nil? %>
         <div class="alert alert-danger"> 
           <div class="row">
             <div class="col-sm-8">
@@ -96,7 +96,7 @@
             </div> 
             <div class="col-sm-4"> 
               <div class="pull-right">
-              <%= link_to homepage_gallery_path, class: "btn btn-success btn-sm" do %>
+              <%= link_to homepage_image_gallery_path, class: "btn btn-success btn-sm" do %>
                 <i class="i i-gauge"></i> Do it now!
               <% end %>
             </div>

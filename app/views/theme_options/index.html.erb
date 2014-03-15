@@ -4,7 +4,7 @@
 			<%= render 'layouts/themeoptionsheader' %>
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Website Logo</h3>
+					<h3 style="margin-bottom:30px;">Website Logo</h3>
 				</div>
 			</div>
 			<div class="row">
@@ -12,11 +12,11 @@
 					<div class="logo-outline">
 						<div class="add-page-image center">
 					    <% if f.object.theme_image? %>
-					      <div class="upload-preview">
+					      <div class="upload-preview-options m-b-lg">
 					        <%= image_tag(@themeoptions.theme_image.url(:thumb), id: "uploadimage", class: "img-thumbnail") %>
 					      </div>
 					    <% else %>
-					      <div class="upload-preview-options">
+					      <div class="upload-preview-options m-b-lg">
 					        <%= image_tag("upload-image.png", id: "uploadimage") %>
 					      </div>
 					    <% end %>

@@ -82,16 +82,16 @@ class SitesController < ApplicationController
                                    property_informations_attributes: [:user_id, :id])
     end
 
-    def set_subdomain
-      @subdomain           = request.subdomain
-      @site                = Site.where(subdomain: request.subdomain).first
-      @user                = User.where(id: @site.user_id).first
-      @themeoptions        = ThemeOption.where(site_id: @site.id).first
-      @pages               = Page.where(site_id: @site.id).all
-      @availabilities      = Availability.where(site_id: @site.id).all
-      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
-      @contacts            = Contact.where(site_id: @site.id).all
-    end
+    # def set_subdomain
+    #   @subdomain           = request.subdomain
+    #   @site                = Site.where(subdomain: request.subdomain).first
+    #   @user                = User.where(id: @site.user_id).first
+    #   @themeoptions        = ThemeOption.where(site_id: @site.id).first
+    #   @pages               = Page.where(site_id: @site.id).all
+    #   @availabilities      = Availability.where(site_id: @site.id).all
+    #   @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+    #   @contacts            = Contact.where(site_id: @site.id).all
+    # end
 end
 
 

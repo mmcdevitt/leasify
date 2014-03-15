@@ -8,10 +8,13 @@
 	<body class="avaya">
 		<div id="wrapper">
 			<%= render 'layouts/avayaheader' %>
-
-			<div class="main-homepage" style="background: url('<%= @themeoptions.homepage_image %>');
-				-webkit-background-size: cover; -moz-background-size: cover; 
-				-o-background-size: cover; background-size: cover;">
+			<% if @homepage_galleries.empty? %>
+				<div class="main-homepage">
+			<% else %>
+				<div class="main-homepage" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;">
+			<% end %>
 				<div id="page">
 					<div id="content_container">
 						<div id="content">

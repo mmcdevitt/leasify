@@ -4,29 +4,43 @@
 			<%= render 'layouts/themeoptionsheader' %>
 			<div class="row">
 				<div class="col-md-12">
-					<h3>Homepage Gallery</h3>
+					<h3 style="margin-bottom:30px;">Homepage Gallery</h3>
 				</div>
 			</div>
 			<div class="add-page">
 				<div class="row">
-					<div class="col-md-8">
-					
-								
-							  	<%= builder.file_field :homepage_image, as: :file, style: "position: fixed; left: -500px;" %>
-							  	<%= builder.hidden_field :site_id, value: @site.id %>
-    							<%= builder.hidden_field :user_id, value: current_user.id %>
-							 
-						<% if f.object.homepage_image? %>
-				      <div class="upload-preview">
-				        <%= image_tag(@themeoptions.homepage_image.url(:small), id: "uploadimage", class: "img-thumbnail") %>
-				      </div>
-				    <% else %>
-				      <div class="upload-preview">
-				        <%= image_tag("upload-image.png", id: "uploadimage") %>
-				      </div>
-				    <% end %>
-					</div>
-				</div>
+					<div class="col-md-12" >
+	          <div class="parent" id="display-none-preview">
+						<%= link_to_add_fields "Add Image", f, :homepage_galleries %>
+						<script type="text/javascript">
+						$(".parent > a").addClass('btn btn-default btn-square').html('<i class="i i-images"></i><br> Add Images<br> JPG, PNG');
+						</script>
+						<%= f.fields_for :homepage_galleries do |builder| %>	
+							<% if builder.object.new_record? %>
+								<%= render 'homepage_gallery_fields', :f => builder %>
+							<% end %>
+						<% end %>
+						 <%= f.fields_for :homepage_galleries do |builder| %>
+	              <% unless builder.object.new_record? %>
+	                <div class="preview-col">
+	                  <div class="fields">
+	                    <%= image_tag(builder.object.homepage_gallery_image.url(:thumb), id: "uploadimage", class: "img-thumbnail gallery") %>
+	                    <div class="row">
+	                      <div class="col-md-12">
+	                        <div class="btn-group waky" data-toggle="buttons">
+	                          <label class="btn btn-default btn-sm m-b-lg">
+	                            <%= builder.check_box :_destroy %><i class="fa fa-trash-o"></i>
+	                          </label>
+	                        </div>
+	                      </div>
+	                    </div>
+	                  </div>
+	                </div>
+	              <% end %>
+	            <% end %>
+						</div><!-- end parent -->
+					</div><!-- end col 12 -->
+				</div><!-- end row -->
 			</div>
 		</div>
 	</section>
@@ -38,3 +52,13 @@
 	  </div>
 	</footer>
 <% end %>
+<style type="text/css">
+#display-none-preview > .preview-col:first-of-type {
+  width: 0px;
+}
+#display-none-preview > .preview-col:first-of-type > .fields > .upload-preview,
+#display-none-preview > .preview-col:first-of-type > .fields > .row > .col-md-12 > .btn-group {
+  display: none;
+  width: 0px;
+}
+</style>

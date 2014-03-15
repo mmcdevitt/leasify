@@ -28,6 +28,7 @@
                 </div>
                 <p>You can change this at anytime. But, it must be unique.</p>
               </div>
+              
               <%= f.fields_for :theme_options do |builder| %>
                 <%= builder.hidden_field :user_id, value: current_user.id %>
                 <%= builder.hidden_field :content, value: "This is the coolest place on Earth." %>

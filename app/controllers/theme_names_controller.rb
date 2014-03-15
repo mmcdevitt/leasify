@@ -1,10 +1,12 @@
 class ThemeNamesController < ApplicationController
   before_action :set_theme_name, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :admin_role
   # GET /theme_names
   # GET /theme_names.json
   def index
     @theme_names = ThemeName.all
+    
   end
 
   # GET /theme_names/1
@@ -71,4 +73,42 @@ class ThemeNamesController < ApplicationController
     def theme_name_params
       params.require(:theme_name).permit(:name, :user_id, :description, :theme_name_image)
     end
+
+    def admin_role
+      unless current_user.admin?
+        redirect_to dashboard_path
+      end
+    end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

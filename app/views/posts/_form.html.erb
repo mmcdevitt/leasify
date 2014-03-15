@@ -10,12 +10,31 @@
       </ul>
     </div>
   <% end %>
+<section class="scrollable wrapper w-f">
+    <div class="panel-body">
+      <div class="add-page">
+        <div class="row">
+          <div class="col-md-8">
+  <h1>Post</h1>
+    <%= f.text_area :title, id: "some-textarea", class: "wysihtml5 form-control" %>
+    <script type="text/javascript">
+      $(document).ready(function(){
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
+        $('.wysihtml5').each(function(i, elem) {
+          $(elem).wysihtml5();
+        });
+
+        $(".wysihtml5-toolbar .btn").addClass('btn-default');
+
+      })
+    </script>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+  </div>
+        </div>
+      </div>
+    </div>
+  </section>
 <% end %>

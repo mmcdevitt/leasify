@@ -13,6 +13,8 @@ class StaticPagesController < ApplicationController
       @pages               = Page.where(site_id: @site.id).all
       @availabilities      = Availability.where(site_id: @site.id).all
       @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+      @homepage_gallery    = HomepageGallery.where(site_id: @site.id).first
+      @homepage_galleries  = HomepageGallery.where(site_id: @site.id).all
     end
   end
 

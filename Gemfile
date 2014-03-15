@@ -7,6 +7,7 @@ ruby '1.9.3'
 # Use sqlite3 as the database for Active Record
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass'
+gem 'bootstrap-wysihtml5-rails'
 gem 'js-routes'
 gem 'mailboxer'
 gem 'haml'

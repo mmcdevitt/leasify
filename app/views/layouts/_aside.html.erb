@@ -8,83 +8,20 @@
           <% if request.subdomain.present? && request.subdomain != "www" %>
           <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Browse</div>
           <ul class="nav nav-main" data-ride="collapse">
-            <li >
-              <%= link_to dashboard_path, class: "auto" do %>
-                <i class="i i-statistics icon">
-                </i>
-                <span class="font-bold">Site Overview</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to availabilities_path, class: "auto" do %>
-              <span class="pull-right text-muted">
-                <i class="i i-circle-sm-o text"></i>
-                <i class="i i-circle-sm text-active"></i>
-              </span>
-              <i class="i i-stack icon">
-              </i>
-              <span class="font-bold">Availabilities</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to pages_path, class: "auto" do %>
-              <span class="pull-right text-muted">
-                <i class="i i-circle-sm-o text"></i>
-                <i class="i i-circle-sm text-active"></i>
-              </span>
-              <i class="i i-docs icon">
-              </i>
-              <span class="font-bold">Pages</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to contacts_path, class: "auto" do %>
-              <span class="pull-right text-muted">
-                <i class="i i-circle-sm-o text"></i>
-                <i class="i i-circle-sm text-active"></i>
-              </span>
-              <i class="i i-users2 icon">
-              </i>
-              <span class="font-bold">Contacts</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to template_path, class: "auto" do %>
-              <span class="pull-right text-muted">
-                <i class="i i-circle-sm-o text"></i>
-                <i class="i i-circle-sm text-active"></i>
-              </span>
-              <i class="i i-browser icon">
-              </i>
-              <span class="font-bold">Templates</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to property_path, class: "auto" do %>
-              <span class="pull-right text-muted">
-                <i class="i i-circle-sm-o text"></i>
-                <i class="i i-circle-sm text-active"></i>
-              </span>
-              <i class="i i-pin icon">
-              </i>
-              <span class="font-bold">Property Information</span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to logo_path, class: "auto" do %>
-              <span class="pull-right text-muted">
-                <i class="i i-circle-sm-o text"></i>
-                <i class="i i-circle-sm text-active"></i>
-              </span>
-              <i class="i i-phone-portrait icon">
-              </i>
-              <span class="font-bold">Theme Options</span>
-              <% end %>
-            </li>
-       
+            <% @sidebar_nav.each do |sidebar| %>
+              <li >
+                <%= link_to send(sidebar.link_to), class: "auto" do %>
+                  <i class="i i-<%= sidebar.icon %> icon">
+                  </i>
+                  <span class="font-bold"><%= sidebar.name %></span>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
           <div class="line dk hidden-nav-xs"></div>
+          <% unless @pages.empty? %>
           <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Pages</div>
+          <% end %>
           <ul class="nav">
             <% @pages.each do |page| %>
               <li>
@@ -95,7 +32,9 @@
               </li>
             <% end %>
           </ul>
+          <% unless @availabilities.empty? %>
           <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Availabilities</div>
+          <% end %>
           <ul class="nav">
             <% @availabilities.each do |availability| %>
               <li>
@@ -108,6 +47,26 @@
           </ul>
           <% else %>
           <% unless params[:action] == 'home' %>
+           <% if current_user.admin? %>
+          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Admin Links</div>
+            <ul class="nav nav-main" data-ride="collapse">
+              <li >
+                <%= link_to admin_theme_path, class: "auto" do %>
+                  <i class="i i-statistics icon">
+                  </i>
+                  <span class="font-bold">Theme Names</span>
+                <% end %>
+              </li>
+              <li >
+                <%= link_to admin_sidebar_path, class: "auto" do %>
+                  <i class="i i-statistics icon">
+                  </i>
+                  <span class="font-bold">Sidebar Links</span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <% end %>
           <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">My Sites</div>
           <ul class="nav nav-main" data-ride="collapse">
             <% @sites.each do |site| %>

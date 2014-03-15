@@ -6,6 +6,30 @@
       <h3><%= @title %></h3>
       <p><%= edit_page_url %></p>
       <div class="row">
+        <div class="col-md-12">
+          <div class="add-page-image">
+            <div class="row-fluid">
+              <%= f.file_field :page_image, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;" %>
+              <div class="bootstrap-filestyle" style="display: inline;">
+                <label for="lefile" class="btn btn-default btn-square m-t-lg">
+                  <i class="i i-images"></i><br>
+                  <span>Upload Image</span>
+                </label>
+              </div>
+            </div>
+             <% if f.object.page_image? %>
+              <div class="upload-preview-options">
+                <%= image_tag(@page.page_image.url(:thumb), id: "pageimage", class: "img-thumbnail m-t-lg") %>
+              </div>
+            <% else %>
+              <div class="upload-preview-options">
+                <%= image_tag("blank.gif", id: "pageimage") %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <% if @page.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -35,29 +59,11 @@
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
             <%= f.label :content, "Page Content" %>
-            <%= f.text_area :content, class: "form-control" %>
+            <%= f.text_area :content, id: "some-textarea", class: "wysihtml5 form-control" %>
           </div>
         </div><!-- end col 8 -->
         <div class="col-md-4">
-          <div class="add-page-image center">
-            <% if f.object.page_image? %>
-              <div class="upload-preview">
-                <%= image_tag(@page.page_image.url(:medium), id: "uploadimage", class: "img-thumbnail") %>
-              </div>
-            <% else %>
-              <div class="upload-preview">
-                <%= image_tag("upload-image.png", id: "uploadimage") %>
-              </div>
-            <% end %>
-            <div class="row-fluid">
-              <%= f.file_field :page_image, as: :file, class: "filestyle", id: "filestyle-0", style: "position: fixed; left: -500px;" %>
-              <div class="bootstrap-filestyle" style="display: inline;">
-                <label for="filestyle-0" class="btn btn-default">
-                  <span>Upload Image</span>
-                </label>
-              </div>
-            </div>
-          </div>
+          
         </div><!-- end col 4 -->
       </div>
     </div>
