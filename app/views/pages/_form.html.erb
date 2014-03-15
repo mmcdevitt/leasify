@@ -11,7 +11,7 @@
             <div class="row-fluid">
               <%= f.file_field :page_image, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;" %>
               <div class="bootstrap-filestyle" style="display: inline;">
-                <label for="lefile" class="btn btn-default btn-square m-t-lg">
+                <label for="lefile" class="btn btn-default btn-square <%= @mtlg %>">
                   <i class="i i-images"></i><br>
                   <span>Upload Image</span>
                 </label>

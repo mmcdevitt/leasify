@@ -24,12 +24,13 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     @title = "Add Page"
+    @mtlg = ""
   end
 
   # GET /pages/1/edit
   def edit
     @title = @page.title
-
+    @mtlg = "m-t-lg"
     # Protect pages per subdomain
     if @site.id != @page.site_id
       redirect_to dashboard_path

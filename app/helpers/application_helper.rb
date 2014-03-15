@@ -19,9 +19,12 @@ module ApplicationHelper
 	end
 
 	def full_address
-		@propertyinformation.address + 
-		", " + @propertyinformation.city + 
-		", " + @propertyinformation.state
+		if @propertyinformation.address.nil?
+		else
+			@propertyinformation.address + 
+			", " + @propertyinformation.city + 
+			", " + @propertyinformation.state
+		end
 	end 
 
 	# Admin link for front end templates

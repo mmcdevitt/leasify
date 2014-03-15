@@ -23,6 +23,40 @@
         	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
       </section>
     </section>
+    <script type="text/javascript">
+    	 // Bootstrap wysihtml5 editor     
+        $('.wysihtml5').each(function(i, elem) {
+          $(elem).wysihtml5({
+            "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+            "emphasis": true, //Italics, bold, etc. Default true
+            "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+            "html": false, //Button which allows you to edit the generated HTML. Default false
+            "link": false, //Button to insert a link. Default true
+            "image": false, //Button to insert an image. Default true,
+            "color": false //Button to change color of font  
+          });
+        });
+
+        $(".wysihtml5-toolbar .btn").addClass('btn-default btn-sm');
+
+        // Image preview before upload
+        var preview = $(".upload-preview-options img");
+        
+        $("#lefile").change(function(event){
+             var input = $(event.currentTarget);
+             var file = input[0].files[0];
+             var reader = new FileReader();
+             reader.onload = function(e){
+                 image_base64 = e.target.result;
+                 preview.attr("src", image_base64);
+             };
+             reader.readAsDataURL(file);
+             preview.addClass('preview-img-border');
+
+            $('#uploadimage').css('width', '115px').css('height', '115px');  
+            $('#pageimage').css('width', '150px').css('height', '150px');  
+        });
+    </script>
 	</body>
 </html>
 

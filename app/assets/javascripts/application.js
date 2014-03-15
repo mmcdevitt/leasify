@@ -17,7 +17,7 @@
 //= require bootstrap-wysihtml5
 //= require app
 //= require jquery.slimscroll.min
-
+//= require_self
 
 $(document).ready(function() {
 
@@ -27,23 +27,7 @@ $(document).ready(function() {
 	}, 1000);
 
 
-	// Image preview before upload
-	var preview = $(".upload-preview-options img");
-    
-	$("#lefile").change(function(event){
-         var input = $(event.currentTarget);
-         var file = input[0].files[0];
-         var reader = new FileReader();
-         reader.onload = function(e){
-             image_base64 = e.target.result;
-             preview.attr("src", image_base64);
-         };
-         reader.readAsDataURL(file);
-         preview.addClass('preview-img-border');
-
-        $('#uploadimage').css('width', '115px').css('height', '115px');  
-        $('#pageimage').css('width', '150px').css('height', '150px');  
-    });
+	
 
     // Hover edit links in table
     $('.table-edit').hover(function() {
@@ -55,20 +39,7 @@ $(document).ready(function() {
         $(this).addClass("disabled");
     });
 
-    // Bootstrap wysihtml5 editor     
-    $('.wysihtml5').each(function(i, elem) {
-      $(elem).wysihtml5({
-        "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
-        "emphasis": true, //Italics, bold, etc. Default true
-        "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-        "html": false, //Button which allows you to edit the generated HTML. Default false
-        "link": false, //Button to insert a link. Default true
-        "image": false, //Button to insert an image. Default true,
-        "color": false //Button to change color of font  
-      });
-    });
-
-    $(".wysihtml5-toolbar .btn").addClass('btn-default btn-sm');
+   
    
 
 });
