@@ -4,11 +4,13 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
+  <% if Rails.env.production? %>
   <!-- For leasify.co -->
   <script type="text/javascript" src="//use.typekit.net/ckw2lgb.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
-	<!-- for lvh.me, remove when pushing to git and heroku 
+  <% elsif Rails.env.development? %>
+	<!-- for lvh.me, remove when pushing to git and heroku -->
 	<script type="text/javascript" src="//use.typekit.net/bgg6ayr.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <% end %>
 </head>
