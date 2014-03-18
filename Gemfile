@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'paperclip'
 # gem 'bootsy'
 gem 'redcarpet'
+gem 'aws-sdk'
 gem 'aws-s3'
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
