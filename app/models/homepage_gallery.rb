@@ -9,6 +9,12 @@ class HomepageGallery < ActiveRecord::Base
     small: "140x140#",
     thumb: "140x140#"
 
+  },
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => ENV['LEASIFY'],
+    :access_key_id => ENV['AKIAIK7L57MTKL3JUDRA'],
+    :secret_access_key => ENV['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']
   }
 	validates_attachment_content_type :homepage_gallery_image, :content_type => /\Aimage/
 

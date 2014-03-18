@@ -79,15 +79,7 @@ Subdomain::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
 
-  # config/environments/production.rb
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['LEASIFY'],
-      :access_key_id => ENV['AKIAIK7L57MTKL3JUDRA'],
-      :secret_access_key => ENV['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']
-    }
-  }
+  
 end
 
 
