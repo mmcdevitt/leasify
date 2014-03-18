@@ -1,0 +1,191 @@
+html {
+	background: white;
+}
+body {
+	
+}
+.center {
+	text-align: center;
+}
+h1 {
+	font-size: 50px;
+}
+.btn {
+	padding: 14px 70px;
+	text-shadow: 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.btn-whiteborder {
+	border: 2px solid rgba(255,255,255,1);
+	padding: 14px 70px;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4);
+	color: white;
+}
+.btn-whiteborder:hover {
+	color: white;
+	background: rgba(0,0,0,0.2);
+}
+.btn-drkblue {
+	background: #002E52;
+	padding: 14px 70px;
+	border: 2px solid #002E52;
+}
+.btn-info {
+	border-color: #0C7E80;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
+color: #fff !important;
+background-color: #19b4b6;
+border-color: #008D8F;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.home {
+	background: url(/assets/nyc.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;    
+	color: #fff;
+	border-bottom: 1px solid #EAF6FF;
+
+	.layer {
+		/*background-color: rgba(35, 95, 138, 0.74);*/
+		background: rgba(56, 182, 205, 0.8);
+	}
+	
+
+	.hero-message {
+		padding: 0px 0;
+
+		.btn {
+			margin: 30px 0 50px;
+		}
+	}
+
+	.navbar a:hover {
+		background:transparent;
+		text-decoration: underline;
+	}
+
+	a {
+		color: #fff;
+	}
+
+	h1 {
+		margin-top: 30px;
+	}
+
+	img {
+		display: inline-block;
+	}
+
+}/*end home*/
+u {
+	text-decoration: none;
+	border-bottom: 3px solid #dedede;
+	padding-bottom: 10px;
+}
+.beautiful-websites,
+.engage-prospects,
+.call-to-action {
+	padding:100px 0;
+	img {
+		display: inline-block;
+	}
+	  h3 {
+			font-size: 14px;
+			text-transform: uppercase;
+			padding-bottom: 25px;
+		}
+		h2 {
+			font-size: 36px;
+			color: #474747;
+			line-height: normal;
+		}
+		h4 {
+			font-size: 16px;
+			color: #304058;
+			line-height: normal;
+			font-family: "brandon-grotesque",sans-serif;
+  		font-weight: 700;
+		}
+		p {
+			font-size: 18px;
+			color: #535353;
+			line-height: normal;
+
+			&.smaller {
+				font-size: 16px;
+				color: #6f6f6f;
+				line-height: 24px;
+			}
+		}
+
+	.col-lg-4 {
+		padding:0 50px;
+	}
+}
+.engage-prospects {
+	background: #faf9f4;
+}
+.call-to-action {
+	background: url(/assets/nyc.jpg);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover; 
+	color: #fff;
+
+	h1, h2, h3, h4, p {
+		color: #fff;
+	}   
+}
+footer {
+	padding: 100px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

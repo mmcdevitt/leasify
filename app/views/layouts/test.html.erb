@@ -1,7 +1,38 @@
-Welcome to Leasify!<br>
-<% if user_signed_in? %>
-	<%= link_to "Your Dashboard", dashboard_path %>
-<% else %>
-<%= link_to "Sign Up", new_user_registration_path %><br>
-<%= link_to "Login", new_user_session_path %>
-<% end %>
+<!DOCTYPE html>
+<html class="">
+	<%= render 'layouts/static_pages/head' %>
+	<body class="landing-page brandon">
+		<%= yield %>
+    <%= render 'layouts/static_pages/footer' %>
+	</body>
+	<script type="text/javascript">
+  
+  $(document).ready(function(){       
+      var scroll_pos = 0;
+      $(document).scroll(function() { 
+          scroll_pos = $(this).scrollTop();
+          if(scroll_pos > 100) {
+              $(".navbar").css('background-color', 'rgba(7, 51, 71, 0.85098)');
+          } else {
+              $(".navbar").css('background-color', '');
+          }
+      });
+       $(function() {
+    $('a[href*=#]:not([href=#])').click(function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+        if (target.length) {
+          $('html,body').animate({
+            scrollTop: target.offset().top
+          }, 1000);
+          return false;
+        }
+      }
+    });
+  });
+  });
+</script>
+
+</html>

@@ -142,14 +142,14 @@ ActiveRecord::Schema.define(version: 20140315205156) do
     t.integer  "theme_image_file_size"
     t.datetime "theme_image_updated_at"
     t.integer  "user_id"
-    t.integer  "template",                    limit: 255
     t.string   "homepage_image_file_name"
     t.string   "homepage_image_content_type"
     t.integer  "homepage_image_file_size"
     t.datetime "homepage_image_updated_at"
     t.integer  "site_id"
-    t.string   "body_font",                               default: "arial"
-    t.string   "heading_font",                            default: "arialblack"
+    t.integer  "template"
+    t.string   "body_font",                   default: "arial"
+    t.string   "heading_font",                default: "museo-h-bold"
   end
 
   create_table "users", force: true do |t|

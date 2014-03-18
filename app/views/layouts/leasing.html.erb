@@ -1,6 +1,6 @@
-<%= render 'layouts/sunnysidehead' %>
-	<body class="sunnyside leasing">
-		<%= render 'layouts/sunnysideheader' %>
+<%= render 'layouts/sunnyside/head' %>
+	<body class="sunnyside leasing <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<%= render 'layouts/sunnyside/header' %>
 			<%= yield %>
 			<script type="text/javascript">
 				$(document).ready(function() {

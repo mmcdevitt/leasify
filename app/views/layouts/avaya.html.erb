@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= @propertyinformation.name %></title>
-  <%= stylesheet_link_tag "bootstrap.css", "avaya.css" %>
-  <%= javascript_include_tag "jquery", "bootstrap", "app", "jquery.slimscroll.min", "app.plugin" %>
-  <%= csrf_meta_tags %>
-</head>
-	<body class="avaya">
+<%= render 'layouts/avaya/head' %>
+	<body class="avaya <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
-			<%= render 'layouts/avayaheader' %>
+			<%= render 'layouts/avaya/header' %>
 			<% if @homepage_galleries.empty? %>
 				<div class="main-homepage">
 			<% else %>

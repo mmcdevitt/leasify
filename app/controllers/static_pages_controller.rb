@@ -22,6 +22,10 @@ class StaticPagesController < ApplicationController
     @page = Page.find(params[:id])
   end
 
+  def help
+
+  end
+
   def leasing
     if request.subdomain != "www" && request.subdomain.present?
       @subdomain            = request.subdomain

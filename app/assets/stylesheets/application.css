@@ -27,59 +27,25 @@
 	outline: none !important;
 	letter-spacing: normal;
 }
-
-/*@font-face{
-    font-family:'AvenirLT-Medium';
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.eot");
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.eot?#iefix") format("embedded-opentype"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.woff") format("woff"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-medium.ttf") format("truetype")
+html, body, #wrapper {
+    height: 100%;
 }
-@font-face{
-    font-family:'AvenirLT-Roman';
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.eot");
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.eot?#iefix") format("embedded-opentype"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.woff") format("woff"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-roman.ttf") format("truetype")
-}
-@font-face{
-    font-family:'AvenirLT-Heavy';
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.eot");
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.eot?#iefix") format("embedded-opentype"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.woff") format("woff"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-heavy.ttf") format("truetype")
-}
-@font-face{
-    font-family:'AvenirLT-Oblique';
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.eot");
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.eot?#iefix") format("embedded-opentype"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.woff") format("woff"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-oblique.ttf") format("truetype")
-}
-@font-face{
-    font-family:'AvenirLT-Black';
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.eot");
-    src:url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.eot?#iefix") format("embedded-opentype"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.woff") format("woff"),
-        url("http://pipeline.registerlab.com/assets/fonts/avenirlt-black.ttf") format("truetype")
-}
-@font-face{
-    font-family:'proxima_nova_ltregular';
-    src:url('http://cms.leasify.co/admin/font/proximanova-light-webfont.eot');
-    src:url('http://cms.leasify.co/admin/font/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'),
-        url('http://cms.leasify.co/admin/font/proximanova-light-webfont.woff') format('woff'),
-        url('http://cms.leasify.co/admin/font/proximanova-light-webfont.ttf') format('truetype'),
-        url('http://cms.leasify.co/admin/font/proximanova-light-webfont.svg#proxima_nova_ltregular') format('svg');font-weight:normal;font-style:normal;}
-*/body {
-	/*font-family:'proxima_nova_ltregular' !important;*/
+body {
 	color: #55606e;
 }
+.white-bg {
+    background: #fff;
+}
 body.devise {
-    background: #f2f4f8;
+    background: #fff;
      -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;        
+    background-size: cover;   
+    height: 100%;     
+}
+.devise .form-control {
+    height: 45px;
 }
 .upload-dashed {
 background-color: #f2f2f2;
@@ -112,6 +78,50 @@ text-align: center;
 padding: 20px;
 }
 
+
+* {
+    outline: none !important;
+    margin: 0; 
+    padding: 0;
+}
+#page {
+    display:table;
+    overflow:hidden;
+    margin:0px auto;
+}
+*:first-child+html #page {
+    position:relative;
+}/*ie7*/
+* html #page {
+    position:relative;
+}/*ie6*/
+
+#content_container{
+    display:table-cell;
+    vertical-align: middle;
+}
+*:first-child+html #content_container{
+    position:absolute;
+    top:50%;
+    }/*ie7*/
+* html #content_container{
+    position:absolute;
+    top:50%;
+    }/*ie6*/
+
+*:first-child+html #content{
+    position:relative;
+    top:-50%;
+    }/*ie7*/
+* html #content{
+    position:relative;
+    top:-50%;
+    }/*ie6*/
+
+#page{
+    height:100%;
+    width:465px;
+}
 
 
 

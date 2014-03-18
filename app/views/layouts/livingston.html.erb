@@ -1,7 +1,7 @@
 <%= render 'layouts/livingston/head' %>
-	<body class="livingston">
+	<body class="livingston <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
-			<%= render 'layouts/sunnysideheader' %>
+			<%= render 'layouts/sunnyside/header' %>
 			<div class="container">
 				<% unless @homepage_galleries.empty? %>
 				<div class="main-gallery">
@@ -12,7 +12,9 @@
 					<div class="col-md-8 col-md-offset-2 center">
 							<h3><%= @themeoptions.homepage_heading %></h3>
 							<p class="text-muted"><%= @themeoptions.homepage_subheading %></p>
+							<div class="page-content">
 							<p><%= markdown(@themeoptions.content) %></p>
+						</div>
 					</div>
 				</div>
 			</div>

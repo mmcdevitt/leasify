@@ -1,0 +1,16 @@
+<header class="navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-style-none">
+          <li><%= link_to "Home", "/" %></li>
+          <% @pages.each do |page| %>
+            <li><%= link_to page.title, pages_id_path(page) %></li>
+          <% end %>
+          <li><%= link_to "Leasing", leasing_path %></li>
+          <%= admin_link %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

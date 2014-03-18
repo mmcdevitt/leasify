@@ -19,26 +19,7 @@
 	                <span class="caret" style="margin-left:30px;"></span>
 	              </button>
 	              <ul class="dropdown-menu dropdown-select max-height-400">
-	              	<li role="presentation" class="dropdown-header">Adobe Typekit</li>
-	              	<li><a class="proximanova" href="#"><%= f.radio_button :body_font, "proximanova" %><%= "Proxima Nova" %></a></li>
-	              	<li role="presentation" class="divider"></li>
-	              	<li role="presentation" class="dropdown-header">Sans-serif</li>
-	                <li><a class="arial" href="#"><%= f.radio_button :body_font, "arial" %><%= "Arial" %></a></li>
-	                <li><a class="impact" href="#"><%= f.radio_button :body_font, "impact" %><%= "Impact" %></a></li>
-	                <li><a class="arialblack" href="#"><%= f.radio_button :body_font, "arialblack" %><%= "Arial Black" %></a></li>
-	                <li><a class="lucidasans" href="#"><%= f.radio_button :body_font, "lucidasans" %><%= "Lucida Sans" %></a></li>
-	                <li><a class="tahoma" href="#"><%= f.radio_button :body_font, "tahoma" %><%= "Tahoma" %></a></li>
-	                <li><a class="trebuchet" href="#"><%= f.radio_button :body_font, "trebuchet" %><%= "Trebuchet" %></a></li>
-	                <li><a class="verdana" href="#"><%= f.radio_button :body_font, "verdana" %><%= "Verdana" %></a></li>
-	                <li role="presentation" class="divider"></li>
-  								<li role="presentation" class="dropdown-header">Serif</li>
-  								<li><a class="georgia" href="#"><%= f.radio_button :body_font, "georgia" %><%= "Georgia" %></a></li>
-	                <li><a class="palantino" href="#"><%= f.radio_button :body_font, "palantino" %><%= "Palatino" %></a></li>
-	                <li><a class="times" href="#"><%= f.radio_button :body_font, "times" %><%= "Times New Roman" %></a></li>
-	                <li role="presentation" class="divider"></li>
-  								<li role="presentation" class="dropdown-header">Monospace</li>
-	                <li><a class="lucida" href="#"><%= f.radio_button :body_font, "lucida" %><%= "Lucida Console" %></a></li>
-	                <li><a class="courier" href="#"><%= f.radio_button :body_font, "courier" %><%= "Courier New" %></a></li>
+	          			<%= render 'layouts/body_font', :f => f %>
 	              </ul>
 	            </div>
 	          </div>
@@ -51,26 +32,7 @@
 	                <span class="caret" style="margin-left:30px;"></span>
 	              </button>
 	              <ul class="dropdown-menu dropdown-select max-height-400">
-	              	<li role="presentation" class="dropdown-header">Adobe Typekit</li>
-	              	<li><a class="proximanova" href="#"><%= f.radio_button :heading_font, "proximanova-h" %><%= "Proxima Nova" %></a></li>
-	              	<li role="presentation" class="divider"></li>
-	              	<li role="presentation" class="dropdown-header">Sans-serif</li>
-	                <li><a class="arial" href="#"><%= f.radio_button :heading_font, "arial-h" %><%= "Arial" %></a></li>
-	                <li><a class="impact" href="#"><%= f.radio_button :heading_font, "impact-h" %><%= "Impact" %></a></li>
-	                <li><a class="arialblack" href="#"><%= f.radio_button :heading_font, "arialblack-h" %><%= "Arial Black" %></a></li>
-	                <li><a class="lucidasans" href="#"><%= f.radio_button :heading_font, "lucidasans-h" %><%= "Lucida Sans" %></a></li>
-	                <li><a class="tahoma" href="#"><%= f.radio_button :heading_font, "tahoma-h" %><%= "Tahoma" %></a></li>
-	                <li><a class="trebuchet" href="#"><%= f.radio_button :heading_font, "trebuchet-h" %><%= "Trebuchet" %></a></li>
-	                <li><a class="verdana" href="#"><%= f.radio_button :heading_font, "verdana" %><%= "Verdana" %></a></li>
-	                <li role="presentation" class="divider"></li>
-  								<li role="presentation" class="dropdown-header">Serif</li>
-  								<li><a class="georgia" href="#"><%= f.radio_button :heading_font, "georgia-h" %><%= "Georgia" %></a></li>
-	                <li><a class="palantino" href="#"><%= f.radio_button :heading_font, "palantino-h" %><%= "Palatino" %></a></li>
-	                <li><a class="times" href="#"><%= f.radio_button :heading_font, "times-h" %><%= "Times New Roman" %></a></li>
-	                <li role="presentation" class="divider"></li>
-  								<li role="presentation" class="dropdown-header">Monospace</li>
-	                <li><a class="lucida" href="#"><%= f.radio_button :heading_font, "lucida-h" %><%= "Lucida Console" %></a></li>
-	                <li><a class="courier" href="#"><%= f.radio_button :heading_font, "courier-h" %><%= "Courier New" %></a></li>
+	              	<%= render 'layouts/heading_font', :f => f %>
 	              </ul>
 	            </div>
 	          </div>

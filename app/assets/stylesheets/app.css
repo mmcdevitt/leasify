@@ -3,7 +3,7 @@ html {
   overflow-x: hidden;
 }
 body {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   color: #788288;
   /*background-color: transparent;*/
@@ -808,7 +808,7 @@ body.container {
 .navbar-brand {
   float: none;
   text-align: center;
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   height: auto;
   line-height: 50px;
@@ -816,7 +816,8 @@ body.container {
   padding: 0 15px;
 }
 .navbar-brand:hover {
-  text-decoration: none;
+  text-decoration: none !important;
+  text-shadow: 1px 3px 4px rgba(0,0,0,0.1);
 }
 .navbar-brand img {
   max-height: 20px;

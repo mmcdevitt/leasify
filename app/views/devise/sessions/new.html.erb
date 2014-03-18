@@ -1,26 +1,25 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-	<section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
+	<section id="content" class="wrapper-md animated fadeInUp">    
     <div class="container aside-xl">
-      <a class="navbar-brand block" href="index.html">Leasify</a>
       <section class="m-b-lg">
-        <header class="wrapper text-center">
-          <strong>Sign in</strong>
-        </header>
-        <form action="index.html">
-          <div class="list-group">
-            <div class="list-group-item">
-            	<%= f.text_field :username, class: "form-control no-border", placeholder: "Username" %>
-            </div>
-            <div class="list-group-item">
-            	<%= f.password_field :password, class: "form-control no-border", placeholder: "Password" %>
-            </div>
-          </div>
-          <%= f.submit "Sign in", class: "btn btn-lg btn-success btn-block" %>
-          <div class="text-center m-t m-b"><a href="#"><small>Forgot password?</small></a></div>
-          <div class="line line-dashed"></div>
-          <p class="text-muted text-center"><small>Do not have an account?</small></p>
-          <%= link_to 'Register', register_path, class: "btn btn-lg btn-default btn-block" %>
-        </form>
+        
+        <div class="form-group">
+        	<%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+        </div>
+        <div class="form-group">
+        	<%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        </div>
+        <%= f.submit "Sign In".upcase, class: "btn btn-lg btn-info btn-block" %>
+        <div class="m-t">
+          <a href="#">
+            <small>Forgot password?</small>
+          </a>
+        </div>
+        <p class="text-muted">
+          <small>
+            Do not have an account? <%= link_to 'Register', register_path %>
+          </small>
+        </p>
       </section>
     </div>
   </section>

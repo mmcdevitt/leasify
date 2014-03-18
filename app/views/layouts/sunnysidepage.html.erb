@@ -1,6 +1,6 @@
-<%= render 'layouts/sunnysidehead' %>
-	<body class="sunnyside">
-		<%= render 'layouts/sunnysideheader' %>
+<%= render 'layouts/sunnyside/head' %>
+	<body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<%= render 'layouts/sunnyside/header' %>
 			<div class="main-homepage" style="background: url('<%= @page.page_image %>');
 				-webkit-background-size: cover; -moz-background-size: cover; 
 				-o-background-size: cover; background-size: cover;">
@@ -31,7 +31,7 @@
 	
 	
 
-		<%= render 'layouts/sunnysidefooter' %>
+		<%= render 'layouts/sunnyside/footer' %>
 
 		
 	</body>

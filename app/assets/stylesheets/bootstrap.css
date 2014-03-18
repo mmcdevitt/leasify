@@ -5917,17 +5917,193 @@ button.close {
 }
 
 /*Adobe Typekit*/
-.proximanova { 
-  font-family: "proxima-nova",sans-serif; 
-}
+.proximanova, 
 .proximanova-h h1,
 .proximanova-h h2,
 .proximanova-h h3,
 .proximanova-h h4,
 .proximanova-h h5,
 .proximanova-h h6 {
-  font-family: "proxima-nova",sans-serif;
+  font-family: "proxima-nova",sans-serif; 
 }
+.proximanova-light,
+.proximanova-h-light h1,
+.proximanova-h-light h2,
+.proximanova-h-light h3,
+.proximanova-h-light h4,
+.proximanova-h-light h5,
+.proximanova-h-light h6 {
+  font-family: "proxima-nova",sans-serif; 
+  font-weight: 300 !important;
+}
+.proximanova-bold,
+.proximanova-h-bold h1,
+.proximanova-h-bold h2,
+.proximanova-h-bold h3,
+.proximanova-h-bold h4,
+.proximanova-h-bold h5,
+.proximanova-h-bold h6 {
+  font-family: "proxima-nova",sans-serif; 
+  font-weight: 700 !important;
+}
+.futura, 
+.futura-h h1,
+.futura-h h2,
+.futura-h h3,
+.futura-h h4,
+.futura-h h5,
+.futura-h h6 {
+  font-family: "futura-pt",sans-serif; 
+}
+.futura-light, 
+.futura-h-light h1,
+.futura-h-light h2,
+.futura-h-light h3,
+.futura-h-light h4,
+.futura-h-light h5,
+.futura-h-light h6 {
+  font-family: "futura-pt",sans-serif; 
+  font-weight: 300 !important;
+}
+.futura-bold, 
+.futura-h-bold h1,
+.futura-h-bold h2,
+.futura-h-bold h3,
+.futura-h-bold h4,
+.futura-h-bold h5,
+.futura-h-bold h6 {
+  font-family: "futura-pt",sans-serif; 
+  font-weight: 700 !important;
+}
+.penna, 
+.penna-h h1,
+.penna-h h2,
+.penna-h h3,
+.penna-h h4,
+.penna-h h5,
+.penna-h h6 {
+  font-family: "penna",sans-serif;
+}
+.museo,
+.museo-h h1,
+.museo-h h2,
+.museo-h h3,
+.museo-h h4,
+.museo-h h5,
+.museo-h h6  {
+  font-family: "museo-sans",sans-serif;
+}
+.museo-light,
+.museo-h-light h1,
+.museo-h-light h2,
+.museo-h-light h3,
+.museo-h-light h4,
+.museo-h-light h5,
+.museo-h-light h6  {
+  font-family: "museo-sans",sans-serif;
+  font-weight: 100 !important;
+}
+.museo-bold,
+.museo-h-bold h1,
+.museo-h-bold h2,
+.museo-h-bold h3,
+.museo-h-bold h4,
+.museo-h-bold h5,
+.museo-h-bold h6  {
+  font-family: "museo-sans",sans-serif;
+  font-weight: 700 !important;
+}
+.garamond-bold,
+.garamond-h-bold h1,
+.garamond-h-bold h2,
+.garamond-h-bold h3,
+.garamond-h-bold h4,
+.garamond-h-bold h5,
+.garamond-h-bold h6 {
+  font-family: "adobe-garamond-pro",sans-serif;
+  font-weight: 700 !important;
+}
+.garamond,
+.garamond-h h1,
+.garamond-h h2,
+.garamond-h h3,
+.garamond-h h4,
+.garamond-h h5,
+.garamond-h h6 {
+  font-family: "adobe-garamond-pro",sans-serif;
+  font-weight: 400 !important;
+}
+.source-sans-pro,
+.source-sans-pro-h h1,
+.source-sans-pro-h h2,
+.source-sans-pro-h h3,
+.source-sans-pro-h h4,
+.source-sans-pro-h h5,
+.source-sans-pro-h h6 {
+  font-family: "source-sans-pro",sans-serif;
+}
+.source-sans-pro-light,
+.source-sans-pro-h-light h1,
+.source-sans-pro-h-light h2,
+.source-sans-pro-h-light h3,
+.source-sans-pro-h-light h4,
+.source-sans-pro-h-light h5,
+.source-sans-pro-h-light h6 {
+  font-family: "source-sans-pro",sans-serif;
+  font-weight: 300;
+}
+.corner-store {
+  font-family: "corner-store",sans-serif;
+}
+.brandon {
+  font-family: "brandon-grotesque",sans-serif;
+}
+.brandon-bold {
+  font-family: "brandon-grotesque",sans-serif;
+  font-weight: 700 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -35,9 +35,12 @@ Subdomain::Application.routes.draw do
   end
 
   resources :static_pages
+  #get '/home', to: 'static_pages#home'
   root :to => "static_pages#home"
+  get '/help', to: 'static_pages#help', as: :help
   get '/leasing', to: 'static_pages#leasing', as: :leasing
   get '/leasing/:id', to: 'availabilities#show', as: :leasing_show
+
   get "sunnyside/index"
   get "avaya/index"
   

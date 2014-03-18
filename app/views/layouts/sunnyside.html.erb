@@ -1,9 +1,7 @@
-<%= render 'layouts/sunnysidehead' %>
- <% font = "times"
-    heading = "courier-h" %>
-	<body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+<%= render 'layouts/sunnyside/head' %>
+  <body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
-			<%= render 'layouts/sunnysideheader' %>
+			<%= render 'layouts/sunnyside/header' %>
 			<% if @homepage_galleries.empty? %>
 				<div class="main-homepage">
 			<% else %>
@@ -31,7 +29,7 @@
 				</div>
 			</div>			
 			
-			<%= render 'layouts/sunnysidefooter' %>
+			<%= render 'layouts/sunnyside/footer' %>
 		</div><!-- end wrapper -->
 	</body>
 </html>

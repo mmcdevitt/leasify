@@ -1,17 +1,7 @@
 // Place all the styles related to the Avaya controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@font-face {
-    font-family: 'nexa_lightregular';
-    src: url('http://www.leasify.co/fonts/nexa_light-webfont.eot');
-    src: url('http://www.leasify.co/fonts/nexa_light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('http://www.leasify.co/fonts/nexa_light-webfont.woff') format('woff'),
-         url('http://www.leasify.co/fonts/nexa_light-webfont.ttf') format('truetype'),
-         url('http://www.leasify.co/fonts/nexa_light-webfont.svg#nexa_lightregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
 
-}
 html, body {
 	height: 100%;
 
@@ -76,7 +66,7 @@ hr {
 	color: #fff;
 }
 .avaya {
-	font-family: 'nexa_lightregular';
+	
 
 	ul {
 	&.list-style-none {
@@ -101,7 +91,7 @@ hr {
 	h1, h2, h3 {
 		margin: 0;
 		padding: 0;
-		font-family: 'nexa_lightregular';
+		
 	}
 	header {
 		padding: 0 20px;
@@ -129,7 +119,7 @@ hr {
 			background-color: #f5f5f5;
 			h1 {
 				font-size: 40px;
-				font-family: 'nexa_lightregular';
+				
 				text-transform: uppercase;
 			}
 			.welcome-box {
@@ -141,6 +131,10 @@ hr {
 					margin-bottom: 10px;
 					font-size: 50px;
 				}
+			}
+			.welcome-box.page {
+				max-height: 600px;
+				overflow-y: scroll;
 			}
 			p {
 				
@@ -201,8 +195,6 @@ hr {
 		text-transform: uppercase;
 	}
 }/*end sunnyside*/
-
-
 
 
 

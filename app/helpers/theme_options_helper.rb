@@ -50,6 +50,28 @@ module ThemeOptionsHelper
 			"Courier New"
 		when 'proximanova-h'
 			"Proxima Nova"
+		when 'proximanova-h-light'
+			"Proxima Nova Light"
+		when 'proximanova-h-bold'
+			"Proxima Nova Bold"
+		when 'futura-h'
+			"Futura"
+		when 'futura-h-bold'
+			"Futura Bold"
+		when 'futura-h-light'
+			"Futura Light"
+		when 'penna-h'
+			"Penna"
+		when 'museo-h'
+			"Museo Sans"
+		when 'museo-h-bold'
+			"Museo Sans Bold"
+		when 'museo-h-light'
+			"Museo Sans Light"
+		when 'garamond-h'
+			"Adobe Garamond Pro"
+		when 'garamond-h-bold'
+			"Adobe Garamond Pro Bold"
 		else
 			""
 		end
@@ -83,6 +105,28 @@ module ThemeOptionsHelper
 			"Courier New"
 		when 'proximanova'
 			"Proxima Nova"
+		when 'proximanova-light'
+			"Proxima Nova Light"
+		when 'proximanova-bold'
+			"Proxima Nova Bold"
+		when 'futura'
+			"Futura"
+		when 'futura-light'
+			"Futura Light"
+		when 'futura-bold'
+			"Futura Bold"
+		when 'penna'
+			"Penna"
+		when 'museo'
+			"Museo Sans"
+		when 'museo-bold'
+			"Museo Sans Bold"
+		when 'museo-light'
+			"Museo Sans Light"
+		when 'garamond'
+			"Adobe Garamond Pro"
+		when 'garamond-bold'
+			"Adobe Garamond Pro Bold"
 		else
 			""
 		end
@@ -93,3 +137,32 @@ module ThemeOptionsHelper
 
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

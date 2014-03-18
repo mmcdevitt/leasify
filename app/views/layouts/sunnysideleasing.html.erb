@@ -1,6 +1,6 @@
-<%= render 'layouts/sunnysidehead' %>
-	<body class="sunnyside leasing">
-		<%= render 'layouts/sunnysideheader' %>
+<%= render 'layouts/sunnyside/head' %>
+	<body class="sunnyside leasing <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<%= render 'layouts/sunnyside/header' %>
 		<div class="stats">
 			<div class="container center">
 				<ul>
@@ -14,7 +14,7 @@
 			</div>
 		</div>	
 		<%= render 'layouts/widget' %>
-		<%= render 'layouts/sunnysidefooter' %>
+		<%= render 'layouts/sunnyside/footer' %>
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('header').removeClass('navbar').addClass('navbar-inverse');
