@@ -18,10 +18,7 @@ class Page < ActiveRecord::Base
 
   },
   :storage => :s3,
-  :s3_credentials => {
-    :bucket => ENV['LEASIFY'],
-    :access_key_id => ENV['AKIAIK7L57MTKL3JUDRA'],
-    :secret_access_key => ENV['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']
-  }
+  :bucket => ENV['LEASIFY'],
+  :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
 	validates_attachment_content_type :page_image, :content_type => /\Aimage/
 end
