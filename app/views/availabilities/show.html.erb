@@ -1,16 +1,5 @@
-<div class="stats">
-  <div class="container center">
-    <ul>
-      <li><span>Vacancies</span><br><%= @availabilities.count %></li>
-      <li><span>Owner</span><br><%= @propertyinformation.owner_name %></li>
-      <li><span>Class</span><br><%= @propertyinformation.property_class %></li>
-      <li><span>Floors</span><br><%= @propertyinformation.floors %></li>
-      <li><span>SF</span><br><%= number_with_delimiter(@propertyinformation.sf, delimiter: ',') %></li>
-      <li><span>Year Built</span><br><%= @propertyinformation.year_built %></li>
-    </ul>
-  </div>
-</div>  
-<div class="container">
+
+
 <div class="availability-page">
   <div class="row">
     <div class="col-md-8">
@@ -94,7 +83,7 @@
     </div><!-- end col 4 -->
   </div><!-- end row -->
 </div><!-- end availability page -->
-</div>
+
 <!-- Modal -->
 <div class="modal fade" id="modal-message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

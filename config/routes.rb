@@ -18,7 +18,7 @@ Subdomain::Application.routes.draw do
   end
 
   scope :admin do
-    resources :theme_names, :sidebar_links
+    resources :theme_names, :sidebar_links, :admin
     get '/themes', to: 'theme_names#index', as: :admin_theme
     get '/themes/new', to: 'theme_names#new', as: :admin_theme_new
     get '/themes/:id/edit', to: 'theme_names#edit', as: :admin_theme_edit
@@ -28,6 +28,8 @@ Subdomain::Application.routes.draw do
     get '/sidebar/nav/new', to: 'sidebar_links#new', as: :admin_sidebar_new
     get '/sidebar/nav/:id/edit', to: 'sidebar_links#edit', as: :admin_sidebar_edit
     get '/sidebar/nav/:id', to: 'sidebar_links#show', as: :admin_sidebar_show
+
+    get '/users', to: 'admin#users_list', as: :users_list
   end
  
   constraints(Subdomains) do

@@ -6,7 +6,6 @@ class ThemeNamesController < ApplicationController
   # GET /theme_names.json
   def index
     @theme_names = ThemeName.all
-    
   end
 
   # GET /theme_names/1
@@ -17,10 +16,12 @@ class ThemeNamesController < ApplicationController
   # GET /theme_names/new
   def new
     @theme_name = ThemeName.new
+    @title = "New Theme"
   end
 
   # GET /theme_names/1/edit
   def edit
+    @title = @theme_name.name
   end
 
   # POST /theme_names
@@ -30,7 +31,7 @@ class ThemeNamesController < ApplicationController
 
     respond_to do |format|
       if @theme_name.save
-        format.html { redirect_to @theme_name, notice: 'Saved' }
+        format.html { redirect_to admin_theme_edit_path(@theme_name), notice: 'Saved' }
         format.json { render action: 'show', status: :created, location: @theme_name }
       else
         format.html { render action: 'new' }
@@ -43,8 +44,9 @@ class ThemeNamesController < ApplicationController
   # PATCH/PUT /theme_names/1.json
   def update
     respond_to do |format|
+      session[:return_to] ||= request.referer
       if @theme_name.update(theme_name_params)
-        format.html { redirect_to @theme_name, notice: 'Saved' }
+        format.html { redirect_to session.delete(:return_to), notice: 'Saved' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

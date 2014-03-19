@@ -51,8 +51,15 @@
           <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Admin Links</div>
             <ul class="nav nav-main" data-ride="collapse">
               <li >
+                <%= link_to users_list_path, class: "auto" do %>
+                  <i class="i i-users3 icon">
+                  </i>
+                  <span class="font-bold">Users</span>
+                <% end %>
+              </li>
+              <li >
                 <%= link_to admin_theme_path, class: "auto" do %>
-                  <i class="i i-statistics icon">
+                  <i class="i i-browser icon">
                   </i>
                   <span class="font-bold">Theme Names</span>
                 <% end %>

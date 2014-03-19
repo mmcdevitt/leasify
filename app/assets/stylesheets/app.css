@@ -3636,11 +3636,27 @@ margin-bottom:16px;
   overflow-y:scroll;
 }
 
-
-
-
-
-
+.users .userid {
+  width: 5%
+}
+.users .username,
+.users .firstname,
+.users .admin,
+.users .datejoined{
+  width:10%;
+}
+.users .lastname {
+  width: 50%;
+}
+.users .admin-row td {
+  background: #dff0d8 !important;
+}
+.theme_names .themename {
+  width: 80%;
+}
+.sidebar_links .name {
+  width: 80%;
+}
 
 
 

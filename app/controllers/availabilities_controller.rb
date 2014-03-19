@@ -121,7 +121,7 @@ class AvailabilitiesController < ApplicationController
       @theme_name = ThemeOption.where(site_id: @site.id).first.template
       @theme = ThemeName.where(id: @theme_name).first.name.downcase
       if params[:action] == "show"
-        "leasing"
+        @theme + "leasing-single"
       else
         "application"
       end

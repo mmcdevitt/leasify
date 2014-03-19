@@ -10,25 +10,92 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <section class="scrollable wrapper w-f">
+    <div class="panel-body">
+      <div class="add-page">
+        <h3><%= @title %></h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="add-page-image  m-t-lg">
+              <div class="row-fluid">
+                <%= f.file_field :theme_name_image, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;" %>
+                <div class="bootstrap-filestyle" style="display: inline;">
+                  <label for="lefile" class="btn btn-default btn-square">
+                    <i class="i i-images"></i><br>
+                    <span>Upload Image</span>
+                  </label>
+                </div>
+              </div>
+               <% if f.object.theme_name_image? %>
+                <div class="upload-preview-options">
+                  <%= image_tag(@theme_name.theme_name_image.url(:thumb), id: "pageimage", class: "img-thumbnail") %>
+                </div>
+              <% else %>
+                <div class="upload-preview-options">
+                  <%= image_tag("blank.gif", id: "pageimage") %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description %>
+              <%= f.text_field :description, class: "form-control" %>
+            </div>
+          </div>
+        </div>
+     </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="row-fluid">
-    <%= f.file_field :theme_name_image, as: :file, class: "filestyle", id: "filestyle-0", style: "position: fixed; left: -500px;" %>
-    <div class="bootstrap-filestyle" style="display: inline;">
-      <label for="filestyle-0" class="btn btn-default">
-        <span>Upload Image</span>
-      </label>
+</section>
+<footer class="footer bg-white b-t">
+  <div class="row text-center-xs">
+    <div class="col-md-6 hidden-sm">
+      
+    </div>
+    <div class="col-md-6 col-sm-12 text-right text-center-xs">                
+      <%= f.submit "Save", class: "btn btn-success btn-more-padding" %>
     </div>
   </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</footer>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

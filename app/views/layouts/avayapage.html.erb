@@ -6,42 +6,15 @@
 				<div class="main-homepage" style="background: url('<%= @page.page_image %>');
 					-webkit-background-size: cover; -moz-background-size: cover; 
 					-o-background-size: cover; background-size: cover;">
-			
-				<div id="page">
-					<div id="content_container">
-						<div id="content">
-							<div class="welcome-box page">
-								<div class="m-b-lg">
-									<h1><%= @page.title %></h1>
-									<p><%= @page.subtitle %></p>
-								</div>
-								<div class="line"></div>
-								<p><%= markdown(@page.content) %></p>
-							</div>
-						</div>
+					<div class="page-title">
+						<h1><%= @page.title %></h1>
+						<p><%= @page.subtitle %></p>
 					</div>
-				</div><!-- end container -->
-			</div><!-- end main homepage -->
-			<footer>
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-md-6">
-							<p>Copyright &copy; 2014 <%= @propertyinformation.name %>, 
-								<%= full_address %>, <%= @propertyinformation.zipcode %></p>
-						</div>
-						<div class="col-md-6">
-							<div class="pull-right">
-								<p>
-									<%= @propertyinformation.owner_name %> | Powered by 
-									<a href="http://demo.leasify.co" target="_target">
-										Leasify
-									</a>
-								</p>
-							</div>
-						</div>
+					<div class="welcome-box page">
+						<p><%= markdown(@page.content) %></p>
 					</div>
-				</div>
-			</footer>
+				</div><!-- end main homepage -->
+			<%= render 'layouts/avaya/footer' %>
 		</div><!-- end wrapper -->
 	</body>
 </html>

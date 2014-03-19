@@ -16,10 +16,12 @@ class SidebarLinksController < ApplicationController
   # GET /sidebar_links/new
   def new
     @sidebar_link = SidebarLink.new
+    @title = "New Sidebar Link"
   end
 
   # GET /sidebar_links/1/edit
   def edit
+    @title = @sidebar_link.name
   end
 
   # POST /sidebar_links

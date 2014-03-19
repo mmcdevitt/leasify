@@ -1,0 +1,27 @@
+<%= render 'layouts/livingston/head' %>
+	<body class="livingston <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<div id="wrapper">
+			<%= render 'layouts/livingston/header' %>
+			<div class="container">
+				<div class="row heading">
+					<div class="col-md-8 col-md-offset-2 center">
+						<h1><%= @page.title %></h1>
+						<p><%= @page.subtitle %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<%= markdown(@page.content) %>
+					</div>
+					<div class="col-md-6">
+						<%= image_tag(@page.page_image.url(:large), class: "img-responsive") %>
+					</div>
+				</div>
+			</div>
+			
+			<%= render 'layouts/livingston/footer' %>
+		</div><!-- end wrapper -->
+	</body>
+</html>
+
+

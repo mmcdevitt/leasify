@@ -32,8 +32,15 @@ hr {
 	margin-bottom: 20px;
 }
 .livingston {
-	padding-top: 70px;
+	padding-top: 50px;
 
+	.heading {
+		padding: 50px 0 100px;
+
+		h1 {
+			margin:30px 0;
+		}
+	}
 	ul {
 		&.list-style-none {
 			list-style: none;
@@ -109,11 +116,11 @@ hr {
 		}
 	}
 	.stats {
-		margin-top:50px;
+		margin-top:0px;
 		margin-bottom: 30px;
 		background: #fff;
-		border-bottom: 1px solid #d5d9dc;
-		padding: 10px 0;
+		border-bottom: 1px solid #efefef;
+		padding: 5px 0;
 		ul {
 			margin: 0;
 			li {

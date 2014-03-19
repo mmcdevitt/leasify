@@ -1,0 +1,32 @@
+<%= render 'layouts/avaya/head' %>
+	<body class="avaya <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<div id="wrapper">
+			<%= render 'layouts/avaya/header' %>
+			
+				<div class="main-homepage" style="background: url('<%= HomepageGallery.where(site_id: @site.id).first.homepage_gallery_image %>');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;">
+					<div class="page-title avaya-leasing">
+						<h1>Leasing</h1>
+					</div>
+					<div class="welcome-box page white-bg">
+						<div class="stats">
+							<div class="center">
+								<ul>
+									<li><span>Vacancies</span><br><%= @availabilities.count %></li>
+									<li><span>Owner</span><br><%= @propertyinformation.owner_name %></li>
+									<li><span>Class</span><br><%= @propertyinformation.property_class %></li>
+									<li><span>Floors</span><br><%= @propertyinformation.floors %></li>
+									<li><span>SF</span><br><%= number_with_delimiter(@propertyinformation.sf, delimiter: ',') %></li>
+									<li><span>Year Built</span><br><%= @propertyinformation.year_built %></li>
+								</ul>
+							</div>
+						</div>
+						<%= render 'layouts/avaya/widget' %>
+					</div>
+				</div><!-- end main homepage -->
+			<%= render 'layouts/avaya/footer' %>
+		</div><!-- end wrapper -->
+	</body>
+</html>
+

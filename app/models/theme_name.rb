@@ -6,7 +6,7 @@ class ThemeName < ActiveRecord::Base
     large: "848x600#",
     medium: "300x200#",
     small: "253x170#",
-    thumb: "80x80#"
+    thumb: "140x140#"
 
   },
   :storage => :s3,

@@ -1,0 +1,25 @@
+<%= render 'layouts/sunnyside/head' %>
+	<body class="sunnyside leasing <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<%= render 'layouts/sunnyside/header' %>
+		<div class="stats">
+		  <div class="container center">
+		    <ul>
+		      <li><span>Vacancies</span><br><%= @availabilities.count %></li>
+		      <li><span>Owner</span><br><%= @propertyinformation.owner_name %></li>
+		      <li><span>Class</span><br><%= @propertyinformation.property_class %></li>
+		      <li><span>Floors</span><br><%= @propertyinformation.floors %></li>
+		      <li><span>SF</span><br><%= number_with_delimiter(@propertyinformation.sf, delimiter: ',') %></li>
+		      <li><span>Year Built</span><br><%= @propertyinformation.year_built %></li>
+		    </ul>
+		  </div>
+		</div>  
+		<div class="container">
+			<%= yield %>
+		</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('header').removeClass('navbar').addClass('navbar-inverse');
+				});
+			</script>		
+	</body>
+</html>

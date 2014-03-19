@@ -65,6 +65,10 @@ hr {
 	background: rgba(0,0,0,0.2);
 	color: #fff;
 }
+.yield {
+	font-size: 14px;
+	line-height: normal;
+}
 .avaya {
 	
 
@@ -122,10 +126,22 @@ hr {
 				
 				text-transform: uppercase;
 			}
+			.page-title {
+				float: left;
+				text-align: right;
+				width: 50%;
+				padding: 100px 100px 100px 380px;
+
+				&.avaya-leasing {
+					width:35%;
+					padding: 100px;
+				}
+				
+			}
 			.welcome-box {
 				width: 700px;
 				text-align: center;
-				background: rgba(0,0,0,0.8);
+				background: rgba(0,0,0,0.95);
 				padding: 60px;
 				h1 {
 					margin-bottom: 10px;
@@ -133,8 +149,22 @@ hr {
 				}
 			}
 			.welcome-box.page {
-				max-height: 600px;
-				overflow-y: scroll;
+				float:right;
+		    height:100%;
+		    width:50%;
+		    text-align: left;
+		    padding: 100px;
+		    font-size: 18px;
+		    line-height: 28px;
+		    overflow-y: auto;
+		    overflow-x: hidden;
+
+		    &.white-bg {
+		    	background: #f5f5f5;
+		    	padding:0px 30px 30px 30px;
+		    	width: 65%;
+		    	color: #535353;
+		    }
 			}
 			p {
 				
@@ -181,6 +211,32 @@ hr {
 			color: #fff;
 		}
 	}
+	.stats {
+		
+		margin-bottom: 30px;
+		background: #fff;
+		border-bottom: 1px solid #d5d9dc;
+		padding: 10px 0 4px;
+		margin-right: -30px;
+		margin-left: -30px;
+		ul {
+			margin: 0;
+			li {
+			line-height:normal;
+			display: inline-block;
+			padding: 0 20px 0 20px;
+			font-size: 13px;
+			color: #666666;
+			font-weight: bold;
+				span {
+					font-size: 10px;
+					color: #a6a6a6;
+					text-transform: uppercase;
+					font-weight: bold;
+				}
+			}
+		}
+	}
 	.m-b-lg {
 		margin-bottom: 50px;
 	}
@@ -194,10 +250,96 @@ hr {
 	.uppercase {
 		text-transform: uppercase;
 	}
-}/*end sunnyside*/
+	.leasing-widget {
+		border: 1px solid #d7d7d7;
+		border-radius: 2px;
+		padding: 5px;
+		background: #fff;
+		margin-bottom: 20px;
+		font-size: 14px;
+		line-height: normal;
+		&:hover {
+			border: 1px solid #b8b8b8;
+			box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.08);
+		}
+		img {
+			width: 100%;
+		}
+		.leasing-title {
+			padding:10px 0;
+			text-align: center;
+			border-bottom: 1px solid #d7d7d7;
+			p:first-child {
+				font-size:16px;
+				font-weight: bold;
+				margin:0;
+			}
+			p:last-child {
+				font-size: 12px;
+				color: #a2a6aa;
+				margin: 0;
+			}
+		}
 
+		.leasing-content {
+			padding: 16px;
 
+			p {
+				font-size: 12px;
+				line-height:21px;
+				color: #999;
+			}
+		}
+	}
 
+}/*end avaya*/
+
+@media screen and (max-width: 1200px) {
+  .avaya .main-homepage .welcome-box.page,
+  .avaya .main-homepage .welcome-box.page.white-bg {
+    width: 100%;
+    float:none;
+    overflow-y: visible;
+    height:auto;
+  }
+
+  .avaya .main-homepage .page-title,
+  .avaya .main-homepage .page-title.avaya-leasing {
+    width: 100%;
+    float:none;
+    text-align:center;
+  }
+  .avaya .main-homepage .page-title {
+  	padding: 100px 0 60px;
+  }
+  footer {
+    display:none;
+  }
+  .avaya header {
+    width: 100%;
+    text-align:center;
+  }
+  .avaya ul li  {
+    display:inline;
+    width:100%;
+    padding: 0 10px;
+  }
+  .avaya .stats {
+  	display: none;
+  }
+  .avaya .main-homepage .welcome-box.page.white-bg {
+  	padding-top:30px;
+  }
+
+  .avaya header {
+  	margin: 0;
+  	padding:10px 0;
+  }
+}
+
+.icon-bar {
+	background:white;
+}
 
 
 
