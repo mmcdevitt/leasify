@@ -3,6 +3,8 @@ class Page < ActiveRecord::Base
 	belongs_to :site
 	validates :title, :subtitle, :content, presence: true
 	validate :validate_leasing
+
+	# Can't allow users to create a page called leasing 
 	def validate_leasing
 		if self.title.downcase == "leasing" || self.title.downcase == "leasings"
 			errors.add(:title, "can not be called 'Leasing' because a Leasing page has automatically been generated when you created this site.")
@@ -21,4 +23,51 @@ class Page < ActiveRecord::Base
   :bucket => ENV['LEASIFY'],
   :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
 	validates_attachment_content_type :page_image, :content_type => /\Aimage/
+
+  # Create page slugs
+	extend FriendlyId
+	friendly_id :title, use: :slugged
+
+
+
+   
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

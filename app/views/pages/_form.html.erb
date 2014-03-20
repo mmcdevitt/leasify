@@ -4,7 +4,7 @@
   <div class="panel-body">
     <div class="add-page">
       <h3><%= @title %></h3>
-      <p><%= edit_page_url %></p>
+      <p><%= edit_page_url %> <%= link_to "View Page", pages_id_path, target: "_blank", class: "text-muted" %></p>
       <div class="row">
         <div class="col-md-12">
           <div class="add-page-image">
@@ -41,9 +41,7 @@
           </div>
         <% end %>
         <div class="col-md-8">
-          <% @subdomain = request.subdomain %>
-          <% @site = Site.where(subdomain: request.subdomain).first.id %>
-          <%= f.hidden_field :site_id, value: @site %>
+         <%= f.hidden_field :site_id, value: current_site_id %>
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
             <%= f.label :title, "Page Title" %>

@@ -17,18 +17,6 @@
           <div class="col-md-8">
   <h1>Post</h1>
     <%= f.text_area :title, id: "some-textarea", class: "wysihtml5 form-control" %>
-    <script type="text/javascript">
-      $(document).ready(function(){
-
-        $('.wysihtml5').each(function(i, elem) {
-          $(elem).wysihtml5();
-        });
-
-        $(".wysihtml5-toolbar .btn").addClass('btn-default');
-
-      })
-    </script>
-
   <div class="actions">
     <%= f.submit %>
   </div>

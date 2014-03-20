@@ -50,6 +50,11 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+
+  def current_site_id
+  	@subdomain = request.subdomain
+    @site = Site.where(subdomain: request.subdomain).first.id
+  end
   
 	
 end

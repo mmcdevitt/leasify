@@ -10,7 +10,7 @@ module PagesHelper
 
 	def edit_page_url
 		if params[:action] == 'edit'
-			request.subdomain + ".leasify.co/" + @page.title.downcase
+			request.subdomain + ".leasify.co/" + @page.slug.downcase
 		end
 	end
 

@@ -42,6 +42,13 @@ class PagesController < ApplicationController
   def create
     @page = current_user.pages.new(page_params)
 
+    @page.slug = @page.title.parameterize
+
+    if Page.exists?(slug: @page.slug, site_id: @site.id)
+      pages = Page.where(title: @page.title, site_id: @site.id).count
+      @page.slug = @page.title.parameterize + "-" + (pages + 1).to_s
+    end
+
     respond_to do |format|
       if @page.save
         format.html { redirect_to edit_page_path(@page), notice: 'Saved' }
@@ -81,12 +88,15 @@ class PagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
-      @page = Page.find(params[:id])
+      @subdomain           = request.subdomain
+      @site                = Site.where(subdomain: request.subdomain).first
+      @page = Page.where(site_id: @site.id).find_by_slug!(params[:id])
+      #@page = Page.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:user_id, :title, :subtitle, :content, :page_image, :site_id)
+      params.require(:page).permit(:user_id, :slug, :title, :subtitle, :content, :page_image, :site_id)
     end
 
     def theme_name

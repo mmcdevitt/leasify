@@ -91,6 +91,8 @@ GEM
       i18n (~> 0.5)
     foreigner (1.6.1)
       activerecord (>= 3.0.0)
+    friendly_id (5.0.3)
+      activerecord (>= 4.0.0)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -228,6 +230,7 @@ DEPENDENCIES
   draper
   factory_girl_rails
   faker
+  friendly_id
   haml
   jbuilder (~> 1.2)
   jquery-rails

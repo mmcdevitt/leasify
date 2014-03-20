@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315205156) do
+ActiveRecord::Schema.define(version: 20140320003157) do
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -77,14 +77,20 @@ ActiveRecord::Schema.define(version: 20140315205156) do
     t.integer  "page_image_file_size"
     t.datetime "page_image_updated_at"
     t.integer  "site_id"
+    t.string   "slug"
   end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug"
 
   create_table "posts", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "slug"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug"
 
   create_table "property_informations", force: true do |t|
     t.string   "name"
@@ -142,14 +148,14 @@ ActiveRecord::Schema.define(version: 20140315205156) do
     t.integer  "theme_image_file_size"
     t.datetime "theme_image_updated_at"
     t.integer  "user_id"
+    t.integer  "template",                    limit: 255
     t.string   "homepage_image_file_name"
     t.string   "homepage_image_content_type"
     t.integer  "homepage_image_file_size"
     t.datetime "homepage_image_updated_at"
     t.integer  "site_id"
-    t.integer  "template"
-    t.string   "body_font",                   default: "arial"
-    t.string   "heading_font",                default: "museo-h-bold"
+    t.string   "body_font",                               default: "arial"
+    t.string   "heading_font",                            default: "museo-h-bold"
   end
 
   create_table "users", force: true do |t|
