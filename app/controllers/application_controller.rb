@@ -67,6 +67,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    (root_url(:subdomain => false) )
+  end
+
   # Defines the front end template name for home action 
   def theme_name
     if params[:action] == "home"
