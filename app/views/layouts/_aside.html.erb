@@ -117,7 +117,7 @@
       </a>
        <ul class="dropdown-menu animated fadeInRight help-dropup">
         <li><span class="arrow bottom"></span><a href="http://lvh.me:3000/dashboard">Support</a></li>
-        <li><%= link_to "Take a tour of Leasify", tour_path %></li>
+        <li><%= link_to "Take a tour of Leasify", tour_path, data: { no_turbolink: false } %></li>
         <li class="divider"></li>                
         <li><a href="/logout">Provide Feedback</a></li>
       </ul>
