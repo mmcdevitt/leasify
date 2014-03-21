@@ -1,0 +1,223 @@
+ <section class="scrollable wrapper w-f">
+    <div class="panel-body">
+      <p>Hello, <%= current_user.username %></p>
+      <% if @propertyinformation.name.nil? %>
+        <% num1 = 1 %>
+        <% else %>
+        <% num1 = 0 %>
+      <% end %>
+      <% if @propertyinformation.owner_name.nil? %>
+        <% num2 = 1 %>
+        <% else %>
+        <% num2 = 0 %>
+      <% end %>
+      <% if @propertyinformation.property_class.nil? %>
+        <% num3 = 1 %>
+        <% else %>
+        <% num3 = 0 %>
+      <% end %>
+      <% if @propertyinformation.floors.nil? %>
+        <% num4 = 1 %>
+        <% else %>
+        <% num4 = 0 %>
+      <% end %>
+      <% if @propertyinformation.sf.nil? %>
+        <% num5 = 1 %>
+        <% else %>
+        <% num5 = 0 %>
+      <% end %>
+      <% if @propertyinformation.year_built.nil? %>
+        <% num6 = 1 %>
+        <% else %>
+        <% num6 = 0 %>
+      <% end %>
+      <% num = num1 + num2 + num3 + num4 + num5 + num6 %>
+      <% if num > 0 %>
+        <div class="alert alert-danger alert-tour"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">Your Property Information is empty! Let's fill them out.</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to property_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+      <% if @propertyinformation.address.nil? %>
+        <% num7 = 1 %>
+        <% else %>
+        <% num7 = 0 %>
+      <% end %>
+      <% if @propertyinformation.state.nil? %>
+        <% num8 = 1 %>
+        <% else %>
+        <% num8 = 0 %>
+      <% end %>
+      <% if @propertyinformation.city.nil? %>
+        <% num9 = 1 %>
+        <% else %>
+        <% num9 = 0 %>
+      <% end %>
+      <% if @propertyinformation.zipcode.nil? %>
+        <% num10 = 1 %>
+        <% else %>
+        <% num10 = 0 %>
+      <% end %>
+     
+      <% num_address = num7 + num8 + num9 + num10 %>
+      <% if num_address > 0 %>
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">Your Property Address is empty! Let's fill it out.</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to address_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+
+      <% if @homepage_gallery.nil? %>
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any images for your homepage. Let's upload one!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to homepage_image_gallery_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+
+      <% if @themeoptions.homepage_heading.nil? %>
+        <% num11 = 1 %>
+        <% else %>
+        <% num11 = 0 %>
+      <% end %>
+      <% if @themeoptions.homepage_subheading.nil? %>
+        <% num12 = 1 %>
+        <% else %>
+        <% num12 = 0 %>
+      <% end %>
+      <% if @themeoptions.content.nil? %>
+        <% num13 = 1 %>
+        <% else %>
+        <% num13 = 0 %>
+      <% end %>
+      <% num_homepage = num11 + num12 + num13 %>
+      <% if num_homepage > 0 %>
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">Your Homepage content is empty! Let's fill it out.</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to homepage_content_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+
+      <% if @pages.empty? %>
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any pages created. Let's create some!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to new_page_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+
+       <% if @availabilities.empty? %>
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any listings created. Let's create some!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to new_availability_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+
+       <% if @contacts.empty? %>
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any contacts created. Let's create some!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to new_contact_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>
+            </div>
+            </div>
+          </div> 
+        </div>
+      <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </section>
+  
+ 
+  
+
+

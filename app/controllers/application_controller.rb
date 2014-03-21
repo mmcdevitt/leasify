@@ -60,7 +60,11 @@ class ApplicationController < ActionController::Base
 
   # User is redirected to users dashboard after sign in
   def after_sign_in_path_for(resource)
-     dashboard_path
+    if current_user.sign_in_count == 1
+      tour_path
+    else
+      dashboard_path
+    end
   end
 
   # Defines the front end template name for home action 

@@ -6,7 +6,7 @@ class Site < ActiveRecord::Base
 	has_many :theme_options, :dependent => :destroy
 	has_many :property_informations, :dependent => :destroy
 	has_many :homepage_galleries, :dependent => :destroy
-	validates :name, :subdomain, presence: true
+	validates :subdomain, presence: true
 	validates :subdomain, uniqueness: true
 	validates :subdomain, format: { with: /\A[a-zA-Z\-\d]+\z/i, 
 						message: "Leasify URL's can only contain alphanumeric 

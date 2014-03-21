@@ -1,0 +1,222 @@
+<% if request.subdomain != "www" && request.subdomain.present? %>
+<section class="scrollable wrapper w-f">
+    <div class="panel-body">
+      <p>Hello, <%= current_user.first_name %></p>
+        <div class="alert alert-danger alert-tour"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">Your Property Information is empty! Let's fill them out.</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+                <%= link_to property_path, class: "btn btn-success btn-sm" do %>
+                  <i class="i i-gauge"></i> Do it now!
+                <% end %>          
+              </div>
+            </div>
+          </div> 
+        </div>
+     
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">Your Property Address is empty! Let's fill it out.</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to address_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>          
+            </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any images for your homepage. Let's upload one!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to homepage_image_gallery_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>        
+            </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">Your Homepage content is empty! Let's fill it out.</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to homepage_content_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>        
+            </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any pages created. Let's create some!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to new_page_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>        
+            </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any listings created. Let's create some!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to new_availability_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>        
+            </div>
+            </div>
+          </div> 
+        </div>
+
+        <div class="alert alert-danger"> 
+          <div class="row">
+            <div class="col-sm-8">
+              <h4 style="margin:5px 0 0 0;">You don't have any contacts created. Let's create some!</h4>
+            </div> 
+            <div class="col-sm-4"> 
+              <div class="pull-right">
+              <%= link_to new_contact_path, class: "btn btn-success btn-sm" do %>
+                <i class="i i-gauge"></i> Do it now!
+              <% end %>          
+            </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>
+
+
+    <%= javascript_include_tag "introtour.min", "dashboard_tour", "app.plugin" %>
+  
+<% else %>
+<header class="header bg-white b-b clearfix">
+  <div class="row m-t-sm">
+    <div class="col-sm-8 m-b-xs">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-default" title="Refresh"><i class="fa fa-refresh"></i></button>
+        <button type="button" class="btn btn-sm btn-default" title="Remove"><i class="fa fa-trash-o"></i></button>
+        <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+      <%= link_to new_site_path, class: "btn btn-sm btn-default btn-demo" do %>
+        <i class="fa fa-plus"></i> Create New Site
+      <% end %>
+    </div>
+    <div class="col-sm-4 m-b-xs">
+      <div class="input-group">
+        <input type="text" class="input-sm form-control input-header" placeholder="Search">
+        <span class="input-group-btn">
+          <button class="btn btn-sm btn-default" type="button">Go!</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="scrollable wrapper w-f">
+  <section class="panel panel-default">
+    <div class="table-responsive">
+     
+      <table class="table table-striped m-b-none">
+        <thead>
+          <tr>
+            <th width="20"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
+            <th class="th-sortable" data-toggle="class">Property Name</th>
+            <th>URL</th>
+            <th>Date Created</th>
+            <th width="30"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tr-demo">
+            <td><label class="checkbox m-n i-checks"><input type="checkbox" name="ids[]"><i></i></label></td>
+            <td>Demo Property</td>
+            <td><a href="http://jimmybean.leasify.co/dashboard" target="_blank">demo-property.leasify.co</a></td>
+            <td>March 18, 2014</td>
+            <td class="trash-demo">
+              <a href="" data-toggle="modal" data-target="#modal6">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </td>
+          </tr>
+       </tbody>
+      </table>
+    </div>
+  </section>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<%= javascript_include_tag "introtour.min", "demo", "app.plugin" %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".introjs-tooltipbuttons").addClass('pull-right');
+  });  
+</script>
+
+
+
+
+
+
+
+
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,6 +10,12 @@ class PropertyInformationsController < ApplicationController
 		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
 	end
 
+  def amenities
+    @propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
+    @amenities_common = Amenity.where(category: "Common")
+    @amenities_extra = Amenity.where(category: "Extra")
+  end
+
 	def update
     @propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
     # if params[:propertyinformations] && params[:propertyinformations].has_key?(:user_id)
@@ -41,7 +47,10 @@ class PropertyInformationsController < ApplicationController
   	def propertyinformations_params
       params.require(:property_information).permit(:user_id, :name, 
       																							:owner_name, :property_class, :floors, :sf, :year_built,
-      																							:state, :address, :city, :zipcode)
+      																							:state, :address, :city, :zipcode, :kitchen, :showers, :reception,
+                                                    :patio, :parking_garage, :lobby_attendant, :cafeteria, :onsite_security,
+                                                    :bathrooms, :fitness_center, :bicycles_allowed, :bicycle_storage,
+                                                    :dog_friendly)
     end
 
 

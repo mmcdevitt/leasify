@@ -15,11 +15,14 @@
         <% end %>
           <div class="row">
             <div class="col-md-4">
+              <%= f.fields_for :property_informations do |x| %>
+                <%= x.hidden_field :user_id, value: current_user.id %>
               <div class="form-group" style="margin-top:30px;">
-                <%= f.label :name, "Property Name" %>
-                <%= f.text_field :name, class: "form-control" %>
+                <%= x.label :name, "Property Name" %>
+                <%= x.text_field :name, class: "form-control" %>
                 <p>Your property's name.</p>
               </div>
+              <% end %>
               <div class="form-group">
                 <%= f.label :subdomain, "URL" %>
                 <div class="input-group">
@@ -34,9 +37,7 @@
                 <%= builder.hidden_field :content, value: "This is the coolest place on Earth." %>
                 <%= builder.hidden_field :template, value: 2 %>
               <% end %>
-                <%= f.fields_for :property_informations do |x| %>
-                  <%= x.hidden_field :user_id, value: current_user.id %>
-                <% end %>
+               
               <div class="actions">
                 <%= f.submit "Create my Site", class: "btn btn-success" %>
               </div>

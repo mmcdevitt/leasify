@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class="app">
+	<%= render 'layouts/head' %>
+	<body class="proximanova">
+		<section class="hbox stretch">
+    	<aside class="bg-dark b-r b-light aside-md hidden-print" id="nav">          
+			  <section class="vbox">
+			     <section class="w-f scrollable">
+			      <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2">
+			        <!-- nav -->                 
+			        <nav class="nav-primary hidden-xs">
+			        	<% if request.subdomain != "www" && request.subdomain.present? %>
+			        	<div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Browse</div>
+				        	<ul class="nav nav-main" data-ride="collapse">
+				        		<% @sidebar_nav.each do |sidebar| %>
+				              <li>
+				                <%= link_to send(sidebar.link_to), class: "auto" do %>
+				                  <i class="i i-<%= sidebar.icon %> icon">
+				                  </i>
+				                  <span class="font-bold"><%= sidebar.name %></span>
+				                <% end %>
+				              </li>
+				            <% end %>
+	          			</ul>
+	          			<div class="line dk hidden-nav-xs"></div>
+				          <% unless @pages.empty? %>
+				          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Pages</div>
+				          <% end %>
+				          <ul class="nav">
+				            <% @pages.each do |page| %>
+				              <li>
+				                <%= link_to edit_page_path(page) do %>
+				                <i class="i i-docs icon"></i>
+				                <%= page.title %>
+				                <% end %>
+				              </li>
+				            <% end %>
+				          </ul>
+				          <% unless @availabilities.empty? %>
+				          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Availabilities</div>
+				          <% end %>
+				          <ul class="nav">
+				            <% @availabilities.each do |availability| %>
+				              <li>
+				                <%= link_to edit_availability_path(availability) do %>
+				                <i class="i i-stack icon"></i>
+				                <%= availability.suite_or_floor + " #" + availability.title %>
+				                <% end %>
+				              </li>
+				            <% end %>
+				          </ul>
+			        	<% else %>
+			          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">My Sites</div>
+			          <ul class="nav nav-main" data-ride="collapse">
+		              <li>
+		                <a class="auto" href="" target="_blank">
+			                <i class="i i-stack icon"></i>
+			                <span class="font-bold">Demo Property</span>
+										</a>          
+									</li>
+								</ul>
+								<% end %>
+			        </nav>
+			        <!-- / nav -->
+			      </div>
+			    </section>
+			      <footer class="footer hidden-xs no-padder text-center-nav-xs">
+				      <div class="dropup help">
+				      <a href="" data-toggle="dropdown" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs dropdown-toggle">
+				        <i class="i i-question2"></i>
+				      </a>
+				       <ul class="dropdown-menu animated fadeInRight help-dropup">
+				        <li><span class="arrow bottom"></span><a href="http://lvh.me:3000/dashboard">Support</a></li>
+				        <li><a href="/dashboard/profile/edit">Take a tour of Leasify</a></li>
+				        <li><a href="/dashboard/profile/edit">Learn how to use Leasify</a></li>
+				        <li class="divider"></li>                
+				        <li><a href="/logout">Provide Feedback</a></li>
+				      </ul>
+				    </div>
+				      <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
+				        <i class="i i-circleleft text"></i>
+				        <i class="i i-circleright text-active"></i>
+				      </a>
+				    </footer>
+			  </section>
+			</aside>
+      <section id="content">
+        <section class="hbox stretch">
+        	<section>
+	        	<section class="vbox">
+		        	<%= render 'layouts/header' %>
+		        	<% flash.each do |type, message| %>
+								<div class="alert <%= flash_class type %>" id="alert-fadeout">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<%= message %>
+								</div>
+							<% end %>		 
+		          <%= yield %>
+		        </section> 
+		      </section> 
+		    </section>
+        <a href="#" class="hide nav-off-screen-block" 
+        	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
+      </section>
+    </section>
+	</body>
+</html>

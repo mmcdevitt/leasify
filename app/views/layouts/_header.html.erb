@@ -21,7 +21,7 @@
                 <span class="m-b-xs block">
                   <i class="i i-mail i-2x text-primary-lt"></i>
                 </span>
-                <small class="text-muted">Mailbox</small>
+                <small class="text-muted">New Site</small>
               </a>
             </div>
           </div>
@@ -81,10 +81,10 @@
     <% if request.subdomain.present? && request.subdomain != "www" %>
       <% if user_signed_in? %>
         <li> 
-          <%= link_to request.subdomain + ".leasify.co", "/", target: "_blank" %> 
+          <%= link_to request.subdomain + ".leasify.co", "/", target: "_blank", class: "site-link-tour" %> 
         </li>
         <li>
-          <%= link_to "My Sites", root_url(:subdomain => false) + "dashboard" %>
+          <%= link_to "My Sites", root_url(:subdomain => false) + "dashboard", class: "allsite-link-tour" %>
         </li>
       <% end %>
     <% end %>
@@ -93,7 +93,7 @@
   <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
     <li>
       <% if user_signed_in? %>
-        <%= link_to "Dashboard", dashboard_path %>
+        <%= link_to "Dashboard", dashboard_path, class: "dashboard-link-tour" %>
       <% end %>
     </li>
     <% if user_signed_in? %>

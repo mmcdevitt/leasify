@@ -79,7 +79,7 @@ class SitesController < ApplicationController
     def site_params
       params.require(:site).permit(:name, :subdomain, :user_id, 
                                    theme_options_attributes: [:user_id, :id, :content, :template],
-                                   property_informations_attributes: [:user_id, :id])
+                                   property_informations_attributes: [:user_id, :id, :name])
     end
 
     # def set_subdomain

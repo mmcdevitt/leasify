@@ -71,19 +71,36 @@
                   <span class="font-bold">Sidebar Links</span>
                 <% end %>
               </li>
+              <li >
+                <%= link_to admin_amenities_path, class: "auto" do %>
+                  <i class="i i-statistics icon">
+                  </i>
+                  <span class="font-bold">Amenities</span>
+                <% end %>
+              </li>
             </ul>
-          </div>
+        
           <% end %>
           <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">My Sites</div>
           <ul class="nav nav-main" data-ride="collapse">
             <% @sites.each do |site| %>
+              <% if current_user.sign_in_count == 1 %>
+              <li>
+                <%= link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard/tour", class: "auto", target: "_blank" do %>
+                <i class="i i-stack icon">
+                </i>
+                <span class="font-bold"><%= PropertyInformation.where(site_id: site.id).first.name %></span>
+                <% end %>
+              </li>
+              <% else %>
               <li>
                 <%= link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard", class: "auto", target: "_blank" do %>
                 <i class="i i-stack icon">
                 </i>
-                <span class="font-bold"><%= site.name %></span>
+                <span class="font-bold"><%= PropertyInformation.where(site_id: site.id).first.name %></span>
                 <% end %>
               </li>
+              <% end %>
             <% end %>
           </ul>
           <% end %>
@@ -94,9 +111,17 @@
     </section>
     
     <footer class="footer hidden-xs no-padder text-center-nav-xs">
-      <a href="modal.lockme.html" data-toggle="ajaxModal" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs">
-        <i class="i i-logout"></i>
+      <div class="dropup help">
+      <a href="" data-toggle="dropdown" class="btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs dropdown-toggle">
+        <i class="i i-question2"></i>
       </a>
+       <ul class="dropdown-menu animated fadeInRight help-dropup">
+        <li><span class="arrow bottom"></span><a href="http://lvh.me:3000/dashboard">Support</a></li>
+        <li><%= link_to "Take a tour of Leasify", tour_path %></li>
+        <li class="divider"></li>                
+        <li><a href="/logout">Provide Feedback</a></li>
+      </ul>
+    </div>
       <a href="#nav" data-toggle="class:nav-xs" class="btn btn-icon icon-muted btn-inactive m-l-xs m-r-xs">
         <i class="i i-circleleft text"></i>
         <i class="i i-circleright text-active"></i>

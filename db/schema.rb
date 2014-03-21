@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320003157) do
+ActiveRecord::Schema.define(version: 20140321045340) do
+
+  create_table "amenities", force: true do |t|
+    t.string   "name"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "availabilities", force: true do |t|
     t.string   "title"
@@ -107,6 +114,19 @@ ActiveRecord::Schema.define(version: 20140320003157) do
     t.string   "city"
     t.integer  "zipcode"
     t.integer  "site_id"
+    t.boolean  "kitchen"
+    t.boolean  "showers"
+    t.boolean  "reception"
+    t.boolean  "patio"
+    t.boolean  "parking_garage"
+    t.boolean  "lobby_attendant"
+    t.boolean  "cafeteria"
+    t.boolean  "onsite_security"
+    t.boolean  "bathrooms"
+    t.boolean  "fitness_center"
+    t.boolean  "bicycles_allowed"
+    t.boolean  "bicycle_storage"
+    t.boolean  "dog_friendly"
   end
 
   create_table "sidebar_links", force: true do |t|
@@ -118,7 +138,6 @@ ActiveRecord::Schema.define(version: 20140320003157) do
   end
 
   create_table "sites", force: true do |t|
-    t.string   "name"
     t.string   "subdomain"
     t.datetime "created_at"
     t.datetime "updated_at"

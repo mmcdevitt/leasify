@@ -3660,14 +3660,24 @@ margin-bottom:16px;
 
 
 
+.tr-demo {
+  background: #f9fafc;
+}
 
 
+.help-dropup {
+  position: absolute;
+  left:127px;
+}
 
+.dropup.help {
+  position: relative;
+  top:10px;
+}
 
-
-
-
-
+.site-link-tour, .allsite-link-tour, .dashboard-link-tour {
+  background: white;
+}
 
 
 

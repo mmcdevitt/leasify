@@ -2,6 +2,8 @@ Subdomain::Application.routes.draw do
   
   
 
+  resources :amenities
+
   get "dashboards/index"
   require 'subdomain'
  
@@ -10,11 +12,13 @@ Subdomain::Application.routes.draw do
     get '/', to: 'dashboards#index', as: :dashboard
     get '/property',         to:'property_informations#index', as: :property
     get '/property/address', to:'property_informations#address', as: :address
+    get '/property/amenities', to:'property_informations#amenities', as: :amenities_property
     get '/theme-options/logo', to:'theme_options#index', as: :logo
     get '/theme-options/homepage/content', to:'theme_options#homepage_content', as: :homepage_content
     get '/theme-options/homepage/gallery', to:'theme_options#homepage_gallery', as: :homepage_image_gallery
     get '/templates', to:'theme_options#template', as: :template
     get '/theme-options/settings', to:'theme_options#theme_settings', as: :theme_settings
+    get '/tour', to:'dashboards#tour', as: :tour
   end
 
   scope :admin do
@@ -30,6 +34,11 @@ Subdomain::Application.routes.draw do
     get '/sidebar/nav/:id', to: 'sidebar_links#show', as: :admin_sidebar_show
 
     get '/users', to: 'admin#users_list', as: :users_list
+
+    get '/amenities', to: 'amenities#index', as: :admin_amenities
+    get '/amenities/new', to: 'amenities#new', as: :admin_amenities_new
+    get '/amenities/:id/edit', to: 'amenities#edit', as: :admin_amenities_edit
+    get '/amenities/:id', to: 'amenities#show', as: :admin_amenities_show
   end
  
   constraints(Subdomains) do

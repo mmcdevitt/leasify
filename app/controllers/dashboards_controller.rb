@@ -1,5 +1,6 @@
 class DashboardsController < ApplicationController
 	before_action :authenticate_user!
+	layout :tour_layout
   def index
   	@sites = Site.where(user_id: current_user.id).all
   	if request.subdomain != "www" && request.subdomain.present?
@@ -13,5 +14,35 @@ class DashboardsController < ApplicationController
 	  	@contacts            = Contact.where(site_id: @site.id).all
 	  	@homepage_gallery    = HomepageGallery.where(site_id: @site.id).first
 	  end
+	 
+	  
   end
+
+
+  def tour
+
+  end
+
+
+  def tour_layout
+  	if params[:action] == "tour"
+  		"tour"
+  	end
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
