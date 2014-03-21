@@ -25,6 +25,7 @@
     </section>
     
     <script type="text/javascript">
+        $(document).ready(function() { 
     	 // Bootstrap wysihtml5 editor     
         $('.wysihtml5').each(function(i, elem) {
           $(elem).wysihtml5({
@@ -43,19 +44,28 @@
         // Image preview before upload
         var preview = $(".upload-preview-options img");
         
-        $("#lefile").change(function(event){
-             var input = $(event.currentTarget);
-             var file = input[0].files[0];
-             var reader = new FileReader();
-             reader.onload = function(e){
-                 image_base64 = e.target.result;
-                 preview.attr("src", image_base64);
-             };
-             reader.readAsDataURL(file);
-             preview.addClass('preview-img-border');
+            $("#lefile").change(function(event){
+                 var input = $(event.currentTarget);
+                 var file = input[0].files[0];
+                 var reader = new FileReader();
+                 reader.onload = function(e){
+                     image_base64 = e.target.result;
+                     preview.attr("src", image_base64);
+                 };
+                 reader.readAsDataURL(file);
+                 preview.addClass('preview-img-border');
 
-            $('#uploadimage').css('width', '115px').css('height', '115px');  
-            $('#pageimage').css('width', '150px').css('height', '150px');  
+                $('#uploadimage').css('width', '115px').css('height', '115px');  
+                $('#pageimage').css('width', '150px').css('height', '150px');  
+
+
+            });
+
+            
+          // Disable submit btn on click
+            $('input[type="submit"').click(function() {
+                $(this).addClass("disabled");
+            });
         });
     </script>
 	</body>

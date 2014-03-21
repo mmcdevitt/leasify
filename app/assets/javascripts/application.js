@@ -34,10 +34,7 @@ $(document).ready(function() {
         $(this).toggleClass('hover');
     });
 
-    // Disable submit btn on click
-    $('input[type="submit"').click(function() {
-        $(this).addClass("disabled");
-    });
+  
 
    
    

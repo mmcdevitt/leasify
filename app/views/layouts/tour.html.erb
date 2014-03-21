@@ -103,5 +103,60 @@
         	 data-toggle="class:nav-off-screen" data-target="#nav"></a>
       </section>
     </section>
+
+
+    <% if request.subdomain != "www" && request.subdomain.present? %>
+
+    	<%= javascript_include_tag "introtour.min", "dashboard_tour", "app.plugin" %>
+
+    <% else %>
+
+    	<%= javascript_include_tag "introtour.min", "demo", "app.plugin" %>
+
+    <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(".introjs-tooltipbuttons").addClass('pull-right');
+  });  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</body>
 </html>

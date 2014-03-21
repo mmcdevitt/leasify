@@ -4,7 +4,9 @@
   <div class="panel-body">
     <div class="add-page">
       <h3><%= @title %></h3>
+      <% if params[:action] == "edit" %>
       <p><%= edit_page_url %> <%= link_to "View Page", pages_id_path, target: "_blank", class: "text-muted" %></p>
+      <% end %>
       <div class="row">
         <div class="col-md-12">
           <div class="add-page-image">
