@@ -25,9 +25,15 @@
 					</div>
 				</div>
 			</section>	
+			<% if @homepage_gallery.nil? || @homepage_gallery.empty? %>
+			<section id="address" style="background: url('/assets/94d0210db1.jpg');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;">
+			<% else %>
 			<section id="address" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
 					-webkit-background-size: cover; -moz-background-size: cover; 
 					-o-background-size: cover; background-size: cover;">
+			<% end %>
 				<div class="container center">
 					<%= @propertyinformation.name %><br> 
 					<%= @propertyinformation.address %>,<br>  <%= @propertyinformation.city %>,
@@ -50,8 +56,12 @@
           // Components             
           slide_links       : 'blank',  // Individual links for each slide (Options: false, 'num', 'name', 'blank')
           slides          :   [     // Slideshow Images
+          									<% if @homepage_gallery.nil? || @homepage_gallery.empty? %>
+        											{image : 'http://www.leasify.co/assets/office1.jpg'}
+        										<% else %>
           									<% @homepage_galleries.each do |image| %>
-                            {image : '<%= image.homepage_gallery_image.url %>'},
+          										image : '<%= image.homepage_gallery_image.url %>'},
+                            <% end %>
                             <% end %>
                             
                         ]
