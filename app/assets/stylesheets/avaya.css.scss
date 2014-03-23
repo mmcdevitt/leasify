@@ -138,16 +138,7 @@ hr {
 				}
 				
 			}
-			.welcome-box {
-				width: 700px;
-				text-align: center;
-				background: rgba(0,0,0,0.95);
-				padding: 60px;
-				h1 {
-					margin-bottom: 10px;
-					font-size: 50px;
-				}
-			}
+			
 			.welcome-box.page {
 				float:right;
 		    height:100%;
@@ -291,6 +282,16 @@ hr {
 			}
 		}
 	}
+	.welcome-box {
+		width: 700px;
+		text-align: center;
+		background: rgba(0,0,0,0.95);
+		padding: 60px;
+		h1 {
+			margin-bottom: 10px;
+			font-size: 50px;
+		}
+	}
 
 }/*end avaya*/
 
@@ -342,9 +343,56 @@ hr {
 }
 
 
+.carousel,
+.item,
+.active{
+	height:100%;
+}
+.carousel-inner, 
+.carousel-caption{
+	height:100%;
+}
+.fill {
+	width:100%;
+	height:100%;
+	background-position:center;
+	background-size:cover;
+}
+
+/* faster sliding speed */
+.carousel-inner > .item {
+    -webkit-transition: 0.3s ease-in-out left;
+    -moz-transition: 0.3s ease-in-out left;
+    -o-transition: 0.3s ease-in-out left;
+    transition: 0.3s ease-in-out left;
+}
+
+/* keep full widget on smaller screens */
+@media (max-width: 767px) { 
+	body {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
 
 
-
+.carousel .item {
+	-webkit-transition: opacity 3s; 
+	-moz-transition: opacity 3s; 
+	-ms-transition: opacity 3s; 
+	-o-transition: opacity 3s; 
+	transition: opacity 3s;
+}
+.carousel .active.left {
+	left:0;
+	opacity:0;
+	z-index:2;
+}
+.carousel .next {
+	left:0;
+	opacity:1;
+	z-index:1;
+}
 
 
 

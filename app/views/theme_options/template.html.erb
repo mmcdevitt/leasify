@@ -21,7 +21,9 @@
                   <%= f.hidden_field :template, value: template.id %>
                   
                   <div class="row" style="margin-top:15px;">
-                    <a href="" class="link text-muted"><em>Live Example</em></a>
+                    <%= link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do %>
+                      <em>Live Example</em>
+                    <% end %>
                   </div>
                 </div>
               </div>

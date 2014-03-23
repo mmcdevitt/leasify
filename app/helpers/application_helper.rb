@@ -55,6 +55,43 @@ module ApplicationHelper
   	@subdomain = request.subdomain
     @site = Site.where(subdomain: request.subdomain).first.id
   end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 	
 end

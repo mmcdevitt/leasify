@@ -1,0 +1,64 @@
+<%= render 'layouts/skyline/head' %>
+	<body class="skyline <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<div id="wrapper">
+			<div class="main-homepage">
+			
+				<%= render 'layouts/skyline/header' %>
+				<div class="container">
+					<div class="logo">
+						<h1>
+							<%= show_logo_skyline %>
+						</h1>
+					</div><!-- end logo -->
+					<div class="welcome-box">
+						<h1><%= @themeoptions.homepage_heading %></h1>
+						<p><%= @themeoptions.homepage_subheading %></p>
+					</div><!-- end welcome box -->
+				</div><!-- end container -->
+			</div><!-- end main homepage -->
+			<section id="homepage-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10">
+							<%= markdown(@themeoptions.content) %>
+						</div>
+					</div>
+				</div>
+			</section>	
+			<section id="address" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;">
+				<div class="container center">
+					<%= @propertyinformation.name %><br> 
+					<%= @propertyinformation.address %>,<br>  <%= @propertyinformation.city %>,
+					<%= @propertyinformation.state %>, <%= @propertyinformation.zipcode %> <br> 
+				</div>
+			</section>
+			<%= render 'layouts/skyline/footer' %>
+		</div><!-- end wrapper -->
+		<%= javascript_tag do %>
+      
+      jQuery(function($){
+        
+        $.supersized({
+        
+          // Functionality
+          slide_interval          :   3000,   // Length between transitions
+          transition              :   1,      // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+          transition_speed    : 700,    // Speed of transition
+                                 
+          // Components             
+          slide_links       : 'blank',  // Individual links for each slide (Options: false, 'num', 'name', 'blank')
+          slides          :   [     // Slideshow Images
+          									<% @homepage_galleries.each do |image| %>
+                            {image : '<%= image.homepage_gallery_image.url %>'},
+                            <% end %>
+                            
+                        ]
+          
+        });
+        });
+        
+    <% end %>
+	</body>
+</html>

@@ -1,5 +1,5 @@
-<header class="navbar navbar-fixed-top " id="top" role="banner">
-  <div class="container-fluid">
+<header class="navbar navbar-static-top " id="top" role="banner">
+  <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -7,16 +7,17 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= show_logo_sunnyside %>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav navbar-right">
-        <% @pages.each do |page| %>
-					<li><%= link_to page.title, pages_id_path(page) %></li>
-				<% end %>
-        <li><%= link_to "Leasing", leasing_path %></li>
-        <%= admin_link %>
-      </ul>
+      
+        <ul class="nav navbar-nav navbar-left">
+          <% @pages.each do |page| %>
+  					<li><%= link_to page.title, pages_id_path(page) %></li>
+  				<% end %>
+          <li><%= link_to "Leasing", leasing_path %></li>
+          <%= admin_link %>
+        </ul>
+      
     </nav>
   </div>
 </header>

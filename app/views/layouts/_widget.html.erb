@@ -10,7 +10,7 @@
 					<%= image_tag(@availabilities_image.availability_image.url(:small), class: "img-responsive") %>
 					<div class="leasing-title">
 						<p><%= link_to (availabilities.suite_or_floor + " #" + availabilities.title), leasing_show_path(availabilities) %></p>
-						<p><%= 51.ordinalize + " Floor" %> | Office</p>
+						<p><%= availabilities.floor_location.ordinalize + " Floor" %> | <%= availabilities.type_of_space %></p>
 					</div>
 					<div class="leasing-content">
 						<p><%= truncate(availabilities.content, length: 90) %></p>

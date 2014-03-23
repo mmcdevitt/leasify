@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321045340) do
+ActiveRecord::Schema.define(version: 20140321223354) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 20140321045340) do
     t.integer  "site_id"
     t.string   "body_font",                               default: "arial"
     t.string   "heading_font",                            default: "museo-h-bold"
+    t.boolean  "show_logo"
   end
 
   create_table "users", force: true do |t|

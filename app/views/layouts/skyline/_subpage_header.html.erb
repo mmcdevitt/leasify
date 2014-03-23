@@ -1,13 +1,13 @@
-<header class="navbar navbar-fixed-top " id="top" role="banner">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<header class="navbar navbar-static-top subpage" id="top" role="banner">
+	<div class="container">
+ 		<div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= show_logo_sunnyside %>
+      <%= link_to @propertyinformation.name, "/", class: "navbar-brand" %>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">

@@ -10,7 +10,7 @@ class ThemeOption < ActiveRecord::Base
 
     large: "848x600#",
     medium: "300x200#",
-    small: "253x170#",
+    small: "253x50>",
     thumb: "105x105#"
 
   },

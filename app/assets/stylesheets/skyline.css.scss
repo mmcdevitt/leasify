@@ -1,0 +1,250 @@
+html, body {
+	height: 100%;
+
+}
+#wrapper {
+	height: 700px;
+}
+.skyline {
+	&.leasing header { background: #fff; }
+			.center {
+				text-align: center;
+			}
+			.m-b-lg {
+				margin-bottom: 20px;
+			}
+			.subpage-img {
+				margin-bottom: 40px;
+			}
+			header {
+				padding:70px 0 50px;
+				margin:0;
+				
+				&.subpage {
+					border-bottom: 1px solid #eee;
+				}
+
+				a.navbar-brand {
+					font-size: 35px;
+					padding: 0 0 0 15px;
+					font-weight: 700;
+					color: #333;
+				}
+
+				nav ul li a {
+					padding: 0 30px 0 0;
+					color: #333;
+
+					&:hover {
+						background:transparent;
+					}
+
+				}
+
+			} /*end header*/
+
+			.logo a {
+				color: #333;
+
+				&:hover {
+					text-decoration:none;
+				}
+
+			}
+
+			.welcome-box {
+				padding: 50px 0;
+				width: 50%;
+				color: #fff;
+				h1 {
+					font-size: 70px;
+					color: #fff;
+				}
+
+			} /*end welcome-box*/
+
+			#homepage-content {
+				background: #333;
+				padding: 100px 0;
+				color: #fff;
+				font-size: 18px;
+				h1 {
+					font-size: 70px;
+				}
+
+			}/*end homepage content*/
+
+			#address {
+				padding: 200px 0;
+				font-size: 40px;
+				text-transform: uppercase;
+				color: #fff;
+			} /*end address*/
+
+			.subpage-img-bg {
+				color: #fff;
+				text-align: center;
+				padding:250px 0;
+				margin: 50px 0 100px;
+			}
+			.main-homepage {
+				
+			}
+			.stats {
+        
+        margin-bottom: 30px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 5px 0;
+        ul {
+            margin: 0;
+            li {
+            display: inline-block;
+            padding: 0 20px 0 20px;
+            font-size: 13px;
+            color: #666666;
+            font-weight: bold;
+                span {
+                    font-size: 10px;
+                    color: #a6a6a6;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                }
+            }
+        }
+      }
+
+     .leasing-widget {
+		border: 1px solid #d7d7d7;
+		border-radius: 2px;
+		padding: 5px;
+		background: #fff;
+		margin-bottom: 20px;
+		&:hover {
+			border: 1px solid #b8b8b8;
+			box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.08);
+		}
+		img {
+			width: 100%;
+		}
+		.leasing-title {
+			padding:10px 0;
+			text-align: center;
+			border-bottom: 1px solid #d7d7d7;
+			p:first-child {
+				font-size:16px;
+				font-weight: bold;
+				margin:0;
+			}
+			p:last-child {
+				font-size: 12px;
+				color: #a2a6aa;
+				margin: 0;
+			}
+		}
+
+		.leasing-content {
+			padding: 16px;
+
+			p {
+				font-size: 12px;
+				line-height:21px;
+				color: #999;
+			}
+		}
+	}
+
+	&.leasing {
+		background: #fafafa;
+	}
+
+
+
+
+
+
+
+			footer {
+				background: #333;
+				color: #fff;
+				padding: 100px 0;
+
+				p {
+					font-size: 12px;
+					margin-bottom: 0;
+				}
+
+				a {
+					color: #fff;
+				}
+
+			} /*end footer*/
+
+
+			&.subpage footer {
+				margin-top: 100px;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}/*end skyline*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

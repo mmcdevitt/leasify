@@ -39,6 +39,8 @@ Subdomain::Application.routes.draw do
     get '/amenities/new', to: 'amenities#new', as: :admin_amenities_new
     get '/amenities/:id/edit', to: 'amenities#edit', as: :admin_amenities_edit
     get '/amenities/:id', to: 'amenities#show', as: :admin_amenities_show
+
+    get '/slider', to: 'admin#slider_test'
   end
  
   constraints(Subdomains) do

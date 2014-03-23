@@ -6,7 +6,7 @@
       <h1><%= @availability.suite_or_floor + " #" + @availability.title %></h1>
       <div class="row-fluid">
         <div class="pull-left">
-          <p><%= 51.ordinalize + " Floor" %>, <%= full_address %></p>
+          <p><%= @availability.floor_location.ordinalize + " Floor" %>, <%= full_address %></p>
         </div>
       </div> 
     </div><!-- end col 8 -->
@@ -67,7 +67,12 @@
         <p>Asking Rate: <span>$<%= @availability.rental_rate %> psf</span></p>
         <p>Total Area: <span><%= number_with_delimiter(@availability.sf, delimiter: ',') %> SF</span></p>
         <p>Availability: <span><%= @availability.availability %></span></p>
-        <button class="btn btn-info btn-block btn-lg" data-toggle="modal" data-target="#modal-message">Send Message</button>
+        <p>Type: <span><%= @availability.type_of_space %></span></p>
+        <%= mail_to @user.email, 'Send Message', 
+            subject: 'I saw your listing on Leasify for ' + @availability.suite_or_floor + " #" + 
+            @availability.title + " in " + @propertyinformation.name, 
+            class: "btn btn-info btn-block btn-lg" 
+        %>
       </div>  
       <div class="availability-stats">
         <h3>Contacts</h3>
@@ -76,7 +81,8 @@
           <%= contact.job_title %><br>
           <%= contact.company %><br>
           <%= number_to_phone(contact.phone, area_code: true) %><br>
-          <%= contact.email %>
+          <%= mail_to contact.email, contact.email, subject: 'I saw your listing on Leasify for ' + @availability.suite_or_floor + " #" + 
+            @availability.title + " in " + @propertyinformation.name %>
         <% end %>
       </div>
           
@@ -84,27 +90,6 @@
   </div><!-- end row -->
 </div><!-- end availability page -->
 
-<!-- Modal -->
-<div class="modal fade" id="modal-message" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-info">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- RSVP Modal -->
 
 
 

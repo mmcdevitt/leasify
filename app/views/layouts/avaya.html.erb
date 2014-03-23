@@ -2,30 +2,43 @@
 	<body class="avaya <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
 			<%= render 'layouts/avaya/header' %>
-			<% if @homepage_galleries.empty? %>
-				<div class="main-homepage">
-			<% else %>
-				<div class="main-homepage" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
-					-webkit-background-size: cover; -moz-background-size: cover; 
-					-o-background-size: cover; background-size: cover;">
-			<% end %>
-				<div id="page">
-					<div id="content_container">
-						<div id="content">
-							<div class="welcome-box">
-								<div class="m-b-lg">
-									<h1><%= @themeoptions.homepage_heading %></h1>
-									<p><%= @themeoptions.homepage_subheading %></p>
+				<div class="fill">
+					<div id="myCarousel" class="carousel slide">
+						<div class="carousel-caption ">
+							<div id="page">
+								<div id="content_container">
+									<div id="content">
+										<div class="welcome-box">
+											<div class="m-b-lg">
+												<h1><%= @themeoptions.homepage_heading %></h1>
+												<p><%= @themeoptions.homepage_subheading %></p>
+											</div>
+											<p class="uppercase"><%= full_address %></p>
+											<div class="line"></div>
+											<p><%= markdown(@themeoptions.content) %></p>
+										</div>
+									</div>
 								</div>
-								<p class="uppercase"><%= full_address %></p>
-								<div class="line"></div>
-								<p><%= markdown(@themeoptions.content) %></p>
-							</div>
+							</div><!-- end container -->
+						<%= render 'layouts/avaya/footer' %>
+						</div>
+						<div class="carousel-inner">
+					  	<% @homepage_galleries.each_with_index do |image, index| %>
+					    <div class="item <%= "active" if index == 0 %>">
+					      <div class="fill" style="background-image:url('<%= image.homepage_gallery_image %>');">
+					        <div class="container">
+					          	
+					        </div>
+					      </div>
+					    </div>
+					    <% end %>
 						</div>
 					</div>
-				</div><!-- end container -->
-			</div><!-- end main homepage -->
-			<%= render 'layouts/avaya/footer' %>
+				</div>
+			
 		</div><!-- end wrapper -->
+		<script type="text/javascript">
+		$('.carousel').carousel();
+	</script>
 	</body>
 </html>

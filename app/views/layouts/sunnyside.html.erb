@@ -2,23 +2,36 @@
   <body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
 			<%= render 'layouts/sunnyside/header' %>
-			<% if @homepage_galleries.empty? %>
-				<div class="main-homepage">
-			<% else %>
-				<div class="main-homepage" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
-					-webkit-background-size: cover; -moz-background-size: cover; 
-					-o-background-size: cover; background-size: cover;">
-			<% end %>
-				<div class="container">
-					<div class="welcome-box">
-						<h1><%= @themeoptions.homepage_heading %></h1>
-						<p><%= @themeoptions.homepage_subheading %></p>
+				<div class="fill">
+					<div id="myCarousel" class="carousel slide">
+						<div class="carousel-caption">
+							<div id="page">
+								<div id="content_container">
+									<div id="content">
+										<div class="welcome-box">
+											<h1><%= @themeoptions.homepage_heading %></h1>
+											<p><%= @themeoptions.homepage_subheading %></p>
+										</div>
+										<section class="listings-btn center">
+											<%= link_to "View Listings", leasing_path, class: "btn btn-no-bg" %>
+					          </section>
+		          		</div>
+								</div>
+							</div>
+						</div><!-- end container -->
+						<div class="carousel-inner">
+					  	<% @homepage_galleries.each_with_index do |image, index| %>
+					    <div class="item <%= "active" if index == 0 %>">
+					      <div class="fill" style="background-image:url('<%= image.homepage_gallery_image %>');">
+					        <div class="container">
+					          	
+					        </div>
+					      </div>
+					    </div>
+					    <% end %>
+						</div>
 					</div>
-					<section class="listings-btn center">
-          	<a href="availabilities.php"><button class="btn btn-no-bg">View Listings</button></a>
-          </section>
-				</div><!-- end container -->
-			</div><!-- end main homepage -->
+				</div>
 			<div class="container-fluid">
 				<div class="page-content">
 					<div class="row center">
@@ -31,6 +44,9 @@
 			
 			<%= render 'layouts/sunnyside/footer' %>
 		</div><!-- end wrapper -->
+		<script type="text/javascript">
+			$('.carousel').carousel();
+		</script>
 	</body>
 </html>
 

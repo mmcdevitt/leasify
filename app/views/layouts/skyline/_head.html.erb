@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @propertyinformation.name %></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <%= stylesheet_link_tag "bootstrap.css", "skyline.css", "leasing.css" %>
+ 	<%= javascript_include_tag "jquery", "bootstrap", "app", "jquery.slimscroll.min", "app.plugin" %>
+  <% if params[:action] == "home" %>
+  <%= stylesheet_link_tag "supersized" %>
+  <%= javascript_include_tag  "supersized.3.2.7", "supersized.shutter" %>
+  <% end %>
+  <%= csrf_meta_tags %>
+ 
+ 	<% if Rails.env.production? %>
+  <!-- For leasify.co -->
+  <script type="text/javascript" src="//use.typekit.net/ckw2lgb.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <% elsif Rails.env.development? %>
+	<!-- for lvh.me, remove when pushing to git and heroku -->
+	<script type="text/javascript" src="//use.typekit.net/bgg6ayr.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <% end %>
+  
+</head>

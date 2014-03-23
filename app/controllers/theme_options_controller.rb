@@ -62,6 +62,7 @@ class ThemeOptionsController < ApplicationController
                                            :homepage_image,
                                            :body_font,
                                            :heading_font,
+                                           :show_logo,
                                            homepage_galleries_attributes: [:user_id, :id, :homepage_gallery_image, :site_id, :_destroy])
     end
 end

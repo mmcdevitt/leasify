@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
 	# validates_format_of :username, with: /^[a-z0-9_]+$/, message: "must be lowercase alphanumerics only"
 	validates_length_of :username, maximum: 32, message: "exceeds maximum of 32 characters"
 	validates_exclusion_of :username, in: ['www', 'mail', 'ftp'], message: "is not available"
+	validates :first_name, presence: true
+	validates :last_name, presence: true
+	validates :username, presence: true, 
+							 uniqueness: true
 	has_many :posts, :dependent => :destroy
 	has_many :pages, :dependent => :destroy
 	has_many :availabilities, :dependent => :destroy
