@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
 
   # User is redirected to users dashboard after sign in
   def after_sign_in_path_for(resource)
-    if current_user.sign_in_count == 1
+    if current_user.sign_in_count == 1 || current_user.username == "demo"
       tour_path
     else
       dashboard_path
