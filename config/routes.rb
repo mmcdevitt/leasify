@@ -8,7 +8,7 @@ Subdomain::Application.routes.draw do
   require 'subdomain'
  
   scope :dashboard do
-    resources :pages, :availabilities, :contacts, :property_informations, :theme_options, :sites, :users, :homepage_galleries
+    resources :pages, :availabilities, :contacts, :property_informations, :theme_options, :sites, :users, :homepage_galleries, :wizards
     get '/', to: 'dashboards#index', as: :dashboard
     get '/property',         to:'property_informations#index', as: :property
     get '/property/address', to:'property_informations#address', as: :address
@@ -19,6 +19,10 @@ Subdomain::Application.routes.draw do
     get '/templates', to:'theme_options#template', as: :template
     get '/theme-options/settings', to:'theme_options#theme_settings', as: :theme_settings
     get '/tour', to:'dashboards#tour', as: :tour
+
+    # Wizard routes
+    get '/wizard/templates', to: 'wizards#templates', as: :wizard_templates
+    get '/wizard/customize', to: 'wizards#customize', as: :wizard_customize
   end
 
   scope :admin do

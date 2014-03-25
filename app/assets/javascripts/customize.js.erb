@@ -1,0 +1,39 @@
+$('iframe').load(function() {
+
+	// Change h1 font size
+	$("#text").keyup(function() {
+		num = $(this).val();
+		$('iframe').contents().find('.welcome-box h1').css("font-size", num + "px");
+	});
+
+});
+
+$(document).ready(function() {
+
+	// Change body font family		
+	$("#body-font-list li a").click(function() {
+		$(this).closest('ul').find('li.active').removeClass('active');
+		$(this).closest('ul').find('li a.active').removeClass('active');
+		$(this).addClass('active');
+
+		val = $('#body-font-list li a.active input[type=radio]').val();
+		var lastBodyClass = $('iframe').contents().find('body').attr('class').split(' ').pop();
+		$('iframe').contents().find('body').removeClass(lastBodyClass).addClass(val);
+	});
+
+	// Change heading font family
+	$('#heading-font-list li a').click(function() {
+		$(this).closest('ul').find('li.active').removeClass('active');
+		$(this).closest('ul').find('li a.active').removeClass('active');
+		$(this).addClass('active');
+		$('iframe').contents().find('body').removeClass('<%= @themeoptions.heading_font %>');
+		val = $('#heading-font-list li a.active input[type=radio]').val();
+		var lastHeadingClass = $('iframe').contents().find('h1').attr('class').split(' ').pop();
+
+		var dataValue = $('#heading-font-list li a.active input[type=radio]').attr('data-id');
+		var dataWeight = $('#heading-font-list li a.active input[type=radio]').attr('data-weight');
+
+		$('iframe').contents().find('h1, h2, h3, h4, h5, h6').removeClass(lastHeadingClass).addClass(dataValue);
+	});
+
+});

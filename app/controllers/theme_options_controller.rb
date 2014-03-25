@@ -14,6 +14,11 @@ class ThemeOptionsController < ApplicationController
   	@templates = ThemeName.all
   end
 
+  def template_preview
+    @themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
+    @templates = ThemeName.all
+  end
+
   def homepage_gallery
     @themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
     @themeoptions.homepage_galleries.build
@@ -63,6 +68,17 @@ class ThemeOptionsController < ApplicationController
                                            :body_font,
                                            :heading_font,
                                            :show_logo,
+                                           :mainheading_size,
+                                           :subheading_size,
+                                           :nav_size,
+                                           :footer_size,
+                                           :body_size,
+                                           :mainheading_color,
+                                           :subheading_color,
+                                           :body_color,
+                                           :footer_color,
+                                           :nav_color,
+                                           :navhover_color,
                                            homepage_galleries_attributes: [:user_id, :id, :homepage_gallery_image, :site_id, :_destroy])
     end
 end

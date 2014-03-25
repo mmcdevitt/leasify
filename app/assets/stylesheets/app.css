@@ -619,6 +619,7 @@ body.container {
   .app .vbox > footer {
     position: absolute;
   }
+  .app .vbox > footer {padding:20px;}
   .app .vbox > form > section,
   .app .vbox > form > footer {
     position: absolute;
@@ -637,7 +638,8 @@ body.container {
     width: 100%;
   }
   .hbox > aside,
-  .hbox > section {
+  .hbox > section,
+  .hbox > form > aside {
     display: table-cell;
     vertical-align: top;
     height: 100%;
@@ -3678,6 +3680,60 @@ margin-bottom:16px;
 .site-link-tour, .allsite-link-tour, .dashboard-link-tour {
   background: white;
 }
+
+
+.vbox iframe {
+  padding-bottom: 75px;
+}
+
+.customize-wizard {
+  height: 100%;
+}
+
+.app .vbox form.customize-wizard .scrollable {
+  top: 0px;
+}
+
+.form-control.no-bg {
+  background: transparent;
+  border: none;
+  box-shadow: none !important;
+}
+
+.input-group-addon.border-all {
+  border: 1px solid #ccc !important;
+  border-radius: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

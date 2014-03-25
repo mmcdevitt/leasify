@@ -10,6 +10,7 @@
  *
  *= require bootstrap-wysihtml5
  *= require bootstrap
+ *= require bootstrap-colorpicker
  *= require animate
  *= require font-awesome.min
  *= require icon
@@ -122,6 +123,65 @@ padding: 20px;
     height:100%;
     width:465px;
 }
+
+iframe {
+    width: 100%;
+    border: none;
+    height:100%;
+}
+
+.accordian .panel {
+    box-shadow: none;
+    margin: 0 0 10px 0;
+}
+.accordian .panel .panel-collapse {
+    padding:10px; 
+    background: #f5f5f5;
+    border: 1px solid #efefef;
+}
+.accordion-toggle {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+}
+.accordion-toggle i {
+    margin-top: 3px;
+}
+.accordian .panel .panel-collapse .form-group:last-child {
+    margin-bottom: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

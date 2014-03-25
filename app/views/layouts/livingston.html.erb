@@ -3,7 +3,11 @@
 		<div id="wrapper">
 			<%= render 'layouts/livingston/header' %>
 			<div class="container">
-				<% unless @homepage_galleries.empty? %>
+				<% if @homepage_galleries.blank? %>
+				<div class="main-gallery">
+					<%= image_tag('/assets/office1.jpg', class: "img-responsive") %>
+				</div>
+				<% else %>
 				<div class="main-gallery">
 					<%= image_tag(@homepage_gallery.homepage_gallery_image.url(:large), class: "img-responsive") %>
 				</div>

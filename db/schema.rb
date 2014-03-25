@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323015630) do
+ActiveRecord::Schema.define(version: 20140324215026) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(version: 20140323015630) do
   end
 
   create_table "theme_options", force: true do |t|
-    t.string   "homepage_heading"
-    t.string   "homepage_subheading"
+    t.string   "homepage_heading",                        default: "Welcome to Our Site!"
+    t.string   "homepage_subheading",                     default: "You can write something else here."
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -176,6 +176,17 @@ ActiveRecord::Schema.define(version: 20140323015630) do
     t.string   "body_font",                               default: "arial"
     t.boolean  "show_logo"
     t.string   "heading_font",                            default: "museo-h-bold"
+    t.integer  "mainheading_size",                        default: 48
+    t.integer  "nav_size",                                default: 12
+    t.integer  "subheading_size",                         default: 14
+    t.integer  "footer_size",                             default: 12
+    t.integer  "body_size",                               default: 14
+    t.string   "mainheading_color",                       default: "fff"
+    t.string   "subheading_color",                        default: "fff"
+    t.string   "body_color",                              default: "fff"
+    t.string   "footer_color",                            default: "fff"
+    t.string   "nav_color",                               default: "fff"
+    t.string   "navhover_color",                          default: "f5f5f5"
   end
 
   create_table "users", force: true do |t|

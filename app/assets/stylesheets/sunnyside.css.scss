@@ -304,7 +304,21 @@ hr {
 
 
 
+@media screen and (max-width: 1200px) {
+    #page {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 992px) {
+    footer {
+    	text-align: center;
 
+    	.pull-right {
+    		float: none !important;
+    	} 
+
+    }
+}
 
 
 

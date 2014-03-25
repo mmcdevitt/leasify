@@ -17,6 +17,7 @@
 
 //= require bootstrap
 //= require bootstrap-wysihtml5
+//= require bootstrap-colorpicker
 //= require app
 //= require jquery.slimscroll.min
 //= require_self

@@ -1,0 +1,117 @@
+<section>
+	<section class="hbox stretch">
+		<aside> 
+			<section class="vbox">
+				<iframe src="http://<%= request.subdomain %>.lvh.me:3000"></iframe>
+				<footer class="footer bg-white b-t">
+				  <div class="row text-center-xs">
+				    <div class="col-md-2 text-left text-center-xs">                
+				      <%= link_to "Continue", wizard_customize_path, class: "btn btn-info btn-more-padding" %>
+				    </div>
+				    <div class="col-md-2">
+				    	50% complete
+				    	<div class="progress progress-xs m-t-sm" style="margin:0"> 
+								<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
+				    		</div> 
+				    	</div>
+				    </div>
+				    <div class="col-md-2 col-md-offset-6 text-right" style="margin-top:9px;">
+				    	
+				    </div>
+				  </div>
+				</footer>
+			</section>
+		</aside>
+		<aside class="b-l aside-md"> 
+			<section class="vbox">
+				<section class="scrollable">
+					<h4 style="padding:20px 0 10px 16px;">Choose Template</h4>
+				<% @templates.each do |template| %>
+	          <%= form_for(@themeoptions) do |f| %>
+	            <div class="col-lg-12">
+	              <div class="template-widget">
+	                <%= image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive") %>
+	                <div class="template-widget-content">
+	                  <h3><%= template.name %></h3>
+	                  <div class="row-fluid">
+	                    <%= f.submit is_active_template(template) + " Template", class: "btn btn-s-md btn-" + active_template(template) + "" %>
+	                  </div>
+	                  <%= f.hidden_field :template, value: template.id %>
+	                  
+	                  <div class="row" style="margin-top:15px;">
+	                    <%= link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do %>
+	                      <em>Live Example</em>
+	                    <% end %>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          <% end %>
+	        <% end %>
+	        </section>
+        </section>
+		</aside>
+	</section>
+</section>
+<a href="" id="modal-click" data-toggle="modal" data-target="#wizard-modal" style="position:absolute; left:99999px;"></a>
+<!-- Modal -->
+    <div class="modal fade" id="wizard-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Welcome to Leasify's Website Wizard!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Leasify's Wizard will guide you through the entire website creation process. You may choose to use
+            the wizard or you may choose to create your site manually by exiting the Wizard. Your choice!</p>
+            <p>You're staying? Great! Let's choose a template on the right to start!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$("#modal-click").click();
+	});
+
+	$('iframe').load(function() {
+		$("#text").keyup(function() {
+			num = $(this).val();
+			$('iframe').contents().find('.welcome-box h1').css("font-size", num + "px");
+		});
+	});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

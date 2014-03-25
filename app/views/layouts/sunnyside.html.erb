@@ -1,5 +1,5 @@
 <%= render 'layouts/sunnyside/head' %>
-  <body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+  <body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>" style="font-size: <%= @themeoptions.body_size %>px;">
 		<div id="wrapper">
 			<%= render 'layouts/sunnyside/header' %>
 				<div class="fill">
@@ -9,8 +9,8 @@
 								<div id="content_container">
 									<div id="content">
 										<div class="welcome-box">
-											<h1><%= @themeoptions.homepage_heading %></h1>
-											<p><%= @themeoptions.homepage_subheading %></p>
+											<h1 class="" style="font-size: <%= @themeoptions.mainheading_size %>px; color: <%= @themeoptions.mainheading_color %>"><%= @themeoptions.homepage_heading %></h1>
+											<p style="font-size: <%= @themeoptions.subheading_size %>px; color: <%= @themeoptions.subheading_color %>"><%= @themeoptions.homepage_subheading %></p>
 										</div>
 										<section class="listings-btn center">
 											<%= link_to "View Listings", leasing_path, class: "btn btn-no-bg" %>
@@ -20,6 +20,15 @@
 							</div>
 						</div><!-- end container -->
 						<div class="carousel-inner">
+							<% if @homepage_gallery.blank? %>
+								<div class="item active">
+						      <div class="fill" style="background-image:url('/assets/office1.jpg');">
+						        <div class="container">
+						          	
+						        </div>
+						      </div>
+						    </div>
+							<% else %>
 					  	<% @homepage_galleries.each_with_index do |image, index| %>
 					    <div class="item <%= "active" if index == 0 %>">
 					      <div class="fill" style="background-image:url('<%= image.homepage_gallery_image %>');">
@@ -28,6 +37,7 @@
 					        </div>
 					      </div>
 					    </div>
+					    <% end %>
 					    <% end %>
 						</div>
 					</div>

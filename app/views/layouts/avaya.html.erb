@@ -23,6 +23,15 @@
 						<%= render 'layouts/avaya/footer' %>
 						</div>
 						<div class="carousel-inner">
+							<% if @homepage_gallery.blank? %>
+								<div class="item active">
+						      <div class="fill" style="background-image:url('/assets/office1.jpg');">
+						        <div class="container">
+						          	
+						        </div>
+						      </div>
+						    </div>
+							<% else %>
 					  	<% @homepage_galleries.each_with_index do |image, index| %>
 					    <div class="item <%= "active" if index == 0 %>">
 					      <div class="fill" style="background-image:url('<%= image.homepage_gallery_image %>');">
@@ -31,6 +40,7 @@
 					        </div>
 					      </div>
 					    </div>
+					    <% end %>
 					    <% end %>
 						</div>
 					</div>
