@@ -12,7 +12,7 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">
         <% @pages.each do |page| %>
-					<li><%= link_to page.title, pages_id_path(page), style: "font-size:" + @themeoptions.nav_size + "px" %></li>
+					<li><%= link_to page.title, pages_id_path(page), style: "font-size:" + @themeoptions.nav_size.to_s + "px" %></li>
 				<% end %>
         <li><%= link_to "Leasing", leasing_path, style: "font-size:" + @themeoptions.nav_size.to_s + "px" %></li>
         <%= admin_link %>

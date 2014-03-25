@@ -2,12 +2,13 @@
 	<section class="hbox stretch">
 		<aside> 
 			<section class="vbox">
+				<% if Rails.env.production? %>
+				<iframe src="http://<%= request.subdomain %>.leasify.co"></iframe>
+				<% elsif Rails.env.development? %>
 				<iframe src="http://<%= request.subdomain %>.lvh.me:3000"></iframe>
+				<% end %>
 				<footer class="footer bg-white b-t">
 				  <div class="row text-center-xs">
-				    <div class="col-md-2 text-left text-center-xs">                
-				      <%= link_to "Continue", wizard_customize_path, class: "btn btn-info btn-more-padding" %>
-				    </div>
 				    <div class="col-md-2">
 				    	50% complete
 				    	<div class="progress progress-xs m-t-sm" style="margin:0"> 
@@ -15,8 +16,10 @@
 				    		</div> 
 				    	</div>
 				    </div>
-				    <div class="col-md-2 col-md-offset-6 text-right" style="margin-top:9px;">
-				    	
+				    <div class="col-md-6 col-md-offset-4 text-right">
+				      <%= link_to wizard_customize_path, class: "btn btn-default" do %>
+				    	 	Continue
+				    	<% end %>
 				    </div>
 				  </div>
 				</footer>
