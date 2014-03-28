@@ -68,7 +68,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    (root_url(:subdomain => false) )
+    if Rails.env.development?
+      (root_url(:subdomain => false) )
+    elsif Rails.env.production?
+      redirect_to root_url(:host => with_subdomain("www"))
+    end
   end
 
   # Defines the front end template name for home action 
