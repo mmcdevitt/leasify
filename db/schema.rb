@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324215026) do
+ActiveRecord::Schema.define(version: 20140328024053) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -181,12 +181,19 @@ ActiveRecord::Schema.define(version: 20140324215026) do
     t.integer  "subheading_size",                         default: 14
     t.integer  "footer_size",                             default: 12
     t.integer  "body_size",                               default: 14
-    t.string   "mainheading_color",                       default: "fff"
-    t.string   "subheading_color",                        default: "fff"
-    t.string   "body_color",                              default: "fff"
-    t.string   "footer_color",                            default: "fff"
-    t.string   "nav_color",                               default: "fff"
-    t.string   "navhover_color",                          default: "f5f5f5"
+    t.string   "mainheading_color",                       default: "#fff"
+    t.string   "subheading_color",                        default: "#fff"
+    t.string   "body_color",                              default: "#000"
+    t.string   "footer_color",                            default: "#999"
+    t.string   "nav_color",                               default: "#fff"
+    t.string   "navhover_color",                          default: "#f5f5f5"
+    t.string   "body_heading_color",                      default: "#000"
+    t.string   "link_color",                              default: "#428bca"
+    t.integer  "page_title_size",                         default: 40
+    t.integer  "page_subtitle_size",                      default: 14
+    t.string   "page_title_color",                        default: "#fff"
+    t.string   "page_subtitle_color",                     default: "#fff"
+    t.string   "heading_text_transform",                  default: "capitalize"
   end
 
   create_table "users", force: true do |t|

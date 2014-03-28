@@ -1,263 +1,71 @@
-<section>
+<section class="wizard">
 	<%= form_for(@themeoptions, html: { class: "customize-wizard" }) do |f| %> 
+	<header class="header bg-white b-b clearfix">
+	  <div class="row">
+	  	<div class="col-sm-4">
+	  		<%= link_to wizard_templates_path, class: "btn btn-default" do %>
+	    	 	Back
+	    	<% end %>
+	  	</div>
+	    <div class="col-sm-4">
+	  		50% complete
+	    	<div class="progress progress-xs" style="margin:0"> 
+					<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
+	    		</div> 
+	    	</div>
+	    </div>
+	    <div class="col-sm-4 text-right">
+	    	<%= f.submit "Save Changes", class: "btn btn-success" %>
+				<%= link_to wizard_homepage_content_path, class: "btn btn-default" do %>
+	    	 	Continue
+	    	<% end %>
+	    </div>
+	  </div>
+	</header>
 	<section class="hbox stretch">
-		
 		<aside> 
 			<section class="vbox">
-				<% if Rails.env.production? %>
-				<iframe src="http://<%= request.subdomain %>.leasify.co"></iframe>
-				<% elsif Rails.env.development? %>
-				<iframe src="http://<%= request.subdomain %>.lvh.me:3000"></iframe>
-				<% end %>
-				<footer class="footer bg-white b-t">
-				  <div class="row text-center-xs">
-				    <div class="col-md-2">
-				    	50% complete
-				    	<div class="progress progress-xs m-t-sm" style="margin:0"> 
-								<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
-				    		</div> 
-				    	</div>
-				    </div>
-				    <div class="col-md-6 col-md-offset-4 text-right">
-				      <%= f.submit "Save Changes", class: "btn btn-success" %>
-				    	<%= link_to wizard_customize_path, class: "btn btn-default" do %>
-				    	 	Continue
-				    	<% end %>
-				    </div>
-				  </div>
-				</footer>
+				
+				<div style="position:absolute; height:100%; width:100%;">
+					<% if Rails.env.production? %>
+					<iframe src="http://<%= request.subdomain %>.leasify.co"></iframe>
+					<% elsif Rails.env.development? %>
+					<iframe src="http://<%= request.subdomain %>.lvh.me:3000"></iframe>
+					<% end %>
+				</div>
 			</section>
 		</aside>
-		<aside class="wrapper b-l aside-md"> 
+		<aside class="wrapper b-l aside-md" id="wizard_right_aside"> 
 			<section class="vbox">
 				<section class="scrollable">
 					<h4>Customize Design</h4>
 						<div class="accordian" id="accordion"> 
-	      			<div class="panel"> 
-	      				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#typography"> 
-      						Typography <i class="i i-arrow-down5 pull-right"></i>
-      					</a> 
-	      				<div id="typography" class="panel-collapse collapse" style="height: auto;"> 
-	      					<div class="form-group">
-				            <%= f.label :body_font, "Body font" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= font_name %></span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="body-font-list">
-				          			<%= render 'layouts/body_font', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <%= f.label :heading_font, "Heading font" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= heading_name %></span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="heading-font-list">
-				          			<%= render 'layouts/heading_font', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-						    </div> 
-	      			</div> <!-- end typography panel -->
-	      			<div class="panel"> 
-	      				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#font_size"> 
-      						Font Size <i class="i i-arrow-down5 pull-right"></i>
-      					</a> 
-	      				<div id="font_size" class="panel-collapse collapse" style="height: 0px;"> 
-	      					<div class="form-group">
-				            <%= f.label :mainheading_size, "Site Title" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= @themeoptions.mainheading_size %>px</span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="site-title-size">
-				          			<%= render 'font_size', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <%= f.label :subheading_size, "Sub Heading" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= @themeoptions.subheading_size %>px</span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="subheading_size">
-				          			<%= render 'subheading_size', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <%= f.label :nav_size, "Navigation" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= @themeoptions.nav_size %>px</span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="nav_size">
-				          			<%= render 'nav_size', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <%= f.label :body_size, "Body Size" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= @themeoptions.body_size %>px</span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="body_size">
-				          			<%= render 'body_size', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-				          <div class="form-group">
-				            <%= f.label :footer_size, "Footer Size" %>
-				           	<div class="btn-group m-r">
-				              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-				                <span class="dropdown-label" data-placeholder="Please select"><%= @themeoptions.footer_size %>px</span> 
-				                <span class="caret" style="margin-left:30px;"></span>
-				              </button>
-				              <ul class="dropdown-menu dropdown-select max-height-400" id="footer_size">
-				          			<%= render 'footer_size', :f => f %>
-				              </ul>
-				            </div>
-				          </div>
-		       			</div> 
-	      			</div><!-- end font size panel -->
-	      			<div class="panel"> 
-	      				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#color"> 
-      						Color <i class="i i-arrow-down5 pull-right"></i>
-      					</a> 
-	      				<div id="color" class="panel-collapse collapse" style="height: auto;"> 
-	      					<div class="form-group" id="mainheading_color">
-				            <%= f.label :mainheading_color, "Site Title" %>
-				            <div class="input-group demo2 colorpicker-component">
-				           	  <span class="input-group-addon border-all"><i></i></span>
-				           	  <%= f.text_field :mainheading_color, class: "form-control no-bg", value: @themeoptions.mainheading_color %>
-										</div>
-				          </div>
-				          <div class="form-group" id="subheading_color">
-				            <%= f.label :subheading_color, "Subheading" %>
-				            <div class="input-group demo2 colorpicker-component">
-				           	  <span class="input-group-addon border-all"><i></i></span>
-				           	  <%= f.text_field :subheading_color, class: "form-control no-bg", value: @themeoptions.subheading_color %>
-										</div>
-				          </div>
-				          
-						    </div> 
-	      			</div> <!-- end color panel -->
-	      		</div><!-- end accordian -->
+							<%= render 'logo', :f => f %>
+	      			<%= render 'typography', :f => f %>
+	      			<%= render 'font_size_panel', :f => f %>
+							<%= render 'font_color', :f => f %>
+						</div><!-- end accordian -->
 					</section>
 	      </section>
 			</aside>
 
-	</section><% end %>
+	</section>
+	<% end %>
 </section>
+<div class="fake_tooltip customize_tooltip" id="customize_tooltip">
+	<span class="arrow right"></span>
+	Let's customize your site!<br>
+	You can change your websites fonts, font size, colors, and upload a logo.
+</div>
+
 
 <%= javascript_tag do %>
-
-  $(document).ready(function() {
-
-  	// Bootstrap colorpicker
-  	$(function(){
-        $('.demo2').colorpicker();
-        $('#mainheading_color span i').css('background-color', '<%= @themeoptions.mainheading_color %>');
-        $('#subheading_color span i').css('background-color', '<%= @themeoptions.subheading_color %>')
-    });
-
-		// Change body font family		
-		$("#body-font-list li a").click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-
-			val = $('#body-font-list li a.active input[type=radio]').val();
-			var lastBodyClass = $('iframe').contents().find('body').attr('class').split(' ').pop();
-			$('iframe').contents().find('body').removeClass(lastBodyClass).addClass(val);
-		});
-
-		// Change heading font family
-		$('#heading-font-list li a').click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-			$('iframe').contents().find('body').removeClass('<%= @themeoptions.heading_font %>');
-			val = $('#heading-font-list li a.active input[type=radio]').val();
-			var lastHeadingClass = $('iframe').contents().find('h1').attr('class').split(' ').pop();
-
-			var dataValue = $('#heading-font-list li a.active input[type=radio]').attr('data-id');
-			var dataWeight = $('#heading-font-list li a.active input[type=radio]').attr('data-weight');
-
-			$('iframe').contents().find('h1, h2, h3, h4, h5, h6').removeClass(lastHeadingClass).addClass(dataValue);
-		});
-
-		// Main heading size
-		$('#site-title-size li a').click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-			val = $('#site-title-size li a.active input[type=radio]').val();
-			$('iframe').contents().find('.welcome-box h1').css('font-size', val + 'px')
-		});
-
-		// Sub heading size
-		$('#subheading_size li a').click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-			val = $('#subheading_size li a.active input[type=radio]').val();
-			$('iframe').contents().find('.welcome-box p').css('font-size', val + 'px')
-		});
-
-		// Nav size
-		$('#nav_size li a').click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-			val = $('#nav_size li a.active input[type=radio]').val();
-			$('iframe').contents().find('header ul li a').css('font-size', val + 'px')
-		});
-
-		// Body size
-		$('#body_size li a').click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-			val = $('#body_size li a.active input[type=radio]').val();
-			$('iframe').contents().find('body').css('font-size', val + 'px')
-		});
-
-			// footer size
-		$('#footer_size li a').click(function() {
-			$(this).closest('ul').find('li.active').removeClass('active');
-			$(this).closest('ul').find('li a.active').removeClass('active');
-			$(this).addClass('active');
-			val = $('#footer_size li a.active input[type=radio]').val();
-			$('iframe').contents().find('footer p').css('font-size', val + 'px')
-		});
-
-		// main title color
-		$('#mainheading_color input').change(function() {
-			val = $(this).val();
-			$('iframe').contents().find('.welcome-box h1').css('color', val)
-		});
-
-		// sub title color
-		$('#subheading_color input').change(function() {
-			val = $(this).val();
-			$('iframe').contents().find('.welcome-box p').css('color', val)
-		});
-
-	});
-
+<%= render "customize.js" %>
 <% end %>
+
+  
+
+
 
 
 

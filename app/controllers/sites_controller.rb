@@ -28,15 +28,22 @@ class SitesController < ApplicationController
     @sites = Site.where(user_id: current_user.id).all
   end
 
+  def redirect
+    # Redirect user to site wizard after creating new subdomain
+    @site_last = Site.where(user_id: current_user.id).last
+    redirect_to root_url(:host => with_subdomain(@site_last.subdomain)) + 'dashboard/wizard/property'
+  end
+
   # POST /sites
   # POST /sites.json
   def create
     @sites = Site.where(user_id: current_user.id).all
     @site = current_user.sites.new(site_params)
+    
 
     respond_to do |format|
       if @site.save
-        format.html { redirect_to dashboard_path, notice: 'Saved' }
+        format.html { redirect_to redirect_path, notice: 'Saved' }
         format.json { render action: 'show', status: :created, location: @site }
       else
         format.html { render action: 'new' }

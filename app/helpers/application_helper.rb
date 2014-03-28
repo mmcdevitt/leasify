@@ -56,7 +56,11 @@ module ApplicationHelper
     @site = Site.where(subdomain: request.subdomain).first.id
   end
 
+  def nav_xs_wizards_homepage
+  	"nav-xs" if params[:controller] == 'wizards' && params[:action] == "homepage_content"
+  end
 
+  
 
 
 

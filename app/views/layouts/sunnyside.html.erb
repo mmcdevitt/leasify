@@ -1,5 +1,5 @@
 <%= render 'layouts/sunnyside/head' %>
-  <body class="sunnyside <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>" style="font-size: <%= @themeoptions.body_size %>px;">
+  <body class="sunnyside customize" style="font-size: <%= @themeoptions.body_size %>px;">
 		<div id="wrapper">
 			<%= render 'layouts/sunnyside/header' %>
 				<div class="fill">
@@ -10,11 +10,13 @@
 									<div id="content">
 										<div class="welcome-box">
 											<h1 class="" style="font-size: <%= @themeoptions.mainheading_size %>px; color: <%= @themeoptions.mainheading_color %>"><%= @themeoptions.homepage_heading %></h1>
-											<p style="font-size: <%= @themeoptions.subheading_size %>px; color: <%= @themeoptions.subheading_color %>"><%= @themeoptions.homepage_subheading %></p>
+											<p class=" a" style="font-size: <%= @themeoptions.subheading_size %>px; color: <%= @themeoptions.subheading_color %>"><%= @themeoptions.homepage_subheading %></p>
 										</div>
-										<section class="listings-btn center">
-											<%= link_to "View Listings", leasing_path, class: "btn btn-no-bg" %>
-					          </section>
+										<% unless @availabilities.empty? %>
+											<section class="listings-btn center">
+												<%= link_to "View Listings", leasing_path, class: "btn btn-no-bg" %>
+						          </section>
+					          <% end %>
 		          		</div>
 								</div>
 							</div>
@@ -22,7 +24,7 @@
 						<div class="carousel-inner">
 							<% if @homepage_gallery.blank? %>
 								<div class="item active">
-						      <div class="fill" style="background-image:url('/assets/office1.jpg');">
+						      <div class="fill wizard" style="background-image:url('/assets/office4.jpg');">
 						        <div class="container">
 						          	
 						        </div>
@@ -31,7 +33,7 @@
 							<% else %>
 					  	<% @homepage_galleries.each_with_index do |image, index| %>
 					    <div class="item <%= "active" if index == 0 %>">
-					      <div class="fill" style="background-image:url('<%= image.homepage_gallery_image %>');">
+					      <div class="fill wizard" style="background-image:url('<%= image.homepage_gallery_image %>');">
 					        <div class="container">
 					          	
 					        </div>
@@ -43,10 +45,12 @@
 					</div>
 				</div>
 			<div class="container-fluid">
-				<div class="page-content">
+				<div class="page-content p-100">
 					<div class="row center">
 						<div class="col-md-6 col-md-offset-3">
-							<%= markdown(@themeoptions.content) %>
+							<div class="wizard-edit">
+								<%= markdown(@themeoptions.content) %>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -56,6 +60,10 @@
 		</div><!-- end wrapper -->
 		<script type="text/javascript">
 			$('.carousel').carousel();
+
+			// $('.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6').css('color', 'black');
+
+		
 		</script>
 	</body>
 </html>

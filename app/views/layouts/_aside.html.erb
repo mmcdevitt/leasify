@@ -6,128 +6,22 @@
         <!-- nav -->                 
         <nav class="nav-primary hidden-xs">
           <% if request.subdomain.present? && request.subdomain != "www" %>
-          <% if params[:controller] == "wizards" %>
-          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm text-left">
-            <i class="i i-arrow-left4"></i><%= link_to "Exit Wizard", dashboard_path, class: "btn btn-link" %>
-          </div>
-          <div class="line dk hidden-nav-xs"></div>
-            <ul class="nav nav-main" data-ride="collapse">
-              <li >
-                <%= link_to wizard_templates_path, class: "auto" do %>
-                  <i class="i i-browser icon">
-                  </i>
-                  <span class="font-bold">Choose Template</span>
-                <% end %>
-              </li>
-              <li >
-                <%= link_to wizard_customize_path, class: "auto" do %>
-                  <i class="i i-file-css icon">
-                  </i>
-                  <span class="font-bold">Customize Design</span>
-                <% end %>
-              </li>
-            </ul>
-          <% else %>
-          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Browse</div>
-            <ul class="nav nav-main" data-ride="collapse">
-              <% @sidebar_nav.each do |sidebar| %>
-                <li >
-                  <%= link_to send(sidebar.link_to), class: "auto" do %>
-                    <i class="i i-<%= sidebar.icon %> icon">
-                    </i>
-                    <span class="font-bold"><%= sidebar.name %></span>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-          <div class="line dk hidden-nav-xs"></div>
-          <% unless @pages.empty? %>
-          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Pages</div>
-          <% end %>
-          <ul class="nav">
-            <% @pages.each do |page| %>
-              <li>
-                <%= link_to edit_page_path(page) do %>
-                <i class="i i-docs icon"></i>
-                <%= page.title %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-          <% unless @availabilities.empty? %>
-          <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Availabilities</div>
-          <% end %>
-          <ul class="nav">
-            <% @availabilities.each do |availability| %>
-              <li>
-                <%= link_to edit_availability_path(availability) do %>
-                <i class="i i-stack icon"></i>
-                <%= availability.suite_or_floor + " #" + availability.title %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-          <% else %>
-          <% unless params[:action] == 'home' %>
-           <% if current_user.admin? %>
-          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">Admin Links</div>
-            <ul class="nav nav-main" data-ride="collapse">
-              <li >
-                <%= link_to users_list_path, class: "auto" do %>
-                  <i class="i i-users3 icon">
-                  </i>
-                  <span class="font-bold">Users</span>
-                <% end %>
-              </li>
-              <li >
-                <%= link_to admin_theme_path, class: "auto" do %>
-                  <i class="i i-browser icon">
-                  </i>
-                  <span class="font-bold">Theme Names</span>
-                <% end %>
-              </li>
-              <li >
-                <%= link_to admin_sidebar_path, class: "auto" do %>
-                  <i class="i i-statistics icon">
-                  </i>
-                  <span class="font-bold">Sidebar Links</span>
-                <% end %>
-              </li>
-              <li >
-                <%= link_to admin_amenities_path, class: "auto" do %>
-                  <i class="i i-statistics icon">
-                  </i>
-                  <span class="font-bold">Amenities</span>
-                <% end %>
-              </li>
-            </ul>
-        
-          <% end %>
-          <div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">My Sites</div>
-          <ul class="nav nav-main" data-ride="collapse">
-            <% @sites.each do |site| %>
-              <% if current_user.sign_in_count == 1 %>
-              <li>
-                <%= link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard/tour", class: "auto", target: "_blank" do %>
-                <i class="i i-stack icon">
-                </i>
-                <span class="font-bold"><%= PropertyInformation.where(site_id: site.id).first.name %></span>
-                <% end %>
-              </li>
-              <% else %>
-              <li>
-                <%= link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard", class: "auto", target: "_blank" do %>
-                <i class="i i-stack icon">
-                </i>
-                <span class="font-bold"><%= PropertyInformation.where(site_id: site.id).first.name %></span>
-                <% end %>
-              </li>
-              <% end %>
-            <% end %>
-          </ul>
-          <% end %>
-          <% end %>
+
+            <% if params[:controller] == "wizards" %>
+
+              <%= render 'layouts/aside/wizard' %>
+
+            <% else %><%# else wizards conditional statement %> 
+
+              <%= render 'layouts/aside/main' %>
+
+            <% end %><%# end wizards conditional statement %> 
+
+          <% else %><%# else subdomain conditional statement %> 
+
+            <%= render 'layouts/aside/admin' %>
+          
+          <% end %><%# end subdomain conditional statement %>
         </nav>
         <!-- / nav -->
       </div>

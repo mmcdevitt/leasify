@@ -102,9 +102,9 @@ hr {
 		width:300px;
 		margin-top: 30px;
 		ul li a{
-			color: #fff;
+			
 			text-transform: uppercase;
-			font-size: 12px;
+			
 			&:hover {
 				color:#d7d7d7;
 				background: transparent;
@@ -122,9 +122,9 @@ hr {
 			color: #fff;
 			background-color: #f5f5f5;
 			h1 {
-				font-size: 40px;
 				
-				text-transform: uppercase;
+				
+				
 			}
 			.page-title {
 				float: left;
@@ -177,7 +177,7 @@ hr {
 
 	}
 	.page-content {
-		padding: 100px;
+		
 		h1 {
 			margin-bottom: 60px;
 		}
@@ -185,21 +185,21 @@ hr {
 			margin-bottom: 20px;
 		}
 		p {
-			font-size: 14px;
+			
 			line-height: 28px;
-			color: #999;
+			
 		}
 	}
 	footer {
 		padding: 20px;
 		position: absolute;
 		bottom: 0;
-		color: #fff;
+		
 		width: 100%;
 		p {
-			font-size: 12px;
+			
 			margin: 0;
-			color: #fff;
+			
 		}
 	}
 	.stats {

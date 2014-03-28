@@ -1,0 +1,110 @@
+<section>
+	<%= form_for(@propertyinformations, html: { class: "propertyinformations-wizard" }) do |f| %> 
+	<section class="hbox stretch wizard">
+		<aside> 
+			<section class="vbox">
+				<header class="header bg-white b-b clearfix">
+				  <div class="row">
+				  	<div class="col-sm-4">
+				  		<%= link_to wizard_property_information_path, class: "btn btn-default" do %>
+				    	 	Back
+				    	<% end %>
+				  	</div>
+				    <div class="col-sm-4">
+				  		50% complete
+				    	<div class="progress progress-xs" style="margin:0"> 
+								<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
+				    		</div> 
+				    	</div>
+				    </div>
+				    <div class="col-sm-4 text-right" id="save_continue">
+				    	<%= f.submit "Save Changes", class: "btn btn-success" %>
+							<%= link_to wizard_property_amenities_path, class: "btn btn-default" do %>
+				    	 	Continue
+				    	<% end %>
+				    </div>
+				  </div>
+				</header>
+				<section class="scrollable wrapper w-f">
+					<div class="panel-body">
+						<div class="add-page">
+			        <div class="row">
+			          <div class="col-md-8 col-md-offset-2">
+			          	<div class="top-info">
+							      <h1>Add Property Address</h1>
+							      <p>Now let's save your property's address.</p>
+							    </div>
+			            <h3>Property Address</h3>
+			            <div class="line line-dashed b-b line-lg pull-in"></div>
+			            <div class="form-group">
+			              <%= f.label :address, "Property Address" %>
+			              <%= f.text_field :address, class: "form-control", placeholder: "614 Park Ave" %>
+			              <p>Your property's address.</p>
+			            </div>
+			            <div class="line line-dashed b-b line-lg pull-in"></div>
+			            <div class="form-group">
+			              <%= f.label :state, "State" %>
+			              <div class="btn-group m-r">
+			                <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
+			                  <span class="dropdown-label" data-placeholder="Please select"><%= state_select_wizard %></span> 
+			                  <span class="caret" style="margin-left:30px;"></span>
+			                </button>
+			                <ul class="dropdown-menu dropdown-select max-height-400">
+			                  <%= render 'property_informations/state_dropdown', :f => f %>
+			                </ul>
+			              </div>
+			            </div>
+			          
+			            <div class="line line-dashed b-b line-lg pull-in"></div>
+			            <div class="form-group">
+			              <%= f.label :city, "City" %>
+			              <%= f.text_field :city, class: "form-control", placeholder: "New York" %>
+			              <p>Your property's city.</p>
+			            </div>
+			            <div class="line line-dashed b-b line-lg pull-in"></div>
+			            <div class="form-group">
+			              <%= f.label :zipcode, "Zipcode" %>
+			              <%= f.text_field :zipcode, class: "form-control", placeholder: "10001" %>
+			              <p>Your property's zipcode.</p>
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+		      </div>
+				</section>
+			</section>
+		</aside>
+	</section>
+	<% end %>
+</section>
+
+<div class="fake_tooltip save" id="save_continue_tooltip">
+	<span class="arrow top"></span>
+	Remember to Save and Continue!
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

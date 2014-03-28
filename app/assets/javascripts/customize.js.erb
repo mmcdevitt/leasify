@@ -1,39 +1,93 @@
-$('iframe').load(function() {
-
-	// Change h1 font size
-	$("#text").keyup(function() {
-		num = $(this).val();
-		$('iframe').contents().find('.welcome-box h1').css("font-size", num + "px");
-	});
-
-});
-
 $(document).ready(function() {
 
-	// Change body font family		
-	$("#body-font-list li a").click(function() {
-		$(this).closest('ul').find('li.active').removeClass('active');
-		$(this).closest('ul').find('li a.active').removeClass('active');
-		$(this).addClass('active');
+  	// Bootstrap colorpicker
+  	$(function(){
+        $('.demo2').colorpicker();
+        $('#mainheading_color span i').css('background-color', '<%= @themeoptions.mainheading_color %>');
+        $('#subheading_color span i').css('background-color', '<%= @themeoptions.subheading_color %>')
+    });
 
-		val = $('#body-font-list li a.active input[type=radio]').val();
-		var lastBodyClass = $('iframe').contents().find('body').attr('class').split(' ').pop();
-		$('iframe').contents().find('body').removeClass(lastBodyClass).addClass(val);
+		// Change body font family		
+		$("#body-font-list li a").click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+
+			val = $('#body-font-list li a.active input[type=radio]').val();
+			var lastBodyClass = $('iframe').contents().find('body').attr('class').split(' ').pop();
+			$('iframe').contents().find('body').removeClass(lastBodyClass).addClass(val);
+		});
+
+		// Change heading font family
+		$('#heading-font-list li a').click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+			$('iframe').contents().find('body').removeClass('<%= @themeoptions.heading_font %>');
+			val = $('#heading-font-list li a.active input[type=radio]').val();
+			var lastHeadingClass = $('iframe').contents().find('h1').attr('class').split(' ').pop();
+
+			var dataValue = $('#heading-font-list li a.active input[type=radio]').attr('data-id');
+			var dataWeight = $('#heading-font-list li a.active input[type=radio]').attr('data-weight');
+
+			$('iframe').contents().find('h1, h2, h3, h4, h5, h6').removeClass(lastHeadingClass).addClass(dataValue);
+		});
+
+		// Main heading size
+		$('#site-title-size li a').click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+			val = $('#site-title-size li a.active input[type=radio]').val();
+			$('iframe').contents().find('.welcome-box h1').css('font-size', val + 'px')
+		});
+
+		// Sub heading size
+		$('#subheading_size li a').click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+			val = $('#subheading_size li a.active input[type=radio]').val();
+			$('iframe').contents().find('.welcome-box p').css('font-size', val + 'px')
+		});
+
+		// Nav size
+		$('#nav_size li a').click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+			val = $('#nav_size li a.active input[type=radio]').val();
+			$('iframe').contents().find('header ul li a').css('font-size', val + 'px')
+		});
+
+		// Body size
+		$('#body_size li a').click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+			val = $('#body_size li a.active input[type=radio]').val();
+			$('iframe').contents().find('body').css('font-size', val + 'px')
+		});
+
+			// footer size
+		$('#footer_size li a').click(function() {
+			$(this).closest('ul').find('li.active').removeClass('active');
+			$(this).closest('ul').find('li a.active').removeClass('active');
+			$(this).addClass('active');
+			val = $('#footer_size li a.active input[type=radio]').val();
+			$('iframe').contents().find('footer p').css('font-size', val + 'px')
+		});
+
+		// main title color
+		$('#mainheading_color input').change(function() {
+			val = $(this).val();
+			$('iframe').contents().find('.welcome-box h1').css('color', val)
+		});
+
+		// sub title color
+		$('#subheading_color input').change(function() {
+			val = $(this).val();
+			$('iframe').contents().find('.welcome-box p').css('color', val)
+		});
+
 	});
-
-	// Change heading font family
-	$('#heading-font-list li a').click(function() {
-		$(this).closest('ul').find('li.active').removeClass('active');
-		$(this).closest('ul').find('li a.active').removeClass('active');
-		$(this).addClass('active');
-		$('iframe').contents().find('body').removeClass('<%= @themeoptions.heading_font %>');
-		val = $('#heading-font-list li a.active input[type=radio]').val();
-		var lastHeadingClass = $('iframe').contents().find('h1').attr('class').split(' ').pop();
-
-		var dataValue = $('#heading-font-list li a.active input[type=radio]').attr('data-id');
-		var dataWeight = $('#heading-font-list li a.active input[type=radio]').attr('data-weight');
-
-		$('iframe').contents().find('h1, h2, h3, h4, h5, h6').removeClass(lastHeadingClass).addClass(dataValue);
-	});
-
-});

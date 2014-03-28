@@ -134,6 +134,9 @@ iframe {
     box-shadow: none;
     margin: 0 0 10px 0;
 }
+.accordian .panel:last-child {
+    padding-bottom: 300px;
+}
 .accordian .panel .panel-collapse {
     padding:10px; 
     background: #f5f5f5;

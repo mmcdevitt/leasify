@@ -58,6 +58,7 @@ hr {
 	}
 	.main-gallery {
 		margin-bottom: 30px;
+		margin-top: 30px;
 	}
 	#wrapper {
 		height: 100%;
@@ -70,11 +71,11 @@ hr {
 	header {
 		padding: 0 50px;
 		ul li a{
-			color: #535353;
+			
 			text-transform: uppercase;
-			font-size: 12px;
+			
 			&:hover {
-				color:#d7d7d7;
+				
 				background: transparent;
 			}
 		}
@@ -92,17 +93,18 @@ hr {
 
 	}
 	.page-content {
+		margin-top:30px;
 		padding: 10px;
 		h1 {
-			margin-bottom: 60px;
+			margin-bottom: 30px;
 		}
 		h2, h3 {
 			margin-bottom: 20px;
 		}
 		p {
-			font-size: 14px;
+			
 			line-height: 28px;
-			color: #999;
+			
 		}
 	}
 	footer {
@@ -110,9 +112,9 @@ hr {
 		background: #f7f7f7; 
 		margin-top:50px;
 		p {
-			font-size: 12px;
+			
 			margin: 0;
-			color: #999;
+			
 		}
 	}
 	.stats {
@@ -179,7 +181,10 @@ hr {
 	}
 }/*end sunnyside*/
 
-
+.img_preview_livingston {
+	height:618px; 
+	background-size:cover;
+}
 
 
 

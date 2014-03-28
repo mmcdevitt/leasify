@@ -15,4 +15,45 @@
   <script type="text/javascript" src="//use.typekit.net/bgg6ayr.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <% end %>
+
+  <style type="text/css">
+    header ul li a {
+      color: <%= @themeoptions.nav_color %>;
+    }
+    header ul li a:hover {
+      color: <%= @themeoptions.navhover_color %> !important;
+    }
+    footer {
+      font-size: <%= @themeoptions.footer_size %>px;
+    }
+    footer p {
+      color: <%= @themeoptions.footer_color %>;
+    }
+    a.customize-link,
+    .page-content a {
+      color: <%= @themeoptions.link_color %>;
+    }
+    
+    .page-content p,
+    .page-content {
+      color: <%= @themeoptions.body_color %>;
+      font-size: <%= @themeoptions.body_size %>px;
+    }
+
+    .page-content h1,
+    .page-content h2,
+    .page-content h3,
+    .page-content h4,
+    .page-content h5,
+    .page-content h6 {
+      color: <%= @themeoptions.body_heading_color %> ;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      text-transform: <%= @themeoptions.heading_text_transform %>; 
+       <%= font_name_for_heading_css.html_safe %>
+    }
+    body {
+      <%= font_name_for_body_css.html_safe %>
+    }
+  </style>
 </head>

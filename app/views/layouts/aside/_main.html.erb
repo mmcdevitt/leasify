@@ -1,0 +1,41 @@
+<div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm">
+  Browse
+</div>
+<ul class="nav nav-main" data-ride="collapse">
+  <% @sidebar_nav.each do |sidebar| %>
+    <li >
+      <%= link_to send(sidebar.link_to), class: "auto" do %>
+        <i class="i i-<%= sidebar.icon %> icon">
+        </i>
+        <span class="font-bold"><%= sidebar.name %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<div class="line dk hidden-nav-xs"></div>
+<% unless @pages.empty? %>
+  <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Pages</div>
+  <ul class="nav">
+    <% @pages.each do |page| %>
+      <li>
+        <%= link_to edit_page_path(page) do %>
+        <i class="i i-docs icon"></i>
+        <%= page.title %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %><%# end pages empty loop %> 
+<% unless @availabilities.empty? %>
+  <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Availabilities</div>
+  <ul class="nav">
+    <% @availabilities.each do |availability| %>
+      <li>
+        <%= link_to edit_availability_path(availability) do %>
+        <i class="i i-stack icon"></i>
+        <%= availability.suite_or_floor + " #" + availability.title %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %><%# end availabilities empty loop %> 

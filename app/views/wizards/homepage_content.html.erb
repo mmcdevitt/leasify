@@ -1,0 +1,120 @@
+<section class="wizard">
+	<%= form_for(@themeoptions, html: { class: "customize-wizard" }) do |f| %> 
+		<header class="header bg-white b-b clearfix">
+				  <div class="row">
+				  	<div class="col-sm-4">
+				  		<%= link_to wizard_customize_path, class: "btn btn-default" do %>
+				    	 	Back
+				    	<% end %>
+				  	</div>
+				    <div class="col-sm-4">
+				  		50% complete
+				    	<div class="progress progress-xs" style="margin:0"> 
+								<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
+				    		</div> 
+				    	</div>
+				    </div>
+				    <div class="col-sm-4 text-right">
+				    	<%= f.submit "Save Changes", class: "btn btn-success" %>
+							<%= link_to wizard_homepage_gallery_path, class: "btn btn-default" do %>
+				    	 	Continue
+				    	<% end %>
+				    </div>
+				  </div>
+				</header>
+	<section class="hbox stretch">
+		<aside> 
+			<section class="vbox">
+				<div style="position:absolute; height:100%; width:100%;">
+					<% if Rails.env.production? %>
+					<iframe src="http://<%= request.subdomain %>.leasify.co"></iframe>
+					<% elsif Rails.env.development? %>
+					<iframe src="http://<%= request.subdomain %>.lvh.me:3000"></iframe>
+					<% end %>
+				</div>
+			</section>
+		</aside>
+		<aside class="wrapper b-l aside-xl" id="wizard_right_aside"> 
+			<section class="vbox">
+				<section class="scrollable">
+					<div class="customize-height">
+						<h3>Homepage Content</h3>
+						<div class="line line-dashed b-b line-lg pull-in"></div>
+						<div class="form-group">
+			        <%= f.label :homepage_heading, "Homepage Main Heading" %>
+			        <%= f.text_field :homepage_heading, class: "form-control", id: 'mainheading_customize' %>
+			      </div>
+			      <div class="line line-dashed b-b line-lg pull-in"></div>
+			      <div class="form-group">
+			        <%= f.label :homepage_subheading, "Homepage Subheading" %>
+			        <%= f.text_field :homepage_subheading, class: "form-control", id: "subheading_customize" %>
+			      </div>
+			      <div class="line line-dashed b-b line-lg pull-in"></div>
+			      <div class="form-group">
+			        <%= f.label :content, "Page Content" %>
+			       	<%= f.text_area :content, id: "some-textarea", class: "wysihtml5 form-control customize-textarea", id: "content_customize" %>
+						</div>
+					</div>
+				</section>
+      </section>
+		</aside>
+
+	</section>
+	<% end %>
+</section>
+
+<div class="fake_tooltip homepage_content_tooltip" id="homepage_tooltip">
+	<span class="arrow right"></span>
+	<p>Now let's get some real content on your homepage!</p>
+	<p>If you don't like what you've written, you can always 
+	edit your content in the "Pages" section of your dashboard.</p>
+</div>
+<div class="fake_tooltip homepage_heading_tooltip" id="homepage_heading_tooltip">
+	<span class="arrow right"></span>
+	This will be your homepage's main heading.
+	
+</div>
+<div class="fake_tooltip homepage_subheading_tooltip" id="homepage_subheading_tooltip">
+	<span class="arrow right"></span>
+	This will be your homepage's sub heading. This is optional.
+</div>
+<div class="fake_tooltip homepage_textarea_tooltip" id="homepage_textarea_tooltip">
+	<span class="arrow right"></span>
+	This will be your homepage's main content. Style your content with the button groups 
+	above the textarea.
+</div>
+
+
+<%= javascript_tag do %>
+<%= render "customize.js" %>
+<% end %>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

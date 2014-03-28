@@ -79,6 +79,13 @@ class ThemeOptionsController < ApplicationController
                                            :footer_color,
                                            :nav_color,
                                            :navhover_color,
+                                           :body_heading_color,
+                                           :link_color,
+                                           :page_title_size,
+                                           :page_subtitle_size,
+                                           :page_title_color,
+                                           :page_subtitle_color,
+                                           :heading_text_transform,
                                            homepage_galleries_attributes: [:user_id, :id, :homepage_gallery_image, :site_id, :_destroy])
     end
 end

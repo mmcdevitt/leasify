@@ -1,30 +1,53 @@
 <%= render 'layouts/livingston/head' %>
-	<body class="livingston <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+	<body class="livingston customize">
 		<div id="wrapper">
 			<%= render 'layouts/livingston/header' %>
 			<div class="container">
-				<% if @homepage_galleries.blank? %>
 				<div class="main-gallery">
-					<%= image_tag('/assets/office1.jpg', class: "img-responsive") %>
+					<div id="myCarousel" class="carousel slide">
+							<div class="carousel-inner">
+								<% if @homepage_gallery.blank? %>
+									<div class="item active">
+							      <div class="fill wizard img_preview_livingston" style="background-image:url('/assets/office2.jpg')">
+							      </div>
+							    </div>
+								<% else %>
+									<% @homepage_galleries.each_with_index do |image, index| %>
+									  <div class="item <%= "active" if index == 0 %>">
+									    <div class="fill wizard">
+									      <%= image_tag(image.homepage_gallery_image.url(:large), class: "img-responsive") %>
+									    </div>
+									  </div>
+								  <% end %>
+							  <% end %>
+							</div>
+						</div>
 				</div>
-				<% else %>
-				<div class="main-gallery">
-					<%= image_tag(@homepage_gallery.homepage_gallery_image.url(:large), class: "img-responsive") %>
-				</div>
-				<% end %>
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 center">
-							<h3><%= @themeoptions.homepage_heading %></h3>
+						<div class="welcome-box">
+							<h1 class=""><%= @themeoptions.homepage_heading %></h1>
 							<p class="text-muted"><%= @themeoptions.homepage_subheading %></p>
+							</div>
 							<div class="page-content">
-							<p><%= markdown(@themeoptions.content) %></p>
-						</div>
+								<div class="wizard-edit">
+								<p><%= markdown(@themeoptions.content) %></p>
+							</div>
+							</div>
+						
 					</div>
 				</div>
 			</div>
 			
 			<%= render 'layouts/livingston/footer' %>
 		</div><!-- end wrapper -->
+		<script type="text/javascript">
+			$('.carousel').carousel();
+
+			// $('.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6').css('color', 'black');
+
+		
+		</script>
 	</body>
 </html>
 

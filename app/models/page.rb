@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
 		end
 	end
 
-	has_attached_file :page_image, :default_url => "/assets/image.jpg", styles: {
+	has_attached_file :page_image, :default_url => "/assets/office1.jpg", styles: {
 		xlarge: "1200x800#",
     large: "848x600#",
     medium: "300x200#",

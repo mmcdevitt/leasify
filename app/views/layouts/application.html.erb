@@ -68,6 +68,36 @@
             });
        
     </script>
+
+    <% if params[:controller] == "wizards" %>
+        <%= javascript_include_tag 'jquery.cookie' %>
+        <%= javascript_tag do %>
+            <%= render 'wizard.js' %>
+        <% end %>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</body>
 </html>
 

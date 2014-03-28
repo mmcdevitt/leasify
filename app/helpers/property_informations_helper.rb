@@ -15,11 +15,11 @@ module PropertyInformationsHelper
 	def state_select
 		@subdomain = request.subdomain
     @site      = Site.where(subdomain: request.subdomain).first
-		if (params[:action] == "address" && params[:controller] == "property_informations") 
-	    @property_informations = PropertyInformation.where(site_id: @site.id).first
+    @property_informations = PropertyInformation.where(site_id: @site.id).first
+		if (params[:action] == "address" && params[:controller] == "property_informations") && !@property_informations.state.nil?
 	    return @property_informations.state
 	  else
-	  	return "State"
+	  	return "Select State"
 	  end
 	end
 

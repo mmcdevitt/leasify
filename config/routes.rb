@@ -19,10 +19,18 @@ Subdomain::Application.routes.draw do
     get '/templates', to:'theme_options#template', as: :template
     get '/theme-options/settings', to:'theme_options#theme_settings', as: :theme_settings
     get '/tour', to:'dashboards#tour', as: :tour
+    get '/redirect', to:'sites#redirect', as: :redirect
 
     # Wizard routes
     get '/wizard/templates', to: 'wizards#templates', as: :wizard_templates
     get '/wizard/customize', to: 'wizards#customize', as: :wizard_customize
+    get '/wizard/homepage', to: 'wizards#homepage_content', as: :wizard_homepage_content
+    get '/wizard/property', to: 'wizards#property_information', as: :wizard_property_information
+    get '/wizard/property/address', to: 'wizards#property_address', as: :wizard_property_address
+    get '/wizard/property/amenities', to: 'wizards#property_amenities', as: :wizard_property_amenities
+    get '/wizard/homepage/gallery', to: 'wizards#homepage_gallery', as: :wizard_homepage_gallery
+    get '/wizard/page/new', to: 'wizards#new_page', as: :wizard_new_page
+    get '/wizard/almost/finished', to: 'wizards#almost_finished', as: :wizard_almost_finished
   end
 
   scope :admin do

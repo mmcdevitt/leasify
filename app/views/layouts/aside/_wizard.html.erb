@@ -1,0 +1,69 @@
+<div class="text-muted text-sm hidden-nav-xs padder m-t-sm m-b-sm text-left">
+  <i class="i i-arrow-left4"></i><%= link_to "Exit Wizard", dashboard_path, class: "btn btn-link" %>
+</div>
+<div class="line dk hidden-nav-xs"></div>
+  <ul class="nav nav-main wizard" data-ride="collapse">
+    <li <%= active_class(wizard_property_information_path) %>>
+      <%= link_to wizard_property_information_path, class: "auto" do %>
+        <span class="font-bold m-r">1. </span><span class="font-bold"> Property Information</span>
+      <% end %>
+    </li>
+    <li <%= active_class(wizard_property_address_path) %>>
+      <%= link_to wizard_property_address_path, class: "auto" do %>
+        <span class="font-bold m-r">2. </span><span class="font-bold">Property Address</span>
+      <% end %>
+    </li>
+    <li <%= active_class(wizard_property_amenities_path) %>>
+      <%= link_to wizard_property_amenities_path, class: "auto" do %>
+        <span class="font-bold m-r">3. </span><span class="font-bold">Property Amenities</span>
+      <% end %>
+    </li>
+    <li <%= active_class(wizard_templates_path) %>>
+      <%= link_to wizard_templates_path, class: "auto" do %>
+        <span class="font-bold m-r">4. </span><span class="font-bold">Choose Template</span>
+      <% end %>
+    </li>
+    <li <%= active_class(wizard_customize_path) %>>
+      <%= link_to wizard_customize_path, class: "auto" do %>
+        <span class="font-bold m-r">5. </span><span class="font-bold">Customize Design</span>
+      <% end %>
+    </li>
+    <li <%= active_class(wizard_homepage_content_path) %>>
+      <%= link_to wizard_homepage_content_path, class: "auto" do %>
+        <span class="font-bold m-r">6. </span><span class="font-bold">Edit Homepage Content</span>
+      <% end %>
+    </li>
+    <li <%= active_class(wizard_homepage_gallery_path) %>>
+      <%= link_to wizard_homepage_gallery_path, class: "auto" do %>
+        <span class="font-bold m-r">7. </span><span class="font-bold">Add Homepage Image</span>
+      <% end %>
+    </li>
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

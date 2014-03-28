@@ -2,12 +2,19 @@
 	<body class="avaya <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
 			<%= render 'layouts/avaya/header' %>
-			
+				<% if @homepage_gallery.blank? %>
+				<div class="main-homepage" style="background: url('/assets/office1.jpg');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;">
+				<% else %>
 				<div class="main-homepage" style="background: url('<%= HomepageGallery.where(site_id: @site.id).first.homepage_gallery_image %>');
 					-webkit-background-size: cover; -moz-background-size: cover; 
 					-o-background-size: cover; background-size: cover;">
+				<% end %>
 					<div class="page-title avaya-leasing">
-						<h1>Leasing</h1>
+						<div class="subpage-customize">
+							<h1 style="font-size: <%= @themeoptions.page_title_size %>px; color: <%= @themeoptions.page_title_color %>">Leasing</h1>
+						</div>
 					</div>
 					<div class="welcome-box page white-bg">
 						<div class="stats">
