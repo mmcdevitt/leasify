@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.development?
       (root_url(:subdomain => false) )
     elsif Rails.env.production?
-      redirect_to root_url(:host => with_subdomain("www"))
+      root_url(:host => with_subdomain("www"))
     end
   end
 
