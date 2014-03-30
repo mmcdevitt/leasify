@@ -4,6 +4,7 @@
       @site = Site.where(subdomain: request.subdomain).first %>
 		<% @availabilities.each do |availabilities| %>
 		<% @availabilities_image = AvailabilityGallery.where(site_id: @site.id, availability_id: availabilities.id).first %>
+		<% if availabilities.published? %>
 		<%= link_to leasing_show_path(availabilities) do %>
 			<div class="col-lg-3 col-md-4 col-sm-6">
 				<div class="leasing-widget">
@@ -38,6 +39,8 @@
 					</div>
 				</div>
 			</div>
-		<% end %><% end %>
+		<% end %>
+		<% end %>
+		<% end %>
 	</div>
 </div>

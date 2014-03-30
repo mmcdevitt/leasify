@@ -18,14 +18,22 @@
 
   <style type="text/css">
     header ul li a {
+      <% if @themeoptions.nav_color == "#fff" || @themeoptions.nav_color == "#ffffff" %>
+      color: #000;
+      <% else %>
       color: <%= @themeoptions.nav_color %>;
+      <% end %>
       font-size: <%= @themeoptions.nav_size.to_s %>px;
     }
     header ul li a:hover {
       color: <%= @themeoptions.navhover_color %> !important;
     }
     footer p {
+      <% if @themeoptions.footer_color == "#fff" || @themeoptions.footer_color == "#ffffff" %>
+      color: #000;
+      <% else %>
       color: <%= @themeoptions.footer_color %>;
+      <% end %>
       font-size: <%= @themeoptions.footer_size %>px;
     }
     a.customize-link,
@@ -35,11 +43,15 @@
     
     .page-content p,
     .page-content {
+      <% if @themeoptions.body_color == "#fff" || @themeoptions.body_color == "#ffffff" %>
+      color: #000;
+      <% else %>
       color: <%= @themeoptions.body_color %>;
+      <% end %>
       font-size: <%= @themeoptions.body_size %>px;
     }
     .subpage-customize h1{
-      <% if @themeoptions.page_title_color == "#fff" %>
+      <% if @themeoptions.page_title_color == "#fff" || @themeoptions.page_title_color == "#ffffff" %>
       color: #000;
       <% else %>
       color: <%= @themeoptions.page_title_color %>;
@@ -47,7 +59,7 @@
       font-size: <%= @themeoptions.page_title_size %>px;
     }
     .subpage-customize p{
-      <% if @themeoptions.page_subtitle_color == "#fff" %>
+      <% if @themeoptions.page_subtitle_color == "#fff" || @themeoptions.page_subtitle_color == "#ffffff" %>
       color: #000;
       <% else %>
       color: <%= @themeoptions.page_subtitle_color %>;
@@ -60,19 +72,31 @@
     .page-content h4,
     .page-content h5,
     .page-content h6 {
+      <% if @themeoptions.body_heading_color == "#fff" || @themeoptions.body_heading_color == "#ffffff" %>
+      color: #000;
+      <% else %>
       color: <%= @themeoptions.body_heading_color %> ;
+      <% end %>
     }
     h1, h2, h3, h4, h5, h6 {
       text-transform: <%= @themeoptions.heading_text_transform %>; 
        <%= font_name_for_heading_css.html_safe %>
     }
     .welcome-box h1 {
+      <% if @themeoptions.mainheading_color == "#fff" || @themeoptions.mainheading_color == "#ffffff" %>
+      color: #000;
+      <% else %>
       font-size: <%= @themeoptions.mainheading_size %>px;
       color: <%= @themeoptions.mainheading_color %>;
+      <% end %>
     }
     .welcome-box p {
-      font-size: <%= @themeoptions.subheading_size %>px;
+      <% if @themeoptions.subheading_color == "#fff" || @themeoptions.subheading_color == "#ffffff" %>
+      color: #000;
+      <% else %>
       color: <%= @themeoptions.subheading_color %>;
+      <% end %>
+      font-size: <%= @themeoptions.subheading_size %>px;
     }
     body {
       <%= font_name_for_body_css.html_safe %>

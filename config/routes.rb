@@ -63,6 +63,7 @@ Subdomain::Application.routes.draw do
   #get '/home', to: 'static_pages#home'
   root :to => "static_pages#home"
   get '/help', to: 'static_pages#help', as: :help
+  get '/templates', to: 'static_pages#templates', as: :templates
   get '/leasing', to: 'static_pages#leasing', as: :leasing
   get '/leasing/:id', to: 'availabilities#show', as: :leasing_show
 

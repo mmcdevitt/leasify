@@ -6,6 +6,33 @@ html, body {
 	height: 100%;
 
 }
+
+ul li ul {
+	list-style:none;
+	background: rgba(0,0,0,0.7);
+  border-radius:2px;
+  padding:10px;
+}
+header a:hover {
+	text-decoration: none;
+}
+
+ul li ul li {
+	display:none;
+	margin:0; 
+	padding:0 !important;
+}
+ul li ul li a {
+	padding: 10px;
+  display: block;
+  color: #fff;
+  font-size:11px;
+}
+ul li ul li a:hover {
+	text-decoration: none;
+	
+}
+
 * {
 	outline: none !important;
 	margin: 0; 

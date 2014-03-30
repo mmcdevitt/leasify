@@ -83,9 +83,6 @@
         <li> 
           <%= link_to request.subdomain + ".leasify.co", "/", target: "_blank", class: "site-link-tour" %> 
         </li>
-        <li>
-          <%= link_to "My Sites", root_url(:subdomain => false) + "dashboard", class: "allsite-link-tour" %>
-        </li>
       <% end %>
     <% end %>
   </ul>
@@ -104,7 +101,7 @@
         <i class="i i-cog2"></i><b class="caret"></b>
       </a>
       <ul class="dropdown-menu animated fadeInRight">
-        <li><%= link_to "My Dashboard", root_url(:subdomain => false) + "dashboard" %></li>
+        <li><%= link_to "View all my sites", root_url(:subdomain => false) + "dashboard" %></li>
         <li><%= link_to "Settings", edit_path %></li>
         <li class="divider"></li>                
         <li><%= link_to logout_path do %><i class="i i-logout"></i> Logout<% end %></li>

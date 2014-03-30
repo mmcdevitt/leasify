@@ -31,7 +31,7 @@ h1 {
 	border: 2px solid #002E52;
 }
 .btn-info {
-	border-color: #0C7E80;
+	/*border-color: #0C7E80;*/
 }
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
 color: #fff !important;
@@ -42,7 +42,7 @@ border-color: #008D8F;
 	text-transform: uppercase;
 }
 .home {
-	background: url(/assets/nyc.jpg);
+	background: url(/assets/nyc2.jpg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -53,13 +53,16 @@ border-color: #008D8F;
 	.layer {
 		/*background-color: rgba(35, 95, 138, 0.74);*/
 		/*background: rgba(56, 182, 205, 0.8);*/
-		background: rgba(7,70,60,0.53);
+		background: rgba(89, 99, 131, 0.51);
 	}
 	
 
 	.hero-message {
-		padding: 0px 0;
-
+		padding: 50px 0 0 0;
+		h1 {
+			text-transform: uppercase;
+			font-weight: 700;
+		}
 		.btn {
 			margin: 30px 0 50px;
 		}

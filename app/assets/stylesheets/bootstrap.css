@@ -6064,7 +6064,14 @@ button.close {
 }
 
 
-
+.draft-page-alert {
+  padding:15px;
+  background: #e33244;
+  color:#fff;
+  position:fixed;
+  width:100%;
+  z-index: 999;
+}
 
 
 

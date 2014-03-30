@@ -9,7 +9,32 @@ html, body {
 * {
 	outline: none !important;
 }
-
+ul li ul {
+	list-style:none;
+}
+ul li:hover ul {
+	display:block;
+	position: absolute;
+	background:rgba(0,0,0,0.8);
+	border-radius:2px;
+	width: 100%;
+	padding:10px;
+}
+ul li ul {
+	display:none;
+}
+ul li ul li a {
+	padding:0 0 10px;
+	display:block;
+	color: #fff;
+}
+ul li ul li:last-child a {
+	padding-bottom: 0;
+}
+ul li ul li a:hover {
+	text-decoration: none;
+	
+}
 hr {
 	margin: 80px 0;
 }
@@ -32,7 +57,7 @@ hr {
 	margin-bottom: 20px;
 }
 .livingston {
-	padding-top: 50px;
+	
 
 	.heading {
 		padding: 50px 0 100px;
@@ -58,7 +83,10 @@ hr {
 	}
 	.main-gallery {
 		margin-bottom: 30px;
-		margin-top: 30px;
+		margin-top: 80px;
+	}
+	.subpage-customize {
+		margin-top: 70px;
 	}
 	#wrapper {
 		height: 100%;

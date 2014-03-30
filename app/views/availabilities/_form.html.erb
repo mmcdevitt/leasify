@@ -2,8 +2,11 @@
 <section class="scrollable wrapper w-f">
   <div class="panel-body">
     <div class="add-page">
-      <h3 style="margin: 0 0 30px 0;"><%= @avail_title %></h3>
-      <div class="row">
+      <h3><%= @avail_title %></h3>
+      <% if params[:action] == "edit" %>
+      <p><%= edit_listing_url %> <%= link_to "View Listing", availability_path, target: "_blank", class: "bluelink", style: "font-weight:700" %></p>
+      <% end %>
+      <div class="row m-t-lg">
         <div class="col-md-12" >
           <div class="parent" id="display-none-preview">
             <%= link_to_add_fields "Add Image", f, :availability_galleries %>
@@ -158,13 +161,57 @@
 </section>
 <footer class="footer bg-white b-t">
   <div class="row text-center-xs">
-    <div class="col-md-12 text-right text-center-xs">                
+    <div class="col-md-12 text-right text-center-xs">  
+      <div class="btn-group m-r">
+        <div class="dropup">
+          <button data-toggle="dropdown" class="btn btn-more-padding btn-default dropdown-toggle" style="padding:7px 16px;" >
+            <span class="dropdown-label" data-placeholder="Please select"><%= publish_or_draft_avail %></span> 
+            <span class="caret" style="margin-left:30px;"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-select text-left">
+            <li><a href="#"><%= f.radio_button :published, true %>Publish</a></li>
+            <li><a href="#"><%= f.radio_button :published, false %>Draft</a></li>
+          </ul>
+        </div>
+      </div>              
       <%= f.submit "Save", class: "btn btn-success btn-more-padding" %>
     </div>
   </div>
 </footer>
+<div class="fake_tooltip bottom_footer draft_btn display-none" id="draft_btn_tooltip">
+  <span class="arrow bottom"></span>
+  By default, your listing will be saved as published. You may choose to save as a draft then publish when ready.
+</div>
+<div class="fake_tooltip left_sidebar image_btn display-none" id="image_btn_tooltip">
+  <span class="arrow left"></span>
+  Add as many images as you like to showcase your space.
+</div>
 
 
+<% if params[:action] == "new" && @availabilities.empty? %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#draft_btn_tooltip').fadeIn('slow');
+    $('.form-control').keyup(function() {
+      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+    });
+    $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+    });
+    // $('.btn-square').mouseover(function () {
+    //   $('#image_btn_tooltip').fadeIn('slow');
+    // }).mouseleave(function() {
+    //   $('#image_btn_tooltip').fadeOut('slow');
+    // });
+    $('.btn-square').click(function () {
+      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+    });
+    $('.form-group button.dropdown-toggle').click(function() {
+      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+    });
+  });
+ </script>
+<% end %>
 
 
 <% end %>

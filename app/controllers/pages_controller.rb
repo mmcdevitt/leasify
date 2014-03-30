@@ -13,7 +13,11 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    
+    @page_root = Page.where(site_id: @site.id, published: true).roots.all
+
+    if !@page.published? && !user_signed_in?
+      redirect_to root_path
+    end
 
     if @site.id != @page.site_id
       redirect_to root_url
@@ -22,6 +26,7 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
+    @page_root = Page.where(site_id: @site.id).roots.all
     @page = Page.new
     @title = "Add Page"
     @mtlg = ""
@@ -29,6 +34,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
+    @page_root = Page.where(site_id: @site.id).roots.all
     @title = @page.title
     @mtlg = "m-t-lg"
     # Protect pages per subdomain
@@ -96,7 +102,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:user_id, :slug, :title, :subtitle, :content, :page_image, :site_id)
+      params.require(:page).permit(:user_id, :slug, :parent_id, :published, :title, :subtitle, :content, :page_image, :site_id)
     end
 
     def theme_name

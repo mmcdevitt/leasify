@@ -1,4 +1,13 @@
-<header class="navbar-fixed-top">
+<%= draft_page_error_alert %>
+<%= draft_listing_error_alert %>
+<% if params[:action] == "show" && params[:controller] == "pages" %>
+  <header class="navbar-fixed-top" style="<%= 'margin-top:50px;' if !@page.published? %>">
+<% elsif params[:action] == "show" && params[:controller] == "availabilities" %>
+  <header class="navbar-fixed-top" style="<%= 'margin-top:50px;' if !@availability.published? %>">
+<% else  %>
+  <header class="navbar-fixed-top">
+<% end %>
+
   <div class="container-fluid">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -13,11 +22,34 @@
         <div class="col-md-12">
           <ul class="list-style-none">
             <li><%= link_to "Home", "/", style: "font-size:" + @themeoptions.nav_size.to_s + "px" %></li>
-            <% @pages.each do |page| %>
-              <li><%= link_to page.title, pages_id_path(page), style: "font-size:" + @themeoptions.nav_size.to_s + "px" %></li>
+            <% @page_root.each do |page| %>
+              <li>
+                <%= link_to page.title, pages_id_path(page), style: "font-size:" + @themeoptions.nav_size.to_s + "px", id: "page" + page.id.to_s %>
+                <% if Page.where(site_id: @site.id, parent_id: page.id).exists? && Page.where(site_id: @site.id, parent_id: page.id).first.published? %>
+                <ul id="ulpage<%=page.id %>">
+                  <% Page.where(site_id: @site.id, parent_id: page.id).each do |child| %>
+                    <li id="child<%= child.id.to_s %>"><%= link_to child.title, pages_id_path(child) %></li>
+
+                     <%= javascript_tag do %>
+                        $(document).ready(function() {
+                          $('ul li ul').hide();
+                          $('#page<%= page.id.to_s %>').mouseover(function() {
+                            $('ul li ul#ulpage<%= page.id %>').show();
+                            $('#child<%= child.id.to_s %>').show();
+                          });
+                          $('header').mouseleave(function() {
+                            $('ul li ul li').hide();
+                            $('ul li ul').hide();
+                          });
+                        });
+                      <% end %>
+
+                  <% end %>
+                </ul>
+                <% end %>
+              </li>
             <% end %>
             <li><%= link_to "Leasing", leasing_path, style: "font-size:" + @themeoptions.nav_size.to_s + "px" %></li>
-            <%= admin_link %>
           </ul>
         </div>
       </div>

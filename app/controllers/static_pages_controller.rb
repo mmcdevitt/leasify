@@ -11,10 +11,12 @@ class StaticPagesController < ApplicationController
       @user                = User.where(id: @site.user_id).first
       @themeoptions        = ThemeOption.where(site_id: @site.id).first
       @pages               = Page.where(site_id: @site.id).all
+      @page_root           = Page.where(site_id: @site.id, published: true).roots.all
       @availabilities      = Availability.where(site_id: @site.id).all
       @propertyinformation = PropertyInformation.where(site_id: @site.id).first
       @homepage_gallery    = HomepageGallery.where(site_id: @site.id).first
       @homepage_galleries  = HomepageGallery.where(site_id: @site.id).all
+
     end
   end
 
@@ -26,6 +28,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def templates
+    @themes = ThemeName.all
+  end
+
   def leasing
     if request.subdomain != "www" && request.subdomain.present?
       @subdomain            = request.subdomain
@@ -33,6 +39,7 @@ class StaticPagesController < ApplicationController
       @user                 = User.where(id: @site.user_id).first
       @themeoptions         = ThemeOption.where(site_id: @site.id).first
       @pages                = Page.where(site_id: @site.id).all
+      @page_root           = Page.where(site_id: @site.id, published: true).roots.all
       @availabilities       = Availability.where(site_id: @site.id).all
       @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
       

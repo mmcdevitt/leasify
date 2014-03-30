@@ -63,7 +63,7 @@
               </ul>
             </td>
             <td><%= availability.user.username %></td>
-            <td>Published</td>
+            <td><%= "Published" if availability.published? %><%= "Draft" if !availability.published? %></td>
             <td><%= availability.updated_at.strftime("%B %e, %Y") %></td>
             <td>
               <a href="" data-toggle="modal" data-target="#availability<%= availability.id %>">

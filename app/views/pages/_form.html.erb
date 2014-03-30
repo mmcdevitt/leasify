@@ -5,15 +5,15 @@
     <div class="add-page">
       <h3><%= @title %></h3>
       <% if params[:action] == "edit" %>
-      <p><%= edit_page_url %> <%= link_to "View Page", pages_id_path, target: "_blank", class: "text-muted" %></p>
+      <p><%= edit_page_url %> <%= link_to "View Page", pages_id_path, target: "_blank", class: "bluelink", style: "font-weight:700" %></p>
       <% end %>
-      <div class="row">
+      <div class="row m-t-lg">
         <div class="col-md-12">
           <div class="add-page-image">
             <div class="row-fluid">
               <%= f.file_field :page_image, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;" %>
               <div class="bootstrap-filestyle" style="display: inline;">
-                <label for="lefile" class="btn btn-default btn-square <%= @mtlg %>">
+                <label for="lefile" class="btn btn-default btn-square">
                   <i class="i i-images"></i><br>
                   <span>Upload Image</span>
                 </label>
@@ -21,7 +21,7 @@
             </div>
              <% if f.object.page_image? %>
               <div class="upload-preview-options">
-                <%= image_tag(@page.page_image.url(:thumb), id: "pageimage", class: "img-thumbnail m-t-lg") %>
+                <%= image_tag(@page.page_image.url(:thumb), id: "pageimage", class: "img-thumbnail") %>
               </div>
             <% else %>
               <div class="upload-preview-options">
@@ -72,22 +72,67 @@
 <footer class="footer bg-white b-t">
   <div class="row text-center-xs">
     <div class="col-md-6 hidden-sm">
-      
+      <div class="form-group m-n">
+        <div class="btn-group m-r">
+          <div class="dropup">
+            <button data-toggle="dropdown" class="btn btn-more-padding btn-default dropdown-toggle" style="padding:7px 16px;" id="parent_page_btn">
+              <span class="dropdown-label" data-placeholder="Please select"><%= parent_pages %></span> 
+              <span class="caret" style="margin-left:30px;"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-select">
+              <li><a href="#"><%= f.radio_button :parent_id, "" %>None</a></li>
+              <% @page_root.each do |page| %>
+              <li><a href="#"><%= f.radio_button :parent_id, page.id %><%= page.title %></a></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6 col-sm-12 text-right text-center-xs">                
+    <div class="col-md-6 col-sm-12 text-right text-center-xs"> 
+      <div class="btn-group m-r">
+        <div class="dropup">
+          <button data-toggle="dropdown" class="btn btn-more-padding btn-default dropdown-toggle" style="padding:7px 16px;" >
+            <span class="dropdown-label" data-placeholder="Please select"><%= publish_or_draft %></span> 
+            <span class="caret" style="margin-left:30px;"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-select text-left">
+            <li><a href="#"><%= f.radio_button :published, true %>Publish</a></li>
+            <li><a href="#"><%= f.radio_button :published, false %>Draft</a></li>
+          </ul>
+        </div>
+      </div>
       <%= f.submit "Save", class: "btn btn-success btn-more-padding" %>
     </div>
   </div>
 </footer>
 <% end %>
+<div class="fake_tooltip bottom_footer draft_btn display-none" id="draft_btn_tooltip">
+  <span class="arrow bottom"></span>
+  By default, your page will be saved as published. You may choose to save as a draft then publish when ready.
+</div>
+<div class="fake_tooltip bottom_footer parent_page_btn display-none" id="parent_page_btn_tooltip">
+  <span class="arrow bottom"></span>
+  You can choose whether this page will be a parent or child page. If this is a child page, then this page
+  will be part of a dropdown menu for the parent page.
+</div>
 
 
 
 
-
-
-
-
+<% if params[:action] == "new" && @pages.empty? %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#parent_page_btn_tooltip, #draft_btn_tooltip').fadeIn('slow');
+    $('.form-control').keyup(function() {
+      $('#parent_page_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+    });
+    $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+      $('#parent_page_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+    });
+  });
+ </script>
+<% end %>
 
 
 

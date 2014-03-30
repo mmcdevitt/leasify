@@ -7,6 +7,29 @@ html, body {
 
 }
 
+ul li ul {
+	list-style:none;
+}
+ul li:hover ul {
+	display:block;
+	position: absolute;
+	background:#fff;
+	border-radius:3px;
+	width: 100%;
+}
+ul li ul {
+	display:none;
+}
+ul li ul li a {
+	padding:15px;
+	display:block;
+	color: #999;
+}
+ul li ul li a:hover {
+	text-decoration: none;
+	
+}
+
 * {
 	outline: none !important;
 	margin: 0; 

@@ -4,6 +4,8 @@ class Page < ActiveRecord::Base
 	validates :title, :subtitle, :content, presence: true
 	validate :validate_leasing
 
+	acts_as_tree
+
 	# Can't allow users to create a page called leasing 
 	def validate_leasing
 		if self.title.downcase == "leasing" || self.title.downcase == "leasings"

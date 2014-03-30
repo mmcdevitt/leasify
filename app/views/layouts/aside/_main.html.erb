@@ -3,7 +3,7 @@
 </div>
 <ul class="nav nav-main" data-ride="collapse">
   <% @sidebar_nav.each do |sidebar| %>
-    <li >
+    <li <%= active_class(send(sidebar.link_to)) %>>
       <%= link_to send(sidebar.link_to), class: "auto" do %>
         <i class="i i-<%= sidebar.icon %> icon">
         </i>
@@ -17,10 +17,10 @@
   <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Pages</div>
   <ul class="nav">
     <% @pages.each do |page| %>
-      <li>
+      <li <%= active_class(edit_page_path(page)) %>>
         <%= link_to edit_page_path(page) do %>
         <i class="i i-docs icon"></i>
-        <%= page.title %>
+        <%= page.title %><%= "<span style='color:#e33244; font-weight:700'> Draft</span>".html_safe if !page.published? %>
         <% end %>
       </li>
     <% end %>
@@ -30,10 +30,10 @@
   <div class="text-muted text-xs hidden-nav-xs padder m-t-sm m-b-sm">Availabilities</div>
   <ul class="nav">
     <% @availabilities.each do |availability| %>
-      <li>
+      <li <%= active_class(edit_availability_path(availability)) %>>
         <%= link_to edit_availability_path(availability) do %>
         <i class="i i-stack icon"></i>
-        <%= availability.suite_or_floor + " #" + availability.title %>
+        <%= availability.suite_or_floor + " #" + availability.title %><%= "<span style='color:#e33244; font-weight:700'> Draft</span>".html_safe if !availability.published? %>
         <% end %>
       </li>
     <% end %>

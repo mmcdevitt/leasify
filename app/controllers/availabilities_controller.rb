@@ -19,6 +19,10 @@ class AvailabilitiesController < ApplicationController
     if @site.id != @availability.site_id
       redirect_to root_url
     end
+
+    if !@availability.published? && !user_signed_in?
+      redirect_to root_path
+    end
   end
 
   # GET /availabilities/new
@@ -93,6 +97,7 @@ class AvailabilitiesController < ApplicationController
       @user                 = User.where(id: @site.user_id).first
       @themeoptions         = ThemeOption.where(site_id: @site.id).first
       @pages                = Page.where(site_id: @site.id).all
+      @page_root           = Page.where(site_id: @site.id, published: true).roots.all
       @availabilities       = Availability.where(site_id: @site.id).all
       @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
       @contacts             = Contact.where(site_id: @site.id).all
@@ -111,6 +116,7 @@ class AvailabilitiesController < ApplicationController
                                            :user_id, 
                                            :floor_location, 
                                            :type_of_space,
+                                           :published,
                                            availability_galleries_attributes: [:user_id, :id, :availability_image, :site_id, :_destroy])
     end
 

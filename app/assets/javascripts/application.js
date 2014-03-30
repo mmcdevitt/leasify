@@ -11,16 +11,16 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery.turbolinks
-//= require turbolinks
-
+//= require jquery_ujs
+//= require jquery.cookie
 //= require bootstrap
 //= require bootstrap-wysihtml5
 //= require bootstrap-colorpicker
 //= require app
 //= require jquery.slimscroll.min
 //= require_self
+//= require turbolinks
 
 $(document).ready(function() {
 

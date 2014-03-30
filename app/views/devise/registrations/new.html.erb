@@ -2,6 +2,7 @@
   <section id="content" class="wrapper-md animated fadeInUp">    
     <div class="container aside-xl">
       <section class="m-b-lg">
+        <%= devise_error_messages! %>
           <h3>Create your Leasify Account</h3>
           <div class="form-group">
             <%= f.text_field :first_name, class: "form-control", placeholder: "First Name" %>

@@ -5,6 +5,9 @@
  * Copyright 2013 Klaus Hartl
  * Released under the MIT license
  */
+ var cookie_on_load = function () {
+
+
 (function (factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD
@@ -115,3 +118,12 @@
 	};
 
 }));
+ };
+
+$(document).ready(cookie_on_load);
+
+
+
+
+
+
