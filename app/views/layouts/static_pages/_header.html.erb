@@ -14,8 +14,10 @@
 	      <% if user_signed_in? %>
 					<li><%= link_to "Your Dashboard", dashboard_path %></li>
 				<% else %>
-					
+					<li><%= link_to "Templates", templates_path %></li>
+					<% if Rails.env.development? %>
 					<li><%= link_to "Sign Up", register_path %></li>
+					<% end %>
 					<li><%= link_to "Login", new_user_session_path %></li>
 				<% end %>
 	    </ul>
