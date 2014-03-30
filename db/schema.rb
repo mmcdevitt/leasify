@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329220440) do
+ActiveRecord::Schema.define(version: 20140330215733) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(version: 20140329220440) do
     t.string   "theme_name_image_content_type"
     t.integer  "theme_name_image_file_size"
     t.datetime "theme_name_image_updated_at"
+    t.boolean  "published",                     default: true
   end
 
   create_table "theme_options", force: true do |t|

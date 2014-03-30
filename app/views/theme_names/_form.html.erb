@@ -58,7 +58,19 @@
     <div class="col-md-6 hidden-sm">
       
     </div>
-    <div class="col-md-6 col-sm-12 text-right text-center-xs">                
+    <div class="col-md-6 col-sm-12 text-right text-center-xs"> 
+      <div class="btn-group m-r">
+        <div class="dropup">
+          <button data-toggle="dropdown" class="btn btn-more-padding btn-default dropdown-toggle" style="padding:7px 16px;" >
+            <span class="dropdown-label" data-placeholder="Please select"><%= publish_or_draft_theme_name %></span> 
+            <span class="caret" style="margin-left:30px;"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-select text-left">
+            <li><a href="#"><%= f.radio_button :published, true %>Publish</a></li>
+            <li><a href="#"><%= f.radio_button :published, false %>Draft</a></li>
+          </ul>
+        </div>
+      </div>               
       <%= f.submit "Save", class: "btn btn-success btn-more-padding" %>
     </div>
   </div>

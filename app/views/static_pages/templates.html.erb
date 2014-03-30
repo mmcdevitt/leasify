@@ -1,30 +1,34 @@
-<%= render 'layouts/static_pages/header' %>
-<div class="container">
-<div class="row">
-        <div class="col-sm-12">
-          <h3>Templates</h3>
-        </div>
-        <% @themes.each do |template| %>
-          
-            <div class="col-lg-4 col-md-4 col-sm-6">
-              <div class="template-widget">
-                <%= image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive") %>
-                <div class="template-widget-content">
-                  <h3><%= template.name %></h3>
-                  <p><%= template.description %></p>
-                 
-                 
-                  
-                  <div class="row" style="margin-top:15px;">
-                    <%= link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do %>
-                      <em>Live Example</em>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            
-            </div>
-          
-        <% end %>
-      </div>
- </div>
+<div class="subpage">
+	<%= render 'layouts/static_pages/header' %>
+</div>
+
+<div class="templates">
+	<div class="container">
+		<div class="row">
+	    <div class="col-sm-12 center">
+	      <h1 class="template_h1">LEASIFY TEMPLATES</h1>
+	    </div>
+	  </div>
+		<div class="row">
+   		<% @themes.each do |template| %>
+	      <div class="col-lg-6 col-md-6 col-sm-6" style="margin-bottom:50px;">
+	        <div class="template-widget">
+	        	<%= image_tag('/assets/broswer-top.png', class: "img-responsive") %>
+	          <%= image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive") %>
+	          <div class="template-widget-content">
+	            <h3>
+	            	<%= template.name %>
+	            	<small>
+	                <%= link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do %>
+	                  <em>Live Example</em>
+	                <% end %>
+	              </small>
+	            </h3>
+	          </div>
+	        </div>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>
+</div>
+<%= render 'layouts/static_pages/signup' %>

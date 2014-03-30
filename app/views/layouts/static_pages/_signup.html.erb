@@ -1,0 +1,36 @@
+<section class="call-to-action email_signup" id="call_to_action">
+  <div class="container">  
+    <div class=""> 
+      <div class="row">
+        <div class="col-lg-12 center">
+          <h3><u>Leasify isn't quite ready yet.</u></h3>
+          <h2>Sign up and get notified when we're ready!</h2>
+          <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+            </div>
+          </div>
+        </div>
+      </div><!-- end row -->
+      <div class="row center m-t-lg m-b">
+        <div class="col-lg-12">
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="exampleInputEmail2">Email address</label>
+              <input type="email" class="email_sign_up" id="exampleInputEmail2" placeholder="Enter email">
+            </div>
+            <a type="submit" class="btn btn-info btn-lg uppercase brandon-bold" id="emailbtn">Send</a>
+            <p style="margin:30px 0;" id="thanks">Thank you! We will notify you as soon as we launch!</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> <!-- end of div scrolling effect -->
+</section>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#thanks").hide();
+    $('#emailbtn').click(function() {
+      $("#thanks").fadeIn('fast');
+    });
+  });
+</script>

@@ -29,7 +29,7 @@ class StaticPagesController < ApplicationController
   end
 
   def templates
-    @themes = ThemeName.all
+    @themes = ThemeName.where(published: true).all
   end
 
   def leasing

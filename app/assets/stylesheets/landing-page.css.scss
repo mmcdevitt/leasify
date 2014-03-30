@@ -41,6 +41,14 @@ border-color: #008D8F;
 .uppercase {
 	text-transform: uppercase;
 }
+.subpage .navbar {
+	background: white;
+	border-bottom: 1px solid rgb(233, 233, 233);
+	a:hover {
+		background:transparent;
+		text-decoration: underline;
+	}
+}
 .home {
 	background: url(/assets/nyc2.jpg);
 	-webkit-background-size: cover;
@@ -91,6 +99,9 @@ u {
 	border-bottom: 3px solid #dedede;
 	padding-bottom: 10px;
 }
+.email_signup u {
+	border-bottom: 3px solid #fff;
+}
 .beautiful-websites,
 .engage-prospects,
 .call-to-action {
@@ -135,7 +146,7 @@ u {
 	background: #faf9f4;
 }
 .call-to-action {
-	background: url(/assets/nyc.jpg);
+	background: #169FA2;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -150,8 +161,37 @@ footer {
 	padding: 100px;
 	text-align: center;
 }
+.email_sign_up {
+  padding: 17px 10px;
+  color: #282323;
+  border: none;
+  width: 400px;
+  outline: 0;
+  line-height: 15px;
+  font-size: 13px;
+  font-weight: normal;
+  vertical-align: top;
+  background-color: #fff;
+  min-height: 30px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.email_sign_up:focus {
+	box-shadow: none;
+}
 
 
+.templates {
+	background: #f5f5f5;
+	padding: 50px 0;
+}
+.template_h1 {
+	color: #B1B1B1;
+  font-weight: 700;
+  margin: 100px 0;
+  font-size: 30px;
+}
 
 
 
