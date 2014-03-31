@@ -46,6 +46,10 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def beta_signup
+
+  end
+
   # Changes theme of front end if subdomain exist and does not equal "www"
   def theme_name
     if request.subdomain != "www" && request.subdomain.present?

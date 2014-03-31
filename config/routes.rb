@@ -64,6 +64,7 @@ Subdomain::Application.routes.draw do
   root :to => "static_pages#home"
   get '/help', to: 'static_pages#help', as: :help
   get '/templates', to: 'static_pages#templates', as: :templates
+  get '/beta/signup', to: 'static_pages#beta_signup', as: :beta_signup_mailchimp
   get '/leasing', to: 'static_pages#leasing', as: :leasing
   get '/leasing/:id', to: 'availabilities#show', as: :leasing_show
 
@@ -101,6 +102,6 @@ Subdomain::Application.routes.draw do
   
   get '/:id', to: 'pages#show', as: 'pages_id'
   
-  post '/receive', to: 'incoming_mails#create', as: :receive_email
+  #post '/email_processor' => 'griddler/emails#create'
 
 end
