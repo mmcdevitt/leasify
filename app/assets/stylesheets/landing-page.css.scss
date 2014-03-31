@@ -4,6 +4,9 @@ html {
 body {
 	
 }
+.btn:focus {
+  outline:none !important;
+}
 .center {
 	text-align: center;
 }

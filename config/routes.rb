@@ -65,6 +65,7 @@ Subdomain::Application.routes.draw do
   get '/help', to: 'static_pages#help', as: :help
   get '/templates', to: 'static_pages#templates', as: :templates
   get '/beta/signup', to: 'static_pages#beta_signup', as: :beta_signup_mailchimp
+  get '/beta/confirmation', to: 'static_pages#beta_confirmation', as: :beta_confirmation_mailchimp
   get '/leasing', to: 'static_pages#leasing', as: :leasing
   get '/leasing/:id', to: 'availabilities#show', as: :leasing_show
 

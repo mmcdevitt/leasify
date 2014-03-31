@@ -50,6 +50,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def beta_confirmation
+
+  end
+
   # Changes theme of front end if subdomain exist and does not equal "www"
   def theme_name
     if request.subdomain != "www" && request.subdomain.present?
