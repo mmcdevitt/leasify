@@ -101,6 +101,6 @@ Subdomain::Application.routes.draw do
   
   get '/:id', to: 'pages#show', as: 'pages_id'
   
- 
+  post '/receive', to: 'incoming_mails#create', as: :receive_email
 
 end

@@ -19,6 +19,7 @@ gem 'aws-sdk'
 gem 'aws-s3'
 gem 'friendly_id'
 gem 'acts_as_tree'
+gem 'mail'
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails', '2.13.1'

@@ -240,6 +240,7 @@ DEPENDENCIES
   jquery-turbolinks
   js-routes
   launchy
+  mail
   mailboxer
   paperclip
   pg (= 0.15.1)
