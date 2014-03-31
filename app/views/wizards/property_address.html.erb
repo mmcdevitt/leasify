@@ -11,11 +11,13 @@
 				    	<% end %>
 				  	</div>
 				    <div class="col-sm-4">
+				    	<% if Rails.env.development? %>
 				  		50% complete
 				    	<div class="progress progress-xs" style="margin:0"> 
 								<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
 				    		</div> 
 				    	</div>
+				    	<% end %>
 				    </div>
 				    <div class="col-sm-4 text-right" id="save_continue">
 				    	<%= f.submit "Save Changes", class: "btn btn-success" %>

@@ -7,11 +7,13 @@
 	    	<% end %>
 	  	</div>
 	    <div class="col-sm-4">
+	    	<% if Rails.env.development? %>
 	  		50% complete
 	    	<div class="progress progress-xs" style="margin:0"> 
 					<div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="50%" style="width: 50%">
 	    		</div> 
 	    	</div>
+	    	<% end %>
 	    </div>
 	    <div class="col-sm-4 text-right">
 				<%= link_to wizard_customize_path, class: "btn btn-default btn" do %>
