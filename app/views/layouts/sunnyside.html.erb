@@ -44,17 +44,34 @@
 						</div>
 					</div>
 				</div>
-			<div class="container-fluid">
+			<div class="container">
 				<div class="page-content p-100">
 					<div class="row center">
-						<div class="col-md-6 col-md-offset-3">
+						<div class="col-md-10 col-md-offset-1">
 							<div class="wizard-edit">
 								<%= markdown(@themeoptions.content) %>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>			
+				<div class="featured">
+					<div class="row">
+						<% @pages_feature.each do |page| %>
+							<div class="col-lg-4">
+								<div class="page-content">
+								<div class="wizard-edit">
+								<p><%= page.title %></p>
+								<%= image_tag(page.page_image.url(:large), class: "img-responsive") %>
+								<p><%= truncate_html(page.content, length: 230) %></p>
+								<%= link_to page.title, pages_id_path(page), class: "customize-link" %>
+							</div>
+						</div>
+							</div>
+						<% end %>
+					</div>
+				</div>	
+			</div><!-- end container -->	
+				
 			
 			<%= render 'layouts/sunnyside/footer' %>
 		</div><!-- end wrapper -->

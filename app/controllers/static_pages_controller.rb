@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
       @user                = User.where(id: @site.user_id).first
       @themeoptions        = ThemeOption.where(site_id: @site.id).first
       @pages               = Page.where(site_id: @site.id).all
+      @pages_feature       = Page.where(site_id: @site.id, published: true, feature_on_homepage: true).all
       @page_root           = Page.where(site_id: @site.id, published: true).roots.all
       @availabilities      = Availability.where(site_id: @site.id).all
       @propertyinformation = PropertyInformation.where(site_id: @site.id).first

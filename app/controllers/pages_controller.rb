@@ -26,6 +26,7 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
+    @pages_feature = Page.where(site_id: @site.id, published: true, feature_on_homepage: true).all
     @page_root = Page.where(site_id: @site.id).roots.all
     @page = Page.new
     @title = "Add Page"
@@ -34,6 +35,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
+    @pages_feature = Page.where(site_id: @site.id, published: true, feature_on_homepage: true).all
     @page_root = Page.where(site_id: @site.id).roots.all
     @title = @page.title
     @mtlg = "m-t-lg"
@@ -69,6 +71,9 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
   def update
+    @pages_feature = Page.where(site_id: @site.id, published: true, feature_on_homepage: true).all
+    @page_root = Page.where(site_id: @site.id).roots.all
+    @title = @page.title
     respond_to do |format|
       session[:return_to] ||= request.referer
       if @page.update(page_params)
@@ -102,7 +107,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:user_id, :slug, :parent_id, :published, :title, :subtitle, :content, :page_image, :site_id)
+      params.require(:page).permit(:user_id, :slug, :feature_on_homepage, :parent_id, :published, :title, :subtitle, :content, :page_image, :site_id)
     end
 
     def theme_name

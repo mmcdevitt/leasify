@@ -3,8 +3,18 @@
 <section class="scrollable wrapper w-f">
   <div class="panel-body">
     <div class="add-page">
+      <% if @page.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
+          <ul>
+            <% @page.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <h3><%= @title %></h3>
-      <% if params[:action] == "edit" %>
+      <% if params[:action] == "edit" || params[:action] == "update" %>
       <p><%= edit_page_url %> <%= link_to "View Page", pages_id_path, target: "_blank", class: "bluelink", style: "font-weight:700" %></p>
       <% end %>
       <div class="row m-t-lg">
@@ -32,18 +42,21 @@
         </div>
       </div>
       <div class="row">
-        <% if @page.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
-            <ul>
-              <% @page.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
+       
         <div class="col-md-8">
-         <%= f.hidden_field :site_id, value: current_site_id %>
+          <% if @themeoptions.template != 1  %><%# Not available for Avaya template %>
+            <% if @pages_feature.count == 3 && !@page.feature_on_homepage? %>
+            <% else %>
+              <div class="checkbox m-n i-checks">
+                <label>
+                  <%= f.check_box :feature_on_homepage  %> 
+                  <i></i>
+                  <%= f.label :feature_on_homepage, "Feature on homepage? (Only 3 pages can be featured)" %>
+                </label>
+              </div>
+            <% end %>
+          <% end %>
+          <%= f.hidden_field :site_id, value: current_site_id %>
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
             <%= f.label :title, "Page Title" %>
@@ -63,7 +76,7 @@
           </div>
         </div><!-- end col 8 -->
         <div class="col-md-4">
-          
+            
         </div><!-- end col 4 -->
       </div>
     </div>
@@ -72,7 +85,7 @@
 <footer class="footer bg-white b-t">
   <div class="row text-center-xs">
     <div class="col-md-6 hidden-sm">
-      <div class="form-group m-n">
+      
         <div class="btn-group m-r">
           <div class="dropup">
             <button data-toggle="dropdown" class="btn btn-more-padding btn-default dropdown-toggle" style="padding:7px 16px;" id="parent_page_btn">
@@ -87,7 +100,10 @@
             </ul>
           </div>
         </div>
-      </div>
+      
+     
+               
+              
     </div>
     <div class="col-md-6 col-sm-12 text-right text-center-xs"> 
       <div class="btn-group m-r">

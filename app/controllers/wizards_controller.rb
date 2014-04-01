@@ -51,7 +51,7 @@ class WizardsController < ApplicationController
 
 		def set_wizard
 			@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
-			@templates = ThemeName.all
+			@templates = ThemeName.where(published: true).all
 		end
 
 		def set_subdomain

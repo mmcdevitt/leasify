@@ -21,6 +21,9 @@ gem 'friendly_id'
 gem 'acts_as_tree'
 gem 'mail'
 gem 'griddler'
+gem "nokogiri"
+gem "htmlentities"
+gem 'truncate_html'
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails', '2.13.1'

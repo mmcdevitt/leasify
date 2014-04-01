@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140330215733) do
+ActiveRecord::Schema.define(version: 20140401212942) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20140330215733) do
     t.string   "slug"
     t.integer  "parent_id"
     t.boolean  "published",               default: true
+    t.boolean  "feature_on_homepage",     default: false
   end
 
   add_index "pages", ["slug"], name: "index_pages_on_slug"

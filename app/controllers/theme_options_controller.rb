@@ -11,12 +11,12 @@ class ThemeOptionsController < ApplicationController
 
   def template
   	@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
-  	@templates = ThemeName.all
+  	@templates = ThemeName.where(published: true).all
   end
 
   def template_preview
     @themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
-    @templates = ThemeName.all
+    @templates = ThemeName.where(published: true).all
   end
 
   def homepage_gallery

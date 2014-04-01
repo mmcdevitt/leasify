@@ -2,8 +2,7 @@ Subdomain::Application.routes.draw do
   
   
 
-  resources :amenities
-
+  
   get "dashboards/index"
   require 'subdomain'
  
@@ -34,7 +33,7 @@ Subdomain::Application.routes.draw do
   end
 
   scope :admin do
-    resources :theme_names, :sidebar_links, :admin
+    resources :theme_names, :sidebar_links, :admin, :amenities
     get '/themes', to: 'theme_names#index', as: :admin_theme
     get '/themes/new', to: 'theme_names#new', as: :admin_theme_new
     get '/themes/:id/edit', to: 'theme_names#edit', as: :admin_theme_edit

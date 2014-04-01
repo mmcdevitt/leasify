@@ -11,13 +11,11 @@
 	  </div>   
 	  <div class="collapse navbar-collapse uppercase">
 	 		<ul class="nav navbar-nav navbar-right brandon-bold">
+	 			<li><%= link_to "Templates", templates_path %></li>
 	      <% if user_signed_in? %>
 					<li><%= link_to "Your Dashboard", dashboard_path %></li>
 				<% else %>
-				  <% if Rails.env.development? %>
-					<li><%= link_to "Templates", templates_path %></li>
-					<li><%= link_to "Sign Up", register_path %></li>
-					<% end %>
+				  <li><%= link_to "Sign Up", register_path %></li>
 					<li><%= link_to "Login", new_user_session_path %></li>
 				<% end %>
 	    </ul>
