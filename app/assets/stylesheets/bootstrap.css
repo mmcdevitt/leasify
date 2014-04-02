@@ -1695,7 +1695,7 @@ output {
   color: #282323; outline: 0;
   height: 40px;
   padding: 6px 9px !important;
-  line-height: 15px;
+  line-height: normal;
   font-size: 13px;
   font-weight: normal;
   vertical-align: top;

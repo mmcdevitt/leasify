@@ -287,12 +287,16 @@ hr {
 	background-position:center;
 	background-size:cover;
 }
-
+.featured {
+	text-align: center;
+	border-top: 1px solid #e4e4e4;
+	padding-top: 100px;
+}
 .featured img {
 	margin-bottom: 30px;
 }
-.featured p:first-child {
-	font-size: 22px;
+.featured h1 {
+	margin-bottom: 8px;
 }
 
 /* faster sliding speed */

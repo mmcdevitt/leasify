@@ -54,22 +54,24 @@
 						</div>
 					</div>
 				</div>
+				<% unless @pages_feature.empty? %>
 				<div class="featured">
 					<div class="row">
 						<% @pages_feature.each do |page| %>
 							<div class="col-lg-4">
 								<div class="page-content">
-								<div class="wizard-edit">
-								<p><%= page.title %></p>
-								<%= image_tag(page.page_image.url(:large), class: "img-responsive") %>
-								<p><%= truncate_html(page.content, length: 230) %></p>
-								<%= link_to page.title, pages_id_path(page), class: "customize-link" %>
-							</div>
-						</div>
+									<div class="wizard-edit">
+										<%= image_tag(page.page_image.url(:large), class: "img-responsive") %>
+										<h1><%= page.title %></h1>
+										<p><%= page.subtitle %></p>
+										<%= link_to page.title, pages_id_path(page), class: "customize-link" %>
+									</div>
+								</div>
 							</div>
 						<% end %>
 					</div>
 				</div>	
+				<% end %>
 			</div><!-- end container -->	
 				
 			
