@@ -107,6 +107,8 @@ class ApplicationController < ActionController::Base
     @sidebar_nav = SidebarLink.all
   end
 
+  
+
 
 
 end

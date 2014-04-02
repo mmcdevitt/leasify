@@ -23,6 +23,7 @@ class HomepageGalleriesController < ApplicationController
 
 
   def set_subdomain
+    if request.subdomain.present? && request.subdomain != "www"
       @subdomain            = request.subdomain
       @site                 = Site.where(subdomain: request.subdomain).first
       @user                 = User.where(id: @site.user_id).first
@@ -31,7 +32,7 @@ class HomepageGalleriesController < ApplicationController
       @availabilities       = Availability.where(site_id: @site.id).all
       @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
       @contacts             = Contact.where(site_id: @site.id).all
-     
+    end
    end
 
     # Never trust parameters from the scary internet, only allow the white list through.

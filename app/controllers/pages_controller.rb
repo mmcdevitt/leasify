@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
   before_action :set_subdomain
+  before_action :redirect_if_www
   layout :theme_name
   include PagesHelper
   # GET /pages
@@ -124,14 +125,22 @@ class PagesController < ApplicationController
     end
 
      def set_subdomain
-      @subdomain           = request.subdomain
-      @site                = Site.where(subdomain: request.subdomain).first
-      @user                = User.where(id: @site.user_id).first
-      @themeoptions        = ThemeOption.where(site_id: @site.id).first
-      @pages               = Page.where(site_id: @site.id).all
-      @availabilities      = Availability.where(site_id: @site.id).all
-      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
-      @contacts            = Contact.where(site_id: @site.id).all
+      if request.subdomain.present? && request.subdomain != "www"
+        @subdomain           = request.subdomain
+        @site                = Site.where(subdomain: request.subdomain).first
+        @user                = User.where(id: @site.user_id).first
+        @themeoptions        = ThemeOption.where(site_id: @site.id).first
+        @pages               = Page.where(site_id: @site.id).all
+        @availabilities      = Availability.where(site_id: @site.id).all
+        @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+        @contacts            = Contact.where(site_id: @site.id).all
+      end
+    end
+
+    def redirect_if_www
+      if !request.subdomain.present? || request.subdomain == "www"
+        redirect_to dashboard_path
+      end
     end
 
 

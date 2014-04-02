@@ -1,6 +1,7 @@
 class ThemeOptionsController < ApplicationController
   before_action :set_subdomain
 	before_action :authenticate_user!
+  before_action :redirect_if_www
   def index
   	@themeoptions = ThemeOption.where(user_id: current_user.id).first && ThemeOption.where(site_id: @site.id).first
   end
@@ -47,14 +48,21 @@ class ThemeOptionsController < ApplicationController
 
   private	
     def set_subdomain
-      @subdomain           = request.subdomain
-      @site                = Site.where(subdomain: request.subdomain).first
-      @user                = User.where(id: @site.user_id).first
-     
-      @pages               = Page.where(site_id: @site.id).all
-      @availabilities      = Availability.where(site_id: @site.id).all
-      @propertyinformation = PropertyInformation.where(site_id: @site.id).first
-      @contacts            = Contact.where(site_id: @site.id).all
+      if request.subdomain.present? && request.subdomain != "www"
+        @subdomain           = request.subdomain
+        @site                = Site.where(subdomain: request.subdomain).first
+        @user                = User.where(id: @site.user_id).first
+        @pages               = Page.where(site_id: @site.id).all
+        @availabilities      = Availability.where(site_id: @site.id).all
+        @propertyinformation = PropertyInformation.where(site_id: @site.id).first
+        @contacts            = Contact.where(site_id: @site.id).all
+      end
+    end
+
+    def redirect_if_www
+      if !request.subdomain.present? || request.subdomain == "www"
+        redirect_to dashboard_path
+      end
     end
 
   	def users_params

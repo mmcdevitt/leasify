@@ -2,6 +2,7 @@ class AvailabilitiesController < ApplicationController
   before_action :set_availability, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
   before_action :set_subdomain_avail
+  before_action :redirect_if_www
   # GET /availabilities
   # GET /availabilities.json
   layout :theme_name
@@ -92,16 +93,23 @@ class AvailabilitiesController < ApplicationController
     end
 
     def set_subdomain_avail
-      @subdomain            = request.subdomain
-      @site                 = Site.where(subdomain: request.subdomain).first
-      @user                 = User.where(id: @site.user_id).first
-      @themeoptions         = ThemeOption.where(site_id: @site.id).first
-      @pages                = Page.where(site_id: @site.id).all
-      @page_root           = Page.where(site_id: @site.id, published: true).roots.all
-      @availabilities       = Availability.where(site_id: @site.id).all
-      @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
-      @contacts             = Contact.where(site_id: @site.id).all
-     
+      if request.subdomain.present? && request.subdomain != "www"
+        @subdomain            = request.subdomain
+        @site                 = Site.where(subdomain: request.subdomain).first
+        @user                 = User.where(id: @site.user_id).first
+        @themeoptions         = ThemeOption.where(site_id: @site.id).first
+        @pages                = Page.where(site_id: @site.id).all
+        @page_root            = Page.where(site_id: @site.id, published: true).roots.all
+        @availabilities       = Availability.where(site_id: @site.id).all
+        @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
+        @contacts             = Contact.where(site_id: @site.id).all
+      end
+    end
+
+    def redirect_if_www
+      if !request.subdomain.present? || request.subdomain == "www"
+        redirect_to dashboard_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

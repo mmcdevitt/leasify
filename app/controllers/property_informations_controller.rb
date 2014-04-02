@@ -1,6 +1,7 @@
 class PropertyInformationsController < ApplicationController
   before_action :set_subdomain
 	before_action :authenticate_user!
+  before_action :redirect_if_www
 
 	def index
 		@propertyinformations = PropertyInformation.where(user_id: current_user.id).first && PropertyInformation.where(site_id: @site.id).first
@@ -35,14 +36,21 @@ class PropertyInformationsController < ApplicationController
 
   private	
     def set_subdomain
-      @subdomain           = request.subdomain
-      @site                = Site.where(subdomain: request.subdomain).first
-      @user                = User.where(id: @site.user_id).first
-      @themeoptions        = ThemeOption.where(site_id: @site.id).first
-      @pages               = Page.where(site_id: @site.id).all
-      @availabilities      = Availability.where(site_id: @site.id).all
-      
-      @contacts            = Contact.where(site_id: @site.id).all
+      if request.subdomain.present? && request.subdomain != "www"
+        @subdomain           = request.subdomain
+        @site                = Site.where(subdomain: request.subdomain).first
+        @user                = User.where(id: @site.user_id).first
+        @themeoptions        = ThemeOption.where(site_id: @site.id).first
+        @pages               = Page.where(site_id: @site.id).all
+        @availabilities      = Availability.where(site_id: @site.id).all
+        @contacts            = Contact.where(site_id: @site.id).all
+      end
+    end
+
+    def redirect_if_www
+      if !request.subdomain.present? || request.subdomain == "www"
+        redirect_to dashboard_path
+      end
     end
   	def propertyinformations_params
       params.require(:property_information).permit(:user_id, :name, 
