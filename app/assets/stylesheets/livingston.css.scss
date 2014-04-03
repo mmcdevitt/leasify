@@ -56,6 +56,9 @@ hr {
 .m-b-lg {
 	margin-bottom: 20px;
 }
+#logo {
+	height:40px;
+}
 .livingston {
 	
 
@@ -137,7 +140,7 @@ hr {
 	}
 	footer {
 		padding: 100px 0;
-		background: #f7f7f7; 
+		background: #f5f5f5; 
 		margin-top:50px;
 		p {
 			
@@ -146,10 +149,9 @@ hr {
 		}
 	}
 	.stats {
-		margin-top:0px;
+		margin-top:50px;
 		margin-bottom: 30px;
-		background: #fff;
-		border-bottom: 1px solid #efefef;
+		
 		padding: 5px 0;
 		ul {
 			margin: 0;
@@ -174,6 +176,7 @@ hr {
 		padding: 5px;
 		background: #fff;
 		margin-bottom: 20px;
+		min-height:433px;
 		&:hover {
 			border: 1px solid #b8b8b8;
 			box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.08);
@@ -215,7 +218,13 @@ hr {
 }
 
 
+.contacts {
+	margin-bottom: 20px;
+}
 
+.contacts:last-child {
+	margin-bottom: 0;
+}
 
 
 

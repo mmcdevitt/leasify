@@ -1,20 +1,19 @@
 <footer>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<p>Copyright &copy; 2014 <%= @propertyinformation.name %>, 
+			<div class="col-md-12 center">
+				<p><%= @propertyinformation.name %></p>
+				<p style="margin-bottom:50px;">
 					<%= @propertyinformation.address %>, <%= @propertyinformation.city %>, 
-					<%= @propertyinformation.state %>, <%= @propertyinformation.zipcode %></p>
-			</div>
-			<div class="col-md-6">
-				<div class="pull-right">
-					<p>
-						<%= @propertyinformation.owner_name %> / Powered by 
-						<a href="http://demo.leasify.co" target="_target" class="customize-link">
-							Leasify
-						</a>
-					</p>
-				</div>
+					<%= @propertyinformation.state %>, <%= @propertyinformation.zipcode %>
+				</p>
+				<p>
+					Copyright &copy; 2014
+					<%= @propertyinformation.owner_name %> / Powered by 
+					<a href="http://demo.leasify.co" target="_target" class="customize-link">
+						Leasify
+					</a>
+				</p>
 			</div>
 		</div>
 	</div>

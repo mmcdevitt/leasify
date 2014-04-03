@@ -1,6 +1,6 @@
-<%= render 'layouts/sunnyside/head' %>
-	<body class="sunnyside leasing <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
-		<%= render 'layouts/sunnyside/header' %>
+<%= render 'layouts/livingston/head' %>
+	<body class="livingston leasing <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+		<%= render 'layouts/livingston/header' %>
 		<div style="<%= 'padding-top:50px;' if !@availability.published? %>">
 			<div class="stats">
 			  <div class="container center">
@@ -17,10 +17,11 @@
 			<div class="container">
 				<%= yield %>
 			</div>
+			<%= render 'layouts/livingston/footer' %>
 		</div>
 			<script type="text/javascript">
 				$(document).ready(function() {
-					$('header').removeClass('navbar').addClass('navbar-inverse');
+					$('.navbar').css('border-bottom', '1px solid #efefef').css('background', 'white');
 				});
 			</script>		
 	</body>

@@ -385,7 +385,9 @@ hr {
 	background-position:center;
 	background-size:cover;
 }
-
+#logo {
+	height: 80px;
+}
 /* faster sliding speed */
 .carousel-inner > .item {
     -webkit-transition: 0.3s ease-in-out left;
@@ -421,7 +423,13 @@ hr {
 	z-index:1;
 }
 
+.contacts {
+	margin-bottom: 20px;
+}
 
+.contacts:last-child {
+	margin-bottom: 0;
+}
 
 
 

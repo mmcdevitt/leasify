@@ -16,6 +16,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <% if @themeoptions.show_logo? %>
+        <div style="margin-bottom:30px;">
+          <%= show_logo_avaya %>
+          <%= image_tag('/assets/blank.png', id: "blankpng", style: "display:none") %>
+        </div>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <div class="row">

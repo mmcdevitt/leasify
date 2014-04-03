@@ -1,5 +1,5 @@
 <%= render 'layouts/livingston/head' %>
-	<body class="livingston <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
+	<body class="livingston leasing <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
 		<div id="wrapper">
 			<%= render 'layouts/livingston/header' %>
 			<div class="stats">
@@ -14,6 +14,9 @@
 					</ul>
 				</div>
 			</div>	
+			<div class="container center" style="margin-bottom:30px;">
+				<h1>Availabilities</h1>
+			</div>
 			<%= render 'layouts/widget' %>
 			<%= render 'layouts/livingston/footer' %>
 		</div><!-- end wrapper -->

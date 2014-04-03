@@ -4036,6 +4036,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-link:hover {
   color: #333;
 }
+.navbar-white {
+  background-color: white;
+  border-bottom: 1px solid #d5d9dc;
+}
+.navbar-white a, .navbar-white .navbar-brand {
+  color: #7e7e7e !important;
+}
 .navbar-inverse {
   background-color: #222;
   border-color: #080808;

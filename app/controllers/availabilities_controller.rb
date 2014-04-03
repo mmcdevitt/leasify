@@ -133,6 +133,7 @@ class AvailabilitiesController < ApplicationController
                                            :type_of_space,
                                            :published,
                                            :position,
+                                           :subtitle,
                                            availability_galleries_attributes: [:user_id, :id, :availability_image, :site_id, :_destroy])
     end
 

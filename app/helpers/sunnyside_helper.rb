@@ -3,10 +3,16 @@ module SunnysideHelper
 
 	def show_logo_sunnyside
   	if @themeoptions.show_logo?
-  		image_tag(@themeoptions.theme_image.url(:small), class: "img-responsive", id: "logo", style: "margin-top:10px;")
+  		image_tag(@themeoptions.theme_image.url(:small), class: "img-responsive", id: "logo", style: "margin-top:5px;")
   	else
   		link_to @propertyinformation.name, "/", class: "navbar-brand"
   	end
+  end
+
+  def show_logo_avaya
+    if @themeoptions.show_logo?
+      image_tag(@themeoptions.theme_image.url(:small), class: "img-responsive", id: "logo", style: "margin-top:5px;")
+    end
   end
 
   def show_logo_skyline

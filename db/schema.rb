@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403005951) do
+ActiveRecord::Schema.define(version: 20140403021911) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140403005951) do
     t.string   "type_of_space"
     t.boolean  "published",      default: true
     t.integer  "position"
+    t.string   "subtitle"
   end
 
   create_table "availability_galleries", force: true do |t|
