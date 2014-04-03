@@ -185,7 +185,7 @@ $(document).ready(function() {
 		//edit sub heading
 		$('#subheading_customize').keyup(function() {
 			var val = $(this).val();
-			$('iframe').contents().find('.welcome-box p').html(val);
+			$('iframe').contents().find('.welcome-box p.wizard-edit').html(val);
 		});
 
 		//edit homepage content in wizard
