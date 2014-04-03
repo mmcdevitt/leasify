@@ -50,10 +50,14 @@
             <li><a href="#amenity" data-toggle="tab">Amenities</a></li>
           </ul>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="padding:30px;">
           <!-- Tab panes -->
           <div class="tab-content">
-            <div class="tab-pane active" id="description"><%= markdown(@availability.content) %></div>
+            <div class="tab-pane active" id="description">
+              <div class="page-content">
+                <%= markdown(@availability.content) %>
+              </div>
+            </div>
             <div class="tab-pane" id="amenity">
               <div class="row">
                 <% @amenities.each do |amenity| %>
