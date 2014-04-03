@@ -9,33 +9,12 @@
 			</div>
 			<div class="add-page">
 				<div class="row">
-					<div class="col-md-8">
-						<div class="line line-dashed b-b line-lg pull-in"></div>
-	          <div class="form-group">
-	            <%= f.label :body_font, "Body font" %>
-	           	<div class="btn-group m-r">
-	              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-	                <span class="dropdown-label" data-placeholder="Please select"><%= font_name %></span> 
-	                <span class="caret" style="margin-left:30px;"></span>
-	              </button>
-	              <ul class="dropdown-menu dropdown-select max-height-400">
-	          			<%= render 'layouts/body_font', :f => f %>
-	              </ul>
-	            </div>
-	          </div>
-	          <div class="line line-dashed b-b line-lg pull-in"></div>
-	          <div class="form-group">
-	            <%= f.label :heading_font, "Heading font" %>
-	           	<div class="btn-group m-r">
-	              <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" style="padding:7px 16px;">
-	                <span class="dropdown-label" data-placeholder="Please select"><%= heading_name %></span> 
-	                <span class="caret" style="margin-left:30px;"></span>
-	              </button>
-	              <ul class="dropdown-menu dropdown-select max-height-400">
-	              	<%= render 'layouts/heading_font', :f => f %>
-	              </ul>
-	            </div>
-	          </div>
+					<div class="col-md-3">
+						<div class="accordian" id="accordion"> 
+							<%= render 'typography', :f => f %>
+	      			<%= render 'font_size_panel', :f => f %>
+							<%= render 'font_color', :f => f %>
+						</div><!-- end accordian -->
 					</div>
 				</div>
 			</div>
@@ -48,4 +27,20 @@
 	    </div>
 	  </div>
 	</footer>
+<% end %>
+<%= javascript_tag do %>
+	$(function(){
+	  $('.demo2').colorpicker();
+	  $('#mainheading_color span i').css('background-color', '<%= @themeoptions.mainheading_color %>');
+	  $('#subheading_color span i').css('background-color', '<%= @themeoptions.subheading_color %>');
+	  $('#body_color span i').css('background-color', '<%= @themeoptions.body_color %>');
+	  $('#body_heading_color span i').css('background-color', '<%= @themeoptions.body_heading_color %>');
+	  $('#nav_color span i').css('background-color', '<%= @themeoptions.nav_color %>');
+	  $('#navhover_color span i').css('background-color', '<%= @themeoptions.navhover_color %>');
+	  $('#footer_color span i').css('background-color', '<%= @themeoptions.footer_color %>');
+	  $('#link_color span i').css('background-color', '<%= @themeoptions.link_color %>');
+	  $('#page_title_color span i').css('background-color', '<%= @themeoptions.page_title_color %>');
+	  $('#page_subtitle_color span i').css('background-color', '<%= @themeoptions.page_subtitle_color %>');
+
+	});
 <% end %>
