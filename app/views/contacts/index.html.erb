@@ -2,24 +2,6 @@
 <header class="header bg-white b-b clearfix">
   <div class="row m-t-sm">
     <div class="col-sm-8 m-b-xs">
-      <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-default" title="Refresh">
-          <i class="fa fa-refresh"></i>
-        </button>
-        <button type="button" class="btn btn-sm btn-default" title="Remove">
-          <i class="fa fa-trash-o"></i>
-        </button>
-        <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown">
-          <i class="fa fa-filter"></i> <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div>
       <%= link_to new_contact_path, class: "btn btn-sm btn-default" do %>
         <i class="fa fa-plus"></i> New Contact
       <% end %>
@@ -36,6 +18,7 @@
 </header>
 <% end %>
 <section class="scrollable wrapper w-f">
+  <div class="panel-body">
   <% if @contacts.empty? %>
     <div class="center">
       <h1>You don't have any contacts created!</h1>
@@ -43,41 +26,31 @@
       <%= link_to 'Create Contact', new_contact_path, class: "btn btn-success" %>
     </div>
   <% else %>
-  <h3 class="m-t-none m-b-md">Contacts</h3>
-  <section class="panel panel-default">
-    <div class="table-responsive">
-      <table class="table table-striped m-b-none">
-        <thead>
-          <tr>
-            <th width="20"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
-            <th class="th-sortable" data-toggle="class">Name</th>
-            <th class="author">Author</th>
-            <th class="status">Status</th>
-            <th class="date">Date</th>
-            <th width="30"></th>
-          </tr>
-        </thead>
-        <tbody>
-         <% @contacts.each do |contact| %>
-          <tr class="table-edit">
-            <td><label class="checkbox m-n i-checks"><input type="checkbox" name="ids[]"><i></i></label></td>
-            <td>
-              <%= link_to contact.first_name + " " + contact.last_name, edit_contact_path(contact), class: "pull-left m-r-sm" %> 
-              <ul class="edit-links">
-                <li><%= link_to "Edit", edit_contact_path(contact) %> | </li> 
-                <li><%= link_to "View", contact %></li>
-              </ul>
-            </td>
-            <td><%= contact.user.username %></td>
-            <td>Published</td>
-            <td><%= contact.updated_at.strftime("%B %e, %Y") %></td>
-            <td>
-              <a href="" data-toggle="modal" data-target="#contact<%= contact.id %>">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
-           <!-- Modal -->
+  <div class="m-b-lg">
+    <h3 class="m-t-none m-b-md">Contacts</h3>
+  </div>
+  <div class="alert alert-info"> 
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <i class="fa fa-info-sign"></i>
+    <strong>Re-order contacts by dragging into place.</strong>
+  </div>
+  <ul class="list-group gutter list-group-lg list-group-sp sortable" id="sortable_contacts" data-update-url="<%= sort_contacts_path %>">
+    <% @contacts.each do |contact| %>
+      <li class="list-group-item" id="contact_<%= contact.id %>">
+        <span class="pull-right" >
+          <%= link_to edit_contact_path(contact) do %>
+            <i class="fa fa-edit icon-muted fa-fw m-r-xs" data-toggle="tooltip" data-placement="top" title="Edit Contact">
+            </i>
+          <% end %>
+         <a href="" data-toggle="modal" data-target="#contact<%= contact.id %>">
+            <i class="fa fa-times icon-muted fa-fw" data-toggle="tooltip" data-placement="top" title="Delete Contact">
+            </i>
+          </a>                  
+        </span>
+        <div class="clear">
+          <%= link_to contact.first_name + " " + contact.last_name, edit_contact_path(contact) %> 
+        </div>
+         <!-- Modal -->
           <div class="modal fade" id="contact<%= contact.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -95,12 +68,13 @@
               </div>
             </div>
           </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      </li>
+
+       
+    <% end %>
+  </ul>
   <% end %>
+  </div>
 </section>
 
 

@@ -86,6 +86,13 @@ class AvailabilitiesController < ApplicationController
     end
   end
 
+  def sort
+    params[:availability].each_with_index do |id, index|
+      Availability.where(id: id).update_all({position: index+1})
+    end
+    render nothing: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_availability
@@ -99,10 +106,10 @@ class AvailabilitiesController < ApplicationController
         @user                 = User.where(id: @site.user_id).first
         @themeoptions         = ThemeOption.where(site_id: @site.id).first
         @pages                = Page.where(site_id: @site.id).all
-        @page_root            = Page.where(site_id: @site.id, published: true).roots.all
-        @availabilities       = Availability.where(site_id: @site.id).all
+        @page_root            = Page.where(site_id: @site.id, published: true).roots.all(:order => "position")
+        @availabilities       = Availability.where(site_id: @site.id).all(:order => "position")
         @propertyinformation  = PropertyInformation.where(site_id: @site.id).first
-        @contacts             = Contact.where(site_id: @site.id).all
+        @contacts             = Contact.where(site_id: @site.id).all(:order => "position")
       end
     end
 
@@ -125,6 +132,7 @@ class AvailabilitiesController < ApplicationController
                                            :floor_location, 
                                            :type_of_space,
                                            :published,
+                                           :position,
                                            availability_galleries_attributes: [:user_id, :id, :availability_image, :site_id, :_destroy])
     end
 

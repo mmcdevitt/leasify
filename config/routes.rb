@@ -1,11 +1,26 @@
 Subdomain::Application.routes.draw do
   
-  
-
-  
   get "dashboards/index"
   require 'subdomain'
- 
+
+  resources :pages do
+    collection do 
+      post "sort"
+    end
+  end
+
+  resources :availabilities do
+    collection do 
+      post "sort"
+    end
+  end
+
+  resources :contacts do
+    collection do 
+      post "sort"
+    end
+  end
+
   scope :dashboard do
     resources :pages, :availabilities, :contacts, :property_informations, :theme_options, :sites, :users, :homepage_galleries, :wizards
     get '/', to: 'dashboards#index', as: :dashboard
@@ -31,6 +46,8 @@ Subdomain::Application.routes.draw do
     get '/wizard/page/new', to: 'wizards#new_page', as: :wizard_new_page
     get '/wizard/almost/finished', to: 'wizards#almost_finished', as: :wizard_almost_finished
   end
+
+
 
   scope :admin do
     resources :theme_names, :sidebar_links, :admin, :amenities

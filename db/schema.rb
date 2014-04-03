@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401212942) do
+ActiveRecord::Schema.define(version: 20140403005951) do
 
   create_table "amenities", force: true do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140401212942) do
     t.integer  "floor_location"
     t.string   "type_of_space"
     t.boolean  "published",      default: true
+    t.integer  "position"
   end
 
   create_table "availability_galleries", force: true do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20140401212942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "site_id"
+    t.integer  "position"
   end
 
   create_table "homepage_galleries", force: true do |t|
@@ -89,6 +91,7 @@ ActiveRecord::Schema.define(version: 20140401212942) do
     t.integer  "parent_id"
     t.boolean  "published",               default: true
     t.boolean  "feature_on_homepage",     default: false
+    t.integer  "position"
   end
 
   add_index "pages", ["slug"], name: "index_pages_on_slug"

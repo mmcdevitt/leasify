@@ -298,6 +298,13 @@ hr {
 .featured h1 {
 	margin-bottom: 8px;
 }
+.contacts {
+	margin-bottom: 20px;
+}
+
+.contacts:last-child {
+	margin-bottom: 0;
+}
 
 /* faster sliding speed */
 .carousel-inner > .item {

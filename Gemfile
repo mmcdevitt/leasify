@@ -24,6 +24,7 @@ gem 'griddler'
 gem "nokogiri"
 gem "htmlentities"
 gem 'truncate_html'
+gem 'acts_as_list'
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails', '2.13.1'
@@ -50,6 +51,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

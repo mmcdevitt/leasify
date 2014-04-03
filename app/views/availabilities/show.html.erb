@@ -75,14 +75,16 @@
         %>
       </div>  
       <div class="availability-stats">
-        <h3>Contacts</h3>
+        <h3 style="margin-bottom:20px;">Contacts</h3>
         <% @contacts.each do |contact| %>
-          <%= contact.first_name + " " + contact.last_name %><br>
+          <div class="contacts">
+          <%= contact.first_name + " " + contact.last_name %>,
           <%= contact.job_title %><br>
           <%= contact.company %><br>
           <%= number_to_phone(contact.phone, area_code: true) %><br>
           <%= mail_to contact.email, contact.email, subject: 'I saw your listing on Leasify for ' + @availability.suite_or_floor + " #" + 
             @availability.title + " in " + @propertyinformation.name %>
+          </div>
         <% end %>
       </div>
           

@@ -2,19 +2,7 @@
 <header class="header bg-white b-b clearfix">
   <div class="row m-t-sm">
     <div class="col-sm-8 m-b-xs">
-      <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-default" title="Refresh"><i class="fa fa-refresh"></i></button>
-        <button type="button" class="btn btn-sm btn-default" title="Remove"><i class="fa fa-trash-o"></i></button>
-        <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown"><i class="fa fa-filter"></i> <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div>
-      <%= link_to new_availability_path, class: "btn btn-sm btn-default" do %>
+    <%= link_to new_availability_path, class: "btn btn-sm btn-default" do %>
         <i class="fa fa-plus"></i> New Listing
       <% end %>
     </div>
@@ -30,6 +18,7 @@
 </header>
 <% end %>
 <section class="scrollable wrapper w-f">
+  <div class="panel-body">
   <% if @availabilities.empty? %>
     <div class="center">
       <h1>You don't have any availabilities listed!</h1>
@@ -37,64 +26,58 @@
       <%= link_to 'List Availability', new_availability_path, class: "btn btn-success" %>
     </div>
   <% else %>
-  <h3 class="m-t-none m-b-md">Availabilities</h3>
-  <section class="panel panel-default">
-    <div class="table-responsive">
-      <table class="table table-striped m-b-none">
-        <thead>
-          <tr>
-            <th width="20"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
-            <th class="th-sortable" data-toggle="class">Listing</th>
-            <th class="author">Author</th>
-            <th class="status">Status</th>
-            <th class="date">Date</th>
-            <th width="30"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @availabilities.each do |availability| %>
-          <tr class="table-edit">
-            <td><label class="checkbox m-n i-checks"><input type="checkbox" name="ids[]"><i></i></label></td>
-            <td>
-              <%= link_to availability.suite_or_floor + " #" + availability.title, edit_availability_path(availability), class: "pull-left m-r-sm" %> 
-              <ul class="edit-links">
-                <li><%= link_to "Edit", edit_availability_path(availability) %> | </li> 
-                <li><%= link_to "View", leasing_show_path(availability) %></li>
-              </ul>
-            </td>
-            <td><%= availability.user.username %></td>
-            <td><%= "Published" if availability.published? %><%= "Draft" if !availability.published? %></td>
-            <td><%= availability.updated_at.strftime("%B %e, %Y") %></td>
-            <td>
-              <a href="" data-toggle="modal" data-target="#availability<%= availability.id %>">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
-           <!-- Modal -->
-          <div class="modal fade" id="availability<%= availability.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-                  Once the listing is deleted, it's gone forever!
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                  <%= link_to "Delete", availability, method: :delete, class: "btn btn-danger" %>
-                </div>
+  <div class="m-b-lg">
+    <h3 class="m-t-none m-b-md">Availabilities</h3>
+  </div>
+  <div class="alert alert-info"> 
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <i class="fa fa-info-sign"></i>
+    <strong>Re-order availabilities by dragging into place.</strong>
+  </div>
+  <ul class="list-group gutter list-group-lg list-group-sp sortable" id="sortable_availabilities" data-update-url="<%= sort_availabilities_path %>">
+    <% @availabilities.each do |availability| %>
+      <li class="list-group-item" id="availability_<%= availability.id %>">
+        <span class="pull-right" >
+          <%= link_to edit_availability_path(availability) do %>
+            <i class="fa fa-edit icon-muted fa-fw m-r-xs" data-toggle="tooltip" data-placement="top" title="Edit Listing">
+            </i>
+          <% end %>
+          <%= link_to leasing_show_path(availability), target: "_blank" do %>
+            <i class="fa fa-external-link icon-muted fa-fw m-r-xs" data-toggle="tooltip" data-placement="top" title="View Listing">
+            </i>
+          <% end %>
+          <a href="" data-toggle="modal" data-target="#availability<%= availability.id %>">
+            <i class="fa fa-times icon-muted fa-fw" data-toggle="tooltip" data-placement="top" title="Delete Listing">
+            </i>
+          </a>                  
+        </span>
+        <div class="clear">
+          <%= link_to availability.suite_or_floor + " #" + availability.title, edit_availability_path(availability) %> 
+          <%= "<span style='color:#e33244; font-weight:700'>Draft</span>".html_safe if !availability.published? %>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="availability<%= availability.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+              </div>
+              <div class="modal-body">
+                Once the listing is deleted, it's gone forever!
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                <%= link_to "Delete", availability, method: :delete, class: "btn btn-danger" %>
               </div>
             </div>
           </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </section>
+        </div>
+      </li>
+    <% end %>
+  </ul>
   <% end %>
+  </div>
 </section>
 
 

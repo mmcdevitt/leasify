@@ -12,6 +12,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    redirect_to contacts_path
   end
 
   # GET /contacts/new
@@ -70,6 +71,13 @@ class ContactsController < ApplicationController
     end
   end
 
+  def sort
+    params[:contact].each_with_index do |id, index|
+      Contact.where(id: id).update_all({position: index+1})
+    end
+    render nothing: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
@@ -78,7 +86,7 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:site_id, :first_name, :last_name, :company, :job_title, :phone, :email, :user_id)
+      params.require(:contact).permit(:site_id, :first_name, :last_name, :position, :company, :job_title, :phone, :email, :user_id)
     end
     def set_subdomain
       if request.subdomain.present? && request.subdomain != "www"
@@ -89,7 +97,7 @@ class ContactsController < ApplicationController
         @pages               = Page.where(site_id: @site.id).all
         @availabilities      = Availability.where(site_id: @site.id).all
         @propertyinformation = PropertyInformation.where(site_id: @site.id).first
-        @contacts            = Contact.where(site_id: @site.id).all
+        @contacts            = Contact.where(site_id: @site.id).all(:order => "position")
       end
     end
 

@@ -8,13 +8,13 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-   
+    
   end
 
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @page_root = Page.where(site_id: @site.id, published: true).roots.all
+    @page_root = Page.where(site_id: @site.id, published: true).roots.all(:order => "position")
 
     if !@page.published? && !user_signed_in?
       redirect_to root_path
@@ -97,6 +97,13 @@ class PagesController < ApplicationController
     end
   end
 
+  def sort
+    params[:page].each_with_index do |id, index|
+      Page.where(id: id).update_all({position: index+1})
+    end
+    render nothing: true
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
@@ -108,7 +115,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:user_id, :slug, :feature_on_homepage, :parent_id, :published, :title, :subtitle, :content, :page_image, :site_id)
+      params.require(:page).permit(:user_id, :position, :slug, :feature_on_homepage, :parent_id, :published, :title, :subtitle, :content, :page_image, :site_id)
     end
 
     def theme_name
@@ -130,7 +137,7 @@ class PagesController < ApplicationController
         @site                = Site.where(subdomain: request.subdomain).first
         @user                = User.where(id: @site.user_id).first
         @themeoptions        = ThemeOption.where(site_id: @site.id).first
-        @pages               = Page.where(site_id: @site.id).all
+        @pages               = Page.where(site_id: @site.id).all(:order => "position")
         @availabilities      = Availability.where(site_id: @site.id).all
         @propertyinformation = PropertyInformation.where(site_id: @site.id).first
         @contacts            = Contact.where(site_id: @site.id).all

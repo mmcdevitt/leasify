@@ -2,24 +2,7 @@
 <header class="header bg-white b-b clearfix">
   <div class="row m-t-sm">
     <div class="col-sm-8 m-b-xs">
-      <div class="btn-group">
-        <button type="button" class="btn btn-sm btn-default" title="Refresh">
-          <i class="fa fa-refresh"></i>
-        </button>
-        <button type="button" class="btn btn-sm btn-default" title="Remove">
-          <i class="fa fa-trash-o"></i>
-        </button>
-        <button type="button" class="btn btn-sm btn-default" title="Filter" data-toggle="dropdown">
-          <i class="fa fa-filter"></i> <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div>
+   
       <%= link_to new_page_path, class: "btn btn-sm btn-default" do %>
         <i class="fa fa-plus"></i> New Page
       <% end %>
@@ -36,6 +19,7 @@
 </header>
 <% end %>
 <section class="scrollable wrapper w-f">
+  <div class="panel-body">
   <% if @pages.empty? %>
     <div class="center">
       <h1>You don't have any pages created!</h1>
@@ -43,77 +27,59 @@
       <%= link_to 'New Page', new_page_path, class: "btn btn-success" %>
     </div>
   <% else %>
-  <h3 class="m-t-none m-b-md">Pages</h3>
-  <section class="panel panel-default">
-    <div class="table-responsive">
-      <table class="table table-striped m-b-none">
-        <thead>
-          <tr>
-            <th width="20"><label class="checkbox m-n i-checks"><input type="checkbox"><i></i></label></th>
-            <th class="th-sortable" data-toggle="class">Page Title</th>
-            <th class="author">Author</th>
-            <th class="status">Status</th>
-            <th class="date">Date</th>
-            <th width="30"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @pages.each do |page| %>
-          <tr class="table-edit">
-            <td><label class="checkbox m-n i-checks"><input type="checkbox" name="ids[]"><i></i></label></td>
-            <td>
-              <%= link_to page.title, edit_page_path(page), class: "pull-left m-r-sm" %> 
-              <ul class="edit-links">
-                <li><%= link_to "Edit", edit_page_path(page) %> | </li> 
-                <li><%= link_to "View", pages_id_path(page) %></li>
-              </ul>
-            </td>
-            <td><%= page.user.username %></td>
-            <td><%= "Published" if page.published? %><%= "Draft" if !page.published? %></td>
-            <td><%= page.updated_at.strftime("%B %e, %Y") %></td>
-            <td>
-              <a href="" data-toggle="modal" data-target="#page<%= page.id %>">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            </td>
-          </tr>
-           <!-- Modal -->
-          <div class="modal fade" id="page<%= page.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
-                </div>
-                <div class="modal-body">
-                  Once the page is deleted, it's gone forever!
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
-                  <%= link_to "Delete", page, method: :delete, class: "btn btn-danger" %>
-                </div>
+  <div class="m-b-lg">
+    <h3 class="m-t-none m-b-lg">Pages</h3>
+  </div>
+  <div class="alert alert-info"> 
+    <button type="button" class="close" data-dismiss="alert">×</button> 
+    <i class="fa fa-info-sign"></i>
+    <strong>Re-order pages by dragging into place.</strong>
+  </div>
+  <ul class="list-group gutter list-group-lg list-group-sp sortable" id="sortable" data-update-url="<%= sort_pages_path %>">
+    <% @pages.each do |page| %>
+      <li class="list-group-item" id="page_<%= page.id %>">
+        <span class="pull-right" >
+          <%= link_to edit_page_path(page) do %>
+            <i class="fa fa-edit icon-muted fa-fw m-r-xs" data-toggle="tooltip" data-placement="top" title="Edit Page">
+            </i>
+          <% end %>
+          <%= link_to pages_id_path(page), target: "_blank" do %>
+            <i class="fa fa-external-link icon-muted fa-fw m-r-xs" data-toggle="tooltip" data-placement="top" title="View Page">
+            </i>
+          <% end %>
+          <a href="" data-toggle="modal" data-target="#page<%= page.id %>">
+            <i class="fa fa-times icon-muted fa-fw" data-toggle="tooltip" data-placement="top" title="Delete Page">
+            </i>
+          </a>                  
+        </span>
+        <div class="clear">
+          <%= link_to page.title, edit_page_path(page) %> 
+          <%= "<span style='color:#e33244; font-weight:700'>Draft</span>".html_safe if !page.published? %>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="page<%= page.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+              </div>
+              <div class="modal-body">
+                Once the page is deleted, it's gone forever!
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+                <%= link_to "Delete", page, method: :delete, class: "btn btn-danger" %>
               </div>
             </div>
           </div>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </section>
-  <% end %>
-
-
-
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+</div>
 </section>
-
-
-
-
-
-
-
-
-
 
 
 
