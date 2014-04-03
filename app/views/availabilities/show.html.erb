@@ -87,6 +87,7 @@
             class: "btn btn-info btn-block btn-lg" 
         %>
       </div>  
+      <% if @availability.floorplan_image? %>
       <div class="availability-stats">
         <h3 style="margin-bottom:20px;">Floorplan</h3>
         <%= link_to (image_tag(@availability.floorplan_image, class: "img-responsive")), "#", data: { toggle: "modal", target: "#floorplan_modal" } %>
@@ -108,6 +109,7 @@
           </div>
         </div>
       </div>
+      <% end %>
       <div class="availability-stats">
         <h3 style="margin-bottom:20px;">Contacts</h3>
         <% @contacts.each do |contact| %>
