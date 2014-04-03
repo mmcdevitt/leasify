@@ -6,7 +6,7 @@ class AdminController < ApplicationController
 	end
 
 	def users_list
-		@users = User.all
+		@users = User.all(:order => "id")
 	end
 
 	def admin_role
