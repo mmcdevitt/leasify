@@ -17,6 +17,8 @@ class AvailabilitiesController < ApplicationController
   # GET /availabilities/1.json
   def show
     @availabilities_image = AvailabilityGallery.where(site_id: @site.id, availability_id: @availability.id).all
+    @amenities = Amenity.all
+
     if @site.id != @availability.site_id
       redirect_to root_url
     end

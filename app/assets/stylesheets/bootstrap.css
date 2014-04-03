@@ -501,6 +501,9 @@ cite {
 .text-muted {
   color: #999;
 }
+.text-muted-for-amenities {
+  color: #d6d6d6;
+}
 .text-primary {
   color: #428bca;
 }
@@ -3508,7 +3511,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
-  border-bottom: 1px solid #ddd;
+  /*border-bottom: 1px solid #ddd;*/
 }
 .nav-tabs > li {
   float: left;
@@ -4788,7 +4791,7 @@ a.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 10px 0 0 10px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -6084,7 +6087,9 @@ button.close {
   padding-left: 50px;
 }
 
-
+.amenity_single {
+  margin-bottom: 28px;
+}
 
 
 

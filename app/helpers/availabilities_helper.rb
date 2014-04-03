@@ -56,6 +56,18 @@ module AvailabilitiesHelper
     end
   end
 
+  def amenities_muted_if_false(amenity)
+    "class=text-muted-for-amenities" unless PropertyInformation.where(amenity.name => true).first
+  end
+
+  def amenities_check_if_true(amenity)
+    if PropertyInformation.where(amenity.name => true).first
+      '<i class="fa fa-check"></i>'.html_safe 
+    else
+      '<span style="margin-left:18px"></span>'.html_safe
+    end
+  end
+
 end
 
 

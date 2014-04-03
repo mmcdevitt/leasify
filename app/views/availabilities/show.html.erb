@@ -16,51 +16,60 @@
   </div><!-- end row -->
   <div class="row">
     <div class="col-md-8">
-      
-   
+      <div id="carousel-example-generic" class="carousel slide m-b-lg img-thumbnail" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <% @availabilities_image.each_with_index do |index, i| %>
+            <li data-target="#carousel-example-generic" data-slide-to="<%= i %>" class="<%= "active" if index == 0 %>"></li>
+          <% end %>
+        </ol>
 
-<div id="carousel-example-generic" class="carousel slide m-b-lg img-thumbnail" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <% @availabilities_image.each_with_index do |index, i| %>
-      <li data-target="#carousel-example-generic" data-slide-to="<%= i %>" class="<%= "active" if index == 0 %>"></li>
-    <% end %>
-  </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <% @availabilities_image.each_with_index do |image, index| %>
+            <div class="item <%= "active" if index == 0 %>">
+            <%= image_tag(image.availability_image.url(:large), class: "img-responsive") %>
+            </div>
+            <% end %>
+        </div>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <% @availabilities_image.each_with_index do |image, index| %>
-      <div class="item <%= "active" if index == 0 %>">
-      <%= image_tag(image.availability_image.url(:large), class: "img-responsive") %>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </div>
-      <% end %>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-</div>
-
-
-
-
-
-
-
-
 
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Description</h3>
+         <div class="panel-heading">
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
+            <li><a href="#amenity" data-toggle="tab">Amenities</a></li>
+          </ul>
         </div>
         <div class="panel-body">
-          <p><%= markdown(@availability.content) %></p>
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div class="tab-pane active" id="description"><%= markdown(@availability.content) %></div>
+            <div class="tab-pane" id="amenity">
+              <div class="row">
+                <% @amenities.each do |amenity| %>
+                  <div class="amenity_single col-lg-4">
+                    <%= amenities_check_if_true(amenity) %>
+                    <span <%= amenities_muted_if_false(amenity) %>>
+                      <%= amenity.name.humanize %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div><!-- end col 8 -->
     <div class="col-md-4">
       <div class="availability-stats">
