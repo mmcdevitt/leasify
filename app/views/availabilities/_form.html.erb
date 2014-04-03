@@ -42,25 +42,6 @@
           </div><!-- end parent -->
         </div><!-- end col 12 -->
       </div><!-- end row -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div class="row">
         <% if @availability.errors.any? %>
           <div id="error_explanation">
@@ -151,8 +132,13 @@
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
             <%= f.label :subtitle, "Subtitle" %>
-            <%= f.text_field :subtitle, class: "form-control" %>
-            <p>Summary for the leasing page.</p>
+            <%= f.text_field :subtitle, class: "form-control", id: "inputfeedback", maxlength: '120' %>
+            <div class="pull-left">
+              <p>Summary for the leasing page.</p>
+            </div>
+            <div class="pull-right text-muted">
+              <div id="feedback"></div>
+            </div>
           </div>
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
@@ -195,28 +181,30 @@
 
 
 <% if params[:action] == "new" && @availabilities.empty? %>
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('#draft_btn_tooltip').fadeIn('slow');
-    $('.form-control').keyup(function() {
-      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+      $('#draft_btn_tooltip').fadeIn('slow');
+      $('.form-control').keyup(function() {
+        $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+      });
+      $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+        $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+      });
+      // $('.btn-square').mouseover(function () {
+      //   $('#image_btn_tooltip').fadeIn('slow');
+      // }).mouseleave(function() {
+      //   $('#image_btn_tooltip').fadeOut('slow');
+      // });
+      $('.btn-square').click(function () {
+        $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+      });
+      $('.form-group button.dropdown-toggle').click(function() {
+        $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+      });    
+
     });
-    $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
-      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
-    });
-    // $('.btn-square').mouseover(function () {
-    //   $('#image_btn_tooltip').fadeIn('slow');
-    // }).mouseleave(function() {
-    //   $('#image_btn_tooltip').fadeOut('slow');
-    // });
-    $('.btn-square').click(function () {
-      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
-    });
-    $('.form-group button.dropdown-toggle').click(function() {
-      $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
-    });
-  });
- </script>
+  </script>
 <% end %>
 
 

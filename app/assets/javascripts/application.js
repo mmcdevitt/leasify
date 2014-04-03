@@ -42,7 +42,17 @@ $(document).ready(function() {
     });
 
   
+    // 120 max char subtitle availability form
+    var initialText = $("#inputfeedback").val().length;
+    var textMax = 120;
+    $('#feedback').html(initialText + '/120 max');
 
+    $('#inputfeedback').keyup(function() {
+      var textLength = $('#inputfeedback').val().length;
+      var textRemaining = textMax - textLength;
+
+      $('#feedback').html(textLength + '/120 max');
+    });
    
    
 
