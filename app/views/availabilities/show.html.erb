@@ -88,6 +88,27 @@
         %>
       </div>  
       <div class="availability-stats">
+        <h3 style="margin-bottom:20px;">Floorplan</h3>
+        <%= link_to (image_tag(@availability.floorplan_image, class: "img-responsive")), "#", data: { toggle: "modal", target: "#floorplan_modal" } %>
+        <!-- Modal -->
+        <div class="modal fade" id="floorplan_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <p class="modal-title" id="myModalLabel">Floorplan for <%= @availability.suite_or_floor + " #" + @availability.title %></p>
+              </div>
+              <div class="modal-body">
+                <%= image_tag(@availability.floorplan_image, class: "img-responsive") %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="availability-stats">
         <h3 style="margin-bottom:20px;">Contacts</h3>
         <% @contacts.each do |contact| %>
           <div class="contacts">

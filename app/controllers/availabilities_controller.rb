@@ -136,6 +136,7 @@ class AvailabilitiesController < ApplicationController
                                            :published,
                                            :position,
                                            :subtitle,
+                                           :floorplan_image,
                                            availability_galleries_attributes: [:user_id, :id, :availability_image, :site_id, :_destroy])
     end
 

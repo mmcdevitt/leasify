@@ -54,8 +54,18 @@
           </div>
         <% end %>
         <div class="col-md-8">
-         
           <%= f.hidden_field :site_id, value: @site.id %>
+          <div class="line line-dashed b-b line-lg pull-in"></div>
+          <div class="form-group">
+            <%= f.label :floorplan_image, "Upload floorplan" %>
+            <%= f.file_field :floorplan_image, as: :file, class: "filestyle", id: "floorplan_upload", 
+            style: "position: fixed; left: -500px;", data: {classinput: "form-control inline v-middle input-s", icon: false, classbutton: "btn btn-default" } %>
+          </div>
+          <%= javascript_tag do %>
+            $(document).ready(function() {
+              $(".bootstrap-filestyle input").attr('placeholder', '<%= @availability.floorplan_image_file_name %>');
+            });
+          <% end %>
           <div class="line line-dashed b-b line-lg pull-in"></div>
           <div class="form-group">
             <%= f.label :suite_or_floor, "Is this an individual suite or entire floor?" %>
@@ -206,7 +216,7 @@
     });
   </script>
 <% end %>
-
+<%= javascript_include_tag "filestyle.min" %>
 
 <% end %>
   

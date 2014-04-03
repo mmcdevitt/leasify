@@ -5208,8 +5208,8 @@ button.close {
     margin: 30px auto;
   }
   .modal-content {
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 0 4px rgba(0,0,0, 0.13) !important;
+    box-shadow: 0 0 0 4px rgba(0,0,0, 0.13) !important;
   }
   .modal-sm {
     width: 300px;
@@ -6091,7 +6091,9 @@ button.close {
   margin-bottom: 28px;
 }
 
-
+.bootstrap-filestyle .form-control {
+  height:34px;
+}
 
 
 
