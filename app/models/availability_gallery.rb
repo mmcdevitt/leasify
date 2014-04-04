@@ -1,7 +1,7 @@
 class AvailabilityGallery < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :availability
-
+  validates :availability_image, presence: true
 	has_attached_file :availability_image, :default_url => "/assets/image.jpg", styles: {
 
     large: "848x600#",

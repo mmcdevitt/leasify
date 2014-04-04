@@ -2,6 +2,16 @@
 <section class="scrollable wrapper w-f">
   <div class="panel-body">
     <div class="add-page">
+      <% if @availability.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@availability.errors.count, "error") %> prohibited this availability from being saved:</h2>
+          <ul>
+          <% @availability.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <h3><%= @avail_title %></h3>
       <% if params[:action] == "edit" %>
       <p><%= edit_listing_url %> <%= link_to "View Listing", availability_path, target: "_blank", class: "bluelink", style: "font-weight:700" %></p>
@@ -43,16 +53,7 @@
         </div><!-- end col 12 -->
       </div><!-- end row -->
       <div class="row">
-        <% if @availability.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@availability.errors.count, "error") %> prohibited this availability from being saved:</h2>
-            <ul>
-            <% @availability.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
+        
         <div class="col-md-8">
           <%= f.hidden_field :site_id, value: @site.id %>
           <div class="line line-dashed b-b line-lg pull-in"></div>

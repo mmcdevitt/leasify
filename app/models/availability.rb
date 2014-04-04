@@ -3,6 +3,7 @@ class Availability < ActiveRecord::Base
 	belongs_to :site
 	has_many :availability_galleries, :dependent => :destroy
 	validates :title, :suite_or_floor, :subtitle, :availability, :sf, :rental_rate, :content, :floor_location, :type_of_space, presence: true
+	validates :availability_galleries, presence: true
 	validates :sf, :rental_rate, :floor_location, numericality: true
 	validates :subtitle, length: {maximum: 120}
 	accepts_nested_attributes_for :availability_galleries, 
