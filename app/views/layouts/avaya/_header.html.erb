@@ -55,7 +55,9 @@
                 <% end %>
               </li>
             <% end %>
+            <% unless @availabilities.empty? %>
             <li><%= link_to "Leasing", leasing_path, style: "font-size:" + @themeoptions.nav_size.to_s + "px" %></li>
+            <% end %>
             <li><%= admin_link %></li>
           </ul>
         </div>
