@@ -76,6 +76,7 @@
 	         reader.onload = function(e){
 	             image_base64 = e.target.result;
 	             $('iframe').contents().find('.wizard').attr("style", "background-image:url(" + image_base64 + ")");
+	             $('iframe').contents().find('.wizard img').attr('src', image_base64);
 	         };
 	         reader.readAsDataURL(file);
 	         
