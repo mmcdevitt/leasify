@@ -20,5 +20,65 @@
 	<script type="text/javascript" src="//use.typekit.net/bgg6ayr.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <% end %>
+
+  <style type="text/css">
+    header ul li a {
+      color: <%= @themeoptions.nav_color %>;
+      font-size: <%= @themeoptions.nav_size.to_s %>px;
+    }
+    header ul li a:hover {
+      color: <%= @themeoptions.navhover_color %> !important;
+    }
+    footer p {
+      <% if @themeoptions.footer_color == "#fff" || @themeoptions.footer_color == "#ffffff" %>
+      color: #000;
+      <% else %>
+      color: <%= @themeoptions.footer_color %>;
+      <% end %>
+    }
+   
+    a.customize-link,
+    .page-content a {
+      color: <%= @themeoptions.link_color %>;
+    }
+    
+    .page-content p,
+    .page-content {
+      <% if @themeoptions.body_color == '#fff' || @themeoptions.body_color == '#ffffff'  %>
+      color: #000;
+      <% else %>
+      color: <%= @themeoptions.body_color %>;
+      font-size: <%= @themeoptions.body_size %>px;
+      <% end %>
+    }
+
+    .page-content h1,
+    .page-content h2,
+    .page-content h3,
+    .page-content h4,
+    .page-content h5,
+    .page-content h6 {
+      <% if @themeoptions.body_heading_color == "#fff" || @themeoptions.body_heading_color == "#ffffff" %>
+      color: #000;
+      <% else %>
+      color: <%= @themeoptions.body_heading_color %> ;
+      <% end %>
+    }
+    h1, h2, h3, h4, h5, h6 {
+      text-transform: <%= @themeoptions.heading_text_transform %>; 
+       <%= font_name_for_heading_css.html_safe %>
+    }
+    body {
+      <%= font_name_for_body_css.html_safe %>
+    }
+    .welcome-box h1 {
+      font-size: <%= @themeoptions.mainheading_size %>px;
+      color: <%= @themeoptions.mainheading_color %>;
+    }
+    .welcome-box p {
+      color: <%= @themeoptions.subheading_color %>;
+      font-size: <%= @themeoptions.subheading_size %>px;
+    }
+  </style>
   
 </head>

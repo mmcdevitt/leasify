@@ -1,47 +1,61 @@
 <%= render 'layouts/skyline/head' %>
-	<body class="skyline <%= @themeoptions.body_font %> <%= @themeoptions.heading_font %>">
-		<div id="wrapper">
+	<body class="skyline customize">
+		
 			<div class="main-homepage">
-			
-				<%= render 'layouts/skyline/header' %>
 				<div class="container">
-					<div class="logo">
-						<h1>
-							<%= show_logo_skyline %>
-						</h1>
-					</div><!-- end logo -->
+			
 					<div class="welcome-box">
-						<h1><%= @themeoptions.homepage_heading %></h1>
-						<p><%= @themeoptions.homepage_subheading %></p>
+						<h1 class=""><%= @themeoptions.homepage_heading %></h1>
+						<p class="wizard-edit a"><%= @themeoptions.homepage_subheading %></p>
 					</div><!-- end welcome box -->
 				</div><!-- end container -->
 			</div><!-- end main homepage -->
+			<%= render 'layouts/skyline/header' %>
 			<section id="homepage-content">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-10">
-							<%= markdown(@themeoptions.content) %>
+						<div class="col-md-10 col-md-offset-1">
+							<div class="page-content">
+								<div class="wizard-edit">
+									<%= markdown(@themeoptions.content) %>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</section>	
-			<% if @homepage_gallery.blank? %>
-			<section id="address" style="background: url('/assets/94d0210db1.jpg');
-					-webkit-background-size: cover; -moz-background-size: cover; 
-					-o-background-size: cover; background-size: cover;">
-			<% else %>
-			<section id="address" style="background: url('<%= @homepage_gallery.homepage_gallery_image %>');
-					-webkit-background-size: cover; -moz-background-size: cover; 
-					-o-background-size: cover; background-size: cover;">
-			<% end %>
-				<div class="container center">
-					<%= @propertyinformation.name %><br> 
-					<%= @propertyinformation.address %>,<br>  <%= @propertyinformation.city %>,
-					<%= @propertyinformation.state %>, <%= @propertyinformation.zipcode %> <br> 
-				</div>
-			</section>
+			<% unless @pages_feature.empty? %>
+				<div class="featured">
+					<div class="container-fluid">
+						
+							<% @pages_feature.each do |page| %>
+								<div class="row">
+									<div class="page-content">
+										<div class="wizard-edit">
+											<div class="left">
+												<%= image_tag(page.page_image.url(:large), class: "img-responsive") %>
+											</div>
+											<div class="right">
+												<h1><%= page.title %></h1>
+												<div class="row">
+													<div class="col-lg-10">
+														<p><%= page.subtitle %></p>
+														<%= link_to page.title, pages_id_path(page), class: "customize-link" %>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+							</div>
+							<% end %>
+						
+					</div>
+				</div>	
+				<% end %>
+			
+			
 			<%= render 'layouts/skyline/footer' %>
-		</div><!-- end wrapper -->
+		
 		<%= javascript_tag do %>
       
       jQuery(function($){
@@ -70,5 +84,86 @@
         });
         
     <% end %>
+    <script type="text/javascript">
+
+    	$(document).ready(function() {
+
+    		function windowHeight() {
+    			var height = $(window).height();
+    			var headerHeight = $('header').height();
+    			var contentHeight = height - headerHeight;
+    			$('.main-homepage').css('height', contentHeight + 'px');
+    		}
+
+    		windowHeight();
+
+    		$(window).resize(function() {
+
+    			windowHeight();
+
+    		});
+
+    		$(document).scroll(function() {
+
+    			var height = $(window).height();
+    			var headerHeight = $('header').height();
+    			var contentHeight = height - headerHeight;
+    			var scrollPos = 0;
+    			scrollPos = $(this).scrollTop();
+    			if (scrollPos >= contentHeight) {
+    				$('header').removeClass('navbar-static');
+    				$('header').addClass('navbar-fixed-top');
+    			} else if (scrollPos < contentHeight) {
+    				$('header').removeClass('navbar-fixed-top');
+    				$('header').addClass('navbar-static');
+    			}
+
+    		});
+
+    	});
+
+    </script>
 	</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

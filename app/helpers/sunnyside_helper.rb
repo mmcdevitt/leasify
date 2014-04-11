@@ -19,7 +19,7 @@ module SunnysideHelper
   	if @themeoptions.show_logo?
   		image_tag(@themeoptions.theme_image.url(:small), class: "img-responsive", id: "logo")
   	else
-  		link_to @propertyinformation.name, "/"
+  		link_to @propertyinformation.name, "/", class: "navbar-brand"
   	end
   end
 

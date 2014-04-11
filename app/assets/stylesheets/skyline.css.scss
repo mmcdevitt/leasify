@@ -1,11 +1,9 @@
-html, body {
-	height: 100%;
 
-}
-#wrapper {
-	height: 700px;
-}
 .skyline {
+	#logo {
+		height: 60px;
+		margin-top: 10px;
+	}
 	&.leasing header { background: #fff; }
 			.center {
 				text-align: center;
@@ -17,23 +15,23 @@ html, body {
 				margin-bottom: 40px;
 			}
 			header {
-				padding:70px 0 50px;
+				background: white;
 				margin:0;
-				
+				border-bottom:1px solid #efefef;
 				&.subpage {
 					border-bottom: 1px solid #eee;
 				}
 
 				a.navbar-brand {
 					font-size: 35px;
-					padding: 0 0 0 15px;
+					margin-top: 15px;
 					font-weight: 700;
 					color: #333;
 				}
 
 				nav ul li a {
-					padding: 0 30px 0 0;
-					color: #333;
+					padding:30px 15px;
+					
 
 					&:hover {
 						background:transparent;
@@ -57,17 +55,17 @@ html, body {
 				width: 50%;
 				color: #fff;
 				h1 {
-					font-size: 70px;
-					color: #fff;
+					
 				}
 
 			} /*end welcome-box*/
 
 			#homepage-content {
-				background: #333;
+				background: #fafafa;
 				padding: 100px 0;
-				color: #fff;
+				color: #333;
 				font-size: 18px;
+				text-align: center;
 				h1 {
 					font-size: 70px;
 				}
@@ -185,6 +183,35 @@ html, body {
 				margin-top: 100px;
 			}
 
+.featured {
+	background: #fff;
+	img {
+		width: 100%;
+	}
+	.left {
+		float: left;
+		width: 50%;
+	}
+	.right {
+		float: right;
+		width: 50%;
+		padding: 40px;
+	}
+
+	.container-fluid .row:nth-child(even) {
+		.right {
+			float: left;
+			width: 50%;
+		}
+		.left {
+			float: right;
+			width: 50%;
+		}
+	}
+
+
+
+}
 
 
 
