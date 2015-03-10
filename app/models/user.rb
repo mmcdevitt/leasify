@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	validates :last_name, presence: true
 	validates :username, presence: true, 
 							 uniqueness: true
+							 
 	has_many :posts, :dependent => :destroy
 	has_many :pages, :dependent => :destroy
 	has_many :availabilities, :dependent => :destroy

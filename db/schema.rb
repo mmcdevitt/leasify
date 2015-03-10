@@ -170,8 +170,8 @@ ActiveRecord::Schema.define(version: 20140403215557) do
   end
 
   create_table "theme_options", force: true do |t|
-    t.string   "homepage_heading",                        default: "Welcome to Our Site!"
-    t.string   "homepage_subheading",                     default: "You can write something else here."
+    t.string   "homepage_heading",            default: "Welcome to Our Site!"
+    t.string   "homepage_subheading",         default: "You can write something else here."
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -180,33 +180,33 @@ ActiveRecord::Schema.define(version: 20140403215557) do
     t.integer  "theme_image_file_size"
     t.datetime "theme_image_updated_at"
     t.integer  "user_id"
-    t.integer  "template",                    limit: 255
     t.string   "homepage_image_file_name"
     t.string   "homepage_image_content_type"
     t.integer  "homepage_image_file_size"
     t.datetime "homepage_image_updated_at"
     t.integer  "site_id"
-    t.string   "body_font",                               default: "arial"
+    t.integer  "template"
+    t.string   "body_font",                   default: "arial"
     t.boolean  "show_logo"
-    t.string   "heading_font",                            default: "museo-h-bold"
-    t.integer  "mainheading_size",                        default: 48
-    t.integer  "nav_size",                                default: 12
-    t.integer  "subheading_size",                         default: 14
-    t.integer  "footer_size",                             default: 12
-    t.integer  "body_size",                               default: 14
-    t.string   "mainheading_color",                       default: "#fff"
-    t.string   "subheading_color",                        default: "#fff"
-    t.string   "body_color",                              default: "#000"
-    t.string   "footer_color",                            default: "#999"
-    t.string   "nav_color",                               default: "#fff"
-    t.string   "navhover_color",                          default: "#f5f5f5"
-    t.string   "body_heading_color",                      default: "#000"
-    t.string   "link_color",                              default: "#428bca"
-    t.integer  "page_title_size",                         default: 40
-    t.integer  "page_subtitle_size",                      default: 14
-    t.string   "page_title_color",                        default: "#fff"
-    t.string   "page_subtitle_color",                     default: "#fff"
-    t.string   "heading_text_transform",                  default: "capitalize"
+    t.string   "heading_font",                default: "museo-h-bold"
+    t.integer  "mainheading_size",            default: 48
+    t.integer  "nav_size",                    default: 12
+    t.integer  "subheading_size",             default: 14
+    t.integer  "footer_size",                 default: 12
+    t.integer  "body_size",                   default: 14
+    t.string   "mainheading_color",           default: "#fff"
+    t.string   "subheading_color",            default: "#fff"
+    t.string   "body_color",                  default: "#000"
+    t.string   "footer_color",                default: "#999"
+    t.string   "nav_color",                   default: "#fff"
+    t.string   "navhover_color",              default: "#f5f5f5"
+    t.string   "body_heading_color",          default: "#000"
+    t.string   "link_color",                  default: "#428bca"
+    t.integer  "page_title_size",             default: 40
+    t.integer  "page_subtitle_size",          default: 14
+    t.string   "page_title_color",            default: "#fff"
+    t.string   "page_subtitle_color",         default: "#fff"
+    t.string   "heading_text_transform",      default: "capitalize"
   end
 
   create_table "users", force: true do |t|

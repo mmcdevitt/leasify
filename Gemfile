@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
-ruby '1.9.3'
+gem 'rails', '4.1.5'
+ruby '2.1.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'bcrypt-ruby'
@@ -15,7 +15,7 @@ gem 'simple_form'
 gem 'paperclip'
 # gem 'bootsy'
 gem 'redcarpet'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'aws-s3'
 gem 'friendly_id'
 gem 'acts_as_tree'
@@ -25,6 +25,7 @@ gem "nokogiri"
 gem "htmlentities"
 gem 'truncate_html'
 gem 'acts_as_list'
+gem 'better_errors'
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails', '2.13.1'
@@ -67,7 +68,7 @@ group :doc do
 end
 
 group :test do
-	gem 'factory_girl_rails'
+	gem 'fabrication'
 	gem 'launchy'
 end
 gem 'draper'
