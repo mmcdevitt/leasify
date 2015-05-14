@@ -1,4 +1,4 @@
-Subdomain::Application.configure do
+Leasify::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -79,7 +79,7 @@ Subdomain::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
 
-  
+
 end
 
 

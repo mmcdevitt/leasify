@@ -2,7 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
-Subdomain::Application.initialize!
+Leasify::Application.initialize!
 
 
 ActionMailer::Base.smtp_settings = {
