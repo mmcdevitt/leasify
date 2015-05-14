@@ -26,7 +26,7 @@ gem 'better_errors'
 gem 'faker'
 gem 'will_paginate', "~> 3.0.4"
 gem 'bootstrap-will_paginate'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'devise'
 gem 'coffee-rails', '~> 4.0.0'
@@ -37,6 +37,7 @@ gem 'state_machine'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'draper'
+gem 'haml-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
