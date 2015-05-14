@@ -1,7 +1,7 @@
 !!!
 %html.app
+  = render 'layouts/head'
   %body
-    = render 'layouts/head'
     %section.hbox.stretch
       = render 'layouts/aside'
       %section#content
@@ -16,7 +16,7 @@
               = yield
         %a.hide.nav-off-screen-block{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen", :href => "#"}
     :javascript
-      // Bootstrap wysihtml5 editor     
+      // Bootstrap wysihtml5 editor
               $('.wysihtml5').each(function(i, elem) {
                 $(elem).wysihtml5({
                   "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
@@ -25,21 +25,21 @@
                   "html": true, //Button which allows you to edit the generated HTML. Default false
                   "link": false, //Button to insert a link. Default true
                   "image": false, //Button to insert an image. Default true,
-                  "color": false //Button to change color of font 
-                  
+                  "color": false //Button to change color of font
+
                 });
-                
-               
+
+
               });
-      
-            
-             
-      
+
+
+
+
               $(".wysihtml5-toolbar .btn").addClass('btn-default btn-sm');
-      
+
               // Image preview before upload
               var preview = $(".upload-preview-options img");
-              
+
                   $("#lefile").change(function(event){
                        var input = $(event.currentTarget);
                        var file = input[0].files[0];
@@ -50,14 +50,14 @@
                        };
                        reader.readAsDataURL(file);
                        preview.addClass('preview-img-border');
-      
-                      $('#uploadimage').css('width', '115px').css('height', '115px');  
-                      $('#pageimage').css('width', '150px').css('height', '150px');  
-      
-      
+
+                      $('#uploadimage').css('width', '115px').css('height', '115px');
+                      $('#pageimage').css('width', '150px').css('height', '150px');
+
+
                   });
-      
-                  
+
+
                 // Disable submit btn on click
                   $('input[type="submit"').click(function() {
                       $(this).addClass("disabled");
