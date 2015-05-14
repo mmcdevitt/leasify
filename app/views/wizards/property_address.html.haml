@@ -1,0 +1,56 @@
+%body
+  %section
+    = form_for(@propertyinformations, html: { class: "propertyinformations-wizard" }) do |f|
+      %section.hbox.stretch.wizard
+        %aside
+          %section.vbox
+            %header.header.bg-white.b-b.clearfix
+              .row
+                .col-sm-4
+                  = link_to wizard_property_information_path, class: "btn btn-default" do
+                    Back
+                .col-sm-4
+                  - if Rails.env.development?
+                    50% complete
+                    .progress.progress-xs{:style => "margin:0"}
+                      .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+                #save_continue.col-sm-4.text-right
+                  = f.submit "Save Changes", class: "btn btn-success"
+                  = link_to wizard_property_amenities_path, class: "btn btn-default" do
+                    Continue
+            %section.scrollable.wrapper.w-f
+              .panel-body
+                .add-page
+                  .row
+                    .col-md-8.col-md-offset-2
+                      .top-info
+                        %h1 Add Property Address
+                        %p Now let's save your property's address.
+                      %h3 Property Address
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :address, "Property Address"
+                        = f.text_field :address, class: "form-control", placeholder: "614 Park Ave"
+                        %p Your property's address.
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :state, "State"
+                        .btn-group.m-r
+                          %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                            %span.dropdown-label{"data-placeholder" => "Please select"}= state_select_wizard
+                            %span.caret{:style => "margin-left:30px;"}
+                          %ul.dropdown-menu.dropdown-select.max-height-400
+                            = render 'property_informations/state_dropdown', :f => f
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :city, "City"
+                        = f.text_field :city, class: "form-control", placeholder: "New York"
+                        %p Your property's city.
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :zipcode, "Zipcode"
+                        = f.text_field :zipcode, class: "form-control", placeholder: "10001"
+                        %p Your property's zipcode.
+  #save_continue_tooltip.fake_tooltip.save
+    %span.arrow.top
+    Remember to Save and Continue!

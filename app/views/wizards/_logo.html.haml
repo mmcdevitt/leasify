@@ -1,0 +1,44 @@
+/ start color panel
+.panel
+  %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#logo"}
+    Logo
+    %i.i.i-arrow-down5.pull-right
+  #logo.panel-collapse.collapse{:style => "height: auto;"}
+    = f.file_field :theme_image, as: :file, class: "filestyle", id: "logo_image", style: "position: fixed; left: -500px;"
+    .bootstrap-filestyle{:style => "display: inline;"}
+      %label.btn.btn-info.btn-block.m-b-lg{:for => "logo_image"}
+        %i.i.i-images
+        %span{:style => "font-weight:700;"} Upload Logo
+    %p
+      You can upload another image or choose not to show your logo in the "Theme Options"
+      section of your dashboard.
+    .form-group.m-t-lg
+      .checkbox.m-n.i-checks
+        %label
+          = f.check_box :show_logo
+          %i
+          = f.label :show_logo, "Show logo?"
+    / end form group
+  / end id logo
+/ end logo panel
+:javascript
+  // Image preview before upload
+  var previewlogo_image = $('iframe').contents().find('#logo');
+
+      $("#logo_image").change(function(event){
+           var input = $(event.currentTarget);
+           var file = input[0].files[0];
+           var reader = new FileReader();
+           reader.onload = function(e){
+               image_base64 = e.target.result;
+               $('iframe').contents().find('.navbar-brand').hide();
+               $('iframe').contents().find('#logo').hide();
+               $('iframe').contents().find('#blankpng').show();
+               $('iframe').contents().find('#blankpng').attr("src", image_base64);
+
+           };
+           reader.readAsDataURL(file);
+          $('iframe').contents().find('#blankpng').css('height', '50px').css('margin-top', '10px');
+
+
+      });

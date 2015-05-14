@@ -1,0 +1,48 @@
+= form_for(@contact) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        .row
+          .col-md-8
+            %h3
+              = @edit_name
+              Contact
+            - if @contact.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@contact.errors.count, "error")
+                  prohibited this contact from being saved:
+                %ul
+                  - @contact.errors.full_messages.each do |msg|
+                    %li= msg
+            - @subdomain = request.subdomain
+            - @site = Site.where(subdomain: request.subdomain).first.id
+            = f.hidden_field :site_id, value: @site
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :first_name
+              = f.text_field :first_name, class: "form-control"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :last_name
+              = f.text_field :last_name, class: "form-control"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :company
+              = f.text_field :company, class: "form-control"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :job_title
+              = f.text_field :job_title, class: "form-control"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :phone
+              = f.text_field :phone, class: "form-control"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :email
+              = f.text_field :email, class: "form-control"
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

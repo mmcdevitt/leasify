@@ -1,0 +1,47 @@
+%body
+  %section.wizard
+    %header.header.bg-white.b-b.clearfix
+      .row
+        .col-sm-4
+          = link_to wizard_property_amenities_path, class: "btn btn-default" do
+            Back
+        .col-sm-4
+          - if Rails.env.development?
+            50% complete
+            .progress.progress-xs{:style => "margin:0"}
+              .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+        .col-sm-4.text-right
+          = link_to wizard_customize_path, class: "btn btn-default btn" do
+            Continue
+    %section.hbox.stretch
+      %aside
+        %section.vbox
+          %div{:style => "position:absolute; height:100%; width:100%;"}
+            - if Rails.env.production?
+              %iframe{:src => "http://#{request.subdomain}.leasify.co"}
+            - elsif Rails.env.development?
+              %iframe{:src => "http://#{request.subdomain}.lvh.me:3000"}
+      %aside#wizard_right_aside.b-l.aside-md
+        %section.vbox
+          %section.scrollable
+            %h4{:style => "padding:20px 0 10px 16px;"} Choose Template
+            - @templates.each do |template|
+              = form_for(@themeoptions) do |f|
+                .col-lg-12
+                  .template-widget
+                    = image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive")
+                    .template-widget-content
+                      %h3= template.name
+                      .row-fluid
+                        = f.submit is_active_template(template) + " Template", class: "btn btn-s-md btn-" + active_template(template) + ""
+                      = f.hidden_field :template, value: template.id
+                      .row{:style => "margin-top:15px;"}
+                        = link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do
+                          %em Live Example
+  #template_tooltip.fake_tooltip.template
+    %span.arrow.right
+    Now the fun part begins!
+    %br/
+    Let's preview a template by clicking the
+    "Activate Template" button. Click "Continue" once you've decided on a
+    template.

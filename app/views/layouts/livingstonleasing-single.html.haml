@@ -1,0 +1,38 @@
+%body
+  = render 'layouts/livingston/head'
+  = render 'layouts/livingston/header'
+  %div{:style => "#{'padding-top:50px;' if !@availability.published?}"}
+    .stats
+      .container.center
+        %ul
+          %li
+            %span Vacancies
+            %br/
+            = @availabilities.count
+          %li
+            %span Owner
+            %br/
+            = @propertyinformation.owner_name
+          %li
+            %span Class
+            %br/
+            = @propertyinformation.property_class
+          %li
+            %span Floors
+            %br/
+            = @propertyinformation.floors
+          %li
+            %span SF
+            %br/
+            = number_with_delimiter(@propertyinformation.sf, delimiter: ',')
+          %li
+            %span Year Built
+            %br/
+            = @propertyinformation.year_built
+    .container
+      = yield
+    = render 'layouts/livingston/footer'
+  :javascript
+    $(document).ready(function() {
+    	$('.navbar').css('border-bottom', '1px solid #efefef').css('background', 'white');
+    });

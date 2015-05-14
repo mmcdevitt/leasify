@@ -1,0 +1,17 @@
+%body
+  = render 'layouts/skyline/head'
+  = render 'layouts/skyline/subpage_header'
+  .container
+    .row
+      .col-md-12
+        .subpage-img-bg{:style => "background: url('#{@page.page_image.url(:xlarge)}');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;"}
+          .subpage-customize
+            %h1{:style => "font-size: #{@themeoptions.page_title_size}px; color: #{@themeoptions.page_title_color}"}= @page.title
+            %p{:style => "font-size: #{@themeoptions.page_subtitle_size}px; color: #{@themeoptions.page_subtitle_color}"}= @page.subtitle
+        .row
+          .col-md-10.col-md-offset-1
+            .page-content
+              = markdown(@page.content)
+  = render 'layouts/skyline/footer'

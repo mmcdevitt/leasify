@@ -1,0 +1,25 @@
+%p#notice= notice
+%p
+  %strong First name:
+  = @contact.first_name
+%p
+  %strong Last name:
+  = @contact.last_name
+%p
+  %strong Company:
+  = @contact.company
+%p
+  %strong Job title:
+  = @contact.job_title
+%p
+  %strong Phone:
+  = @contact.phone
+%p
+  %strong Email:
+  = @contact.email
+%p
+  %strong User:
+  = @contact.user_id
+= link_to 'Edit', edit_contact_path(@contact)
+|
+= link_to 'Back', contacts_path

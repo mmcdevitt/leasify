@@ -1,0 +1,31 @@
+/ .aside
+%aside#nav.bg-dark.b-r.b-light.aside-md.hidden-print
+  %section.vbox
+    %section.w-f.scrollable
+      .slim-scroll{"data-disable-fade-out" => "true", "data-distance" => "0", "data-height" => "auto", "data-railopacity" => "0.2", "data-size" => "10px"}
+        / nav
+        %nav.nav-primary.hidden-xs
+          - if request.subdomain.present? && request.subdomain != "www"
+            - if params[:controller] == "wizards"
+              = render 'layouts/aside/wizard'
+            - else
+              = render 'layouts/aside/main'
+          - else
+            = render 'layouts/aside/admin'
+        / / nav
+    %footer.footer.hidden-xs.no-padder.text-center-nav-xs
+      .dropup.help
+        %a.btn.btn-icon.icon-muted.btn-inactive.pull-right.m-l-xs.m-r-xs.hidden-nav-xs.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+          %i.i.i-question2
+        %ul.dropdown-menu.animated.fadeInRight.help-dropup
+          %li
+            %span.arrow.bottom
+            %a{:href => "http://lvh.me:3000/dashboard"} Support
+          %li= link_to "Take a tour of Leasify", tour_path, data: { no_turbolink: false }
+          %li.divider
+          %li
+            %a{:href => "/logout"} Provide Feedback
+      %a.btn.btn-icon.icon-muted.btn-inactive.m-l-xs.m-r-xs{"data-toggle" => "class:nav-xs", :href => "#nav"}
+        %i.i.i-circleleft.text
+        %i.i.i-circleright.text-active
+/ /.aside

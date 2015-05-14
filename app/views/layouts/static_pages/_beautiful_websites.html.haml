@@ -1,0 +1,44 @@
+%section.home
+  .layer
+    = render 'layouts/static_pages/header'
+    .container
+      .center.hero-message
+        %h1 Create your commercial real estate property website in minutes.
+        %h3 The easiest way to build a website for CRE properties
+        .row
+          .col-lg-12
+            = link_to "Join the Beta", register_path, class: "btn btn-info btn-lg uppercase brandon-bold"
+        = image_tag("/assets/browser.png", class: 'img-responsive')
+/ end section home
+%section.beautiful-websites
+  .container
+    .row
+      .col-lg-12.center
+        %h3
+          %u What can you do with Leasify?
+        %h2 Beautiful Websites Made in Minutes
+        .row-fluid
+          .col-lg-10.col-lg-offset-1
+            %p
+              We are building a revolutionary web design platform for the commercial real estate industry.
+              Leasify will allow you to build a website for your marketing needs with an easy drag and drop system.
+    / end row
+    .row{:style => "margin-top:50px;"}
+      .col-lg-4.center
+        = image_tag("/assets/dashboard.png", class: "img-responsive")
+        %h4 A Simple Yet Powerful CMS to Create Dynamic Sites for Your CRE Properties
+        %p.smaller
+          Our CMS editor is really easy to use. Simply
+          upload your content and images and we do the rest of the hard work for you.
+      .col-lg-4.center
+        = image_tag("/assets/no-coding.png", class: "img-responsive")
+        %h4 Absolutely No Coding Required. Just Easy Content Management
+        %p.smaller
+          We've created a solution where you can build your own property website with
+          no coding skills necessary.
+      .col-lg-4.center
+        = image_tag("/assets/responsive.png", class: "img-responsive")
+        %h4 Beautiful Responsive Templates Powered by the Bootstrap Framework
+        %p.smaller
+          All of our templates are responsive ready and will fit any screen size. Your clients
+          can search your site on their phones!

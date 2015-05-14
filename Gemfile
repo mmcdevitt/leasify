@@ -22,7 +22,6 @@ gem "nokogiri"
 gem "htmlentities"
 gem 'truncate_html'
 gem 'acts_as_list'
-gem 'better_errors'
 gem 'faker'
 gem 'will_paginate', "~> 3.0.4"
 gem 'bootstrap-will_paginate'
@@ -39,24 +38,34 @@ gem 'jbuilder', '~> 1.2'
 gem 'draper'
 gem 'haml-rails'
 
+group :development do
+  gem 'thin'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'letter_opener'
+end
+
 group :development, :test do
-  gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
-  gem 'capybara'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'rspec-rails'
+  gem 'sqlite3',     '1.3.9'
 end
 
 group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+group :test do
+  gem 'database_cleaner', '1.2.0'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'capybara-email'
+  gem 'fabrication'
+  gem 'launchy'
 end
 
 group :doc do
   gem 'sdoc', require: false
 end
-
-group :test do
-  gem 'fabrication'
-  gem 'launchy'
-end
-
-

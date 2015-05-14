@@ -1,0 +1,68 @@
+- if request.subdomain.present? && request.subdomain != "www"
+  = render 'index_subdomain'
+- else
+  %header.header.bg-white.b-b.clearfix
+    .row.m-t-sm
+      .col-sm-8.m-b-xs
+        - if Site.where(user_id: current_user.id).count >= 1 && !current_user.unlimited_sites?
+        - else
+          = link_to new_site_path, class: "btn btn-sm btn-default" do
+            %i.fa.fa-plus
+            Create New Site
+      .col-sm-4.m-b-xs
+        .input-group
+          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-sm.btn-default{:type => "button"} Go!
+  %section.scrollable.wrapper.w-f
+    - if @sites.empty?
+      .center
+        %h1 You don't have any sites created!
+        %p Let's get started and create your first property site.
+        = link_to 'Create Site', new_site_path, class: "btn btn-success"
+    - else
+      - if Site.where(user_id: current_user.id).count >= 1 && !current_user.unlimited_sites?
+        .alert.alert-warning
+          Only 1 website allowed during the Beta.
+      %section.panel.panel-default
+        .table-responsive
+          %table.table.table-striped.m-b-none
+            %thead
+              %tr
+                %th{:width => "20"}
+                  %label.checkbox.m-n.i-checks
+                    %input{:type => "checkbox"}/
+                    %i
+                %th.th-sortable{"data-toggle" => "class"}
+                  Property Name
+                %th URL
+                %th Date Created
+                %th{:width => "30"}
+            %tbody
+              - @sites.each do |site|
+                %tr
+                  %td
+                    %label.checkbox.m-n.i-checks
+                      %input{:name => "ids[]", :type => "checkbox"}/
+                      %i
+                  %td= PropertyInformation.where(site_id: site.id).first.name
+                  - if current_user.sign_in_count == 1
+                    %td= link_to site.subdomain + ".leasify.co", root_url(:host => with_subdomain(site.subdomain)) + "dashboard/tour", target: "_blank"
+                  - else
+                    %td= link_to site.subdomain + ".leasify.co", root_url(:host => with_subdomain(site.subdomain)) + "dashboard", target: "_blank"
+                  %td= site.created_at.strftime("%B %e, %Y")
+                  %td
+                    %a{"data-target" => "#modal#{site.id}", "data-toggle" => "modal", :href => ""}
+                      %i.fa.fa-trash-o
+                / Modal
+                .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "modal#{site.id}", :role => "dialog", :tabindex => "-1"}
+                  .modal-dialog
+                    .modal-content
+                      .modal-header
+                        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                        %h4#myModalLabel.modal-title Are you sure?
+                      .modal-body
+                        Once the site is deleted, it's gone forever!
+                      .modal-footer
+                        %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                        = link_to "Delete", site, method: :delete, class: "btn btn-danger"

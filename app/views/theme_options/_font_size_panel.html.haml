@@ -1,0 +1,76 @@
+.panel
+  %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#font_size"}
+    Font Size
+    %i.i.i-arrow-down5.pull-right
+  #font_size.panel-collapse.collapse{:style => "height: 0px;"}
+    .form-group
+      = f.label :mainheading_size, "Site Title"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.mainheading_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#site-title-size.dropdown-menu.dropdown-select.max-height-400
+          = render 'font_size', :f => f
+    .form-group
+      = f.label :subheading_size, "Sub Title"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.subheading_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#subheading_size.dropdown-menu.dropdown-select.max-height-400
+          = render 'subheading_size', :f => f
+    .form-group
+      = f.label :page_title_size, "Page Titles"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.page_title_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#page_title_size.dropdown-menu.dropdown-select.max-height-400
+          = render 'page_title_size', :f => f
+    .form-group
+      = f.label :page_subtitle_size, "Page Sub Titles"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.page_subtitle_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#page_subtitle_size.dropdown-menu.dropdown-select.max-height-400
+          = render 'page_subtitle_size', :f => f
+    .form-group
+      = f.label :nav_size, "Navigation"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.nav_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#nav_size.dropdown-menu.dropdown-select.max-height-400
+          = render 'nav_size', :f => f
+    .form-group
+      = f.label :body_size, "Body Size"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.body_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#body_size.dropdown-menu.dropdown-select.max-height-400
+          = render 'body_size', :f => f
+    .form-group
+      = f.label :footer_size, "Footer Size"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}
+            = @themeoptions.footer_size
+            px
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#footer_size.dropdown-menu.dropdown-select.max-height-400
+          = render 'footer_size', :f => f
+/ end font size panel

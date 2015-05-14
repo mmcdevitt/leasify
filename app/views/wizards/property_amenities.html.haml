@@ -1,0 +1,53 @@
+%body
+  %section
+    = form_for(@propertyinformations, html: { class: "propertyinformations-wizard" }) do |f|
+      %section.hbox.stretch.wizard
+        %aside
+          %section.vbox
+            %header.header.bg-white.b-b.clearfix
+              .row
+                .col-sm-4
+                  = link_to wizard_property_address_path, class: "btn btn-default" do
+                    Back
+                .col-sm-4
+                  - if Rails.env.development?
+                    50% complete
+                    .progress.progress-xs.m-t-sm{:style => "margin:0"}
+                      .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+                .col-sm-4.text-right
+                  = f.submit "Save Changes", class: "btn btn-success"
+                  = link_to wizard_templates_path, class: "btn btn-default" do
+                    Continue
+            %section.scrollable.wrapper.w-f
+              .panel-body
+                .add-page
+                  .row
+                    .col-md-8.col-md-offset-2
+                      .top-info
+                        %h1 Add Property Amenities
+                        %p One more step before we can start editing your site! Let's save your property's amenities.
+                      %h3{:style => "margin-bottom:30px;"} Amenities
+                      .row
+                        .col-md-2
+                          %h4{:style => "margin:0;"} Common
+                        .col-md-6
+                          - @amenities_common.each do |amenity|
+                            .form-group
+                              .checkbox.m-n.i-checks
+                                %label
+                                  = f.check_box amenity.name
+                                  %i
+                                  = f.label amenity.name
+                            / end form group
+                      .row.m-t.m-b
+                        .col-md-2
+                          %h4{:style => "margin:0;"} Extra
+                        .col-md-6
+                          - @amenities_extra.each do |amenity|
+                            .form-group
+                              .checkbox.m-n.i-checks
+                                %label
+                                  = f.check_box amenity.name
+                                  %i
+                                  = f.label amenity.name
+                            / end form group

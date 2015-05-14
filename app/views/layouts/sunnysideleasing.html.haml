@@ -1,0 +1,38 @@
+%body
+  = render 'layouts/sunnyside/head'
+  = render 'layouts/sunnyside/header'
+  .stats
+    .container.center
+      %ul
+        %li
+          %span Vacancies
+          %br/
+          = @availabilities.count
+        %li
+          %span Owner
+          %br/
+          = @propertyinformation.owner_name
+        %li
+          %span Class
+          %br/
+          = @propertyinformation.property_class
+        %li
+          %span Floors
+          %br/
+          = @propertyinformation.floors
+        %li
+          %span SF
+          %br/
+          = number_with_delimiter(@propertyinformation.sf, delimiter: ',')
+        %li
+          %span Year Built
+          %br/
+          = @propertyinformation.year_built
+  .container.center{:style => "margin-bottom:30px;"}
+    %h1 Availabilities
+  = render 'layouts/widget'
+  = render 'layouts/sunnyside/footer'
+  :javascript
+    $(document).ready(function() {
+    	$('header').removeClass('navbar').addClass('navbar-white');
+    });

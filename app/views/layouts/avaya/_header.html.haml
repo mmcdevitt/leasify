@@ -1,0 +1,46 @@
+= draft_page_error_alert
+= draft_listing_error_alert
+- if params[:action] == "show" && params[:controller] == "pages"
+  %header.navbar-fixed-top{:style => "#{'margin-top:50px;' if !@page.published?}"}
+- elsif params[:action] == "show" && params[:controller] == "availabilities"
+  %header.navbar-fixed-top{:style => "#{'margin-top:50px;' if !@availability.published?}"}
+- else
+  %header.navbar-fixed-top
+.container-fluid
+  .navbar-header
+    %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    - if @themeoptions.show_logo?
+      %div{:style => "margin-bottom:30px;"}
+        = show_logo_avaya
+        = image_tag('/assets/blank.png', id: "blankpng", style: "display:none")
+  .collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
+    .row
+      .col-md-12
+        %ul.list-style-none
+          %li= link_to "Home", "/", style: "font-size:" + @themeoptions.nav_size.to_s + "px"
+          - @page_root.each do |page|
+            %li
+              = link_to page.title, pages_id_path(page), style: "font-size:" + @themeoptions.nav_size.to_s + "px", id: "page" + page.id.to_s
+              - if Page.where(site_id: @site.id, parent_id: page.id).exists? && Page.where(site_id: @site.id, parent_id: page.id).first.published?
+                %ul{:id => "ulpage#{page.id}"}
+                  - Page.where(site_id: @site.id, parent_id: page.id).each do |child|
+                    %li{:id => "child#{child.id.to_s}"}= link_to child.title, pages_id_path(child)
+                    = javascript_tag do
+                      $(document).ready(function() {
+                      $('ul li ul').hide();
+                      $('#page#{page.id.to_s}').mouseover(function() {
+                      $('ul li ul#ulpage#{page.id}').show();
+                      $('#child#{child.id.to_s}').show();
+                      });
+                      $('header').mouseleave(function() {
+                      $('ul li ul li').hide();
+                      $('ul li ul').hide();
+                      });
+                      });
+          - unless @availabilities.empty?
+            %li= link_to "Leasing", leasing_path, style: "font-size:" + @themeoptions.nav_size.to_s + "px"
+          %li= admin_link

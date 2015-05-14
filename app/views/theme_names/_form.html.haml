@@ -1,0 +1,56 @@
+= form_for(@theme_name) do |f|
+  - if @theme_name.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@theme_name.errors.count, "error")
+        prohibited this theme_name from being saved:
+      %ul
+        - @theme_name.errors.full_messages.each do |msg|
+          %li= msg
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        %h3= @title
+        .row
+          .col-md-12
+            .add-page-image.m-t-lg
+              .row-fluid
+                = f.file_field :theme_name_image, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;"
+                .bootstrap-filestyle{:style => "display: inline;"}
+                  %label.btn.btn-default.btn-square{:for => "lefile"}
+                    %i.i.i-images
+                    %br/
+                    %span Upload Image
+              - if f.object.theme_name_image?
+                .upload-preview-options
+                  = image_tag(@theme_name.theme_name_image.url(:thumb), id: "pageimage", class: "img-thumbnail")
+              - else
+                .upload-preview-options
+                  = image_tag("blank.gif", id: "pageimage")
+        .row
+          .col-md-8
+            .form-group
+              = f.label :name
+              = f.text_field :name, class: "form-control"
+            .form-group
+              = f.label :description
+              = f.text_field :description, class: "form-control"
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-6.hidden-sm
+      .col-md-6.col-sm-12.text-right.text-center-xs
+        .btn-group.m-r
+          .dropup
+            %button.btn.btn-more-padding.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+              %span.dropdown-label{"data-placeholder" => "Please select"}= publish_or_draft_theme_name
+              %span.caret{:style => "margin-left:30px;"}
+            %ul.dropdown-menu.dropdown-select.text-left
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :published, true
+                  Publish
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :published, false
+                  Draft
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

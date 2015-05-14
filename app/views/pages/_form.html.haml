@@ -1,0 +1,113 @@
+= form_for(@page) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        - if @page.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@page.errors.count, "error")
+              prohibited this page from being saved:
+            %ul
+              - @page.errors.full_messages.each do |msg|
+                %li= msg
+        %h3= @title
+        - if params[:action] == "edit" || params[:action] == "update"
+          %p
+            = edit_page_url
+            = link_to "View Page", pages_id_path, target: "_blank", class: "bluelink", style: "font-weight:700"
+        .row.m-t-lg
+          .col-md-12
+            .add-page-image
+              .row-fluid
+                = f.file_field :page_image, as: :file, class: "filestyle", id: "lefile", style: "position: fixed; left: -500px;"
+                .bootstrap-filestyle{:style => "display: inline;"}
+                  %label.btn.btn-default.btn-square{:for => "lefile"}
+                    %i.i.i-images
+                    %br/
+                    %span Upload Image
+              - if f.object.page_image?
+                .upload-preview-options
+                  = image_tag(@page.page_image.url(:thumb), id: "pageimage", class: "img-thumbnail")
+              - else
+                .upload-preview-options
+                  = image_tag("blank.gif", id: "pageimage")
+        .row
+          .col-md-8
+            - if @themeoptions.template != 4
+              - if @pages_feature.count == 3 && !@page.feature_on_homepage?
+              - else
+                .checkbox.m-n.i-checks
+                  %label
+                    = f.check_box :feature_on_homepage
+                    %i
+                    = f.label :feature_on_homepage, "Feature on homepage? (Only 3 pages can be featured)"
+            = f.hidden_field :site_id, value: current_site_id
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :title, "Page Title"
+              = f.text_field :title, class: "form-control"
+              %p Your page's main heading
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :subtitle, "Page Subtitle"
+              = f.text_field :subtitle, class: "form-control"
+              %p Your page's sub heading
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :content, "Page Content"
+              = f.text_area :content, id: "some-textarea", class: "wysihtml5 form-control"
+          / end col 8
+          .col-md-4
+          / end col 4
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-6.hidden-sm
+        .btn-group.m-r
+          .dropup
+            %button#parent_page_btn.btn.btn-more-padding.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+              %span.dropdown-label{"data-placeholder" => "Please select"}= parent_pages
+              %span.caret{:style => "margin-left:30px;"}
+            %ul.dropdown-menu.dropdown-select
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :parent_id, ""
+                  None
+              - @page_root.each do |page|
+                %li
+                  %a{:href => "#"}
+                    = f.radio_button :parent_id, page.id
+                    = page.title
+      .col-md-6.col-sm-12.text-right.text-center-xs
+        .btn-group.m-r
+          .dropup
+            %button.btn.btn-more-padding.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+              %span.dropdown-label{"data-placeholder" => "Please select"}= publish_or_draft
+              %span.caret{:style => "margin-left:30px;"}
+            %ul.dropdown-menu.dropdown-select.text-left
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :published, true
+                  Publish
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :published, false
+                  Draft
+        = f.submit "Save", class: "btn btn-success btn-more-padding"
+#draft_btn_tooltip.fake_tooltip.bottom_footer.draft_btn.display-none
+  %span.arrow.bottom
+  By default, your page will be saved as published. You may choose to save as a draft then publish when ready.
+#parent_page_btn_tooltip.fake_tooltip.bottom_footer.parent_page_btn.display-none
+  %span.arrow.bottom
+  You can choose whether this page will be a parent or child page. If this is a child page, then this page
+  will be part of a dropdown menu for the parent page.
+- if params[:action] == "new" && @pages.empty?
+  :javascript
+    $(document).ready(function () {
+      $('#parent_page_btn_tooltip, #draft_btn_tooltip').fadeIn('slow');
+      $('.form-control').keyup(function() {
+        $('#parent_page_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+      });
+      $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+        $('#parent_page_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+      });
+    });

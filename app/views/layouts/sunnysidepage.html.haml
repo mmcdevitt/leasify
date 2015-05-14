@@ -1,0 +1,24 @@
+%body
+  = render 'layouts/sunnyside/head'
+  = render 'layouts/sunnyside/header'
+  .main-homepage.sub-page{:style => "background: url('#{@page.page_image}');
+				-webkit-background-size: cover; -moz-background-size: cover; 
+				-o-background-size: cover; background-size: cover;"}
+    .container
+      .center.content
+        .subpage-customize
+          %h1{:style => "font-size: #{@themeoptions.page_title_size}px; color: #{@themeoptions.page_title_color}"}
+            = @page.title
+          .row
+            .col-md-8.col-md-offset-2
+              %p{:style => "font-size: #{@themeoptions.page_subtitle_size}px; color: #{@themeoptions.page_subtitle_color}"}
+                = @page.subtitle
+    / end container
+  / end main homepage
+  .container
+    .row.centers
+      %div{:style => "padding:100px"}
+        .col-md-10.col-md-offset-1
+          .page-content
+            = markdown(@page.content)
+  = render 'layouts/sunnyside/footer'

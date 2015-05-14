@@ -1,0 +1,109 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title= @propertyinformation.name
+    = stylesheet_link_tag "bootstrap.css", "bootstrap-wysihtml5.css", "livingston.css", "leasing.css", "font-awesome.min"
+    = javascript_include_tag "jquery", "bootstrap", "app", "jquery.slimscroll.min", "app.plugin"
+    = csrf_meta_tags
+    - if Rails.env.production?
+      / For leasify.co
+      %script{:src => "//use.typekit.net/ckw2lgb.js", :type => "text/javascript"}
+      :javascript
+        try{Typekit.load();}catch(e){}
+    - elsif Rails.env.development?
+      / for lvh.me, remove when pushing to git and heroku
+      %script{:src => "//use.typekit.net/bgg6ayr.js", :type => "text/javascript"}
+      :javascript
+        try{Typekit.load();}catch(e){}
+    :css
+      header ul li a {
+      <haml_silent>       if @themeoptions.nav_color == &quot;#fff&quot; || @themeoptions.nav_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.nav_color};
+      </haml_block>      font-size: #{@themeoptions.nav_size.to_s}px;
+          }
+          header ul li a:hover {
+            color: #{@themeoptions.navhover_color} !important;
+          }
+          footer p {
+      <haml_silent>       if @themeoptions.footer_color == &quot;#fff&quot; || @themeoptions.footer_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.footer_color};
+      </haml_block>      font-size: #{@themeoptions.footer_size}px;
+          }
+          a.customize-link,
+          .page-content a {
+            color: #{@themeoptions.link_color};
+          }
+          
+          .page-content p,
+          .page-content {
+      <haml_silent>       if @themeoptions.body_color == &quot;#fff&quot; || @themeoptions.body_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.body_color};
+      </haml_block>      font-size: #{@themeoptions.body_size}px;
+          }
+          .subpage-customize h1{
+      <haml_silent>       if @themeoptions.page_title_color == &quot;#fff&quot; || @themeoptions.page_title_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.page_title_color};
+      </haml_block>      font-size: #{@themeoptions.page_title_size}px;
+          }
+          .subpage-customize p{
+      <haml_silent>       if @themeoptions.page_subtitle_color == &quot;#fff&quot; || @themeoptions.page_subtitle_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.page_subtitle_color};
+      </haml_block>      font-size: #{@themeoptions.page_subtitle_size}px;
+          }
+          .page-content h1,
+          .page-content h2,
+          .page-content h3,
+          .page-content h4,
+          .page-content h5,
+          .page-content h6 {
+      <haml_silent>       if @themeoptions.body_heading_color == &quot;#fff&quot; || @themeoptions.body_heading_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.body_heading_color} ;
+      </haml_block>    }
+          h1, h2, h3, h4, h5, h6 {
+            text-transform: #{@themeoptions.heading_text_transform}; 
+             #{font_name_for_heading_css.html_safe}
+          }
+          .welcome-box h1 {
+      <haml_silent>       if @themeoptions.mainheading_color == &quot;#fff&quot; || @themeoptions.mainheading_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      font-size: #{@themeoptions.mainheading_size}px;
+            color: #{@themeoptions.mainheading_color};
+      </haml_block>    }
+          .welcome-box p {
+      <haml_silent>       if @themeoptions.subheading_color == &quot;#fff&quot; || @themeoptions.subheading_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.subheading_color};
+      </haml_block>      font-size: #{@themeoptions.subheading_size}px;
+          }
+          body {
+            #{font_name_for_body_css.html_safe}
+          }
+      
+      <haml_silent>     if @themeoptions.nav_color == &quot;#fff&quot; 
+      </haml_silent><haml_block>      header ul li a {
+            color: #999;
+            }
+      </haml_block><haml_silent>     if @themeoptions.mainheading_color == &quot;#fff&quot; 
+      </haml_silent><haml_block>      .welcome-box h1 {
+              color: #000;
+            }
+      </haml_block><haml_silent>     if @themeoptions.subheading_color == &quot;#fff&quot; 
+      </haml_silent><haml_block>      .welcome-box p {
+              color: #000;
+            }
+      </haml_block>

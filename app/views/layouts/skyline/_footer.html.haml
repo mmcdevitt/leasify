@@ -1,0 +1,12 @@
+%footer
+  .container
+    .row
+      .col-md-6
+        %h2= @propertyinformation.name
+        %p
+          Copyright © 2014 #{@propertyinformation.name}
+        %p
+          = @propertyinformation.owner_name
+          \/ Powered by
+          %a{:href => "http://demo.leasify.co", :target => "_target"}
+            Leasify

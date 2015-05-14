@@ -1,0 +1,36 @@
+%body
+  %section
+    = form_for(@page, html: { class: "propertyinformations-wizard" }) do |f|
+      %section.hbox.stretch.wizard
+        %aside
+          %section.vbox
+            %header.header.bg-white.b-b.clearfix
+              .row
+                .col-sm-4.col-sm-offset-4.m-b-xs
+                  50% complete
+                  .progress.progress-xs{:style => "margin:0"}
+                    .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+                .col-sm-4.text-right
+                  = f.submit "Save Changes", class: "btn btn-success"
+                  = link_to wizard_property_address_path, class: "btn btn-default" do
+                    Continue
+            %section.scrollable.wrapper.w-f
+              .panel-body
+                .add-page
+                  .row
+                    .col-md-8.col-md-offset-2
+                      = f.hidden_field :site_id, value: current_site_id
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :title, "Page Title"
+                        = f.text_field :title, class: "form-control"
+                        %p Your page's main heading
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :subtitle, "Page Subtitle"
+                        = f.text_field :subtitle, class: "form-control"
+                        %p Your page's sub heading
+                      .line.line-dashed.b-b.line-lg.pull-in
+                      .form-group
+                        = f.label :content, "Page Content"
+                        = f.text_area :content, id: "some-textarea", class: "wysihtml5 form-control"

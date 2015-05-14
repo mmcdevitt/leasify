@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @theme_name.name
+%p
+  %strong User:
+  = @theme_name.user_id
+= link_to 'Edit', admin_theme_edit_path(@theme_name)
+|
+= link_to 'Back', admin_theme_path

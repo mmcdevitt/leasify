@@ -1,0 +1,12 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @sidebar_link.name
+%p
+  %strong Link to:
+  = @sidebar_link.link_to
+%p
+  %strong Icon:
+  = @sidebar_link.icon
+= link_to 'Edit', admin_sidebar_edit_path(@sidebar_link)
+|

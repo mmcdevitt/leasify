@@ -1,0 +1,45 @@
+%body
+  = render 'layouts/avaya/head'
+  #wrapper
+    = render 'layouts/avaya/header'
+    - if @homepage_gallery.blank?
+      .main-homepage{:style => "background: url('/assets/office1.jpg');\n\t\t\t\t\t-webkit-background-size: cover; -moz-background-size: cover; \n\t\t\t\t\t-o-background-size: cover; background-size: cover;"}
+        - else
+          .main-homepage{:style => "background: url('#{HomepageGallery.where(site_id: @site.id).first.homepage_gallery_image}');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;"}
+            .page-title.avaya-leasing
+              .subpage-customize
+                %h1{:style => "font-size: #{@themeoptions.page_title_size}px; color: #{@themeoptions.page_title_color}"} Leasing
+            .welcome-box.page.white-bg
+              .stats
+                .center
+                  %ul
+                    %li
+                      %span Vacancies
+                      %br/
+                      = @availabilities.count
+                    %li
+                      %span Owner
+                      %br/
+                      = @propertyinformation.owner_name
+                    %li
+                      %span Class
+                      %br/
+                      = @propertyinformation.property_class
+                    %li
+                      %span Floors
+                      %br/
+                      = @propertyinformation.floors
+                    %li
+                      %span SF
+                      %br/
+                      = number_with_delimiter(@propertyinformation.sf, delimiter: ',')
+                    %li
+                      %span Year Built
+                      %br/
+                      = @propertyinformation.year_built
+              = render 'layouts/avaya/widget'
+          / end main homepage
+          = render 'layouts/avaya/footer'
+      / end wrapper

@@ -1,0 +1,15 @@
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %section#content.wrapper-md.animated.fadeInUp
+    .container.aside-xl
+      %section.m-b-lg
+        .form-group
+          = f.text_field :username, class: "form-control", placeholder: "Username"
+        .form-group
+          = f.password_field :password, class: "form-control", placeholder: "Password"
+        = f.submit "Sign In".upcase, class: "btn btn-lg btn-info btn-block"
+        .m-t
+          %a{:href => "#"}
+            %small Forgot password?
+        %p.text-muted
+          %small
+            Do not have an account? #{link_to 'Register', register_path}

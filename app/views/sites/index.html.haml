@@ -1,0 +1,19 @@
+%h1 Listing sites
+%table
+  %thead
+    %tr
+      %th Name
+      %th Subdomain
+      %th
+      %th
+      %th
+  %tbody
+    - @sites.each do |site|
+      %tr
+        %td= site.name
+        %td= site.subdomain
+        %td= link_to 'Show', root_url(:host => with_subdomain(site.subdomain)) + "dashboard"
+        %td= link_to 'Edit', edit_site_path(site)
+        %td= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Site', new_site_path

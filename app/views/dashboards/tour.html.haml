@@ -1,0 +1,125 @@
+- if request.subdomain != "www" && request.subdomain.present?
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      %p
+        Hello, #{current_user.first_name}
+      .alert.alert-danger.alert-tour
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} Your Property Information is empty! Let's fill them out.
+          .col-sm-4
+            .pull-right
+              = link_to property_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+      .alert.alert-danger
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} Your Property Address is empty! Let's fill it out.
+          .col-sm-4
+            .pull-right
+              = link_to address_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+      .alert.alert-danger
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} You don't have any images for your homepage. Let's upload one!
+          .col-sm-4
+            .pull-right
+              = link_to homepage_image_gallery_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+      .alert.alert-danger
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} Your Homepage content is empty! Let's fill it out.
+          .col-sm-4
+            .pull-right
+              = link_to homepage_content_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+      .alert.alert-danger
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} You don't have any pages created. Let's create some!
+          .col-sm-4
+            .pull-right
+              = link_to new_page_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+      .alert.alert-danger
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} You don't have any listings created. Let's create some!
+          .col-sm-4
+            .pull-right
+              = link_to new_availability_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+      .alert.alert-danger
+        .row
+          .col-sm-8
+            %h4{:style => "margin:5px 0 0 0;"} You don't have any contacts created. Let's create some!
+          .col-sm-4
+            .pull-right
+              = link_to new_contact_path, class: "btn btn-success btn-sm" do
+                %i.i.i-gauge
+                Do it now!
+- else
+  %header.header.bg-white.b-b.clearfix
+    .row.m-t-sm
+      .col-sm-8.m-b-xs
+        .btn-group
+          %button.btn.btn-sm.btn-default{:title => "Refresh", :type => "button"}
+            %i.fa.fa-refresh
+          %button.btn.btn-sm.btn-default{:title => "Remove", :type => "button"}
+            %i.fa.fa-trash-o
+          %button.btn.btn-sm.btn-default{"data-toggle" => "dropdown", :title => "Filter", :type => "button"}
+            %i.fa.fa-filter
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Action
+            %li
+              %a{:href => "#"} Another action
+            %li
+              %a{:href => "#"} Something else here
+            %li.divider
+            %li
+              %a{:href => "#"} Separated link
+        = link_to new_site_path, class: "btn btn-sm btn-default btn-demo" do
+          %i.fa.fa-plus
+          Create New Site
+      .col-sm-4.m-b-xs
+        .input-group
+          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-sm.btn-default{:type => "button"} Go!
+  %section.scrollable.wrapper.w-f
+    %section.panel.panel-default
+      .table-responsive
+        %table.table.table-striped.m-b-none
+          %thead
+            %tr
+              %th{:width => "20"}
+                %label.checkbox.m-n.i-checks
+                  %input{:type => "checkbox"}/
+                  %i
+              %th.th-sortable{"data-toggle" => "class"} Property Name
+              %th URL
+              %th Date Created
+              %th{:width => "30"}
+          %tbody
+            %tr.tr-demo
+              %td
+                %label.checkbox.m-n.i-checks
+                  %input{:name => "ids[]", :type => "checkbox"}/
+                  %i
+              %td Demo Property
+              %td
+                %a{:href => "http://jimmybean.leasify.co/dashboard", :target => "_blank"} demo-property.leasify.co
+              %td March 18, 2014
+              %td.trash-demo
+                %a{"data-target" => "#modal6", "data-toggle" => "modal", :href => ""}
+                  %i.fa.fa-trash-o

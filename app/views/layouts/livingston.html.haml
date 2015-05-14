@@ -1,0 +1,29 @@
+%body
+  = render 'layouts/livingston/head'
+  #wrapper
+    .container
+      .main-gallery
+        #myCarousel.carousel.slide
+          .carousel-inner
+            - if @homepage_gallery.blank?
+              .item.active
+                .fill.wizard.img_preview_livingston{:style => "background-image:url('/assets/office2.jpg')"}
+            - else
+              - @homepage_galleries.each_with_index do |image, index|
+                %div{:class => "item #{"active" if index == 0}"}
+                  .fill.wizard
+                    = image_tag(image.homepage_gallery_image.url(:large), class: "img-responsive")
+      .row
+        .col-md-8.col-md-offset-2.center
+          .welcome-box
+            %h1= @themeoptions.homepage_heading
+            %p.text-muted.wizard-edit= @themeoptions.homepage_subheading
+          .page-content
+            .wizard-edit
+              %p= markdown(@themeoptions.content)
+    = render 'layouts/livingston/footer'
+  / end wrapper
+  :javascript
+    $('.carousel').carousel();
+
+    // $('.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6').css('color', 'black');

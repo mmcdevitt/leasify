@@ -1,0 +1,33 @@
+!!!
+%html
+  %body
+    = render 'layouts/static_pages/head'
+    = yield
+    = render 'layouts/static_pages/footer'
+    :javascript
+      $(document).ready(function(){       
+          var scroll_pos = 0;
+          $(document).scroll(function() { 
+              scroll_pos = $(this).scrollTop();
+              if(scroll_pos > 100) {
+                  $(".home .navbar").css('background-color', 'rgba(7, 51, 71, 0.85098)');
+              } else {
+                  $(".home .navbar").css('background-color', '');
+              }
+          });
+           $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+      });

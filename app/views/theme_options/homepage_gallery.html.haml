@@ -1,0 +1,44 @@
+= form_for(@themeoptions) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/themeoptionsheader'
+      .row
+        .col-md-12
+          %h3{:style => "margin-bottom:30px;"} Homepage Gallery
+      .add-page
+        .row
+          .col-md-12
+            #display-none-preview.parent
+              = link_to_add_fields "Add Image", f, :homepage_galleries
+              :javascript
+                $(".parent > a").addClass('btn btn-default btn-square').html('<i class="i i-images"></i><br> Add Images<br> JPG, PNG');
+              = f.fields_for :homepage_galleries do |builder|
+                - if builder.object.new_record?
+                  = render 'homepage_gallery_fields', :f => builder
+              = f.fields_for :homepage_galleries do |builder|
+                - unless builder.object.new_record?
+                  .preview-col
+                    .fields
+                      = image_tag(builder.object.homepage_gallery_image.url(:thumb), id: "uploadimage", class: "img-thumbnail gallery")
+                      .row
+                        .col-md-12
+                          .btn-group.waky{"data-toggle" => "buttons"}
+                            %label.btn.btn-default.btn-sm.m-b-lg
+                              = builder.check_box :_destroy
+                              %i.fa.fa-trash-o
+            / end parent
+          / end col 12
+        / end row
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"
+:css
+  #display-none-preview > .preview-col:first-of-type {
+    width: 0px;
+  }
+  #display-none-preview > .preview-col:first-of-type > .fields > .upload-preview,
+  #display-none-preview > .preview-col:first-of-type > .fields > .row > .col-md-12 > .btn-group {
+    display: none;
+    width: 0px;
+  }

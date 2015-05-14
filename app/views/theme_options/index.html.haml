@@ -1,0 +1,37 @@
+= form_for(@themeoptions) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/themeoptionsheader'
+      .row
+        .col-md-12
+          %h3{:style => "margin-bottom:30px;"} Website Logo
+      .row
+        .col-md-12
+          .logo-outline
+            .add-page-image.center
+              - if f.object.theme_image?
+                .upload-preview-options.m-b-lg
+                  = image_tag(@themeoptions.theme_image.url(:thumb), id: "uploadimage", class: "img-thumbnail")
+              - else
+                .upload-preview-options.m-b-lg
+                  = image_tag("upload-image.png", id: "uploadimage")
+              .row-fluid
+                = f.file_field :theme_image, as: :file, id: 'lefile', style: "display:none;"
+                .input-append
+                  %a.btn.btn-default{:onclick => "$('input[id=lefile]').click();"} Upload Image
+                  %p.muted{:style => "font-size:12px; padding-top:25px; margin:0"} JPEG file, 2mb max
+                :javascript
+                  $('input[id=lefile]').change(function() {
+                    $('#photoCover').val($(this).val());
+                  });
+              .form-group.m-t-lg
+                .checkbox.m-n.i-checks
+                  %label
+                    = f.check_box :show_logo
+                    %i
+                    = f.label :show_logo, "Show logo?"
+              / end form group
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

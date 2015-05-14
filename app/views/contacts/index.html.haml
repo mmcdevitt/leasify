@@ -1,0 +1,48 @@
+- unless @contacts.empty?
+  %header.header.bg-white.b-b.clearfix
+    .row.m-t-sm
+      .col-sm-8.m-b-xs
+        = link_to new_contact_path, class: "btn btn-sm btn-default" do
+          %i.fa.fa-plus
+          New Contact
+      .col-sm-4.m-b-xs
+        .input-group
+          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-sm.btn-default{:type => "button"} Go!
+%section.scrollable.wrapper.w-f
+  .panel-body
+    - if @contacts.empty?
+      .center
+        %h1 You don't have any contacts created!
+        %p Create contacts to include in the Availabilites section of your website.
+        = link_to 'Create Contact', new_contact_path, class: "btn btn-success"
+    - else
+      .m-b-lg
+        %h3.m-t-none.m-b-md Contacts
+      .alert.alert-info
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        %i.fa.fa-info-sign
+        %strong Re-order contacts by dragging into place.
+      %ul#sortable_contacts.list-group.gutter.list-group-lg.list-group-sp.sortable{"data-update-url" => sort_contacts_path}
+        - @contacts.each do |contact|
+          %li.list-group-item{:id => "contact_#{contact.id}"}
+            %span.pull-right
+              = link_to edit_contact_path(contact) do
+                %i.fa.fa-edit.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit Contact"}
+              %a{"data-target" => "#contact#{contact.id}", "data-toggle" => "modal", :href => ""}
+                %i.fa.fa-times.icon-muted.fa-fw{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Delete Contact"}
+            .clear
+              = link_to contact.first_name + " " + contact.last_name, edit_contact_path(contact)
+            / Modal
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "contact#{contact.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                    %h4#myModalLabel.modal-title Are you sure?
+                  .modal-body
+                    Once this contact is deleted, it's gone forever!
+                  .modal-footer
+                    %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                    = link_to "Delete", contact, method: :delete, class: "btn btn-danger"

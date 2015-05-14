@@ -1,0 +1,35 @@
+- unless params[:action] == 'home'
+  - if current_user.admin?
+    .text-muted.text-sm.hidden-nav-xs.padder.m-t-sm.m-b-sm
+      Admin Links
+    %ul.nav.nav-main{"data-ride" => "collapse"}
+      %li
+        = link_to users_list_path, class: "auto" do
+          %i.i.i-users3.icon
+          %span.font-bold Users
+      %li
+        = link_to admin_theme_path, class: "auto" do
+          %i.i.i-browser.icon
+          %span.font-bold Theme Names
+      %li
+        = link_to admin_sidebar_path, class: "auto" do
+          %i.i.i-statistics.icon
+          %span.font-bold Sidebar Links
+      %li
+        = link_to admin_amenities_path, class: "auto" do
+          %i.i.i-statistics.icon
+          %span.font-bold Amenities
+  .text-muted.text-sm.hidden-nav-xs.padder.m-t-sm.m-b-sm
+    My Sites
+  %ul.nav.nav-main{"data-ride" => "collapse"}
+    - @sites.each do |site|
+      - if current_user.sign_in_count == 1
+        %li
+          = link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard/tour", class: "auto", target: "_blank" do
+            %i.i.i-stack.icon
+            %span.font-bold= PropertyInformation.where(site_id: site.id).first.name
+      - else
+        %li
+          = link_to root_url(:host => with_subdomain(site.subdomain)) + "dashboard", class: "auto", target: "_blank" do
+            %i.i.i-stack.icon
+            %span.font-bold= PropertyInformation.where(site_id: site.id).first.name

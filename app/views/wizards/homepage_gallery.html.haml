@@ -1,0 +1,61 @@
+%body
+  %section.wizard
+    = form_for(@themeoptions, html: { class: "customize-wizard", multipart: true }) do |f|
+      %header.header.bg-white.b-b.clearfix
+        .row
+          .col-sm-4
+            = link_to wizard_homepage_content_path, class: "btn btn-default" do
+              Back
+          .col-sm-4
+            - if Rails.env.development?
+              50% complete
+              .progress.progress-xs{:style => "margin:0"}
+                .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+          .col-sm-4.text-right
+            = f.submit "Save Changes", class: "btn btn-success"
+            = link_to wizard_almost_finished_path, class: "btn btn-default" do
+              Continue
+      %section.hbox.stretch
+        %aside
+          %section.vbox
+            %div{:style => "position:absolute; height:100%; width:100%;"}
+              - if Rails.env.production?
+                %iframe{:src => "http://#{request.subdomain}.leasify.co"}
+              - elsif Rails.env.development?
+                %iframe{:src => "http://#{request.subdomain}.lvh.me:3000"}
+        %aside#wizard_right_aside.wrapper.b-l.aside-md
+          %section.vbox
+            %section.scrollable
+              = f.fields_for :homepage_galleries do |builder|
+                - if builder.object.new_record?
+                  = builder.hidden_field :site_id, value: @site.id
+                  = builder.hidden_field :user_id, value: current_user.id
+                  = builder.file_field :homepage_gallery_image, as: :file, class: "filestyle", id: "lefile2", style: "position: fixed; left: -500px;"
+                  .bootstrap-filestyle{:style => "display: inline;"}
+                    %label.btn.btn-info.btn-block.m-b-lg{:for => "lefile2"}
+                      %i.i.i-images
+                      %span{:style => "font-weight:700;"} Upload Image
+                  %p Let's upload and preview an image for your homepage. Don't forget to Save!
+                  %p You can view and manage the images in your homepage gallery in the "Theme Options" in your main dashboard.
+  #homepage_gallery.fake_tooltip.homepage_gallery
+    %span.arrow.right
+    %p Upload and preview a background image for your homepage.
+  :javascript
+    // Image preview before upload
+    var preview2 = $('iframe').contents().find('.wizard');
+
+        $("#lefile2").change(function(event){
+             var input = $(event.currentTarget);
+             var file = input[0].files[0];
+             var reader = new FileReader();
+             $('iframe').contents().find('.wizard').removeAttr("style");
+             reader.onload = function(e){
+                 image_base64 = e.target.result;
+                 $('iframe').contents().find('.wizard').attr("style", "background-image:url(" + image_base64 + ")");
+                 $('iframe').contents().find('.wizard img').attr('src', image_base64);
+             };
+             reader.readAsDataURL(file);
+             
+
+
+        });

@@ -1,0 +1,34 @@
+= form_for(@themeoptions) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/themeoptionsheader'
+      .row
+        .col-md-12
+          %h3 Theme Settings
+      .add-page
+        .row
+          .col-md-3
+            #accordion.accordian
+              = render 'typography', :f => f
+              = render 'font_size_panel', :f => f
+              = render 'font_color', :f => f
+            / end accordian
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"
+= javascript_tag do
+  $(function(){
+  $('.demo2').colorpicker();
+  $('#mainheading_color span i').css('background-color', '#{@themeoptions.mainheading_color}');
+  $('#subheading_color span i').css('background-color', '#{@themeoptions.subheading_color}');
+  $('#body_color span i').css('background-color', '#{@themeoptions.body_color}');
+  $('#body_heading_color span i').css('background-color', '#{@themeoptions.body_heading_color}');
+  $('#nav_color span i').css('background-color', '#{@themeoptions.nav_color}');
+  $('#navhover_color span i').css('background-color', '#{@themeoptions.navhover_color}');
+  $('#footer_color span i').css('background-color', '#{@themeoptions.footer_color}');
+  $('#link_color span i').css('background-color', '#{@themeoptions.link_color}');
+  $('#page_title_color span i').css('background-color', '#{@themeoptions.page_title_color}');
+  $('#page_subtitle_color span i').css('background-color', '#{@themeoptions.page_subtitle_color}');
+  
+  });

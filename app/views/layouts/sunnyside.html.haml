@@ -1,0 +1,51 @@
+%body
+  = render 'layouts/sunnyside/head'
+  #wrapper
+    = render 'layouts/sunnyside/header'
+    .fill
+      #myCarousel.carousel.slide
+        .carousel-caption
+          #page
+            #content_container
+              #content
+                .welcome-box
+                  %h1{:style => "font-size: #{@themeoptions.mainheading_size}px; color: #{@themeoptions.mainheading_color}"}= @themeoptions.homepage_heading
+                  %p.wizard-edit.a{:style => "font-size: #{@themeoptions.subheading_size}px; color: #{@themeoptions.subheading_color}"}= @themeoptions.homepage_subheading
+                - unless @availabilities.empty?
+                  %section.listings-btn.center
+                    = link_to "View Listings", leasing_path, class: "btn btn-no-bg"
+        / end container
+        .carousel-inner
+          - if @homepage_gallery.blank?
+            .item.active
+              .fill.wizard{:style => "background-image:url('/assets/office4.jpg');"}
+                .container
+          - else
+            - @homepage_galleries.each_with_index do |image, index|
+              %div{:class => "item #{"active" if index == 0}"}
+                .fill.wizard{:style => "background-image:url('#{image.homepage_gallery_image}');"}
+                  .container
+    .container
+      .page-content.p-100
+        .row.center
+          .col-md-10.col-md-offset-1
+            .wizard-edit
+              = markdown(@themeoptions.content)
+      - unless @pages_feature.empty?
+        .featured
+          .row
+            - @pages_feature.each do |page|
+              .col-lg-4
+                .page-content
+                  .wizard-edit
+                    = image_tag(page.page_image.url(:large), class: "img-responsive")
+                    %h1= page.title
+                    %p= page.subtitle
+                    = link_to page.title, pages_id_path(page), class: "customize-link"
+    / end container
+    = render 'layouts/sunnyside/footer'
+  / end wrapper
+  :javascript
+    $('.carousel').carousel();
+
+    // $('.page-content h1, .page-content h2, .page-content h3, .page-content h4, .page-content h5, .page-content h6').css('color', 'black');

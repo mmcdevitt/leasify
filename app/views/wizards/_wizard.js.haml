@@ -1,0 +1,47 @@
+$(document).ready(function() {
+
+
+if ($.cookie('msg') != null  $.cookie('msg') != "") {
+$('#wizard-modal.modal, .modal-backdrop').hide();
+} else {
+$('#wizard-modal').modal('show');
+$.cookie('msg', 'str');
+}
+
+
+
+\// hide and show tooltip on property informations
+$('#save_continue_tooltip').hide();
+$('input').keyup(function() {
+$('#save_continue_tooltip').fadeIn('fast');
+});
+$('#save_continue').mouseover(function() {
+$('#save_continue_tooltip').fadeOut('fast');
+});
+
+\// hide tooltip on template page
+$('#wizard_right_aside').mouseover(function() {
+$('#template_tooltip, #customize_tooltip, #homepage_tooltip, #homepage_gallery').fadeOut('fast');
+});
+
+$('#homepage_heading_tooltip, #homepage_subheading_tooltip, #homepage_textarea_tooltip').hide();
+$('#mainheading_customize').mouseover(function() {
+$('#homepage_heading_tooltip').fadeIn('fast');
+}).mouseleave(function() {
+$('#homepage_heading_tooltip').fadeOut('fast');
+});
+
+$('#subheading_customize').mouseover(function() {
+$('#homepage_subheading_tooltip').fadeIn('fast');
+}).mouseleave(function() {
+$('#homepage_subheading_tooltip').fadeOut('fast');
+});
+
+$('iframe.wysihtml5-sandbox').contents().find('body').mouseover(function() {
+$('#homepage_textarea_tooltip').fadeIn('fast');
+}).mouseleave(function() {
+$('#homepage_textarea_tooltip').fadeOut('fast');
+});
+
+
+});

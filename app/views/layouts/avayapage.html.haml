@@ -1,0 +1,16 @@
+%body
+  = render 'layouts/avaya/head'
+  #wrapper
+    = render 'layouts/avaya/header'
+    .main-homepage{:style => "background: url('#{@page.page_image}');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;"}
+      .page-title.subpage-customize
+        %h1{:style => "font-size: #{@themeoptions.page_title_size}px; color: #{@themeoptions.page_title_color}"}= @page.title
+        %p{:style => "font-size: #{@themeoptions.page_subtitle_size}px; color: #{@themeoptions.page_subtitle_color}"}= @page.subtitle
+      .welcome-box.page
+        .page-content
+          = markdown(@page.content)
+    / end main homepage
+    = render 'layouts/avaya/footer'
+  / end wrapper

@@ -1,0 +1,29 @@
+= form_for(@sidebar_link) do |f|
+  - if @sidebar_link.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@sidebar_link.errors.count, "error")
+        prohibited this sidebar_link from being saved:
+      %ul
+        - @sidebar_link.errors.full_messages.each do |msg|
+          %li= msg
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        %h3= @title
+        .row
+          .col-md-8
+            .form-group
+              = f.label :name
+              = f.text_field :name, class: "form-control"
+            .form-group
+              = f.label :link_to
+              = f.text_field :link_to, class: "form-control"
+            .form-group
+              = f.label :icon
+              = f.text_field :icon, class: "form-control"
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-6.hidden-sm
+      .col-md-6.col-sm-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

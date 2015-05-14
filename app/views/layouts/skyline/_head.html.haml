@@ -1,0 +1,76 @@
+!!!
+%html
+  %head
+    %title= @propertyinformation.name
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "content-type"}/
+    = stylesheet_link_tag "bootstrap.css", "skyline.css", "leasing.css"
+    = javascript_include_tag "jquery", "bootstrap", "app", "jquery.slimscroll.min", "app.plugin"
+    - if params[:action] == "home"
+      = stylesheet_link_tag "supersized"
+      = javascript_include_tag  "supersized.3.2.7", "supersized.shutter"
+    = csrf_meta_tags
+    - if Rails.env.production?
+      / For leasify.co
+      %script{:src => "//use.typekit.net/ckw2lgb.js", :type => "text/javascript"}
+      :javascript
+        try{Typekit.load();}catch(e){}
+    - elsif Rails.env.development?
+      / for lvh.me, remove when pushing to git and heroku
+      %script{:src => "//use.typekit.net/bgg6ayr.js", :type => "text/javascript"}
+      :javascript
+        try{Typekit.load();}catch(e){}
+    :css
+      header ul li a {
+            color: #{@themeoptions.nav_color};
+            font-size: #{@themeoptions.nav_size.to_s}px;
+          }
+          header ul li a:hover {
+            color: #{@themeoptions.navhover_color} !important;
+          }
+          footer p {
+      <haml_silent>       if @themeoptions.footer_color == &quot;#fff&quot; || @themeoptions.footer_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.footer_color};
+      </haml_block>    }
+         
+          a.customize-link,
+          .page-content a {
+            color: #{@themeoptions.link_color};
+          }
+          
+          .page-content p,
+          .page-content {
+      <haml_silent>       if @themeoptions.body_color == &#39;#fff&#39; || @themeoptions.body_color == &#39;#ffffff&#39;  
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.body_color};
+            font-size: #{@themeoptions.body_size}px;
+      </haml_block>    }
+      
+          .page-content h1,
+          .page-content h2,
+          .page-content h3,
+          .page-content h4,
+          .page-content h5,
+          .page-content h6 {
+      <haml_silent>       if @themeoptions.body_heading_color == &quot;#fff&quot; || @themeoptions.body_heading_color == &quot;#ffffff&quot; 
+      </haml_silent><haml_block>      color: #000;
+      </haml_block><haml_silent>       else 
+      </haml_silent><haml_block>      color: #{@themeoptions.body_heading_color} ;
+      </haml_block>    }
+          h1, h2, h3, h4, h5, h6 {
+            text-transform: #{@themeoptions.heading_text_transform}; 
+             #{font_name_for_heading_css.html_safe}
+          }
+          body {
+            #{font_name_for_body_css.html_safe}
+          }
+          .welcome-box h1 {
+            font-size: #{@themeoptions.mainheading_size}px;
+            color: #{@themeoptions.mainheading_color};
+          }
+          .welcome-box p {
+            color: #{@themeoptions.subheading_color};
+            font-size: #{@themeoptions.subheading_size}px;
+          }

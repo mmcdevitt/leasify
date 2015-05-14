@@ -1,0 +1,83 @@
+- unless @users.empty?
+  %header.header.bg-white.b-b.clearfix
+    .row.m-t-sm
+      .col-sm-8.m-b-xs
+        .btn-group
+          %button.btn.btn-sm.btn-default{:title => "Refresh", :type => "button"}
+            %i.fa.fa-refresh
+          %button.btn.btn-sm.btn-default{:title => "Remove", :type => "button"}
+            %i.fa.fa-trash-o
+          %button.btn.btn-sm.btn-default{"data-toggle" => "dropdown", :title => "Filter", :type => "button"}
+            %i.fa.fa-filter
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Action
+            %li
+              %a{:href => "#"} Another action
+            %li
+              %a{:href => "#"} Something else here
+            %li.divider
+            %li
+              %a{:href => "#"} Separated link
+      .col-sm-4.m-b-xs
+        .input-group
+          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-sm.btn-default{:type => "button"} Go!
+%section.scrollable.wrapper.w-f
+  - if @users.empty?
+    .center
+      %h1 You don't have any users created!
+      %p.m-b-md Create users to include in your website.
+      = link_to 'New user', new_user_path, class: "btn btn-success"
+  - else
+    %h3.m-t-none.m-b-md
+      Users (#{User.count})
+    %section.panel.panel-default
+      .table-responsive
+        %table.table.table-striped.m-b-none.users
+          %thead
+            %tr
+              %th{:width => "20"}
+                %label.checkbox.m-n.i-checks
+                  %input{:type => "checkbox"}/
+                  %i
+              %th.userid User ID
+              %th.username{"data-toggle" => "class"} Username
+              %th.firstname First Name
+              %th.lastname Last Name
+              %th Sites
+              %th.admin Admin
+              %th.datejoined Date Joined
+              %th{:width => "30"}
+          %tbody
+            - @users.each do |user|
+              %tr{:class => "table-edit #{'admin-row' if user.admin?}"}
+                %td
+                  %label.checkbox.m-n.i-checks
+                    %input{:name => "ids[]", :type => "checkbox"}/
+                    %i
+                %td= user.id
+                %td
+                  = link_to user.username, "#", class: "pull-left m-r-sm"
+                %td= user.first_name
+                %td= user.last_name
+                %td= Site.where(user_id: user.id).count
+                %td= user.admin?
+                %td= user.created_at.strftime("%B %e, %Y")
+                %td
+                  %a{"data-target" => "#user#{user.id}", "data-toggle" => "modal", :href => ""}
+                    %i.fa.fa-trash-o
+              / Modal
+              .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "user#{user.id}", :role => "dialog", :tabindex => "-1"}
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                      %h4#myModalLabel.modal-title Are you sure?
+                    .modal-body
+                      Once the user is deleted, it's gone forever!
+                    .modal-footer
+                      %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                      = link_to "Delete", user, method: :delete, class: "btn btn-danger"

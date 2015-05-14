@@ -1,0 +1,78 @@
+/ start color panel
+.panel
+  %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#color"}
+    Color
+    %i.i.i-arrow-down5.pull-right
+  #color.panel-collapse.collapse{:style => "height: auto;"}
+    #mainheading_color.form-group
+      = f.label :mainheading_color, "Site Title"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :mainheading_color, class: "form-control no-bg", value: @themeoptions.mainheading_color
+    / end form group mainheading color
+    #subheading_color.form-group
+      = f.label :subheading_color, "Sub Title"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :subheading_color, class: "form-control no-bg", value: @themeoptions.subheading_color
+    / end form group subheading color
+    #page_title_color.form-group
+      = f.label :page_title_color, "Page Titles"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :page_title_color, class: "form-control no-bg", value: @themeoptions.page_title_color
+    / end form group page titles color
+    #page_subtitle_color.form-group
+      = f.label :page_subtitle_color, "Page Sub Titles"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :page_subtitle_color, class: "form-control no-bg", value: @themeoptions.page_subtitle_color
+    / end form group page sub titles color
+    #body_color.form-group
+      = f.label :body_color, "Body Color"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :body_color, class: "form-control no-bg", value: @themeoptions.body_color
+    / end form group body color
+    #body_heading_color.form-group
+      = f.label :body_heading_color, "Body Heading Color"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :body_heading_color, class: "form-control no-bg", value: @themeoptions.body_heading_color
+    / end form group body heading color
+    #nav_color.form-group
+      = f.label :nav_color, "Navigation Color"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :nav_color, class: "form-control no-bg", value: @themeoptions.nav_color
+    / end form group body heading color
+    #navhover_color.form-group
+      = f.label :navhover_color, "Navigation Hover Color"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :navhover_color, class: "form-control no-bg", value: @themeoptions.navhover_color
+    / end form group body heading color
+    #footer_color.form-group
+      = f.label :footer_color, "Footer Color"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :footer_color, class: "form-control no-bg", value: @themeoptions.footer_color
+    / end form group body heading color
+    #link_color.form-group
+      = f.label :link_color, "Link Color"
+      .input-group.demo2.colorpicker-component
+        %span.input-group-addon.border-all
+          %i
+        = f.text_field :link_color, class: "form-control no-bg", value: @themeoptions.link_color
+    / end form group body heading color
+  / end id color
+/ end color panel

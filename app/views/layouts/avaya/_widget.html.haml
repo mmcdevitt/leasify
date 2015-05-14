@@ -1,0 +1,31 @@
+.row
+  - @subdomain = request.subdomain
+  - @site = Site.where(subdomain: request.subdomain).first
+  - @availabilities.each do |availabilities|
+    - @availabilities_image = AvailabilityGallery.where(site_id: @site.id, availability_id: availabilities.id).first
+    - if availabilities.published?
+      = link_to leasing_show_path(availabilities) do
+        .col-lg-4.col-md-4.col-sm-6
+          .leasing-widget
+            = image_tag(@availabilities_image.availability_image.url(:small), class: "img-responsive")
+            .leasing-title
+              %p= link_to (availabilities.suite_or_floor + " #" + availabilities.title), leasing_show_path(availabilities)
+              %p
+                = 51.ordinalize + " Floor"
+                | Office
+            .leasing-content
+              %p= truncate(availabilities.subtitle, length: 110)
+              .row
+                .col-md-6
+                  Asking Rate
+                .col-md-6
+                  .pull-right
+                    $#{availabilities.rental_rate}/SF
+              .row.m-b-lg
+                .col-md-6
+                  Area
+                .col-md-6
+                  .pull-right
+                    = number_with_delimiter(availabilities.sf, delimiter: ',')
+                    SF
+              = link_to "Read More", leasing_show_path(availabilities)

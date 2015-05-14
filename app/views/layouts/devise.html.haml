@@ -1,0 +1,16 @@
+!!!
+%html.white-bg
+  %body
+    = render 'layouts/head'
+    #wrapper
+      - flash.each do |type, message|
+        #alert-fadeout{:class => "alert #{flash_class type}"}
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+          = message
+      #page
+        #content_container
+          #content
+            = link_to root_path do
+              %h3.corner-store.center Leasify
+            = yield
+    = javascript_include_tag "application", "data-turbolinks-track" => true

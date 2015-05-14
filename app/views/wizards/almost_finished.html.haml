@@ -1,0 +1,46 @@
+%body
+  %section
+    %section.hbox.stretch.wizard
+      %aside
+        %section.vbox
+          %header.header.bg-white.b-b.clearfix
+            .row
+              .col-sm-4
+                = link_to wizard_homepage_gallery_path, class: "btn btn-default" do
+                  Back
+              .col-sm-4
+                50% complete
+                .progress.progress-xs{:style => "margin:0"}
+                  .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+              .col-sm-4.text-right
+                = link_to dashboard_path, class: "btn btn-danger" do
+                  %span{:style => "font-weight:700;"} Exit Wizard
+          %section.scrollable.wrapper.finished
+            .panel-body
+              .add-page
+                .row
+                  .col-md-8.col-md-offset-2
+                    .top-info.center
+                      %h1 Almost finished!
+                      .row
+                        .col-lg-8.col-lg-offset-2
+                          %p.m-t-lg
+                            Now we need to add pages, availabilities, and contacts to your website. But, we're going to have to
+                            exit the wizard in order to complete these final steps. Your dashboard will have the appropriate links to
+                            complete these tasks. But, here are a few steps to help you get started.
+                    %section.steps
+                      %h2 Step 1: Add Pages
+                      %p
+                        You can add and manage your pages in the "Pages" section of your dashboard. You can upload an optional image for each of
+                        your pages. Pages only accept one image per page. #{link_to "Add new page", new_page_path}
+                      = image_tag('/assets/addpage.jpg', class: "img-responsive img-thumbnail")
+                    %section.steps
+                      %h2 Step 2: Add Availabilities
+                      %p
+                        You can add and manage your availability listings in the "Availabilities" section of your dashboard. Unlike pages, you may upload mulitple images to showcase your space. #{link_to "Add new listing", new_availability_path}
+                      = image_tag('/assets/addlisting.jpg', class: "img-responsive img-thumbnail")
+                    %section.steps
+                      %h2 Step 3: Add Contacts
+                      %p
+                        You can add your colleages contacts that are associated with this property. #{link_to "Add new contacts", new_contact_path}
+                      = image_tag('/assets/contacts.jpg', class: "img-responsive img-thumbnail")

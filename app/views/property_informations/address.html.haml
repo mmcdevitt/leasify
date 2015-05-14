@@ -1,0 +1,36 @@
+= form_for(@propertyinformations) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/propertyheader'
+      .add-page
+        .row
+          .col-md-8
+            %h3 Property Address
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :address, "Property Address"
+              = f.text_field :address, class: "form-control"
+              %p Your property's address.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :state, "State"
+              .btn-group.m-r
+                %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                  %span.dropdown-label{"data-placeholder" => "Please select"}= state_select
+                  %span.caret{:style => "margin-left:30px;"}
+                %ul.dropdown-menu.dropdown-select.max-height-400
+                  = render 'state_dropdown', :f => f
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :city, "City"
+              = f.text_field :city, class: "form-control"
+              %p Your property's city.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :zipcode, "Zipcode"
+              = f.text_field :zipcode, class: "form-control"
+              %p Your property's zipcode.
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

@@ -1,0 +1,42 @@
+%body
+  %section.wizard
+    = form_for(@themeoptions, html: { class: "customize-wizard" }) do |f|
+      %header.header.bg-white.b-b.clearfix
+        .row
+          .col-sm-4
+            = link_to wizard_templates_path, class: "btn btn-default" do
+              Back
+          .col-sm-4
+            - if Rails.env.development?
+              50% complete
+              .progress.progress-xs{:style => "margin:0"}
+                .progress-bar.bg-info{"data-original-title" => "50%", "data-toggle" => "tooltip", :style => "width: 50%"}
+          .col-sm-4.text-right
+            = f.submit "Save Changes", class: "btn btn-success"
+            = link_to wizard_homepage_content_path, class: "btn btn-default" do
+              Continue
+      %section.hbox.stretch
+        %aside
+          %section.vbox
+            %div{:style => "position:absolute; height:100%; width:100%;"}
+              - if Rails.env.production?
+                %iframe{:src => "http://#{request.subdomain}.leasify.co"}
+              - elsif Rails.env.development?
+                %iframe{:src => "http://#{request.subdomain}.lvh.me:3000"}
+        %aside#wizard_right_aside.wrapper.b-l.aside-md
+          %section.vbox
+            %section.scrollable
+              %h4 Customize Design
+              #accordion.accordian
+                = render 'logo', :f => f
+                = render 'typography', :f => f
+                = render 'font_size_panel', :f => f
+                = render 'font_color', :f => f
+              / end accordian
+  #customize_tooltip.fake_tooltip.customize_tooltip
+    %span.arrow.right
+    Let's customize your site!
+    %br/
+    You can change your websites fonts, font size, colors, and upload a logo.
+  = javascript_tag do
+    = render "customize.js"

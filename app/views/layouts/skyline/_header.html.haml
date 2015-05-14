@@ -1,0 +1,17 @@
+%body
+  %header#top.navbar.navbar-static-top{:role => "banner"}
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = show_logo_skyline
+        = image_tag('/assets/blank.png', id: "blankpng", style: "display:none")
+      %nav.collapse.navbar-collapse.bs-navbar-collapse{:role => "navigation"}
+        %ul.nav.navbar-nav.navbar-right
+          - @page_root.each do |page|
+            %li= link_to page.title, pages_id_path(page)
+          %li= link_to "Leasing", leasing_path
+          = admin_link

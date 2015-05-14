@@ -1,0 +1,33 @@
+%section.scrollable.wrapper.w-f
+  .panel-body
+    .row
+      .col-sm-12
+        %h3 Templates
+      - @templates.each do |template|
+        = form_for(@themeoptions) do |f|
+          .col-lg-3.col-md-4.col-sm-6
+            .template-widget
+              = image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive")
+              .template-widget-content
+                %h3= template.name
+                %p= template.description
+                .row-fluid
+                  %a{:class => "btn btn-s-md btn-#{active_template(template)}", "data-target" => "#template#{template.id}", "data-toggle" => "modal", :href => "#modal-form"}
+                    = is_active_template(template)
+                    Template
+                = f.hidden_field :template, value: template.id
+                .row{:style => "margin-top:15px;"}
+                  = link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do
+                    %em Live Example
+            / Modal
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "template#{template.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                    %h4#myModalLabel.modal-title Are you sure?
+                  .modal-body
+                    Are you sure you want to change your website's template to #{template.name}?
+                  .modal-footer
+                    %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                    = f.submit "Yes, Change Template", class: "btn btn-success"

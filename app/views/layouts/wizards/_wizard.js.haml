@@ -1,0 +1,19 @@
+$(document).ready(function() {
+- if current_user.username == "demo"
+  \//$('#wizard-modal').modal('show');
+- else
+  if ($.cookie('msg') != null  $.cookie('msg') != "") {
+  $('#wizard-modal.modal, .modal-backdrop').hide();
+  } else {
+  $('#wizard-modal').modal('show');
+  $.cookie('msg', 'str');
+  }
+$('#save_continue_tooltip').hide();
+$('input').keyup(function() {
+$('#save_continue_tooltip').fadeIn('fast');
+});
+$('#save_continue').mouseover(function() {
+$('#save_continue_tooltip').fadeOut('fast');
+});
+
+});

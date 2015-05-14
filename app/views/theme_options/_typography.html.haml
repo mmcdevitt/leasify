@@ -1,0 +1,30 @@
+.panel
+  %a.accordion-toggle{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#typography"}
+    Typography
+    %i.i.i-arrow-down5.pull-right
+  #typography.panel-collapse.collapse{:style => "height: auto;"}
+    .form-group
+      = f.label :body_font, "Body font"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}= font_name
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#body-font-list.dropdown-menu.dropdown-select.max-height-400
+          = render 'layouts/body_font', :f => f
+    .form-group
+      = f.label :heading_font, "Heading font"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}= heading_name
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#heading-font-list.dropdown-menu.dropdown-select.max-height-400
+          = render 'layouts/heading_font', :f => f
+    .form-group
+      = f.label :heading_text_transform, "Heading Capitalize?"
+      .btn-group.m-r
+        %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+          %span.dropdown-label{"data-placeholder" => "Please select"}= @themeoptions.heading_text_transform.capitalize
+          %span.caret{:style => "margin-left:30px;"}
+        %ul#heading_text_transform.dropdown-menu.dropdown-select.max-height-400
+          = render 'heading_text_transform', :f => f
+/ end typography panel

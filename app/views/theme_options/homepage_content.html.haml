@@ -1,0 +1,28 @@
+= form_for(@themeoptions) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/themeoptionsheader'
+      .row
+        .col-md-12
+          %h3 Homepage Content
+      .add-page
+        .row
+          .col-md-8
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :homepage_heading, "Homepage Main Heading"
+              = f.text_field :homepage_heading, class: "form-control"
+              %p This will be your site's main heading.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :homepage_subheading, "Homepage Subheading"
+              = f.text_field :homepage_subheading, class: "form-control"
+              %p This will be the sub heading under the main heading.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :content, "Page Content"
+              = f.text_area :content, id: "some-textarea", class: "wysihtml5 form-control"
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

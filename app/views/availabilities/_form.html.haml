@@ -1,0 +1,210 @@
+= form_for(@availability, html: {multipart:true}) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        - if @availability.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@availability.errors.count, "error")
+              prohibited this availability from being saved:
+            %ul
+              - @availability.errors.full_messages.each do |msg|
+                %li= msg
+        %h3= @avail_title
+        - if params[:action] == "edit"
+          %p
+            = edit_listing_url
+            = link_to "View Listing", availability_path, target: "_blank", class: "bluelink", style: "font-weight:700"
+        .row.m-t-lg
+          .col-md-12
+            #display-none-preview.parent
+              = link_to_add_fields "Add Image", f, :availability_galleries
+              :javascript
+                $(".parent > a").addClass('btn btn-default btn-square').html('<i class="i i-images"></i><br> Add Images<br> JPG, PNG');
+              = f.fields_for :availability_galleries do |builder|
+                - if builder.object.new_record?
+                  = render 'availability_gallery_fields', :f => builder
+              = f.fields_for :availability_galleries do |builder|
+                - unless builder.object.new_record?
+                  .preview-col
+                    .fields
+                      = image_tag(builder.object.availability_image.url(:thumb), id: "uploadimage", class: "img-thumbnail gallery")
+                      .row
+                        .col-md-12
+                          .btn-group.waky{"data-toggle" => "buttons"}
+                            %label.btn.btn-default.btn-sm.m-b-lg
+                              = builder.check_box :_destroy
+                              %i.fa.fa-trash-o
+            / end parent
+          / end col 12
+        / end row
+        .row
+          .col-md-8
+            = f.hidden_field :site_id, value: @site.id
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :floorplan_image, "Upload floorplan"
+              = f.file_field :floorplan_image, as: :file, class: "filestyle", id: "floorplan_upload",                                                             |
+                style: "position: fixed; left: -500px;", data: {classinput: "form-control inline v-middle input-s", icon: false, classbutton: "btn btn-default" } |
+            = javascript_tag do
+              $(document).ready(function() {
+              $(".bootstrap-filestyle input").attr('placeholder', '#{@availability.floorplan_image_file_name}');
+              });
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :suite_or_floor, "Is this an individual suite or entire floor?"
+              .btn-group.m-r
+                %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                  %span.dropdown-label{"data-placeholder" => "Please select"}= suite_or_floor_select
+                  %span.caret{:style => "margin-left:30px;"}
+                %ul.dropdown-menu.dropdown-select
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :suite_or_floor, "Suite"
+                      = "Suite"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :suite_or_floor, "Floor"
+                      = "Floor"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :availability, "When will this unit be available?"
+              .btn-group.m-r
+                %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                  %span.dropdown-label{"data-placeholder" => "Please select"}= available_select
+                  %span.caret{:style => "margin-left:30px;"}
+                %ul.dropdown-menu.dropdown-select
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :availability, "Immediate"
+                      = "Immediate"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :availability, "In the future"
+                      = "In the future"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :type_of_space, "What will this space be used for?"
+              .btn-group.m-r
+                %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                  %span.dropdown-label{"data-placeholder" => "Please select"}= space_select
+                  %span.caret{:style => "margin-left:30px;"}
+                %ul.dropdown-menu.dropdown-select
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :type_of_space, "Office"
+                      = "Office"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :type_of_space, "Retail"
+                      = "Retail"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :type_of_space, "Medical"
+                      = "Medical"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :type_of_space, "Industrial"
+                      = "Industrial"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :type_of_space, "Mixed Use"
+                      = "Mixed Use"
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :title, "Unit Number"
+              = f.text_field :title, class: "form-control", data: { type: "number" }
+              %p Enter the space or floor number.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :floor_location, "Floor Location"
+              = f.text_field :floor_location, class: "form-control"
+              %p Enter the floor the unit is located on.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :sf, "Square Footage"
+              = f.text_field :sf, class: "form-control"
+              %p Sqaure footage of the unit.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :rental_rate, "Rental Rate"
+              .input-group
+                %span.input-group-addon $
+                = f.text_field :rental_rate, class: "form-control"
+                %span.input-group-addon /SF
+              %p Rental rate of the unit per SF per year.
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :subtitle, "Subtitle"
+              = f.text_field :subtitle, class: "form-control", id: "inputfeedback", maxlength: '120'
+              .pull-left
+                %p Summary for the leasing page.
+              .pull-right.text-muted
+                #feedback
+            .line.line-dashed.b-b.line-lg.pull-in
+            .form-group
+              = f.label :content
+              = f.text_area :content, id: "some-textarea", class: "wysihtml5 form-control"
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        .btn-group.m-r
+          .dropup
+            %button.btn.btn-more-padding.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+              %span.dropdown-label{"data-placeholder" => "Please select"}= publish_or_draft_avail
+              %span.caret{:style => "margin-left:30px;"}
+            %ul.dropdown-menu.dropdown-select.text-left
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :published, true
+                  Publish
+              %li
+                %a{:href => "#"}
+                  = f.radio_button :published, false
+                  Draft
+        = f.submit "Save", class: "btn btn-success btn-more-padding"
+  #draft_btn_tooltip.fake_tooltip.bottom_footer.draft_btn.display-none
+    %span.arrow.bottom
+    By default, your listing will be saved as published. You may choose to save as a draft then publish when ready.
+  #image_btn_tooltip.fake_tooltip.left_sidebar.image_btn.display-none
+    %span.arrow.left
+    Add as many images as you like to showcase your space.
+  :javascript
+    $(document).ready(function () {
+     // 120 max char subtitle availability form
+      var initialText = $("#inputfeedback").val().length;
+      var textMax = 120;
+      $('#feedback').html(initialText + '/120 max');
+
+      $('#inputfeedback').keyup(function() {
+        var textLength = $('#inputfeedback').val().length;
+        var textRemaining = textMax - textLength;
+
+        $('#feedback').html(textLength + '/120 max');
+      });
+    });
+  - if params[:action] == "new" && @availabilities.empty?
+    :javascript
+      $(document).ready(function () {
+
+        $('#draft_btn_tooltip').fadeIn('slow');
+        $('.form-control').keyup(function() {
+          $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+        });
+        $('iframe.wysihtml5-sandbox').contents().find('body').keyup(function() {
+          $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+        });
+        // $('.btn-square').mouseover(function () {
+        //   $('#image_btn_tooltip').fadeIn('slow');
+        // }).mouseleave(function() {
+        //   $('#image_btn_tooltip').fadeOut('slow');
+        // });
+        $('.btn-square').click(function () {
+          $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+        });
+        $('.form-group button.dropdown-toggle').click(function() {
+          $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
+        });    
+
+      });
+  = javascript_include_tag "filestyle.min"

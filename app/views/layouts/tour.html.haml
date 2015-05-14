@@ -1,0 +1,81 @@
+!!!
+%html.app
+  %body
+    = render 'layouts/head'
+    %section.hbox.stretch
+      %aside#nav.bg-dark.b-r.b-light.aside-md.hidden-print
+        %section.vbox
+          %section.w-f.scrollable
+            .slim-scroll{"data-disable-fade-out" => "true", "data-distance" => "0", "data-height" => "auto", "data-railopacity" => "0.2", "data-size" => "10px"}
+              / nav
+              %nav.nav-primary.hidden-xs
+                - if request.subdomain != "www" && request.subdomain.present?
+                  .text-muted.text-sm.hidden-nav-xs.padder.m-t-sm.m-b-sm Browse
+                  %ul.nav.nav-main{"data-ride" => "collapse"}
+                    - @sidebar_nav.each do |sidebar|
+                      %li
+                        = link_to send(sidebar.link_to), class: "auto" do
+                          %i{:class => "i i-#{sidebar.icon} icon"}
+                          %span.font-bold= sidebar.name
+                  .line.dk.hidden-nav-xs
+                  - unless @pages.empty?
+                    .text-muted.text-xs.hidden-nav-xs.padder.m-t-sm.m-b-sm Pages
+                  %ul.nav
+                    - @pages.each do |page|
+                      %li
+                        = link_to edit_page_path(page) do
+                          %i.i.i-docs.icon
+                          = page.title
+                  - unless @availabilities.empty?
+                    .text-muted.text-xs.hidden-nav-xs.padder.m-t-sm.m-b-sm Availabilities
+                  %ul.nav
+                    - @availabilities.each do |availability|
+                      %li
+                        = link_to edit_availability_path(availability) do
+                          %i.i.i-stack.icon
+                          = availability.suite_or_floor + " #" + availability.title
+                - else
+                  .text-muted.text-sm.hidden-nav-xs.padder.m-t-sm.m-b-sm My Sites
+                  %ul.nav.nav-main{"data-ride" => "collapse"}
+                    %li
+                      %a.auto{:href => "", :target => "_blank"}
+                        %i.i.i-stack.icon
+                        %span.font-bold Demo Property
+              / / nav
+          %footer.footer.hidden-xs.no-padder.text-center-nav-xs
+            .dropup.help
+              %a.btn.btn-icon.icon-muted.btn-inactive.pull-right.m-l-xs.m-r-xs.hidden-nav-xs.dropdown-toggle{"data-toggle" => "dropdown", :href => ""}
+                %i.i.i-question2
+              %ul.dropdown-menu.animated.fadeInRight.help-dropup
+                %li
+                  %span.arrow.bottom
+                  %a{:href => "http://lvh.me:3000/dashboard"} Support
+                %li
+                  %a{:href => "/dashboard/profile/edit"} Take a tour of Leasify
+                %li
+                  %a{:href => "/dashboard/profile/edit"} Learn how to use Leasify
+                %li.divider
+                %li
+                  %a{:href => "/logout"} Provide Feedback
+            %a.btn.btn-icon.icon-muted.btn-inactive.m-l-xs.m-r-xs{"data-toggle" => "class:nav-xs", :href => "#nav"}
+              %i.i.i-circleleft.text
+              %i.i.i-circleright.text-active
+      %section#content
+        %section.hbox.stretch
+          %section
+            %section.vbox
+              = render 'layouts/header'
+              - flash.each do |type, message|
+                #alert-fadeout{:class => "alert #{flash_class type}"}
+                  %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                  = message
+              = yield
+        %a.hide.nav-off-screen-block{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen", :href => "#"}
+    - if request.subdomain != "www" && request.subdomain.present?
+      = javascript_include_tag "introtour.min", "dashboard_tour", "app.plugin"
+    - else
+      = javascript_include_tag "introtour.min", "demo", "app.plugin"
+    :javascript
+      $(document).ready(function() {
+        $(".introjs-tooltipbuttons").addClass('pull-right');
+      });

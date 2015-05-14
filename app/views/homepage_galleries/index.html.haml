@@ -1,0 +1,18 @@
+= form_for(@homepage_gallery) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/themeoptionsheader'
+      .row
+        .col-md-12
+          %h3 Homepage Gallery
+      .add-page
+        .row
+          .col-md-8
+            = f.fields_for :homepage_galleries do |builder|
+              = render 'homepage_gallery_fields', :f => builder
+            :javascript
+              $(".parent > a").addClass('btn btn-default btn-square').html('<i class="i i-images"></i><br> Add Images<br> JPG, PNG');
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save Settings", class: "btn btn-success"

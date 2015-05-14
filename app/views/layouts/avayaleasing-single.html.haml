@@ -1,0 +1,42 @@
+%body
+  = render 'layouts/avaya/head'
+  #wrapper
+    = render 'layouts/avaya/header'
+    .main-homepage{:style => "background: url('#{HomepageGallery.where(site_id: @site.id).first.homepage_gallery_image}');
+					-webkit-background-size: cover; -moz-background-size: cover; 
+					-o-background-size: cover; background-size: cover;"}
+      .page-title.avaya-leasing
+        %h1 Leasing
+      .welcome-box.page.white-bg{:style => "#{'padding-top:50px;' if !@availability.published?}"}
+        .stats
+          .container.center
+            %ul
+              %li
+                %span Vacancies
+                %br/
+                = @availabilities.count
+              %li
+                %span Owner
+                %br/
+                = @propertyinformation.owner_name
+              %li
+                %span Class
+                %br/
+                = @propertyinformation.property_class
+              %li
+                %span Floors
+                %br/
+                = @propertyinformation.floors
+              %li
+                %span SF
+                %br/
+                = number_with_delimiter(@propertyinformation.sf, delimiter: ',')
+              %li
+                %span Year Built
+                %br/
+                = @propertyinformation.year_built
+        .yield
+          = yield
+    / end main homepage
+    = render 'layouts/avaya/footer'
+  / end wrapper

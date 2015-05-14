@@ -1,0 +1,12 @@
+.text-muted.text-sm.hidden-nav-xs.padder.m-t-sm.m-b-sm
+  Browse
+%ul.nav.nav-main{"data-ride" => "collapse"}
+  - @sidebar_nav.each do |sidebar|
+    %li
+    = active_class(send(sidebar.link_to))
+    \&gt;
+    \#{link_to send(sidebar.link_to), class: auto do}
+      %i.i.i-
+      = sidebar.icon
+      icon"&gt;
+    %span.font-bold= sidebar.name

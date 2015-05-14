@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @amenity.name
+%p
+  %strong Category:
+  = @amenity.category
+= link_to 'Edit', edit_amenity_path(@amenity)
+|
+= link_to 'Back', amenities_path

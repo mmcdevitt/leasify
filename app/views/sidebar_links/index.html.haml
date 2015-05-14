@@ -1,0 +1,80 @@
+- unless @sidebar_links.empty?
+  %header.header.bg-white.b-b.clearfix
+    .row.m-t-sm
+      .col-sm-8.m-b-xs
+        .btn-group
+          %button.btn.btn-sm.btn-default{:title => "Refresh", :type => "button"}
+            %i.fa.fa-refresh
+          %button.btn.btn-sm.btn-default{:title => "Remove", :type => "button"}
+            %i.fa.fa-trash-o
+          %button.btn.btn-sm.btn-default{"data-toggle" => "dropdown", :title => "Filter", :type => "button"}
+            %i.fa.fa-filter
+            %span.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Action
+            %li
+              %a{:href => "#"} Another action
+            %li
+              %a{:href => "#"} Something else here
+            %li.divider
+            %li
+              %a{:href => "#"} Separated link
+        = link_to admin_sidebar_new_path, class: "btn btn-sm btn-default" do
+          %i.fa.fa-plus
+          New Sidebar Link
+      .col-sm-4.m-b-xs
+        .input-group
+          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-sm.btn-default{:type => "button"} Go!
+%section.scrollable.wrapper.w-f
+  - if @sidebar_links.empty?
+    .center
+      %h1 You don't have any sidebar links created!
+      %p.m-b-md Create sidebar links to include in your website.
+      = link_to 'New theme', new_theme_path, class: "btn btn-success"
+  - else
+    %h3.m-t-none.m-b-md Themes
+    %section.panel.panel-default
+      .table-responsive
+        %table.table.table-striped.m-b-none.sidebar_links
+          %thead
+            %tr
+              %th{:width => "20"}
+                %label.checkbox.m-n.i-checks
+                  %input{:type => "checkbox"}/
+                  %i
+              %th.name{"data-toggle" => "class"} Menu Name
+              %th.date Date Created
+              %th{:width => "30"}
+          %tbody
+            - @sidebar_links.each do |sidebar|
+              %tr.table-edit
+                %td
+                  %label.checkbox.m-n.i-checks
+                    %input{:name => "ids[]", :type => "checkbox"}/
+                    %i
+                %td
+                  = link_to sidebar.name, "#", class: "pull-left m-r-sm"
+                  %ul.edit-links
+                    %li
+                      = link_to "Edit", admin_sidebar_edit_path(sidebar)
+                      |
+                    %li= link_to "View", admin_sidebar_show_path(sidebar)
+                %td= sidebar.created_at.strftime("%B %e, %Y")
+                %td
+                  %a{"data-target" => "#sidebar#{sidebar.id}", "data-toggle" => "modal", :href => ""}
+                    %i.fa.fa-trash-o
+              / Modal
+              .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "sidebar#{sidebar.id}", :role => "dialog", :tabindex => "-1"}
+                .modal-dialog
+                  .modal-content
+                    .modal-header
+                      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                      %h4#myModalLabel.modal-title Are you sure?
+                    .modal-body
+                      Once the sidebar is deleted, it's gone forever!
+                    .modal-footer
+                      %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                      = link_to "Delete", sidebar, method: :delete, class: "btn btn-danger"

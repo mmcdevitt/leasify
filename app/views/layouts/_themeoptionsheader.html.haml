@@ -1,0 +1,6 @@
+.center
+  .btn-group
+    = link_to "Your Logo", logo_path, class: "btn btn-default " + active_class_wo_class(logo_path).to_s
+    = link_to "Homepage Gallery", homepage_image_gallery_path, class: "btn btn-default " + active_class_wo_class(homepage_image_gallery_path).to_s
+    = link_to "Homepage Content", homepage_content_path, class: "btn btn-default " + active_class_wo_class(homepage_content_path).to_s
+    = link_to "Theme Settings", theme_settings_path, class: "btn btn-default " + active_class_wo_class(theme_settings_path).to_s

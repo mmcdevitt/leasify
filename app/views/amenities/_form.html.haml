@@ -1,0 +1,38 @@
+= form_for(@amenity) do |f|
+  - if @amenity.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@amenity.errors.count, "error")
+        prohibited this amenity from being saved:
+      %ul
+        - @amenity.errors.full_messages.each do |msg|
+          %li= msg
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        %h3 New Amentiy
+        .row
+          .col-md-8
+            .form-group
+              = f.label :name
+              = f.text_field :name, class: "form-control"
+            .form-group
+              = f.label :category, "Category"
+              .btn-group.m-r
+                %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                  %span.dropdown-label{"data-placeholder" => "Please select"}= amenities_select
+                  %span.caret{:style => "margin-left:30px;"}
+                %ul.dropdown-menu.dropdown-select
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :category, "Common"
+                      = "Common"
+                  %li
+                    %a{:href => "#"}
+                      = f.radio_button :category, "Extra"
+                      = "Extra"
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-6.hidden-sm
+      .col-md-6.col-sm-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

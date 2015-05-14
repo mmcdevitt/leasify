@@ -1,0 +1,33 @@
+%body
+  = render 'layouts/avaya/head'
+  #wrapper
+    = render 'layouts/avaya/header'
+    .fill
+      #myCarousel.carousel.slide
+        .carousel-caption
+          #page
+            #content_container
+              #content
+                .welcome-box
+                  .m-b-lg
+                    %h1{:style => "font-size: #{@themeoptions.mainheading_size}px; color: #{@themeoptions.mainheading_color}"}= @themeoptions.homepage_heading
+                    %p.wizard-edit{:style => "font-size: #{@themeoptions.subheading_size}px; color: #{@themeoptions.subheading_color}"}= @themeoptions.homepage_subheading
+                  %p.uppercase= full_address
+                  .line
+                  .page-content
+                    = markdown(@themeoptions.content)
+          / end container
+          = render 'layouts/avaya/footer'
+        .carousel-inner
+          - if @homepage_gallery.blank?
+            .item.active
+              .fill.wizard{:style => "background-image:url('/assets/office1.jpg');"}
+                .container
+          - else
+            - @homepage_galleries.each_with_index do |image, index|
+              %div{:class => "item #{"active" if index == 0}"}
+                .fill.wizard{:style => "background-image:url('#{image.homepage_gallery_image}');"}
+                  .container
+  / end wrapper
+  :javascript
+    $('.carousel').carousel();

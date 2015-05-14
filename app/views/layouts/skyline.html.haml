@@ -1,0 +1,94 @@
+%body
+  = render 'layouts/skyline/head'
+  .main-homepage
+    .container
+      .welcome-box
+        %h1= @themeoptions.homepage_heading
+        %p.wizard-edit.a= @themeoptions.homepage_subheading
+      / end welcome box
+    / end container
+  / end main homepage
+  = render 'layouts/skyline/header'
+  %section#homepage-content
+    .container
+      .row
+        .col-md-10.col-md-offset-1
+          .page-content
+            .wizard-edit
+              = markdown(@themeoptions.content)
+  - unless @pages_feature.empty?
+    .featured
+      .container-fluid
+        - @pages_feature.each do |page|
+          .row
+            .page-content
+              .wizard-edit
+                .left
+                  = image_tag(page.page_image.url(:large), class: "img-responsive")
+                .right
+                  %h1= page.title
+                  .row
+                    .col-lg-10
+                      %p= page.subtitle
+                      = link_to page.title, pages_id_path(page), class: "customize-link"
+  = render 'layouts/skyline/footer'
+  = javascript_tag do
+    jQuery(function($){
+    
+    $.supersized({
+    
+    \// Functionality
+    slide_interval          :   3000,   // Length between transitions
+    transition              :   1,      // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+    transition_speed    : 700,    // Speed of transition
+    
+    \// Components
+    slide_links       : 'blank',  // Individual links for each slide (Options: false, 'num', 'name', 'blank')
+    slides          :   [     // Slideshow Images
+    - if @homepage_gallery.blank?
+      {image : 'http://www.leasify.co/assets/office1.jpg'}
+    - else
+      - @homepage_galleries.each do |image|
+        {image : '#{image.homepage_gallery_image.url}'},
+    ]
+    
+    });
+    });
+  :javascript
+    $(document).ready(function() {
+
+    	function windowHeight() {
+    		var height = $(window).height();
+    		var headerHeight = $('header').height();
+    		var contentHeight = height - headerHeight;
+    		$('.main-homepage').css('height', contentHeight + 'px');
+    	}
+
+    	windowHeight();
+
+    	$(window).resize(function() {
+
+    		windowHeight();
+
+    	});
+
+    	$(document).scroll(function() {
+
+    		var height = $(window).height();
+    		var headerHeight = $('header').height();
+    		var contentHeight = height - headerHeight;
+    		var scrollPos = 0;
+    		scrollPos = $(this).scrollTop();
+    		if (scrollPos >= contentHeight) {
+    			$('header').removeClass('navbar-static');
+    			$('header').addClass('navbar-fixed-top');
+    		} else if (scrollPos < contentHeight) {
+    			$('header').removeClass('navbar-fixed-top');
+    			$('header').addClass('navbar-static');
+    		}
+
+    	});
+
+    	$('.quality').addClass('wizard');
+
+    });

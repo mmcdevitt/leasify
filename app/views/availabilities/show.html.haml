@@ -1,0 +1,56 @@
+.availability-page
+  .row
+    .col-md-8
+      %h1= @availability.suite_or_floor + " #" + @availability.title
+      .row-fluid
+        .pull-left
+          %p
+            = @availability.floor_location.ordinalize + " Floor"
+            , #{full_address}
+    / end col 8
+    .col-md-4
+  / end row
+  .row
+    .col-md-8
+      #carousel-example-generic.carousel.slide.m-b-lg.img-thumbnail{"data-ride" => "carousel"}
+        / Indicators
+        %ol.carousel-indicators
+          - @availabilities_image.each_with_index do |index, i|
+            %li{"data-slide-to" => "", "data-target" => "#carousel-example-generic"}
+            = i
+            " class="#{active if index == 0}"&gt;
+      / Wrapper for slides
+      .carousel-inner
+        - @availabilities_image.each_with_index do |image, index|
+          .item
+          = active if index == 0
+          "&gt;
+          \#{image_tag(image.availability_image.url(:large), class: img-responsive)}
+    / Controls
+    %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic"}
+      %span.glyphicon.glyphicon-chevron-left
+    %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic"}
+      %span.glyphicon.glyphicon-chevron-right
+  .panel.panel-default
+    .panel-heading
+      / Nav tabs
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#description"} Description
+        %li
+          %a{"data-toggle" => "tab", :href => "#amenity"} Amenities
+    .panel-body{:style => "padding:30px;"}
+      / Tab panes
+      .tab-content
+        #description.tab-pane.active
+          .page-content
+            = markdown(@availability.content)
+        #amenity.tab-pane
+          .row
+            - @amenities.each do |amenity|
+              .amenity_single.col-lg-4
+                = amenities_check_if_true(amenity)
+                %span
+                = amenities_muted_if_false(amenity)
+                \&gt;
+                \#{amenity.name.humanize}

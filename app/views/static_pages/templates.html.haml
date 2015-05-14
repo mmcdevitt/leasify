@@ -1,0 +1,20 @@
+.subpage
+  = render 'layouts/static_pages/header'
+.templates
+  .container
+    .row
+      .col-sm-12.center
+        %h1.template_h1 LEASIFY TEMPLATES
+    .row
+      - @themes.each do |template|
+        .col-lg-6.col-md-6.col-sm-6{:style => "margin-bottom:50px;"}
+          .template-widget
+            = image_tag('/assets/broswer-top.png', class: "img-responsive")
+            = image_tag(template.theme_name_image.url(:large), id: "uploadimage", class: "img-responsive")
+            .template-widget-content
+              %h3
+                = template.name
+                %small
+                  = link_to "http://" + template.name + "-demo.leasify.co", class: "link text-muted", target: "_blank" do
+                    %em Live Example
+= render 'layouts/static_pages/call_to_action'

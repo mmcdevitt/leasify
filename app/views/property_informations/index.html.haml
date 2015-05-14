@@ -1,0 +1,58 @@
+= form_for(@propertyinformations) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      .add-page
+        = render 'layouts/propertyheader'
+        .add-page
+          .row
+            .col-md-8
+              %h3 Property Information
+              .line.line-dashed.b-b.line-lg.pull-in
+              .form-group
+                = f.label :name, "Property Name"
+                = f.text_field :name, class: "form-control"
+                %p Your property's name.
+              .line.line-dashed.b-b.line-lg.pull-in
+              .form-group
+                = f.label :owner_name, "Owner Name"
+                = f.text_field :owner_name, class: "form-control"
+                %p Name of company that owns the property.
+              .line.line-dashed.b-b.line-lg.pull-in
+              .form-group
+                = f.label :property_class, "Property Class", class: "control-label"
+                .btn-group.m-r
+                  %button.btn.btn-sm.btn-default.dropdown-toggle{"data-toggle" => "dropdown", :style => "padding:7px 16px;"}
+                    %span.dropdown-label{"data-placeholder" => "Please select"}= property_class_select
+                    %span.caret{:style => "margin-left:30px;"}
+                  %ul.dropdown-menu.dropdown-select
+                    %li
+                      %a{:href => "#"}
+                        = f.radio_button :property_class, "A"
+                        = "A"
+                    %li
+                      %a{:href => "#"}
+                        = f.radio_button :property_class, "B"
+                        = "B"
+                    %li
+                      %a{:href => "#"}
+                        = f.radio_button :property_class, "C"
+                        = "C"
+              .line.line-dashed.b-b.line-lg.pull-in
+              .form-group
+                = f.label :floors, "Floors"
+                = f.text_field :floors, class: "form-control"
+                %p Number of floors.
+              .line.line-dashed.b-b.line-lg.pull-in
+              .form-group
+                = f.label :sf, "Square Footage"
+                = f.text_field :sf, class: "form-control"
+                %p Total rentable square footage.
+              .line.line-dashed.b-b.line-lg.pull-in
+              .form-group
+                = f.label :year_built, "Year Built"
+                = f.text_field :year_built, class: "form-control"
+                %p The year the property was built.
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

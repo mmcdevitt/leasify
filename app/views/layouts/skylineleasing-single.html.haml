@@ -1,0 +1,33 @@
+%body
+  = render 'layouts/skyline/head'
+  = render 'layouts/skyline/subpage_header'
+  .stats
+    .container.center
+      %ul
+        %li
+          %span Vacancies
+          %br/
+          = @availabilities.count
+        %li
+          %span Owner
+          %br/
+          = @propertyinformation.owner_name
+        %li
+          %span Class
+          %br/
+          = @propertyinformation.property_class
+        %li
+          %span Floors
+          %br/
+          = @propertyinformation.floors
+        %li
+          %span SF
+          %br/
+          = number_with_delimiter(@propertyinformation.sf, delimiter: ',')
+        %li
+          %span Year Built
+          %br/
+          = @propertyinformation.year_built
+  .container
+    = yield
+  = render 'layouts/skyline/footer'

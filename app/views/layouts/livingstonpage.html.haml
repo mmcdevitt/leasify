@@ -1,0 +1,18 @@
+%body
+  = render 'layouts/livingston/head'
+  #wrapper
+    = render 'layouts/livingston/header'
+    .container
+      .row.heading
+        .col-md-8.col-md-offset-2.center
+          .subpage-customize
+            %h1= @page.title
+            %p= @page.subtitle
+      .row
+        .col-md-12
+          = image_tag(@page.page_image.url(:large), class: "img-responsive")
+        .col-md-10.col-md-offset-1
+          .page-content
+            = markdown(@page.content)
+    = render 'layouts/livingston/footer'
+  / end wrapper

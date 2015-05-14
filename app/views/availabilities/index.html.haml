@@ -1,0 +1,51 @@
+- unless @availabilities.empty?
+  %header.header.bg-white.b-b.clearfix
+    .row.m-t-sm
+      .col-sm-8.m-b-xs
+        = link_to new_availability_path, class: "btn btn-sm btn-default" do
+          %i.fa.fa-plus
+          New Listing
+      .col-sm-4.m-b-xs
+        .input-group
+          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-sm.btn-default{:type => "button"} Go!
+%section.scrollable.wrapper.w-f
+  .panel-body
+    - if @availabilities.empty?
+      .center
+        %h1 You don't have any availabilities listed!
+        %p Create listings to include in the Availabilites section of your website.
+        = link_to 'List Availability', new_availability_path, class: "btn btn-success"
+    - else
+      .m-b-lg
+        %h3.m-t-none.m-b-md Availabilities
+      .alert.alert-info
+        %button.close{"data-dismiss" => "alert", :type => "button"} ×
+        %i.fa.fa-info-sign
+        %strong Re-order availabilities by dragging into place.
+      %ul#sortable_availabilities.list-group.gutter.list-group-lg.list-group-sp.sortable{"data-update-url" => sort_availabilities_path}
+        - @availabilities.each do |availability|
+          %li.list-group-item{:id => "availability_#{availability.id}"}
+            %span.pull-right
+              = link_to edit_availability_path(availability) do
+                %i.fa.fa-edit.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit Listing"}
+              = link_to leasing_show_path(availability), target: "_blank" do
+                %i.fa.fa-external-link.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "View Listing"}
+              %a{"data-target" => "#availability#{availability.id}", "data-toggle" => "modal", :href => ""}
+                %i.fa.fa-times.icon-muted.fa-fw{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Delete Listing"}
+            .clear
+              = link_to availability.suite_or_floor + " #" + availability.title, edit_availability_path(availability)
+              = "<span style='color:#e33244; font-weight:700'>Draft</span>".html_safe if !availability.published?
+            / Modal
+            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "availability#{availability.id}", :role => "dialog", :tabindex => "-1"}
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                    %h4#myModalLabel.modal-title Are you sure?
+                  .modal-body
+                    Once the listing is deleted, it's gone forever!
+                  .modal-footer
+                    %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                    = link_to "Delete", availability, method: :delete, class: "btn btn-danger"

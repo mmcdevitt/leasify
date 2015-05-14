@@ -1,0 +1,36 @@
+= form_for(@propertyinformations) do |f|
+  %section.scrollable.wrapper.w-f
+    .panel-body
+      = render 'layouts/propertyheader'
+      .add-page
+        .row
+          .col-md-8
+            %h3{:style => "margin-bottom:30px;"} Amenities
+            .row
+              .col-md-2
+                %h4{:style => "margin:0;"} Common
+              .col-md-6
+                - @amenities_common.each do |amenity|
+                  .form-group
+                    .checkbox.m-n.i-checks
+                      %label
+                        = f.check_box amenity.name
+                        %i
+                        = f.label amenity.name
+                  / end form group
+            .row.m-t.m-b
+              .col-md-2
+                %h4{:style => "margin:0;"} Extra
+              .col-md-6
+                - @amenities_extra.each do |amenity|
+                  .form-group
+                    .checkbox.m-n.i-checks
+                      %label
+                        = f.check_box amenity.name
+                        %i
+                        = f.label amenity.name
+                  / end form group
+  %footer.footer.bg-white.b-t
+    .row.text-center-xs
+      .col-md-12.text-right.text-center-xs
+        = f.submit "Save", class: "btn btn-success btn-more-padding"

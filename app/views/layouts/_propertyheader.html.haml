@@ -1,0 +1,5 @@
+.center
+  .btn-group
+    = link_to "Property Information", property_path, class: "btn btn-default " + active_class_wo_class(property_path).to_s
+    = link_to "Property Address", address_path, class: "btn btn-default " + active_class_wo_class(address_path).to_s
+    = link_to "Amenities", amenities_property_path, class: "btn btn-default " + active_class_wo_class(amenities_property_path).to_s
