@@ -1,20 +1,16 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
-  before_action :set_subdomain
   before_action :redirect_if_www
   layout :theme_name
+
   include PagesHelper
-  # GET /pages
-  # GET /pages.json
+
   def index
-    
   end
 
-  # GET /pages/1
-  # GET /pages/1.json
   def show
-    @page_root = Page.where(site_id: @site.id, published: true).roots.all(:order => "position")
+    # @page_root = Page.where(site_id: @site.id, published: true).roots.all(:order => "position")
 
     if !@page.published? && !user_signed_in?
       redirect_to root_path
@@ -25,7 +21,6 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/new
   def new
     @pages_feature = Page.where(site_id: @site.id, published: true, feature_on_homepage: true).all
     @page_root = Page.where(site_id: @site.id).roots.all
@@ -34,7 +29,6 @@ class PagesController < ApplicationController
     @mtlg = ""
   end
 
-  # GET /pages/1/edit
   def edit
     @pages_feature = Page.where(site_id: @site.id, published: true, feature_on_homepage: true).all
     @page_root = Page.where(site_id: @site.id).roots.all
@@ -131,27 +125,11 @@ class PagesController < ApplicationController
       end
     end
 
-     def set_subdomain
-      if request.subdomain.present? && request.subdomain != "www"
-        @subdomain           = request.subdomain
-        @site                = Site.where(subdomain: request.subdomain).first
-        @user                = User.where(id: @site.user_id).first
-        @themeoptions        = ThemeOption.where(site_id: @site.id).first
-        @pages               = Page.where(site_id: @site.id).all(:order => "position")
-        @availabilities      = Availability.where(site_id: @site.id).all
-        @propertyinformation = PropertyInformation.where(site_id: @site.id).first
-        @contacts            = Contact.where(site_id: @site.id).all
-      end
-    end
-
     def redirect_if_www
       if !request.subdomain.present? || request.subdomain == "www"
         redirect_to dashboard_path
       end
     end
-
-
-
 end
 
 

@@ -13,4 +13,6 @@ class ThemeName < ActiveRecord::Base
   :bucket => ENV['LEASIFY'],
   :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
 	validates_attachment_content_type :theme_name_image, :content_type => /\Aimage/
+
+  scope :published, -> { where(published: true).all }
 end

@@ -1,11 +1,28 @@
 require 'spec_helper'
 
 describe StaticPagesController do
+  let(:user) { Fabricator(:user) }
 
   describe "GET 'home'" do
     it "returns http success" do
-      get 'home'
-      response.should be_success
+      get :home
+      expect(response).to be_success
+    end
+
+    # it 'renders the home template' do
+    #   get :home
+    #   expect(response).to render_template 'home'
+    # end
+
+    context 'authenticated users' do
+      before do
+        session[:user_id] = user.id
+      end
+
+      it 'redirects to dashboard index path' do
+        get :home
+        expect(response).to redirect_to dashboard_path
+      end
     end
   end
 

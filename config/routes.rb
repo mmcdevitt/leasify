@@ -1,6 +1,5 @@
 Leasify::Application.routes.draw do
 
-  get "dashboards/index"
   require 'subdomain'
 
   resources :pages do
@@ -75,9 +74,7 @@ Leasify::Application.routes.draw do
     get '/' => 'static_pages#home'
   end
 
-  resources :static_pages
-  #get '/home', to: 'static_pages#home'
-  root :to => "static_pages#home"
+  root to: "static_pages#home"
   get '/help', to: 'static_pages#help', as: :help
   get '/templates', to: 'static_pages#templates', as: :templates
   get '/beta/signup', to: 'static_pages#beta_signup', as: :beta_signup_mailchimp
@@ -93,7 +90,6 @@ Leasify::Application.routes.draw do
 
 
 
-  resources :posts
 
 
 
