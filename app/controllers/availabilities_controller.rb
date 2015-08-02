@@ -9,12 +9,10 @@ class AvailabilitiesController < ApplicationController
   def index
     # @subdomain           = request.subdomain
     # @site                = Site.where(subdomain: request.subdomain).first.id
-    
+
     # @availabilities      = Availability.where(user_id: current_user.id) && Availability.where(site_id: @site)
   end
 
-  # GET /availabilities/1
-  # GET /availabilities/1.json
   def show
     @availabilities_image = AvailabilityGallery.where(site_id: @site.id, availability_id: @availability.id).all
     @amenities = Amenity.all
@@ -32,14 +30,14 @@ class AvailabilitiesController < ApplicationController
   def new
     @availability = Availability.new
     @avail_title = "Add Listing"
-    @availability.availability_galleries.build  
+    @availability.availability_galleries.build
   end
 
   # GET /availabilities/1/edit
   def edit
     @avail_title = @availability.suite_or_floor + " #" + @availability.title
-    @galleries = AvailabilityGallery.where(site_id: @site.id, availability_id: @availability).all 
-   
+    @galleries = AvailabilityGallery.where(site_id: @site.id, availability_id: @availability).all
+
 
     # Protect availabilities per subdomain
     if @site.id != @availability.site_id
@@ -123,15 +121,15 @@ class AvailabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def availability_params
-      params.require(:availability).permit(:title, 
-                                           :site_id, 
-                                           :suite_or_floor, 
-                                           :availability, 
-                                           :sf, 
-                                           :rental_rate, 
-                                           :content, 
-                                           :user_id, 
-                                           :floor_location, 
+      params.require(:availability).permit(:title,
+                                           :site_id,
+                                           :suite_or_floor,
+                                           :availability,
+                                           :sf,
+                                           :rental_rate,
+                                           :content,
+                                           :user_id,
+                                           :floor_location,
                                            :type_of_space,
                                            :published,
                                            :position,

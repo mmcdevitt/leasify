@@ -16,7 +16,7 @@ describe StaticPagesController do
 
     context 'authenticated users' do
       before do
-        session[:user_id] = user.id
+        sign_in(user)
       end
 
       it 'redirects to dashboard index path' do

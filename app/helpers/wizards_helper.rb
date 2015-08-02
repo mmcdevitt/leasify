@@ -12,25 +12,11 @@ module WizardsHelper
 	end
 
 	def active_class(path)
-		if current_page?(path)
-			'class=active'
-		end
+		'class=active' if current_page?(path)
 	end
 
 	def active_class_wo_class(path)
-		if current_page?(path)
-			'active'
-		end
+		'active' if current_page?(path)
 	end
-
-
-
-
-
-
-
-
-
-
 
 end

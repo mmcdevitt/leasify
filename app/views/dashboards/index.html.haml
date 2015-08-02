@@ -1,20 +1,16 @@
 - if request.subdomain.present? && request.subdomain != "www"
   = render 'index_subdomain'
 - else
-  %header.header.bg-white.b-b.clearfix
-    .row.m-t-sm
-      .col-sm-8.m-b-xs
+  %section.scrollable.wrapper-lg.w-f
+    .row
+      .col-sm-8.m-b-lg
         - if Site.where(user_id: current_user.id).count >= 1 && !current_user.unlimited_sites?
         - else
-          = link_to new_site_path, class: "btn btn-sm btn-default" do
+          %span{style: "font-size:18px; font-weight:bold; margin-right: 30px;"}
+            My Sites
+          = link_to new_site_path, class: "blue-link" do
             %i.fa.fa-plus
             Create New Site
-      .col-sm-4.m-b-xs
-        .input-group
-          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
-          %span.input-group-btn
-            %button.btn.btn-sm.btn-default{:type => "button"} Go!
-  %section.scrollable.wrapper.w-f
     - if @sites.empty?
       .center
         %h1 You don't have any sites created!
@@ -29,10 +25,6 @@
           %table.table.table-striped.m-b-none
             %thead
               %tr
-                %th{:width => "20"}
-                  %label.checkbox.m-n.i-checks
-                    %input{:type => "checkbox"}/
-                    %i
                 %th.th-sortable{"data-toggle" => "class"}
                   Property Name
                 %th URL
@@ -41,10 +33,6 @@
             %tbody
               - @sites.each do |site|
                 %tr
-                  %td
-                    %label.checkbox.m-n.i-checks
-                      %input{:name => "ids[]", :type => "checkbox"}/
-                      %i
                   %td= PropertyInformation.where(site_id: site.id).first.name
                   - if current_user.sign_in_count == 1
                     %td= link_to site.subdomain + ".leasify.co", root_url(:host => with_subdomain(site.subdomain)) + "dashboard/tour", target: "_blank"

@@ -1,4 +1,4 @@
-3/*!
+/*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -1413,6 +1413,7 @@ th {
 .table {
   width: 100%;
   margin-bottom: 20px;
+  border: 1px solid #d6d7d9;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -2393,9 +2394,9 @@ input[type="button"].btn-block {
   font-family: 'Glyphicons Halflings';
 
   src: url('/assets/glyphicons-halflings-regular.eot');
-  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
-  url('/assets/glyphicons-halflings-regular.woff') format('woff'), 
-  url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), 
+  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('/assets/glyphicons-halflings-regular.woff') format('woff'),
+  url('/assets/glyphicons-halflings-regular.ttf') format('truetype'),
   url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
@@ -3662,7 +3663,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   position: relative;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
 }
 @media (min-width: 768px) {
   .navbar {
@@ -5814,7 +5814,7 @@ button.close {
 
 /*Serif fonts */
 
-.georgia, 
+.georgia,
 .georgia-h h1,
 .georgia-h h2,
 .georgia-h h3,
@@ -5907,7 +5907,7 @@ button.close {
   font-family: Verdana, Geneva, sans-serif;
 }
 /* Monospace fonts */
-.lucida, 
+.lucida,
 .lucida-h h1,
 .lucida-h h2,
 .lucida-h h3,
@@ -5916,7 +5916,7 @@ button.close {
 .lucida-h h6 {
   font-family: "Lucida Console", Monaco, monospace;
 }
-.courier, 
+.courier,
 .courier-h h1,
 .courier-h h2,
 .courier-h h3,
@@ -5927,14 +5927,14 @@ button.close {
 }
 
 /*Adobe Typekit*/
-.proximanova, 
+.proximanova,
 .proximanova-h h1,
 .proximanova-h h2,
 .proximanova-h h3,
 .proximanova-h h4,
 .proximanova-h h5,
 .proximanova-h h6 {
-  font-family: "proxima-nova",sans-serif; 
+  font-family: "proxima-nova",sans-serif;
 }
 .proximanova-light,
 .proximanova-h-light h1,
@@ -5943,7 +5943,7 @@ button.close {
 .proximanova-h-light h4,
 .proximanova-h-light h5,
 .proximanova-h-light h6 {
-  font-family: "proxima-nova",sans-serif; 
+  font-family: "proxima-nova",sans-serif;
   font-weight: 300 !important;
 }
 .proximanova-bold,
@@ -5953,39 +5953,39 @@ button.close {
 .proximanova-h-bold h4,
 .proximanova-h-bold h5,
 .proximanova-h-bold h6 {
-  font-family: "proxima-nova",sans-serif; 
+  font-family: "proxima-nova",sans-serif;
   font-weight: 700 !important;
 }
-.futura, 
+.futura,
 .futura-h h1,
 .futura-h h2,
 .futura-h h3,
 .futura-h h4,
 .futura-h h5,
 .futura-h h6 {
-  font-family: "futura-pt",sans-serif; 
+  font-family: "futura-pt",sans-serif;
 }
-.futura-light, 
+.futura-light,
 .futura-h-light h1,
 .futura-h-light h2,
 .futura-h-light h3,
 .futura-h-light h4,
 .futura-h-light h5,
 .futura-h-light h6 {
-  font-family: "futura-pt",sans-serif; 
+  font-family: "futura-pt",sans-serif;
   font-weight: 300 !important;
 }
-.futura-bold, 
+.futura-bold,
 .futura-h-bold h1,
 .futura-h-bold h2,
 .futura-h-bold h3,
 .futura-h-bold h4,
 .futura-h-bold h5,
 .futura-h-bold h6 {
-  font-family: "futura-pt",sans-serif; 
+  font-family: "futura-pt",sans-serif;
   font-weight: 700 !important;
 }
-.penna, 
+.penna,
 .penna-h h1,
 .penna-h h2,
 .penna-h h3,

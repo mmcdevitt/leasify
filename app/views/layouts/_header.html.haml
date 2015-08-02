@@ -1,52 +1,12 @@
 %body
-  %header.bg-white.header.header-md.navbar.navbar-fixed-top-xs.box-shadow
-    .navbar-header.aside-md.dk
+  %header.bg-white.header.header-md.navbar.navbar-fixed-top-xs.b-b
+    .navbar-header.dashboard
+      = link_to "Leasify", root_path, class: 'navbar-brand corner-store'
       %a.btn.btn-link.visible-xs{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen"}
         %i.fa.fa-bars
       %a.btn.btn-link.visible-xs{"data-target" => ".user", "data-toggle" => "dropdown"}
         %i.fa.fa-cog
     %ul.nav.navbar-nav.hidden-xs
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          %i.i.i-grid
-        %section.dropdown-menu.aside-lg.bg-white.on.animated.fadeInLeft
-          .row.m-l-none.m-r-none.m-t.m-b.text-center
-            .col-xs-4
-              .padder-v
-                %a{:href => "#"}
-                  %span.m-b-xs.block
-                    %i.i.i-mail.i-2x.text-primary-lt
-                  %small.text-muted New Site
-            .col-xs-4
-              .padder-v
-                %a{:href => "#"}
-                  %span.m-b-xs.block
-                    %i.i.i-calendar.i-2x.text-danger-lt
-                  %small.text-muted Calendar
-            .col-xs-4
-              .padder-v
-                %a{:href => "#"}
-                  %span.m-b-xs.block
-                    %i.i.i-map.i-2x.text-success-lt
-                  %small.text-muted Map
-            .col-xs-4
-              .padder-v
-                %a{:href => "#"}
-                  %span.m-b-xs.block
-                    %i.i.i-paperplane.i-2x.text-info-lt
-                  %small.text-muted Trainning
-            .col-xs-4
-              .padder-v
-                %a{:href => "#"}
-                  %span.m-b-xs.block
-                    %i.i.i-images.i-2x.text-muted
-                  %small.text-muted Photos
-            .col-xs-4
-              .padder-v
-                %a{:href => "#"}
-                  %span.m-b-xs.block
-                    %i.i.i-clock.i-2x.text-warning-lter
-                  %small.text-muted Timeline
       - if request.subdomain.present? && request.subdomain != "www"
         - if user_signed_in?
           %li

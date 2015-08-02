@@ -2,19 +2,21 @@
 %html.app
   = render 'layouts/head'
   %body
-    %section.hbox.stretch
-      = render 'layouts/aside'
-      %section#content
+    %section.vbox
+      = render 'layouts/header'
+      - flash.each do |type, message|
+        #alert-fadeout{:class => "alert #{flash_class type}"}
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+          = message
+      %section
         %section.hbox.stretch
-          %section
-            %section.vbox
-              = render 'layouts/header'
-              - flash.each do |type, message|
-                #alert-fadeout{:class => "alert #{flash_class type}"}
-                  %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
-                  = message
-              = yield
-        %a.hide.nav-off-screen-block{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen", :href => "#"}
+          = render 'layouts/aside'
+          %section#content
+            %section.hbox.stretch
+              %section
+                %section.vbox
+                  = yield
+          %a.hide.nav-off-screen-block{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen", :href => "#"}
     :javascript
       // Bootstrap wysihtml5 editor
               $('.wysihtml5').each(function(i, elem) {

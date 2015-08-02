@@ -1,51 +1,42 @@
-- unless @pages.empty?
-  %header.header.bg-white.b-b.clearfix
-    .row.m-t-sm
-      .col-sm-8.m-b-xs
-        = link_to new_page_path, class: "btn btn-sm btn-default" do
-          %i.fa.fa-plus
-          New Page
-      .col-sm-4.m-b-xs
-        .input-group
-          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
-          %span.input-group-btn
-            %button.btn.btn-sm.btn-default{:type => "button"} Go!
-%section.scrollable.wrapper.w-f
-  .panel-body
-    - if @pages.empty?
-      .center
-        %h1 You don't have any pages created!
-        %p.m-b-md Create pages to include in your website.
-        = link_to 'New Page', new_page_path, class: "btn btn-success"
-    - else
-      .m-b-lg
-        %h3.m-t-none.m-b-lg Pages
-      .alert.alert-info
-        %button.close{"data-dismiss" => "alert", :type => "button"} ×
-        %i.fa.fa-info-sign
-        %strong Re-order pages by dragging into place.
-      %ul#sortable.list-group.gutter.list-group-lg.list-group-sp.sortable{"data-update-url" => sort_pages_path}
-        - @pages.each do |page|
-          %li.list-group-item{:id => "page_#{page.id}"}
-            %span.pull-right
-              = link_to edit_page_path(page) do
-                %i.fa.fa-edit.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit Page"}
-              = link_to pages_id_path(page), target: "_blank" do
-                %i.fa.fa-external-link.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "View Page"}
-              %a{"data-target" => "#page#{page.id}", "data-toggle" => "modal", :href => ""}
-                %i.fa.fa-times.icon-muted.fa-fw{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Delete Page"}
-            .clear
-              = link_to page.title, edit_page_path(page)
-              = "<span style='color:#e33244; font-weight:700'>Draft</span>".html_safe if !page.published?
-            / Modal
-            .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "page#{page.id}", :role => "dialog", :tabindex => "-1"}
-              .modal-dialog
-                .modal-content
-                  .modal-header
-                    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
-                    %h4#myModalLabel.modal-title Are you sure?
-                  .modal-body
-                    Once the page is deleted, it's gone forever!
-                  .modal-footer
-                    %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
-                    = link_to "Delete", page, method: :delete, class: "btn btn-danger"
+%section.scrollable.wrapper-lg.w-f
+  - if @pages.empty?
+    .center
+      %h1 You don't have any pages created!
+      %p.m-b-md Create pages to include in your website.
+      = link_to 'New Page', new_page_path, class: "btn btn-success"
+  - else
+    .m-b-lg
+      %span{style: "font-size:18px; font-weight:bold; margin-right: 30px;"}
+        Pages
+      = link_to new_page_path, class: "blue-link" do
+        %i.fa.fa-plus
+        New Page
+    .alert.alert-info
+      %button.close{"data-dismiss" => "alert", :type => "button"} ×
+      %i.fa.fa-info-sign
+      %strong Re-order pages by dragging into place.
+    %ul#sortable.list-group.gutter.list-group-lg.list-group-sp.sortable{"data-update-url" => sort_pages_path}
+      - @pages.each do |page|
+        %li.list-group-item{:id => "page_#{page.id}"}
+          %span.pull-right
+            = link_to edit_page_path(page) do
+              %i.fa.fa-edit.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Edit Page"}
+            = link_to pages_id_path(page), target: "_blank" do
+              %i.fa.fa-external-link.icon-muted.fa-fw.m-r-xs{"data-placement" => "top", "data-toggle" => "tooltip", :title => "View Page"}
+            %a{"data-target" => "#page#{page.id}", "data-toggle" => "modal", :href => ""}
+              %i.fa.fa-times.icon-muted.fa-fw{"data-placement" => "top", "data-toggle" => "tooltip", :title => "Delete Page"}
+          .clear
+            = link_to page.title, edit_page_path(page)
+            = "<span style='color:#e33244; font-weight:700'>Draft</span>".html_safe if !page.published?
+          / Modal
+          .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :id => "page#{page.id}", :role => "dialog", :tabindex => "-1"}
+            .modal-dialog
+              .modal-content
+                .modal-header
+                  %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+                  %h4#myModalLabel.modal-title Are you sure?
+                .modal-body
+                  Once the page is deleted, it's gone forever!
+                .modal-footer
+                  %button.btn.btn-link{"data-dismiss" => "modal", :type => "button"} Close
+                  = link_to "Delete", page, method: :delete, class: "btn btn-danger"

@@ -75,8 +75,6 @@ class AmenitiesController < ApplicationController
 
 
     def admin_role
-      unless current_user.admin?
-        redirect_to dashboard_path
-      end
+      redirect_to dashboard_path unless current_user.admin?
     end
 end

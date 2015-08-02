@@ -4,7 +4,7 @@ html {
 }
 body {
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: #788288;
   /*background-color: transparent;*/
   -webkit-font-smoothing: antialiased;
@@ -245,7 +245,7 @@ a.list-group-item:focus {
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
-  background-color: #f7f8fb;
+  background-color: transparent;
 }
 .nav.nav-sm > li > a {
   padding: 6px 8px;
@@ -283,18 +283,18 @@ a.list-group-item:focus {
 .panel .table td,
 .panel .table th {
   padding: 8px 15px;
-  border-top: 1px solid #eaeef1;
+  border-top: 1px solid #d6d7d9;
 }
 .panel .table thead > tr > th {
-  border-bottom: 1px solid #eaeef1;
+  border-bottom: 1px solid #d6d7d9;
 }
 .panel .table-striped > tbody > tr:nth-child(odd) > td,
 .panel .table-striped > tbody > tr:nth-child(odd) > th {
-  background-color: #f9fafc;
+  background-color: #fff;
 }
 .panel .table-striped > thead th {
-  background-color: #f9fafc;
-  border-right: 1px solid #eaeef1;
+  background-color: #fff;
+  border-right: 1px solid #d6d7d9;
 }
 .panel .table-striped > thead th:last-child {
   border-right: none;
@@ -348,7 +348,7 @@ a.list-group-item:focus {
   position: relative;
 }
 .dropdown-menu {
-  font-size: 13px; 
+  font-size: 13px;
   padding:5px;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.05);
@@ -604,7 +604,6 @@ a.list-group-item:focus {
 .header.navbar,
 .footer.navbar {
   border-radius: 0;
-  border: none;
   margin-bottom: 0;
   padding: 0;
   position: relative;
@@ -832,7 +831,6 @@ body.container {
 }
 .navbar-brand:hover {
   text-decoration: none !important;
-  text-shadow: 1px 3px 4px rgba(0,0,0,0.1);
 }
 .navbar-brand img {
   max-height: 20px;
@@ -854,7 +852,7 @@ body.container {
   z-index: 2;
 }
 .nav-primary ul.nav > li > a {
-  padding: 8px 15px;
+  padding: 2px 30px;
   position: relative;
   -webkit-transition: background-color .2s ease-in-out 0s;
   transition: background-color .2s ease-in-out 0s;
@@ -2063,7 +2061,7 @@ fieldset[disabled] .btn-dark.active {
   filter: none;
 }
 .bg-light {
-  background-color: #f2f4f8;
+  background-color: #f6f6f6;
   color: #788288;
 }
 .bg-light.lt,
@@ -2873,7 +2871,7 @@ fieldset[disabled] .btn-dark.active {
   border-color: transparent;
   border-width: 0;
   box-shadow: none !important;
-  
+
 }
 .no-border:focus {
   box-shadow: none !important;
@@ -3023,19 +3021,19 @@ fieldset[disabled] .btn-dark.active {
   border: 1px solid rgba(0,0,0,0.05);
 }
 .b-a {
-  border: 1px solid #eaeef1;
+  border: 1px solid #d6d7d9;
 }
 .b-t {
-  border-top: 1px solid #eaeef1;
+  border-top: 1px solid #d6d7d9;
 }
 .b-r {
-  border-right: 1px solid #eaeef1;
+  border-right: 1px solid #d6d7d9;
 }
 .b-b {
-  border-bottom: 1px solid #eaeef1;
+  border-bottom: 1px solid #d6d7d9;
 }
 .b-l {
-  border-left: 1px solid #eaeef1;
+  border-left: 1px solid #d6d7d9;
 }
 .b-light {
   border-color: #e1e6ef;
@@ -3594,7 +3592,7 @@ ul.edit-links li a {
   border-radius: 2px;
   padding:20px;
 }
-#error_explanation h2 { 
+#error_explanation h2 {
   margin: 0 0 30px;
 }
 #error_explanation ul {
@@ -3611,9 +3609,9 @@ margin-bottom:16px;
 }
 .btn-square {
   width: 150px;
-  height: 148px; 
+  height: 148px;
   margin-right:16px;
-  margin-bottom:16px; 
+  margin-bottom:16px;
   float: left;
   padding-top:44px;
 }
@@ -3720,20 +3718,20 @@ margin-bottom:16px;
 }
 
 .customize-height textarea {
-  height:300px; 
+  height:300px;
 }
 .wizard .top-info {
   padding:0 0 50px;
 }
 .wizard .top-info h1{
-  font-size:50px; 
+  font-size:50px;
   font-weight:700;
   margin: 0;
 }
 .wizard .top-info p,
 .wizard .steps p {
   font-size: 18px;
-  color: #999; 
+  color: #999;
 }
 .wizard .steps a {
   color: #15CFCF;
@@ -3759,7 +3757,7 @@ top: 65px;
   padding-bottom:66px;
 }
  .vbox > section.finished {
-    bottom: 0px; 
+    bottom: 0px;
     top:65px;
   }
 
@@ -3768,12 +3766,12 @@ top: 65px;
 }
 .bg-dark .nav.wizard a {
   padding:15px;
-  
+
 }
 
 .fake_tooltip {
   position: absolute;
-  
+
   background: #f9f9fa;
   border:1px solid #cfd3d7;
   padding:20px;
@@ -3901,9 +3899,14 @@ bottom: -7px;
 .display-none {
   display: none;
 }
-
-
-
+.blue-link {
+  color: #4BA9FF;
+  font-weight: bold;
+}
+.dashboard .navbar-brand,
+.dashboard .navbar-brand:hover {
+  color: #09B4DE;
+}
 
 
 
