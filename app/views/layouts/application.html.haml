@@ -12,10 +12,8 @@
         %section.hbox.stretch
           = render 'layouts/aside'
           %section#content
-            %section.hbox.stretch
-              %section
-                %section.vbox
-                  = yield
+            %section.vbox
+              = yield
           %a.hide.nav-off-screen-block{"data-target" => "#nav", "data-toggle" => "class:nav-off-screen", :href => "#"}
     :javascript
       // Bootstrap wysihtml5 editor

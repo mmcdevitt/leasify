@@ -1697,8 +1697,8 @@ output {
   width: 100%;
   -webkit-appearance: none !important;
   color: #282323; outline: 0;
-  height: 40px;
-  padding: 6px 9px !important;
+  height: 46px;
+  padding: 6px 9px;
   line-height: normal;
   font-size: 13px;
   font-weight: normal;
@@ -1706,16 +1706,16 @@ output {
   background-color: #fff;
   min-height: 30px;
   filter: none !important;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+  /*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;*/
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: 2px solid #DAE0E4;
   transition: background 0.1s linear 0s, box-shadow 0.1s linear 0s;
 }
 .form-control.input-header {
@@ -1755,7 +1755,7 @@ input[type="date"] {
   line-height: 34px;
 }
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 .radio,
 .checkbox {
@@ -4402,8 +4402,9 @@ a.list-group-item.active > .badge,
 }
 .jumbotron p {
   margin-bottom: 15px;
-  font-size: 21px;
-  font-weight: 200;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 20px;
 }
 .container .jumbotron {
   border-radius: 6px;
@@ -4422,7 +4423,9 @@ a.list-group-item.active > .badge,
   }
   .jumbotron h1,
   .jumbotron .h1 {
-    font-size: 63px;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
   }
 }
 .thumbnail {
@@ -4782,7 +4785,7 @@ a.list-group-item-danger.active:focus {
 .panel {
   margin-bottom: 20px;
   background-color: #fff;
-  border: 1px solid transparent;
+  border: 1px solid #d6d7d9;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);

@@ -1,25 +1,19 @@
-- unless @availabilities.empty?
-  %header.header.bg-white.b-b.clearfix
-    .row.m-t-sm
-      .col-sm-8.m-b-xs
-        = link_to new_availability_path, class: "btn btn-sm btn-default" do
-          %i.fa.fa-plus
-          New Listing
-      .col-sm-4.m-b-xs
-        .input-group
-          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
-          %span.input-group-btn
-            %button.btn.btn-sm.btn-default{:type => "button"} Go!
 %section.scrollable.wrapper.w-f
   .panel-body
     - if @availabilities.empty?
-      .center
+      .jumbotron.center
         %h1 You don't have any availabilities listed!
-        %p Create listings to include in the Availabilites section of your website.
-        = link_to 'List Availability', new_availability_path, class: "btn btn-success"
+        %p
+          Use availabilities to showcase your available spaces.
+          %br Once created you can upload images, audio and video.
+        = link_to 'List Availability', new_availability_path, class: "btn btn-info bold"
     - else
       .m-b-lg
-        %h3.m-t-none.m-b-md Availabilities
+        %span{style: "font-size:18px; font-weight:bold; margin-right: 30px;"}
+          Availabilities
+        = link_to new_availability_path, class: "blue-link" do
+          %i.fa.fa-plus
+          New Listing
       .alert.alert-info
         %button.close{"data-dismiss" => "alert", :type => "button"} ×
         %i.fa.fa-info-sign

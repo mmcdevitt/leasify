@@ -2,128 +2,47 @@
   .panel-body
     %p
       Hello, #{current_user.first_name}
-    - if @propertyinformation.name.nil?
-      - num1 = 1
-    - else
-      - num1 = 0
-    - if @propertyinformation.owner_name.nil?
-      - num2 = 1
-    - else
-      - num2 = 0
-    - if @propertyinformation.property_class.nil?
-      - num3 = 1
-    - else
-      - num3 = 0
-    - if @propertyinformation.floors.nil?
-      - num4 = 1
-    - else
-      - num4 = 0
-    - if @propertyinformation.sf.nil?
-      - num5 = 1
-    - else
-      - num5 = 0
-    - if @propertyinformation.year_built.nil?
-      - num6 = 1
-    - else
-      - num6 = 0
-    - num = num1 + num2 + num3 + num4 + num5 + num6
-    - if num > 0
-      .alert.alert-danger.alert-tour
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} Your Property Information is empty! Let's fill them out.
-          .col-sm-4
-            .pull-right
-              = link_to property_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
-    - if @propertyinformation.address.nil?
-      - num7 = 1
-    - else
-      - num7 = 0
-    - if @propertyinformation.state.nil?
-      - num8 = 1
-    - else
-      - num8 = 0
-    - if @propertyinformation.city.nil?
-      - num9 = 1
-    - else
-      - num9 = 0
-    - if @propertyinformation.zipcode.nil?
-      - num10 = 1
-    - else
-      - num10 = 0
-    - num_address = num7 + num8 + num9 + num10
-    - if num_address > 0
-      .alert.alert-danger
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} Your Property Address is empty! Let's fill it out.
-          .col-sm-4
-            .pull-right
-              = link_to address_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
-    - if @homepage_gallery.nil?
-      .alert.alert-danger
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} You don't have any images for your homepage. Let's upload one!
-          .col-sm-4
-            .pull-right
-              = link_to homepage_image_gallery_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
-    - if @themeoptions.homepage_heading.nil?
-      - num11 = 1
-    - else
-      - num11 = 0
-    - if @themeoptions.homepage_subheading.nil?
-      - num12 = 1
-    - else
-      - num12 = 0
-    - if @themeoptions.content.nil?
-      - num13 = 1
-    - else
-      - num13 = 0
-    - num_homepage = num11 + num12 + num13
-    - if num_homepage > 0
-      .alert.alert-danger
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} Your Homepage content is empty! Let's fill it out.
-          .col-sm-4
-            .pull-right
-              = link_to homepage_content_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
-    - if @pages.empty?
-      .alert.alert-danger
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} You don't have any pages created. Let's create some!
-          .col-sm-4
-            .pull-right
-              = link_to new_page_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
-    - if @availabilities.empty?
-      .alert.alert-danger
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} You don't have any listings created. Let's create some!
-          .col-sm-4
-            .pull-right
-              = link_to new_availability_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
-    - if @contacts.empty?
-      .alert.alert-danger
-        .row
-          .col-sm-8
-            %h4{:style => "margin:5px 0 0 0;"} You don't have any contacts created. Let's create some!
-          .col-sm-4
-            .pull-right
-              = link_to new_contact_path, class: "btn btn-success btn-sm" do
-                %i.i.i-gauge
-                Do it now!
+    .row
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} Your Property Information is empty!
+            = link_to property_path, class: "btn btn-info btn-lg" do
+              Let's get started
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} Your Property Address is empty!
+            = link_to address_path, class: "btn btn-info btn-lg" do
+              Let's get started
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} You don't have any images.
+            = link_to homepage_image_gallery_path, class: "btn btn-info btn-lg" do
+              Do it now!
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} Your Homepage content is empty!
+            = link_to homepage_content_path, class: "btn btn-info btn-lg" do
+              Do it now!
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} You don't have any pages created!
+            = link_to new_page_path, class: "btn btn-info btn-lg" do
+              Do it now!
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} You don't have any listings created!
+            = link_to new_availability_path, class: "btn btn-info btn-lg" do
+              Do it now!
+      .col-sm-4
+        .panel.center
+          .panel-body.wrapper-lg
+            %h4{:style => "margin:5px 0 30px 0;"} You don't have any contacts created!
+            = link_to new_contact_path, class: "btn btn-info btn-lg" do
+              Do it now!
+

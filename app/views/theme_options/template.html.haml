@@ -2,7 +2,7 @@
   .panel-body
     .row
       .col-sm-12
-        %h3 Templates
+        %span{style: "font-size:18px; font-weight:bold; margin-right: 30px;"} Templates
       - @templates.each do |template|
         = form_for(@themeoptions) do |f|
           .col-lg-3.col-md-4.col-sm-6

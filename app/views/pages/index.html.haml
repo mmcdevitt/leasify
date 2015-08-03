@@ -1,9 +1,11 @@
 %section.scrollable.wrapper-lg.w-f
   - if @pages.empty?
-    .center
+    .jumbotron.center
       %h1 You don't have any pages created!
-      %p.m-b-md Create pages to include in your website.
-      = link_to 'New Page', new_page_path, class: "btn btn-success"
+      %p
+        Use pages to display additional information e.g. “about” or “contact”.
+        %br Pages can be redirected to other websites such as social networks, blogs and shops.
+      = link_to 'New Page', new_page_path, class: "btn btn-info bold"
   - else
     .m-b-lg
       %span{style: "font-size:18px; font-weight:bold; margin-right: 30px;"}

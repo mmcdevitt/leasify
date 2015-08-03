@@ -4,14 +4,12 @@
       = render 'layouts/propertyheader'
       .add-page
         .row
-          .col-md-8
+          .col-md-10
             %h3 Property Address
-            .line.line-dashed.b-b.line-lg.pull-in
             .form-group
               = f.label :address, "Property Address"
               = f.text_field :address, class: "form-control"
               %p Your property's address.
-            .line.line-dashed.b-b.line-lg.pull-in
             .form-group
               = f.label :state, "State"
               .btn-group.m-r
@@ -20,12 +18,10 @@
                   %span.caret{:style => "margin-left:30px;"}
                 %ul.dropdown-menu.dropdown-select.max-height-400
                   = render 'state_dropdown', :f => f
-            .line.line-dashed.b-b.line-lg.pull-in
             .form-group
               = f.label :city, "City"
               = f.text_field :city, class: "form-control"
               %p Your property's city.
-            .line.line-dashed.b-b.line-lg.pull-in
             .form-group
               = f.label :zipcode, "Zipcode"
               = f.text_field :zipcode, class: "form-control"
@@ -33,4 +29,4 @@
   %footer.footer.bg-white.b-t
     .row.text-center-xs
       .col-md-12.text-right.text-center-xs
-        = f.submit "Save", class: "btn btn-success btn-more-padding"
+        = f.submit "Save", class: "btn btn-info bold btn-more-padding"

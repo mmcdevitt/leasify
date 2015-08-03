@@ -1,21 +1,17 @@
 class SitesController < ApplicationController
   before_action :set_site, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
-  # before_action :set_subdomain
-  # GET /sites
-  # GET /sites.json
+  layout :layouts
+
   def index
     @sites = Site.where(user_id: current_user.id).all
     redirect_to dashboard_path
   end
 
-  # GET /sites/1
-  # GET /sites/1.json
   def show
     @site = Site.find_by_subdomain(request.subdomain)
   end
 
-  # GET /sites/new
   def new
     @site = Site.new
     @site.theme_options.build
@@ -23,7 +19,6 @@ class SitesController < ApplicationController
     @sites = Site.where(user_id: current_user.id).all
   end
 
-  # GET /sites/1/edit
   def edit
     @sites = Site.where(user_id: current_user.id).all
   end
@@ -34,12 +29,10 @@ class SitesController < ApplicationController
     redirect_to root_url(:host => with_subdomain(@site_last.subdomain)) + 'dashboard/wizard/property'
   end
 
-  # POST /sites
-  # POST /sites.json
   def create
     @sites = Site.where(user_id: current_user.id).all
     @site = current_user.sites.new(site_params)
-    
+
 
     respond_to do |format|
       if @site.save
@@ -52,8 +45,6 @@ class SitesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /sites/1
-  # PATCH/PUT /sites/1.json
   def update
     respond_to do |format|
       if @site.update(site_params)
@@ -66,8 +57,6 @@ class SitesController < ApplicationController
     end
   end
 
-  # DELETE /sites/1
-  # DELETE /sites/1.json
   def destroy
     @site.destroy
     respond_to do |format|
@@ -77,6 +66,10 @@ class SitesController < ApplicationController
   end
 
   private
+    def layouts
+      "sites_new" if params[:action] == 'new'
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_site
       @site = Site.find(params[:id])
@@ -84,7 +77,7 @@ class SitesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def site_params
-      params.require(:site).permit(:name, :subdomain, :user_id, 
+      params.require(:site).permit(:name, :subdomain, :user_id,
                                    theme_options_attributes: [:user_id, :id, :content, :template],
                                    property_informations_attributes: [:user_id, :id, :name])
     end

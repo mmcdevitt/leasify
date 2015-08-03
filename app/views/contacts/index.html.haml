@@ -1,25 +1,17 @@
-- unless @contacts.empty?
-  %header.header.bg-white.b-b.clearfix
-    .row.m-t-sm
-      .col-sm-8.m-b-xs
-        = link_to new_contact_path, class: "btn btn-sm btn-default" do
-          %i.fa.fa-plus
-          New Contact
-      .col-sm-4.m-b-xs
-        .input-group
-          %input.input-sm.form-control.input-header{:placeholder => "Search", :type => "text"}/
-          %span.input-group-btn
-            %button.btn.btn-sm.btn-default{:type => "button"} Go!
 %section.scrollable.wrapper.w-f
   .panel-body
     - if @contacts.empty?
-      .center
+      .jumbotron.center
         %h1 You don't have any contacts created!
         %p Create contacts to include in the Availabilites section of your website.
-        = link_to 'Create Contact', new_contact_path, class: "btn btn-success"
+        = link_to 'Create Contact', new_contact_path, class: "btn btn-info bold"
     - else
       .m-b-lg
-        %h3.m-t-none.m-b-md Contacts
+        %span{style: "font-size:18px; font-weight:bold; margin-right: 30px;"}
+          Contacts
+        = link_to new_contact_path, class: "blue-link" do
+          %i.fa.fa-plus
+          New Contact
       .alert.alert-info
         %button.close{"data-dismiss" => "alert", :type => "button"} ×
         %i.fa.fa-info-sign

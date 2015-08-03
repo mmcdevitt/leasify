@@ -1,6 +1,6 @@
 %section.scrollable.wrapper.w-f
   .panel-body
-    .add-page.wizard
+    .add-page
       = form_for(@site) do |f|
         - if @site.errors.any?
           #error_explanation
@@ -11,38 +11,33 @@
               - @site.errors.full_messages.each do |msg|
                 %li= msg
         .row
-          .col-md-8.col-md-offset-2
+          .col-md-4.col-md-offset-4
             .top-info.center{:style => "padding-bottom:0px;"}
               - if Site.where(user_id: current_user.id).count >= 1 && !current_user.unlimited_sites?
                 %h1 Only 1 website allowed during the Beta.
               - else
                 %h1
-                  Awesome!
-                  %br/
-                  Let's get started, #{current_user.first_name}.
-                .row
-                  .col-lg-8.col-lg-offset-2
-                    %p.m-t-lg
-                      Before we can build your property website, we need to create your Leasify URL.
-                      It's really easy to set up. Just fill in the form below. You can change this at anytime and make it unique.
+                  Awesome! Let's get started.
+                %p{:style => "margin-bottom: 30px; font-weight:bold;"}
+                  Before we can build your property website, we need to create your Leasify URL.
+                  It's really easy to set up. Just fill in the form below. You can change this at anytime and make it unique.
             - unless Site.where(user_id: current_user.id).count >= 1 && !current_user.unlimited_sites?
               .row
-                %div{:style => "width:350px; margin:0 auto;"}
+                .new-site-form
                   = f.fields_for :property_informations do |x|
                     = x.hidden_field :user_id, value: current_user.id
-                    .form-group{:style => "margin-top:30px;"}
+                    .form-group
                       = x.label :name, "Property Name"
-                      = x.text_field :name, class: "form-control"
-                      %p Your property's name.
-                  .form-group
+                      = x.text_field :name, class: "form-control", placeholder: "Your property's name"
+                  .form-group{:style => 'margin-bottom: 0px;'}
                     = f.label :subdomain, "URL"
                     .input-group
-                      = f.text_field :subdomain, class: "form-control"
+                      = f.text_field :subdomain, class: "form-control", placeholder: "Example"
                       %span.input-group-addon .leasify.co
-                    %p No periods, spaces, underscores, or special characters.
+                    %p{:style => "color: #fff; margin-bottom:0"} No periods, spaces, underscores, or special characters.
                   = f.fields_for :theme_options do |builder|
                     = builder.hidden_field :user_id, value: current_user.id
                     = builder.hidden_field :content, value: "This is the coolest place on Earth."
                     = builder.hidden_field :template, value: 2
-                  .actions
-                    = f.submit "Create my Site", class: "btn btn-success btn-more-padding btn-block"
+                .actions
+                  = f.submit "Create my Site", class: "btn btn-info bold btn-more-padding btn-block"

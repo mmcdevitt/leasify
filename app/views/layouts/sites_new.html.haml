@@ -1,0 +1,7 @@
+!!!
+%html.app
+  = render 'layouts/head'
+  %body.new-site
+    %header
+      = link_to "Back to Leasify", dashboard_path, class: 'btn bold'
+    = yield
