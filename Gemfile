@@ -37,6 +37,7 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'draper'
 gem 'haml-rails'
+gem 'figaro'
 
 group :development do
   gem 'thin'

@@ -110,6 +110,9 @@ GEM
     fabrication (2.13.2)
     faker (1.4.3)
       i18n (~> 0.5)
+    figaro (0.7.0)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     foreigner (1.7.4)
       activerecord (>= 3.0.0)
     friendly_id (5.1.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   draper
   fabrication
   faker
+  figaro
   friendly_id
   griddler
   haml
