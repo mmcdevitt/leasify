@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(username: 'mmcdevi1', email: 'mmcdevi1@gmail.com', password: 'koplop', first_name: 'Michael', last_name: 'McDevitt', admin: true, unlimited_sites: true)
+User.create(username: 'mmcdevi1', email: 'mmcdevi1@gmail.com', password: 'koplop',   first_name: 'Michael', last_name: 'McDevitt', admin: true,  unlimited_sites: true)
+User.create(username: 'demo',     email: 'demo@leasify.co'   , password: 'password', first_name: 'demo',    last_name: 'demo',     admin: false, unlimited_sites: false)
 
 ThemeName.create(name: 'Avaya',      description: 'A beautiful, full-width image template with a unique slider.', published: true,  user_id: 1)
 ThemeName.create(name: 'Sunnyside',  description: 'A beautiful, full-width image template with a unique slider.', published: true,  user_id: 1)
