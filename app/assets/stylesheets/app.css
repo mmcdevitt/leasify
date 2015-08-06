@@ -70,6 +70,10 @@ body.new-site {
 .h6 {
   margin: 0;
 }
+.add-page h4 {
+  font-weight: bold;
+  margin-bottom: 30px;
+}
 a {
   color: #3c4144;
   text-decoration: none;

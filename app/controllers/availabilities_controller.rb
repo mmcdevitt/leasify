@@ -1,11 +1,9 @@
 class AvailabilitiesController < ApplicationController
   before_action :set_availability, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
-  before_action :set_subdomain_avail
   before_action :redirect_if_www
-  # GET /availabilities
-  # GET /availabilities.json
   layout :theme_name
+
   def index
     # @subdomain           = request.subdomain
     # @site                = Site.where(subdomain: request.subdomain).first.id

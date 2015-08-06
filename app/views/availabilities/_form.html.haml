@@ -10,7 +10,7 @@
             %ul
               - @availability.errors.full_messages.each do |msg|
                 %li= msg
-        %h3= @avail_title
+        %h4= @avail_title
         - if params[:action] == "edit"
           %p
             = edit_listing_url
@@ -204,7 +204,7 @@
         });
         $('.form-group button.dropdown-toggle').click(function() {
           $('#image_btn_tooltip, #draft_btn_tooltip').fadeOut('slow');
-        });    
+        });
 
       });
   = javascript_include_tag "filestyle.min"

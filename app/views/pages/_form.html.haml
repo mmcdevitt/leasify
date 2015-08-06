@@ -9,7 +9,7 @@
           %ul
             - @page.errors.full_messages.each do |msg|
               %li= msg
-      %h3= @title
+      %h4= @title
       - if params[:action] == "edit" || params[:action] == "update"
         %p
           = edit_page_url

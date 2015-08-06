@@ -12,10 +12,11 @@
             %i.fa.fa-plus
             Create New Site
     - if @sites.empty?
-      .center
+      .jumbotron.center
         %h1 You don't have any sites created!
-        %p Let's get started and create your first property site.
-        = link_to 'Create Site', new_site_path, class: "btn btn-success"
+        %p
+          Let's get started and create your first property site.
+        = link_to 'Create Site', new_site_path, class: "btn btn-info bold"
     - else
       - if Site.where(user_id: current_user.id).count >= 1 && !current_user.unlimited_sites?
         .alert.alert-warning

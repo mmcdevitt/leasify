@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
         elsif params[:controller] == 'static_pages' && params[:action] == 'leasing'
         elsif params[:controller] == 'availabilities' && params[:action] == 'show'
         else
-
           @subdomain = request.subdomain
           @site = Site.where(subdomain: request.subdomain).first
           @user = User.where(id: @site.user_id).first
@@ -32,7 +31,6 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
 
   # User is redirected to users dashboard after sign in
   def after_sign_in_path_for(resource)
