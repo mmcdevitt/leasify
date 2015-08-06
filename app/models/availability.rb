@@ -6,8 +6,8 @@ class Availability < ActiveRecord::Base
 	validates :availability_galleries, presence: true
 	validates :sf, :rental_rate, :floor_location, numericality: true
 	validates :subtitle, length: {maximum: 120}
-	accepts_nested_attributes_for :availability_galleries, 
-																reject_if: proc { |attributes| attributes['availability_image'].blank? }, 
+	accepts_nested_attributes_for :availability_galleries,
+																reject_if: proc { |attributes| attributes['availability_image'].blank? },
 																allow_destroy: true
 
   has_attached_file :floorplan_image, :default_url => "/assets/office1.jpg", styles: {
@@ -20,8 +20,8 @@ class Availability < ActiveRecord::Base
   },
   :storage => :s3,
   :bucket => ENV['LEASIFY'],
-  :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
-	validates_attachment_content_type :floorplan_image, :content_type => /\Aimage/																
+  :s3_credentials => File.join(Rails.root, 'config', 'application.yml')
+	validates_attachment_content_type :floorplan_image, :content_type => /\Aimage/
 
 
 end

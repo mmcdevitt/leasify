@@ -17,7 +17,7 @@ class Page < ActiveRecord::Base
   },
   :storage => :s3,
   :bucket => ENV['LEASIFY'],
-  :s3_credentials => File.join(Rails.root, 'config', 's3.yml')
+  :s3_credentials => File.join(Rails.root, 'config', 'application.yml')
 	validates_attachment_content_type :page_image, :content_type => /\Aimage/
 
   friendly_id :title, use: :slugged
