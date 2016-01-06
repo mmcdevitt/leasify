@@ -1,0 +1,20 @@
+= render 'layouts/madison/head'
+%body.madison.customize
+  #panel-example Whatever you want in your panel
+  = render 'layouts/madison/header'
+  - @homepage_galleries.each_with_index do |image, index|
+    %div{:class => "item #{"active" if index == 0}"}
+      %div{:style => "background-image:url('#{image.homepage_gallery_image}');"}
+  :javascript
+    $('.carousel').carousel();
+    $('#panel-example').scotchPanel({
+      containerSelector: 'body', // As a jQuery Selector
+      direction: 'right', // Make it toggle in from the left
+      duration: 300, // Speed in ms how fast you want it to be
+      transition: 'ease', // CSS3 transition type: linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier(P1x,P1y,P2x,P2y)
+      clickSelector: '.toggle-panel', // Enables toggling when clicking elements of this class
+      distanceX: '30%', // Size fo the toggle
+      enableEscapeKey: true // Clicking Esc will close the panel
+    })
+
+

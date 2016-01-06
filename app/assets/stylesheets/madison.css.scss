@@ -1,0 +1,367 @@
+// Place all the styles related to the Sunnyside controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/.
+
+html, body {
+  height: 100%;
+
+}
+
+ul li ul {
+  list-style:none;
+}
+ul li:hover ul {
+  display:block;
+  position: absolute;
+  background:#fff;
+  border-radius:3px;
+  width: 100%;
+}
+ul li ul {
+  display:none;
+}
+ul li ul li a {
+  padding:15px;
+  display:block;
+  color: #999;
+}
+ul li ul li a:hover {
+  text-decoration: none;
+
+}
+
+* {
+  outline: none !important;
+  margin: 0;
+  padding: 0;
+}
+#page {
+  display:table;
+  overflow:hidden;
+  margin:0px auto;
+}
+*:first-child+html #page {
+  position:relative;
+}/*ie7*/
+* html #page {
+  position:relative;
+}/*ie6*/
+
+#content_container{
+  display:table-cell;
+  vertical-align: middle;
+}
+*:first-child+html #content_container{
+  position:absolute;
+  top:50%;
+  }/*ie7*/
+* html #content_container{
+  position:absolute;
+  top:50%;
+  }/*ie6*/
+
+*:first-child+html #content{
+  position:relative;
+  top:-50%;
+  }/*ie7*/
+* html #content{
+  position:relative;
+  top:-50%;
+  }/*ie6*/
+
+#page{
+  height:100%;
+  width:700px;
+}
+
+hr {
+  margin: 80px 0;
+}
+.center {
+  text-align: center;
+}
+.btn-no-bg {
+  background: transparent;
+  color: #fff;
+  border: 2px solid white;
+}
+.btn-no-bg:hover {
+  background: rgba(0,0,0,0.2);
+  color: #fff;
+}
+.leasing {
+  background: #f5f5f5;
+}
+.m-b-lg {
+  margin-bottom: 20px;
+}
+.p-100 {
+  padding: 100px;
+}
+.madison {
+  .welcome-box {
+    h1 {
+      margin-bottom: 10px;
+    }
+  }
+  .listings-btn {
+    position: absolute;
+    bottom: 50px;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+
+  ul {
+    &.list-style-none {
+      list-style: none;
+    }
+    li {
+      &.first-list {
+        font-size: 20px;
+        color: #999;
+      }
+      padding-bottom: 0px;
+      a {
+
+      }
+    }
+  }
+  #wrapper {
+    height: 100%;
+  }
+  h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+
+  }
+  header {
+    padding: 0px;
+    background: #fff;
+    ul li a{
+
+      text-transform: uppercase;
+      font-size: 12px;
+      &:hover {
+        color:#d7d7d7;
+        background: transparent;
+      }
+    }
+    .navbar-brand {
+      color: #fff;
+    }
+  }
+  .main-homepage {
+
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      color: #fff;
+      background-color: #f5f5f5;
+      h1 {
+        font-size: 40px;
+
+
+      }
+
+      p {
+        text-transform: uppercase;
+
+      }
+
+    }
+  .content {
+    padding:50px;
+    margin-top:150px;
+    h1 {
+      margin-bottom: 17px;
+    }
+
+  }
+  .page-content {
+
+    h1 {
+
+    }
+    h2, h3 {
+      margin-bottom: 20px;
+    }
+    p {
+
+      line-height: 28px;
+
+    }
+  }
+  footer {
+    padding: 100px 0;
+    p {
+      font-size: 12px;
+      margin: 0;
+
+    }
+  }
+  .stats {
+    margin-top:50px;
+    margin-bottom: 30px;
+
+    padding: 10px 0;
+    ul {
+      margin: 0;
+      li {
+      display: inline-block;
+      padding: 0 20px 0 20px;
+      font-size: 13px;
+      color: #666666;
+      font-weight: bold;
+        span {
+          font-size: 10px;
+          color: #a6a6a6;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .leasing-widget {
+    border: 1px solid #d7d7d7;
+    border-radius: 2px;
+    padding: 5px;
+    background: #fff;
+    margin-bottom: 20px;
+    min-height:433px;
+    &:hover {
+      border: 1px solid #b8b8b8;
+      box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.08);
+    }
+    img {
+      width: 100%;
+    }
+    .leasing-title {
+      padding:10px 0;
+      text-align: center;
+      border-bottom: 1px solid #d7d7d7;
+      p:first-child {
+        font-size:16px;
+        font-weight: bold;
+        margin:0;
+      }
+      p:last-child {
+        font-size: 12px;
+        color: #a2a6aa;
+        margin: 0;
+      }
+    }
+
+    .leasing-content {
+      padding: 16px;
+
+      p {
+        font-size: 12px;
+        line-height:21px;
+        color: #999;
+      }
+    }
+  }
+
+  .sub-page {
+    height: 50%;
+  }
+
+}/*end sunnyside*/
+
+
+
+
+.carousel,
+.item,
+.active{
+  height:100%;
+}
+.carousel-inner,
+.carousel-caption{
+  height:100%;
+  /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
+}
+.fill {
+  width:100%;
+  height:100%;
+  background-position:center;
+  background-size:cover;
+}
+.featured {
+  text-align: center;
+  border-top: 1px solid #e4e4e4;
+  padding-top: 100px;
+}
+.featured img {
+  margin-bottom: 30px;
+}
+.featured h1 {
+  margin-bottom: 8px;
+}
+.contacts {
+  margin-bottom: 20px;
+}
+
+.contacts:last-child {
+  margin-bottom: 0;
+}
+#logo {height:40px;}
+/* faster sliding speed */
+.carousel-inner > .item {
+    -webkit-transition: 0.3s ease-in-out left;
+    -moz-transition: 0.3s ease-in-out left;
+    -o-transition: 0.3s ease-in-out left;
+    transition: 0.3s ease-in-out left;
+}
+
+/* keep full widget on smaller screens */
+@media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1200px) {
+    #page {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 992px) {
+    footer {
+      text-align: center;
+
+      .pull-right {
+        float: none !important;
+      }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

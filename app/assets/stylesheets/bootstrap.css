@@ -3790,14 +3790,18 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-toggle .icon-bar {
   display: block;
   width: 22px;
-  height: 2px;
+  height: 4px;
   border-radius: 1px;
+  background: #fff;
 }
 .navbar-toggle .icon-bar + .icon-bar {
   margin-top: 4px;
 }
 @media (min-width: 768px) {
   .navbar-toggle {
+    display: block;
+  }
+  .navbar-toggle-responsive {
     display: none;
   }
 }
@@ -5525,20 +5529,20 @@ button.close {
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next,
-.carousel-control .glyphicon-chevron-left,
-.carousel-control .glyphicon-chevron-right {
+.carousel-control .glyphicon-arrow-left,
+.carousel-control .glyphicon-arrow-right {
   position: absolute;
-  top: 50%;
+  top: 93%;
   z-index: 5;
   display: inline-block;
 }
 .carousel-control .icon-prev,
-.carousel-control .glyphicon-chevron-left {
-  left: 50%;
+.carousel-control .glyphicon-arrow-left {
+  left: 30%;
 }
 .carousel-control .icon-next,
-.carousel-control .glyphicon-chevron-right {
-  right: 50%;
+.carousel-control .glyphicon-arrow-right {
+  right: 30%;
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
@@ -5592,7 +5596,7 @@ button.close {
   padding-top: 20px;
   padding-bottom: 20px;
   color: #fff;
-  text-align: center;
+  text-align: right;
   /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
 }
 .carousel-caption .btn {
@@ -5601,6 +5605,8 @@ button.close {
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .glyphicon-chevron-right,
+  .carousel-control .glyphicon-arrow-left,
+  .carousel-control .glyphicon-arrow-right,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
